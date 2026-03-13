@@ -36,10 +36,42 @@ const agents = [
     ],
   },
 ];
+interface Card {
+  title: string
+  desc: string
+  img: string
+}
+const cards: Card[] = [
+  {
+    title: "AI Property Matching",
+    desc: "Our AI automatically finds the best property for every client.",
+    img: "/assets/propertmachingai.png",
+  },
+  {
+    title: "Lead Generation",
+    desc: "Capture and qualify leads using intelligent AI workflows.",
+    img: "/assets/leadai.png",
+  },
+  {
+    title: "Marketing Automation",
+    desc: "Automate campaigns and reach buyers across platforms.",
+    img: "/assets/marketingai.png",
+  },
+  {
+    title: "Broker Dashboard",
+    desc: "Real-time analytics and performance insights for brokers.",
+    img: "/assets/brockerdashai.png",
+  },
+    {
+    title: "AI Client Relation",
+    desc: "Our AI automatically ,make the best client for every client.",
+    img: "/assets/img-5.png",
+  },
+];
 
 function Trusted() {
   // Duplicate agents multiple times for seamless infinite scroll
-  const duplicatedAgents = [...agents, ...agents, ...agents, ...agents];
+  const duplicatedAgents = [...cards, ...cards, ...cards, ...cards];
 
   return (
     <div>
@@ -54,46 +86,39 @@ function Trusted() {
           
           <div className="relative overflow-hidden w-full py-10">
             {/* Gradient masks for smooth fade effect on edges */}
-            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[var(--bg-primary)] to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[var(--bg-primary)] to-transparent z-10 pointer-events-none" />
+            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#f8fafc] to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#f8fafc] to-transparent z-10 pointer-events-none" />
             
             <div className="flex animate-marquee gap-6 hover:[animation-play-state:paused]">
-              {duplicatedAgents.map((agent, index) => (
-                <div
-                  key={index}
-                  className="relative min-w-[320px] p-[1px] rounded-xl 
-                    bg-gradient-to-br from-blue-500 via-cyan-400 to-indigo-500
-                    hover:scale-[1.03] transition duration-500 flex-shrink-0"
-                >
-                  {/* Inner Card */}
-                  <div className="h-full w-full rounded-xl bg-[#0b1120]/90 backdrop-blur-xl p-6 border border-white/10">
-                    {/* Header */}
-                    <h3 className="text-xl font-semibold text-white mb-5 tracking-wide">
-                      {agent.title}
-                    </h3>
+             {duplicatedAgents.map((card, i) => (
+          <div
+            key={i}
+            className="min-w-[300px] bg-[var(--color-secondary-100)]
+            border border-[var(--color-glass-border)] rounded-2xl my-4
+            overflow-hidden hover:border-[var(--color-primary-500)]
+            hover:-translate-y-1 transition-all duration-300"
+          >
 
-                    {/* Feature Grid */}
-                    <div className="grid grid-cols-2 gap-3">
-                      {agent.features.map((feature, i) => (
-                        <div
-                          key={i}
-                          className="text-xs font-medium text-cyan-300 
-                            border border-cyan-500/30
-                            bg-cyan-500/10
-                            rounded-md px-3 py-2 text-center
-                            hover:bg-cyan-500/20
-                            transition"
-                        >
-                          {feature}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+            {/* Image */}
+            <img
+              src={card.img}
+              alt={card.title}
+              className="w-full h-[220px] object-cover p-2"
+            />
 
-                  {/* Glow Effect */}
-                  <div className="absolute -inset-[1px] rounded-xl blur-lg opacity-30 bg-gradient-to-r from-blue-500 via-cyan-400 to-indigo-500 -z-10" />
-                </div>
-              ))}
+            {/* Content */}
+            <div className="px-6 py-4">
+              <h3 className="text-lg font-semibold text-[var(--color-primary-500)]">
+                {card.title}
+              </h3>
+
+              <p className="text-sm text-[var(--color-primary-500)] mt-2">
+                {card.desc}
+              </p>
+            </div>
+
+          </div>
+        ))}
             </div>
           </div>
         </div>

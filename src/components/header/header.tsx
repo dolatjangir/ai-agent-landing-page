@@ -55,6 +55,94 @@ interface NavItem {
   };
 }
 const navItems: NavItem[] = [
+   {
+    label: "Ai Agents",
+    href: "#ai-agents",
+    hasDropdown: true,
+    dropdownContent: {
+     title: "Platform Ai Agents",
+      description: "Everything you need to manage Ai Agents at scale",
+      sections: [
+        {
+          title: "Core CRM",
+          items: [
+            {
+              icon: <img src="/assets/img-1.png" className="w-10 h-10" />,
+              title: "Ai Lead Qualification Agent",
+              description: "Organize and segment your customer Qualification",
+              href: "/ai-agents/Lead-Qualification"
+            },
+            {
+              icon: <img src="/assets/img-2.png" className="w-10 h-10" />,
+              title: "Ai Property Matching Agent",
+              description: "AI-powered lead qualification",
+              href: "/ai-agents/Property-Matching",
+              badge: "AI"
+            },
+            {
+              icon: <img src="/assets/img-3.png" className="w-10 h-10" />,
+              title: "Lead Capture Agent",
+              description: "Ai Lead Capture tracking and forecasting",
+              href: "/ai-agents/Lead-Capture-Agent"
+            },
+            {
+              icon: <img src="/assets/img-4.png" className="w-10 h-10" />,
+              title: "Ai Content Creation Agent",
+              description: "Content Creation  tracking and forecasting",
+              href: "/ai-agents/Content-Creation-Agent"
+            },
+             {
+              icon: <img src="/assets/img-555.png" className="w-10 h-10" />,
+              title: "Ai  Follow-Up Agent",
+              description: "AI-powered lead qualification",
+              href: "/ai-agents/Follow-Up-Agent",
+              badge: "AI"
+            },
+          ]
+        },
+        {
+          title: "Automation",
+          items: [
+            {
+              icon: <img src="/assets/img-6.png" className="w-10 h-10" />,
+              title: "Ai Calling Agent",
+              description: "Automate Calling tasks",
+              href: "/ai-agents/Calling-Agent"
+            },
+            {
+              icon: <img src="/assets/img-7.png" className="w-10 h-10" />,
+              title: "Ai Campaign Automation Agent",
+              description: "AI meeting scheduler",
+              href: "/ai-agents/smart-scheduling"
+            },
+            {
+              icon: <img src="/assets/img-8.png" className="w-10 h-10" />,
+              title: "Data Mining Agent",
+              description: "Data Mining  automation",
+              href: "/ai-agents/Data-Mining-Agent"
+            },
+             {
+              icon: <img src="/assets/img-9.png" className="w-10 h-10" />,
+              title: "Social Media Agent",
+              description: "Social Media automation",
+              href: "/ai-agents/Social Media Agent"
+            },
+            {
+              icon: <img src="/assets/img-10.png" className="w-10 h-10 rounded-xl" />,
+              title: "Ai SEO Content Agent",
+              description: "SEO Content scheduler",
+              href: "/ai-agents/SEO-Content-Agent"
+            },
+          ]
+        }
+      ],
+      footer: {
+        text: "See all features",
+        link: "Explore →",
+        href: "/features"
+      }
+    }
+  },
   {
     label: "Features",
     href: "#features",
@@ -347,11 +435,11 @@ const toggleMobileItem = (label: string) => {
     className={`fixed top-0 left-0 right-0 z-50 transition-all duration-[var(--duration-normal)]  ${
       scrolled
         ? "bg-[var(--bg-primary)]/80 backdrop-blur-xl shadow-sm"
-        : "bg-[var(--bg-primary)]/80"
+        : "bg-[var(--bg-primary)]"
     }`}
   >
     <div className="mx-auto px-[var(--space-4)] sm:px-[var(--space-2)] lg:px-[var(--space-4)]">
-      <div className="flex justify-between items-center h-20">
+      <div className="flex justify-between items-center h-18">
         <div className="flex items-center gap-[var(--space-2)]">
           <div
             className="rounded-[var(--radius-xl)] bg-[var(--gradient-primary)] flex items-center justify-center shadow-lg"
@@ -359,7 +447,7 @@ const toggleMobileItem = (label: string) => {
               boxShadow: "0 10px 15px -3px var(--color-primary-600)/25",
             }}
           >
-           <Link href="/">  <img width={200} height={200} src="/assets/estateai.png" /></Link>
+           <Link href="/">  <img width={250} height={200} src="/assets/estateai.png" /></Link>
           </div>
         </div>
 
@@ -420,7 +508,7 @@ const toggleMobileItem = (label: string) => {
                                 href={subItem.href}
                                 className="group flex items-start gap-3 p-2 rounded-lg hover:bg-[var(--bg-tertiary)] transition-colors duration-200"
                               >
-                                <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-[var(--color-primary-50)] text-[var(--color-primary-600)] flex items-center justify-center group-hover:bg-[var(--color-primary-100)] transition-colors">
+                                <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-[var(--color-primary-50)] text-[var(--color-primary-600)] flex items-center justify-center group-hover:bg-[var(--color-primary-100)] transition-colors">
                                   {subItem.icon}
                                 </div>
 
@@ -524,7 +612,7 @@ const toggleMobileItem = (label: string) => {
   `}
 >
   <div className='flex justify-between items-center'>
- <Link href="/">  <img width={200} height={200} className='p-2' src="/assets/green-logo.png" /></Link>
+ <Link href="/">  <img width={200} height={200} className='p-2' src="/assets/estateai.png" /></Link>
  <div onClick={() => {setIsMenuOpen(!isMenuOpen)
   setOpenMobileItem(null)}
  } className={`  w-fit absolute p-1 right-2 shadow-xl rounded-md bg-[var(--color-primary-100)] ${isMenuOpen ? 'block' : 'hidden'}`}> <X className="w-6 h-6 text-[var(--color-primary-800)]" /></div></div>

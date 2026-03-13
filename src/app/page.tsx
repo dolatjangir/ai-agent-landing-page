@@ -44,6 +44,7 @@ import Hero from '@/components/hero/hero'
 import Header from '@/components/header/header'
 import Trusted from '@/components/trusted/trusted';
 import Features from '@/components/features/features';
+import ChartSection from '@/components/agentchart/agentchart';
 interface NavItem {
   label: string;
   href: string;
@@ -528,16 +529,36 @@ const StayPilotLanding = () => {
 
       {/* Trusted By Section */}
       <Trusted/>
-      <div className="relative">
-      <div className="relative">
-      <div className="after:w-full after:h-1/2  after:absolute after:bottom-0 after:left-0 after:bg-linear-to-t after:from-[#f8fafc]  after:to-transprent ">
-        <img src="/assets/estateai-robo-sec3.png" />
-      </div></div>
+    <div className="relative w-full h-3/4">
+  <div className="relative w-full h-full ">
+    
+    <div className="relative w-full h-full
+      after:content-[''] 
+      after:w-full 
+      after:h-1/2 
+      after:absolute 
+      after:bottom-0 
+      after:left-0 
+      after:bg-gradient-to-t 
+      after:from-[#f8fafc] 
+      after:to-transparent"
+    >
+      
+      <img
+        src="/assets/sec-3-img.jpeg"
+        className="w-full h-full object-cover"
+        alt="CRM Collaboration"
+      />
+
+    </div>
+
+  </div>
       {/* analytics */}
-       <div className="-mt-40 relative z-10">
+       <div className="-mt-30 relative z-10">
     <Analytics/>
     </div>
     </div>
+    <ChartSection/>
       {/* Features Section */}
       <Features/>
 

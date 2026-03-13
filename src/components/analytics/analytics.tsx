@@ -5,6 +5,14 @@ interface Card {
   desc: string
   img: string
 }
+interface AutomationItem {
+  id: string;
+  title: string;
+  description: string;
+  imageSrc: string;
+  imageAlt: string;
+  variant: 'soshie' | 'cassie' | 'vizzy';
+}
 const cards: Card[] = [
   {
     title: "AI Property Matching",
@@ -32,6 +40,107 @@ const cards: Card[] = [
     img: "/assets/img-5.png",
   },
 ];
+const automations: AutomationItem[] = [
+  {
+    id: 'soshie',
+    title: 'Soshie, schedule social media posts for me',
+    description: 'Automate your social media game with AI for marketing. Write, create, and post content effortlessly with AI-powered solutions.',
+    imageSrc: '/assets/crmph-robo.png',
+    imageAlt: 'Soshie AI - Social Media Automation',
+    variant: 'soshie',
+  },
+  {
+    id: 'cassie',
+    title: 'Cassie, check my Facebook comments',
+    description: 'Engage your audience with business automation tools. Use AI for customer support to analyze comments and craft personalized responses. By automating comment analysis, your team can focus on building stronger customer relationships.',
+    imageSrc: '/assets/crmdash-robo.png',
+    imageAlt: 'Cassie AI - Facebook Comments Automation',
+    variant: 'cassie',
+  },
+  {
+    id: 'vizzy',
+    title: 'Vizzy, help me prepare for today\'s meetings',
+    description: 'Boost productivity with AI. Streamline business processes with daily summaries based on your email and calendar to keep your schedule on track.',
+    imageSrc: '/assets/half-robo.png',
+    imageAlt: 'Vizzy AI - Meeting Preparation Automation',
+    variant: 'vizzy',
+  },
+];
+const getVariantStyles = (variant: string): string => {
+  const styles: Record<string, string> = {
+    soshie: 'bg-gradient-to-br from-purple-200 to-pink-100 border-purple-200',
+    cassie: 'bg-gradient-to-br from-blue-300 to-cyan-100 border-blue-300',
+    vizzy: 'bg-gradient-to-br  from-blue-300 to-cyan-100 border-blue-300',
+  };
+  return styles[variant] || styles.soshie;
+};
+function HomeAutomationsPage(): React.JSX.Element {
+  const firstAutomation = automations[0];
+  const otherAutomations = automations.slice(1);
+
+  return (
+   <main className="min-h-screen ">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="grid grid-cols-1 gap-6 lg:gap-8">
+      {/* First Box - Full Width with Content Left, Image Right */}
+    <div
+  className={`relative overflow-hidden rounded-2xl border ${getVariantStyles(firstAutomation.variant)} shadow-sm flex flex-col lg:flex-row h-full lg:h-[400px]`}
+>
+  {/* Content - Left Side - Centered */}
+  <div className="py-8 px-6 lg:px-8 flex-1 flex flex-col justify-center items-center text-center lg:w-1/2">
+    <div className="mb-4">
+      <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 leading-tight">
+        {firstAutomation.title}
+      </h3>
+    </div>
+    <p className="text-lg text-gray-500 leading-relaxed max-w-md">
+      {firstAutomation.description}
+    </p>
+  </div>
+
+  {/* Image - Right Side - Centered */}
+  <div className="relative w-full lg:w-1/2 h-64 lg:h-full overflow-hidden flex items-center justify-center ">
+    <img
+      src={firstAutomation.imageSrc}
+      alt={firstAutomation.imageAlt}
+      className="max-w-full max-h-full object-contain"
+    />
+  </div>
+</div>
+
+      {/* Other Two Boxes - Side by Side */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        {otherAutomations.map((automation) => (
+          <div
+            key={automation.id}
+            className={`relative overflow-hidden rounded-2xl border ${getVariantStyles(automation.variant)} shadow-sm flex flex-col h-full min-h-[400px]`}
+          >
+            <div className="p-6 lg:p-8 flex-1">
+              <div className="mb-4">
+                <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 leading-tight">
+                  {automation.title}
+                </h3>
+              </div>
+              <p className="text-lg text-gray-500 leading-relaxed">
+                {automation.description}
+              </p>
+            </div>
+
+            <div className="relative w-full h-48 lg:h-56 overflow-hidden mt-auto">
+              <img
+                src={automation.imageSrc}
+                alt={automation.imageAlt}
+                className="absolute inset-0 w-full h-full object-cover object-center"
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</main>
+  );
+}
 const Analytics = () => {
    const scrollRef = useRef<HTMLDivElement | null>(null)
 
@@ -109,59 +218,7 @@ const Analytics = () => {
         </p>
   <div className="relative w-full">
 
-      {/* Left Button */}
-      <button
-        onClick={() => scroll("left")}
-        className="absolute left-0 top-1/2 -translate-y-1/2 z-10
-        bg-white shadow-lg rounded-full w-10 h-10 flex items-center justify-center"
-      >
-        ←
-      </button>
-
-      {/* Right Button */}
-      <button
-        onClick={() => scroll("right")}
-        className="absolute right-0 top-1/2 -translate-y-1/2 z-10
-        bg-white shadow-lg rounded-full w-10 h-10 flex items-center justify-center"
-      >
-        →
-      </button>
-
-      {/* Scroll Container */}
-      <div
-        ref={scrollRef}
-        className="flex gap-6 overflow-x-scroll scroll-smooth no-scrollbar px-12"
-      >
-        {cards.map((card, i) => (
-          <div
-            key={i}
-            className="min-w-[300px] bg-[var(--color-secondary-100)]
-            border border-[var(--color-glass-border)] rounded-2xl my-4
-            overflow-hidden hover:border-[var(--color-primary-500)]
-            hover:-translate-y-1 transition-all duration-300"
-          >
-
-            {/* Image */}
-            <img
-              src={card.img}
-              alt={card.title}
-              className="w-full h-[180px] object-cover p-2"
-            />
-
-            {/* Content */}
-            <div className="px-6 py-4">
-              <h3 className="text-lg font-semibold text-[var(--color-secondary-500)]">
-                {card.title}
-              </h3>
-
-              <p className="text-sm text-[var(--color-secondary-500)] mt-2">
-                {card.desc}
-              </p>
-            </div>
-
-          </div>
-        ))}
-      </div>
+      <HomeAutomationsPage/>
 
     </div>
       </div>

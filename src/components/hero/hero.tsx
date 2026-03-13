@@ -24,8 +24,8 @@ function Hero() {
   return (
     <div>
          {/* Hero Section */}
-            <section className="relative pt-32 pb-20 lg:pt-24 lg:pb-32 overflow-hidden">
-              <div className="absolute inset-0 bg-[url('/assets/hero-sec-img.jpeg')] after:bg-slate-800/50 after:absolute after:top-0 after:left-0 after:w-full after:h-full after:backdrop-blur-xs bg-cover bg-center bg-no-repeat " />
+            <section className="relative mt-12 pt-32 pb-20 lg:pt-32 lg:pb-32 overflow-hidden">
+              <div className="absolute inset-0 bg-[url('/assets/hero-sec-img.jpeg')] after:bg-slate-800/50 after:absolute after:top-0 after:left-0 after:w-full after:h-full  bg-cover bg-center bg-no-repeat " />
               <div className="absolute top-0 right-0 w-1/2 h-full  to-transparent " />
               
               <div className="relative w-full h-full  px-[var(--space-4)] sm:px-[var(--space-6)] lg:px-[var(--space-8)]">
@@ -38,10 +38,10 @@ function Hero() {
                     
                     <h1 className="text-4xl lg:text-6xl font-bold leading-tight tracking-tight text-white ">
                       AI-Powered Real{" "}
-                      <span className="bg-[var(--color-primary-600)] bg-clip-text text-transparent">
+                      <span className="bg-white bg-clip-text text-transparent">
                         Estate
                       </span>{" "}
-                      Platform for Brokers
+                      Platform of AI Agents
                     </h1>
                     
                     <p className="text-xl text-[var(--color-secondary-50)] leading-relaxed max-w-xl">
