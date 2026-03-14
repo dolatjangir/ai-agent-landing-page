@@ -24,13 +24,13 @@ function Hero() {
   return (
     <div>
          {/* Hero Section */}
-            <section className="relative mt-12 pt-32 pb-20 lg:pt-32 lg:pb-32 overflow-hidden">
-              <div className="absolute inset-0 bg-[url('/assets/hero-sec-img.jpeg')] after:bg-slate-800/50 after:absolute after:top-0 after:left-0 after:w-full after:h-full  bg-cover bg-center bg-no-repeat " />
+            <section className="relative mt-12 pt-28 pb-20 lg:pt-24 lg:pb-32 overflow-hidden">
+              <div className="absolute inset-0 bg-[url('/assets/hero-sec-img.jpeg')] lg:h-screen after:bg-slate-800/10 after:absolute after:top-0 after:left-0 after:w-full after:h-full  bg-cover bg-center bg-no-repeat " />
               <div className="absolute top-0 right-0 w-1/2 h-full  to-transparent " />
               
               <div className="relative w-full h-full  px-[var(--space-4)] sm:px-[var(--space-6)] lg:px-[var(--space-8)]">
                 <div className="grid sm:grid-cols-2   items-center">
-                  <div className="space-y-[var(--space-3)]">
+                  <div className="space-y-[var(--space-4)]">
                     <div className="inline-flex items-center gap-[var(--space-2)] px-[var(--space-2)] py-[var(--space-2)] rounded-[var(--radius-full)] bg-[var(--color-primary-100)] text-[var(--color-primary-700)] text-sm font-semibold">
                       <Sparkles className="w-4 h-4" />
                       <span>Trusted by 10,000+ property managers</span>

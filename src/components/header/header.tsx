@@ -70,7 +70,7 @@ const navItems: NavItem[] = [
               icon: <img src="/assets/img-1.png" className="w-10 h-10" />,
               title: "Ai Lead Qualification Agent",
               description: "Organize and segment your customer Qualification",
-              href: "/ai-agents/Lead-Qualification"
+              href: "/ai-agents/lead-qualifiction-agent"
             },
             {
               icon: <img src="/assets/img-2.png" className="w-10 h-10" />,
