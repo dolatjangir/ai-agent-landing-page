@@ -23,6 +23,7 @@ import {
   Sparkles
 } from "lucide-react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
+import ChartSection from "../agentchart/agentchart";
 
 // Animation variants with proper typing
 const fadeInUp: Variants = {
@@ -198,7 +199,7 @@ export default function HowItWorksPage() {
       />
 
       {/* Hero Section */}
-      <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
+      {/* <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-primary-50)] via-white to-[var(--color-secondary-50)]" />
         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[var(--color-primary-100)]/20 to-transparent" />
         
@@ -234,7 +235,8 @@ export default function HowItWorksPage() {
             </motion.p>
           </motion.div>
         </div>
-      </section>
+      </section> */}
+      <ChartSection/>
 
       {/* System Architecture Overview */}
       <section className="py-16 lg:py-24 bg-white">

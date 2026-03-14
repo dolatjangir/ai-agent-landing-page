@@ -11,7 +11,7 @@ interface AutomationItem {
   description: string;
   imageSrc: string;
   imageAlt: string;
-  variant: 'soshie' | 'cassie' | 'vizzy';
+  variant: 'assistant' | 'support' | 'meeting';
 }
 const cards: Card[] = [
   {
@@ -42,35 +42,38 @@ const cards: Card[] = [
 ];
 const automations: AutomationItem[] = [
   {
-    id: 'soshie',
-    title: 'Soshie, schedule social media posts for me',
-    description: 'Automate your social media game with AI for marketing. Write, create, and post content effortlessly with AI-powered solutions.',
+    id: 'agent-assistant',
+    title: 'AI Assistant, handle my daily tasks',
+    description:
+      'Your personal AI agent that manages tasks, reminders, and workflows automatically. Stay productive while your AI handles repetitive work for you.',
     imageSrc: '/assets/crmph-robo.png',
-    imageAlt: 'Soshie AI - Social Media Automation',
-    variant: 'soshie',
+    imageAlt: 'AI Assistant Agent',
+    variant: 'assistant',
   },
   {
-    id: 'cassie',
-    title: 'Cassie, check my Facebook comments',
-    description: 'Engage your audience with business automation tools. Use AI for customer support to analyze comments and craft personalized responses. By automating comment analysis, your team can focus on building stronger customer relationships.',
+    id: 'customer-support',
+    title: 'Support Agent, reply to my customers',
+    description:
+      'An AI customer support agent that answers inquiries, manages conversations, and provides instant responses to your customers 24/7.',
     imageSrc: '/assets/crmdash-robo.png',
-    imageAlt: 'Cassie AI - Facebook Comments Automation',
-    variant: 'cassie',
+    imageAlt: 'Customer Support AI Agent',
+    variant: 'support',
   },
   {
-    id: 'vizzy',
-    title: 'Vizzy, help me prepare for today\'s meetings',
-    description: 'Boost productivity with AI. Streamline business processes with daily summaries based on your email and calendar to keep your schedule on track.',
+    id: 'meeting-agent',
+    title: 'Meeting Agent, prepare my schedule',
+    description:
+      'Your smart scheduling AI that analyzes your calendar, prepares meeting summaries, and keeps you ready for every important discussion.',
     imageSrc: '/assets/half-robo.png',
-    imageAlt: 'Vizzy AI - Meeting Preparation Automation',
-    variant: 'vizzy',
+    imageAlt: 'Meeting Preparation AI Agent',
+    variant: 'meeting',
   },
 ];
 const getVariantStyles = (variant: string): string => {
   const styles: Record<string, string> = {
-    soshie: 'bg-gradient-to-br from-purple-200 to-pink-100 border-purple-200',
-    cassie: 'bg-gradient-to-br from-blue-300 to-cyan-100 border-blue-300',
-    vizzy: 'bg-gradient-to-br  from-blue-300 to-cyan-100 border-blue-300',
+    assistant: 'bg-gradient-to-br from-blue-200 to-blue-100 border-blue-200 shadow-xl',
+    support: 'bg-gradient-to-br from-blue-300 to-cyan-100 border-blue-300 shadow-xl',
+    meeting: 'bg-gradient-to-br  from-blue-300 to-cyan-100 border-blue-300 shadow-xl',
   };
   return styles[variant] || styles.soshie;
 };
@@ -224,37 +227,213 @@ const Analytics = () => {
       </div>
     </section>
      {/* How It Works */}
-          <section id="how-it-works" className="py-[var(--space-24)] ">
-            <div className="max-w-7xl   mx-auto px-[var(--space-4)] sm:px-[var(--space-6)] lg:px-[var(--space-8)]">
-              <div className="text-center max-w-3xl mx-auto mb-[var(--space-16)]">
-                <h2 className="text-4xl font-bold mb-[var(--space-4)] text-[var(--color-primary-600)] ">Get Started in Minutes</h2>
-                <p className="text-xl text-[var(--text-secondary)] ">Three simple steps to transform your property management.</p>
-              </div>
+        <section id="how-it-works" className="py-24 relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-slate-50">
+  {/* Background AI Grid Pattern */}
+  <div className="absolute inset-0 opacity-[0.03]">
+    <div className="absolute inset-0" style={{
+      backgroundImage: `radial-gradient(circle at 1px 1px, rgb(59 130 246) 1px, transparent 0)`,
+      backgroundSize: '40px 40px'
+    }} />
+  </div>
+  
+  {/* Floating Robot Elements */}
+  <div className="absolute top-20 left-10 opacity-20 animate-pulse">
+    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" className="text-blue-500">
+      <rect x="35" y="30" width="50" height="40" rx="8" fill="currentColor" fillOpacity="0.2"/>
+      <circle cx="45" cy="50" r="6" fill="currentColor"/>
+      <circle cx="75" cy="50" r="6" fill="currentColor"/>
+      <rect x="50" y="65" width="20" height="3" rx="1.5" fill="currentColor"/>
+      <rect x="30" y="70" width="10" height="25" rx="5" fill="currentColor" fillOpacity="0.3"/>
+      <rect x="80" y="70" width="10" height="25" rx="5" fill="currentColor" fillOpacity="0.3"/>
+      <path d="M60 20 L60 10" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
+      <circle cx="60" cy="8" r="4" fill="currentColor"/>
+    </svg>
+  </div>
+  
+  <div className="absolute bottom-20 right-10 opacity-20 animate-bounce" style={{animationDuration: '3s'}}>
+    <svg width="100" height="100" viewBox="0 0 100 100" fill="none" className="text-indigo-500">
+      <rect x="25" y="25" width="50" height="35" rx="6" fill="currentColor" fillOpacity="0.2"/>
+      <circle cx="40" cy="42" r="5" fill="currentColor"/>
+      <circle cx="60" cy="42" r="5" fill="currentColor"/>
+      <rect x="42" y="52" width="16" height="2" rx="1" fill="currentColor"/>
+      <rect x="20" y="55" width="8" height="20" rx="4" fill="currentColor" fillOpacity="0.3"/>
+      <rect x="72" y="55" width="8" height="20" rx="4" fill="currentColor" fillOpacity="0.3"/>
+    </svg>
+  </div>
+
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    {/* Section Header with AI Badge */}
+   <div className="text-center max-w-3xl mx-auto mb-20">
+  {/* Robot positioned behind with negative margin */}
+  <div className="relative flex justify-center -mb-[55px] -ml-[282px] z-10">
+    <img 
+      width={100} 
+      height={100} 
+      src="/assets/stand-robo.png" 
+      alt="AI Robot"
+      className="drop-shadow-2xl transform translate-y-4"
+    />
+  </div>
+
+  {/* Badge in front of robot */}
+  <div className="relative z-10 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 mb-6 shadow-lg">
+    <span className="relative flex h-2 w-2">
+      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+      <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+    </span>
     
-              <div className="grid lg:grid-cols-3  w-full gap-[var(--space-2)] lg:gap-[var(--space-8)]">
-                {steps.map((step, idx) => (
-                  <div key={idx} className="relative group ">
-                    <div 
-                      className=" [clip-path:polygon(0_0,_50%_20%,_100%_0,_100%_69%,_49%_100%,_48%_100%,_0_67%)] md:[clip-path:polygon(75%_0%,_98%_50%,_75%_100%,_0%_100%,_15%_50%,_0%_0%)]  flex justify-center items-center  pb-2 h-60 group-hover:bg-[var(--color-secondary-300)]/50 p-[var(--space-3)] bg-[var(--color-secondary-100)]  border border-[var(--border-light)] group-hover:border-[var(--border-light)]/50"
-                     
-                    >
-                      <div className='flex flex-col items-center justify-center px-4  w-[80%]'>
-                        <div className='flex flex-row sm:flex-col items-center justify-center '>
-                      <div className="text-2xl lg:text-5xl font-bold mr-5 lg:mr-0 text-[var(--color-secondary-500)] mb-[var(--space-1)] lg:mb-[var(--space-3)]">{step.number}</div>
-                      <h3 className="text-sm lg:text-xl font-bold mb-[var(--space-2)] lg:mb-[var(--space-4)] text-black/90">{step.title}</h3>
-                      </div><p className="px-2 sm:px-6 text-sm text-[var(--text-secondary)] text-center leading-relaxed">{step.description}</p>
-                    </div>
-                    {idx < 2 && (
-                      <div className="hidden z-50 lg:block absolute top-1/2 -right-5 group-hover:-right-7 transition-all transform -translate-y-1/2 -z-10">
-                        <ChevronRight className="w-8 h-8  text-[var(--color-secondary-700)]" />
-                      </div>
-                    )}
-                  </div>
-                  </div>
-                ))}
+    <span className="text-sm font-medium text-blue-700">AI-Powered Onboarding</span>
+  </div>
+  
+  <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text text-transparent">
+    Your AI Agent Sets Up Everything
+  </h2>
+  <p className="text-xl text-slate-600 leading-relaxed">
+    No complex configurations. Our intelligent agents analyze your property and automate the entire setup in minutes.
+  </p>
+</div>
+
+    {/* AI Steps Grid */}
+    <div className="grid lg:grid-cols-3 gap-8 relative">
+      {/* Connection Lines - Desktop */}
+      <div className="hidden lg:block absolute top-1/2 left-1/3 right-1/3 h-0.5 bg-gradient-to-r from-blue-200 via-indigo-200 to-blue-200 -translate-y-1/2 z-0" />
+      
+      {steps.map((step, idx) => (
+        <div key={idx} className="relative group z-10">
+          {/* Card Container */}
+          <div className="relative bg-white rounded-3xl p-8 shadow-lg shadow-slate-200/50 border border-slate-100 
+                          hover:shadow-2xl hover:shadow-blue-500/10 hover:border-blue-200 
+                          transition-all duration-500 ease-out hover:-translate-y-2">
+            
+            {/* AI Robot Icon - Top */}
+            <div className="absolute -top-6 left-1/2 -translate-x-1/2">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 
+                              flex items-center justify-center shadow-lg shadow-blue-500/30
+                              group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                {idx === 0 && (
+                  <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+                          d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                  </svg>
+                )}
+                {idx === 1 && (
+                  <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+                          d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                )}
+                {idx === 2 && (
+                  <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+                          d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                )}
               </div>
             </div>
-          </section>
+
+            {/* Step Number Badge */}
+            <div className="flex justify-center mb-6 mt-4">
+              <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center
+                              group-hover:bg-blue-50 transition-colors duration-300">
+                <span className="text-lg font-bold text-slate-400 group-hover:text-blue-600 transition-colors">
+                  0{idx + 1}
+                </span>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="text-center">
+              <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-700 transition-colors">
+                {step.title}
+              </h3>
+              <p className="text-slate-600 leading-relaxed text-sm">
+                {step.description}
+              </p>
+            </div>
+
+            {/* AI Feature Tags */}
+            <div className="mt-6 flex flex-wrap justify-center gap-2">
+              {idx === 0 && (
+                <>
+                  <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-medium">Smart Analysis</span>
+                  <span className="px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-xs font-medium">Auto-Detect</span>
+                </>
+              )}
+              {idx === 1 && (
+                <>
+                  <span className="px-3 py-1 rounded-full bg-purple-50 text-purple-600 text-xs font-medium">AI Configuration</span>
+                  <span className="px-3 py-1 rounded-full bg-pink-50 text-pink-600 text-xs font-medium">Instant Setup</span>
+                </>
+              )}
+              {idx === 2 && (
+                <>
+                  <span className="px-3 py-1 rounded-full bg-green-50 text-green-600 text-xs font-medium">Live Dashboard</span>
+                  <span className="px-3 py-1 rounded-full bg-teal-50 text-teal-600 text-xs font-medium">24/7 AI</span>
+                </>
+              )}
+            </div>
+
+            {/* Hover Glow Effect */}
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-500/0 via-indigo-500/0 to-purple-500/0 
+                            group-hover:from-blue-500/5 group-hover:via-indigo-500/5 group-hover:to-purple-500/5 
+                            transition-all duration-500 pointer-events-none" />
+          </div>
+
+          {/* Arrow Connector - Desktop */}
+          {idx < 2 && (
+            <div className="hidden lg:flex absolute top-1/2 -right-4 transform -translate-y-1/2 z-20">
+              <div className="w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center
+                              border border-slate-100 group-hover:border-blue-200 group-hover:shadow-blue-500/20
+                              transition-all duration-300">
+                <svg className="w-4 h-4 text-slate-400 group-hover:text-blue-500 transition-colors" 
+                     fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+
+    {/* Bottom AI Assistant CTA */}
+    <div className="mt-20 text-center">
+      <div className="inline-flex items-center gap-4 px-8 py-4 rounded-2xl bg-gradient-to-r from-slate-900 to-slate-800 
+                      shadow-2xl shadow-slate-900/20 hover:shadow-slate-900/30 transition-all duration-300
+                      group cursor-pointer">
+        {/* Small Robot Avatar */}
+        <div className="relative">
+          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center
+                          group-hover:scale-110 transition-transform duration-300">
+            <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <rect x="6" y="4" width="12" height="12" rx="2" strokeWidth="2"/>
+              <circle cx="9" cy="9" r="1.5" fill="currentColor"/>
+              <circle cx="15" cy="9" r="1.5" fill="currentColor"/>
+              <path d="M9 13h6" strokeWidth="2" strokeLinecap="round"/>
+              <path d="M12 16v3" strokeWidth="2" strokeLinecap="round"/>
+              <path d="M8 19h8" strokeWidth="2" strokeLinecap="round"/>
+            </svg>
+          </div>
+          <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-slate-800 
+                           animate-pulse" />
+        </div>
+        
+        <div className="text-left">
+          <p className="text-white font-semibold text-lg">Need help getting started?</p>
+          <p className="text-slate-400 text-sm">Our AI assistant is ready to guide you</p>
+        </div>
+        
+        <div className="ml-4 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center
+                        group-hover:bg-white/20 transition-colors">
+          <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 </>
   );
 };

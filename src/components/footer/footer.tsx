@@ -22,7 +22,7 @@ function Footer() {
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-3 mb-[var(--space-2)]">
               <img
-                src="/assets/green-logo.png"
+                src="/assets/estateai.png"
                 width={200}
                 height={70}
                 alt="BNB"
@@ -84,7 +84,7 @@ function Footer() {
             </h4>
             <ul className="space-y-3 text-sm">
               <li><Link href="/resources/documentation" className="hover:text-[var(--color-primary-600)]">Documentation</Link></li>
-              <li><Link href="/resources/video-tutorials" className="hover:text-[var(--color-primary-600)]">Video Tutorials</Link></li>
+              <li><Link href="/howitworks" className="hover:text-[var(--color-primary-600)]">How it Works</Link></li>
               <li><Link href="/resources/help-center" className="hover:text-[var(--color-primary-600)]">Help Center</Link></li>
               <li><Link href="/about-us" className="hover:text-[var(--color-primary-600)]">about-us</Link></li>
             </ul>

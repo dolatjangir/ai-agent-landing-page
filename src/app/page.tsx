@@ -36,7 +36,11 @@ import {
   Target,
   Layers,
   Workflow,
-  LineChart
+  LineChart,
+  Lock,
+  Brain,
+  Bot,
+  BotIcon
 } from 'lucide-react';
 import Footer from '@/components/footer/footer'
 import Analytics from '@/components/analytics/analytics'
@@ -45,6 +49,8 @@ import Header from '@/components/header/header'
 import Trusted from '@/components/trusted/trusted';
 import Features from '@/components/features/features';
 import ChartSection from '@/components/agentchart/agentchart';
+import AgentShowcase from '@/components/estateai-benefits/benefits';
+import TestimonialsSection from '@/components/testimonial/testimonial';
 interface NavItem {
   label: string;
   href: string;
@@ -322,7 +328,36 @@ const navItems: NavItem[] = [
   }
 ];
 
-
+const aiBenefits = [
+  {
+    icon: <Brain className="w-6 h-6 text-white" />,
+    title: "Autonomous Learning",
+    description: "AI agents that adapt to your property patterns and improve decisions without manual input.",
+    gradient: "from-blue-500 to-blue-600",
+    aiFeature: "Self-Improving"
+  },
+  {
+    icon: <Zap className="w-6 h-6 text-white" />,
+    title: "Instant Response",
+    description: "Guest inquiries handled in under 30 seconds, 24/7, with human-like contextual understanding.",
+    gradient: "from-amber-500 to-orange-600",
+    aiFeature: "Real-time NLP"
+  },
+  {
+    icon: <TrendingUp className="w-6 h-6 text-white" />,
+    title: "Predictive Revenue",
+    description: "Machine learning forecasts demand and auto-adjusts pricing for maximum occupancy.",
+    gradient: "from-emerald-500 to-teal-600",
+    aiFeature: "95% Accuracy"
+  },
+  {
+    icon: <Shield className="w-6 h-6 text-white" />,
+    title: "Risk Intelligence",
+    description: "AI-powered fraud detection and guest screening protects your properties automatically.",
+    gradient: "from-purple-500 to-indigo-600",
+    aiFeature: "Proactive Defense"
+  }
+];
 
 const StayPilotLanding = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -532,16 +567,7 @@ const StayPilotLanding = () => {
     <div className="relative w-full h-3/4">
   <div className="relative w-full h-full ">
     
-    <div className="relative w-full h-full
-      after:content-[''] 
-      after:w-full 
-      after:h-1/2 
-      after:absolute 
-      after:bottom-0 
-      after:left-0 
-      after:bg-gradient-to-t 
-      after:from-[#f8fafc] 
-      after:to-transparent"
+    <div className="relative w-full h-full"
     >
       
       <img
@@ -554,182 +580,19 @@ const StayPilotLanding = () => {
 
   </div>
       {/* analytics */}
-       <div className="-mt-30 relative z-10">
+       <div className=" z-10">
     <Analytics/>
     </div>
     </div>
-    <ChartSection/>
+    
       {/* Features Section */}
       <Features/>
 
-      {/* How It Works */}
-      <section id="how-it-works" className="py-[var(--space-24)] ">
-        <div className="max-w-7xl mx-auto px-[var(--space-4)] sm:px-[var(--space-6)] lg:px-[var(--space-8)]">
-          <div className="text-center max-w-3xl mx-auto mb-[var(--space-16)]">
-            <h2 className="text-4xl font-bold mb-[var(--space-4)] text-[var(--text-primary)] ">Get Started in Minutes</h2>
-            <p className="text-xl text-[var(--text-secondary)]">Three simple steps to transform your property management.</p>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-[var(--space-8)]">
-            {steps.map((step:any, idx) => (
-              <div key={idx} className="relative group">
-                <div 
-                  className="rounded-[var(--radius-3xl)] p-[var(--space-8)] h-full border border-[var(--border-light)] relative overflow-hidden"
-                  style={{ backgroundColor: step.bg }}
-                >
-                  {/* background bubbles */}
-                          {/* Background Bubbles */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <div 
-                className="absolute w-32 h-32 rounded-full opacity-20 blur-2xl"
-                style={{ 
-                  backgroundColor: step.bg,
-                  filter: 'brightness(1.3)',
-                  top: '-10%',
-                  right: '-5%',
-                  animation: 'float 6s ease-in-out infinite'
-                }}
-              />
-              <div 
-                className="absolute w-24 h-24 rounded-full opacity-15 blur-xl"
-                style={{ 
-                  backgroundColor: step.bg,
-                  filter: 'brightness(1.4)',
-                  bottom: '10%',
-                  left: '-8%',
-                  animation: 'float 8s ease-in-out infinite 1s'
-                }}
-              />
-              <div 
-                className="absolute w-20 h-20 rounded-full opacity-10 blur-lg"
-                style={{ 
-                  backgroundColor: step.bg,
-                  filter: 'brightness(1.5)',
-                  top: '40%',
-                  right: '5%',
-                  animation: 'float 7s ease-in-out infinite 2s'
-                }}
-              />
-              <div 
-                className="absolute w-16 h-16 rounded-full opacity-25 blur-md"
-                style={{ 
-                  backgroundColor: step.bg,
-                  filter: 'brightness(1.2)',
-                  bottom: '30%',
-                  left: '60%',
-                  animation: 'float 5s ease-in-out infinite 0.5s'
-                }}
-              />
-            </div>
-          {/*  */}
-          <div className="relative z-10 group">
-                  <div className="text-6xl font-bold text-[var(--color-neutral-900)] mb-[var(--space-6)]">{step.number}</div>
-                  <h3 className="text-2xl font-bold mb-[var(--space-4)] text-[var(--color-primary-500)]">{step.title}</h3>
-                  <p className="text-[var(--text-secondary)] leading-relaxed">{step.description}</p></div>
-                </div>
-                {idx < 2 && (
-                   <div className="hidden lg:block absolute  z-50  top-1/2 -right-5 group-hover:-right-7 transition-all transform -translate-y-1/2 ">
-                                         <ChevronRight className="w-8 h-8 text-[var(--color-primary-300)] group-hover:text-[var(--color-primary-500)]"  />
-                                       </div> 
-                                       
-                )}
-              </div>
-              
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits Section */}
-      <section className="py-[var(--space-24)] ">
-        <div className="max-w-7xl mx-auto px-[var(--space-4)] sm:px-[var(--space-6)] lg:px-[var(--space-8)]">
-          <div 
-            className="rounded-[var(--radius-3xl)] p-[var(--space-12)] lg:p-[var(--space-20)] text-[var(--text-inverse)] relative overflow-hidden"
-            style={{ background: 'var(--color-secondary-400)' }}
-          >
-            <div className="absolute top-0 right-0 w-96 h-96 bg-[var(--text-inverse)]/20 rounded-full  -translate-y-1/2 translate-x-1/2" 
-            style={{ 
-                 
-                  filter: 'brightness(1.3)',
-                  top: '10%',
-                  right: '5%',
-                  animation: 'float 6s ease-in-out infinite'
-                }}/>
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-[var(--text-inverse)]/20 rounded-full  translate-y-1/2 -translate-x-1/2 "   style={{ 
-                 
-                  filter: 'brightness(1.3)',
-                  bottom: '10%',
-                  right: '45%',
-                  animation: 'float 6s ease-in-out infinite'
-                }}/>
-              <div 
-                className="absolute w-32 h-32 rounded-full opacity-20 blur-2xl"
-                style={{ 
-                  backgroundColor: '#fff',
-                  filter: 'brightness(1.3)',
-                  top: '20%',
-                  right: '45%',
-                  animation: 'float 6s ease-in-out infinite'
-                }}
-              />
-            <div className="relative grid lg:grid-cols-2 gap-[var(--space-12)] items-center">
-              <div>
-                <h2 className="text-4xl lg:text-5xl font-bold mb-[var(--space-6)]">Why Property Managers Choose BNB <span className="text-[var(--color-secondary-800)]">Management</span></h2>
-                <p className="text-xl text-[var(--color-primary-100)] mb-[var(--space-8)]">Join thousands of hosts who have transformed their business with our intelligent platform.</p>
-                <button className="px-[var(--space-8)] py-[var(--space-4)] bg-[var(--bg-primary)]  text-[var(--color-primary-600)] font-semibold rounded-[var(--radius-full)] hover:bg-[var(--color-primary-50)] transition-colors duration-[var(--duration-fast)] shadow-xl">
-                  See All Benefits
-                </button>
-              </div>
-              
-              <div className="grid sm:grid-cols-2 gap-[var(--space-6)]">
-                {benefits.map((benefit, idx) => (
-                  <div key={idx} className="bg-[var(--text-inverse)]/10 backdrop-blur-sm rounded-[var(--radius-2xl)] p-[var(--space-6)] border border-[var(--text-inverse)]/20">
-                    <div className="w-12 h-12 rounded-[var(--radius-xl)] bg-[var(--text-inverse)]/20 flex items-center justify-center mb-[var(--space-4)]">
-                      {React.cloneElement(benefit.icon as React.ReactElement )}
-                    </div>
-                    <p className="font-semibold text-lg">{benefit.text}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
+ 
+    {/* AI Benefits Section - EstateAi */}
+<AgentShowcase/>
       {/* Testimonials */}
-      <section id="testimonials" className="py-[var(--space-24)] ">
-        <div className="max-w-7xl mx-auto px-[var(--space-4)] sm:px-[var(--space-6)] lg:px-[var(--space-8)]">
-          <div className="text-center max-w-3xl mx-auto mb-[var(--space-16)]">
-            <h2 className="text-4xl font-bold mb-[var(--space-4)] text-[var(--color-primary-500)] ">Loved by Hospitality Professionals</h2>
-            <p className="text-xl text-[var(--text-secondary)]">See how StayPilot is transforming properties worldwide.</p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-[var(--space-8)]">
-            {testimonials.map((testimonial, idx) => (
-              <div key={idx} className="bg-[var(--bg-primary)] rounded-[var(--radius-3xl)] p-[var(--space-8)] shadow-lg border border-[var(--border-light)]">
-                <div className="flex items-center gap-1 mb-[var(--space-6)]">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-[var(--color-warning-500)] hover:scale-110 text-[var(--color-warning-500)]" />
-                  ))}
-                </div>
-                <p className="text-[var(--text-secondary)] text-lg leading-relaxed mb-[var(--space-8)]">"{testimonial.quote}"</p>
-                <div className="flex items-center gap-[var(--space-4)]">
-                  <img 
-                    src={testimonial.image} 
-                    alt={testimonial.name}
-                    className="w-14 h-14 rounded-full object-cover border-2 border-[var(--color-primary-100)]"
-                  />
-                  <div>
-                    <div className="font-bold text-[var(--text-primary)]">{testimonial.name}</div>
-                    <div className="text-sm text-[var(--text-tertiary)]">{testimonial.role}</div>
-                    <div className="text-xs text-[var(--text-tertiary)]">{testimonial.location}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+    <TestimonialsSection/>
 
       {/* Pricing Section */}
       <section id="pricing" className="py-[var(--space-24)] ">
