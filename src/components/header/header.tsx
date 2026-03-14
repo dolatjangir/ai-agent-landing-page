@@ -270,66 +270,9 @@ const navItems: NavItem[] = [
   },
   {
     label: "Pricing",
-    href: "#pricing",
-    hasDropdown: true,
-    dropdownContent: {
-      title: "Simple Pricing",
-      description: "Choose the plan that fits your business",
-      sections: [
-        {
-          title: "Plans",
-          items: [
-            {
-              icon: <Star className="w-5 h-5" />,
-              title: "Starter",
-              description: "Free for up to 3 users",
-              href: "/pricing/starter",
-              badge: "Free"
-            },
-            {
-              icon: <Zap className="w-5 h-5" />,
-              title: "Professional",
-              description: "$49/user per month",
-              href: "/pricing/professional"
-            },
-            {
-              icon: <Sparkles className="w-5 h-5" />,
-              title: "Enterprise",
-              description: "Custom pricing",
-              href: "/pricing/enterprise"
-            }
-          ]
-        },
-        {
-          title: "Compare",
-          items: [
-            {
-              icon: <PieChart className="w-5 h-5" />,
-              title: "Plan Comparison",
-              description: "See all features side by side",
-              href: "/pricing/plan-comparison"
-            },
-            {
-              icon: <Database className="w-5 h-5" />,
-              title: "ROI Calculator",
-              description: "Calculate your return",
-              href: "/pricing/roi-calculator"
-            },
-            {
-              icon: <Cloud className="w-5 h-5" />,
-              title: "Cloud vs On-prem",
-              description: "Deployment options",
-              href: "/pricing/cloud-vs-on-prem"
-            }
-          ]
-        }
-      ],
-      footer: {
-        text: "All plans include 14-day free trial",
-        link: "Start Free →",
-        href: "/signup"
-      }
-    }
+    href: "/pricing",
+    hasDropdown: false,
+  
   },
   {
     label: "Resources",
@@ -457,25 +400,32 @@ const toggleMobileItem = (label: string) => {
             <div
               key={item.label}
               className="relative"
-              onMouseEnter={() => handleMouseEnter(item.label)}
-              onMouseLeave={handleMouseLeave}
+             onMouseEnter={() => item.hasDropdown && handleMouseEnter(item.label)}
+onMouseLeave={() => item.hasDropdown && handleMouseLeave()}
             >
-              <button
-                className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                  activeDropdown === item.label
-                    ? "text-[var(--color-primary-600)] bg-[var(--color-primary-50)]"
-                    : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-tertiary)]"
-                }`}
-              >
-                {item.label}
-                {item.hasDropdown && (
-                  <ChevronDown
-                    className={`w-4 h-4 transition-transform duration-200 ${
-                      activeDropdown === item.label ? "rotate-180" : ""
-                    }`}
-                  />
-                )}
-              </button>
+              {item.hasDropdown ? (
+  <button
+    className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+      activeDropdown === item.label
+        ? "text-[var(--color-primary-600)] bg-[var(--color-primary-50)]"
+        : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-tertiary)]"
+    }`}
+  >
+    {item.label}
+    <ChevronDown
+      className={`w-4 h-4 transition-transform duration-200 ${
+        activeDropdown === item.label ? "rotate-180" : ""
+      }`}
+    />
+  </button>
+) : (
+  <Link
+    href={item.href}
+    className="px-4 py-2 rounded-lg text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-tertiary)] transition"
+  >
+    {item.label}
+  </Link>
+)}
 
               {/* Mega Menu Dropdown */}
 
@@ -498,7 +448,7 @@ const toggleMobileItem = (label: string) => {
                       {item.dropdownContent.sections.map((section, idx) => (
                         <div key={idx} className="space-y-3">
                           <h4 className="text-xs font-semibold text-[var(--text-tertiary)] uppercase tracking-wider">
-                            {section.title}
+                          {section.title}
                           </h4>
 
                           <div className="space-y-1">
