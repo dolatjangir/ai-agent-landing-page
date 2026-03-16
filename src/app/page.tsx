@@ -568,20 +568,7 @@ const StayPilotLanding = () => {
       {/* Trusted By Section */}
       <Trusted/>
     <div className="relative w-full h-3/4">
-  <div className="relative w-full h-full ">
-    
-    <div className="relative w-full h-full"
-    >
-      
-      <img
-        src="/assets/sec-3-img.jpeg"
-        className="w-full h-full object-cover"
-        alt="CRM Collaboration"
-      />
-
-    </div>
-
-  </div>
+ 
       {/* analytics */}
        <div className=" z-10">
     <Analytics/>
@@ -589,9 +576,89 @@ const StayPilotLanding = () => {
     </div>
     
       {/* Features Section */}
-      <Features/>
+      {/* <Features/> */}
+<section className="py-20 bg-white">
+  <div className="max-w-6xl mx-auto px-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      
+      {/* LEFT - Image */}
+      <div className="flex justify-center relative after:absolute after:-bottom-14 after:left-0 after:w-1/2 after:h-1/2 after:bg-linear-to-t  after:from-white after:via-white/100 after:to-transparent after:rotate-45">
+        <img 
+          src="/assets/hand-phone-img.png" 
+          alt="LeadBot AI Mobile" 
+          width={400} 
+          height={500}
+          className="drop-shadow-xl "
+        />
+      </div>
 
- 
+      {/* RIGHT - Content */}
+      <div className="max-w-xl">
+        <h2 
+    className="text-3xl md:text-5xl font-bold mb-6 leading-tight"
+    style={{ color: 'var(--color-primary-900)' }}
+  >
+    Your AI Sales Assistant Fits in Your Pocket
+  </h2>
+        <p 
+    className="text-lg leading-relaxed mb-6"
+    style={{ color: 'var(--color-primary-800)' }}
+  >
+    Imagine never missing a hot lead again—whether you're commuting, grabbing coffee, or closing a deal on the golf course. The EstateAi mobile app brings the full power of our AI qualification engine to your smartphone, transforming idle moments into revenue opportunities.
+  </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+ {/* this is chart section */}
+ <section className="py-20 bg-white">
+  <div className="max-w-6xl mx-auto px-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      
+     
+
+      {/* left - Content */}
+      <div className="max-w-xl">
+         <div className="relative z-10 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 mb-6 shadow-lg">
+    <span className="relative flex h-2 w-2">
+      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+      <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+    </span>
+    
+    <span className="text-sm font-medium text-blue-700">AI-Powered workflow</span>
+  </div>
+        <h2 
+    className="text-3xl md:text-5xl font-bold mb-6 leading-tight"
+    style={{ color: 'var(--color-primary-900)' }}
+  >
+    Stop Losing Leads to Slow Response Times
+  </h2>
+        <p 
+    className="text-lg leading-relaxed mb-6"
+    style={{ color: 'var(--color-primary-800)' }}
+  >
+ 78% of leads go with the agent who responds first. Our AI agents engage prospects instantly, 24/7—qualifying buyers, answering questions, and booking appointments before your competitors even wake up.
+   </p>
+   <Link href="/resources/howitworks"><button className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#0066cc] to-[#3399ff] text-white font-semibold rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30 hover:-translate-y-0.5">
+  <span className="relative z-10">Know More</span>
+  <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
+  <div className="absolute inset-0 bg-gradient-to-r from-[#0057ad] to-[#0066cc] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+</button></Link>
+      </div>
+ {/*right - Image */}
+      <div className="flex justify-center ">
+        <img 
+          src="/assets/chart.png" 
+          alt="LeadBot AI Mobile" 
+          width={400} 
+          height={500}
+          className="drop-shadow-xl "
+        />
+      </div>
+    </div>
+  </div>
+</section>
     {/* AI Benefits Section - EstateAi */}
 <AgentShowcase/>
       {/* Testimonials */}

@@ -96,57 +96,75 @@ export default function LeadBotPage() {
     
 
       {/* HERO */}
-      <section className="relative min-h-screen flex flex-row items-center justify-center text-center px-6 pt-32 pb-20 overflow-hidden z-10">
-       <img width={400} height={400} src="/assets/left-side-robo.png" className='animate-[float_3s_ease-in-out_infinite]'/>
-       <div> {/* Radial glow behind hero */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+<section className="relative min-h-screen flex flex-col lg:flex-row items-center justify-center text-center lg:text-left px-6 pt-28 pb-20 overflow-hidden z-10 gap-12 lg:gap-20">
+  {/* Top-left gradient */}
+  <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-gradient-to-br from-[var(--color-primary-100)] via-[var(--color-primary-50)] to-transparent opacity-60 rounded-full blur-3xl pointer-events-none -translate-x-1/3 -translate-y-1/3" />
 
-        <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 rounded-full px-4 py-1.5 text-xs font-mono text-blue-600 tracking-widest uppercase mb-9 animate-[fadeSlideDown_0.8s_ease_both]">
-          <span className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-[pulse_2s_ease_infinite]" />
-          Lead Qualification Agent — AI-Powered
-        </div>
+  {/* Bottom-right gradient */}
+  <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-gradient-to-tl from-[var(--color-secondary-200)] via-[var(--color-secondary-100)] to-transparent opacity-50 rounded-full blur-3xl pointer-events-none translate-x-1/3 translate-y-1/3" />
 
-        {/* Robot Character */}
-        <div className="relative mb-12 animate-[fadeSlideDown_0.8s_0.1s_ease_both]">
-          {/* Orbit rings */}
-          {/* <div className="absolute top-1/2 left-1/2 w-56 h-56 -translate-x-1/2 -translate-y-1/2 rounded-full border border-blue-200/50 animate-[spin_12s_linear_infinite]">
-            <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-blue-500 rounded-full shadow-lg shadow-blue-500/50" />
-          </div> */}
-          {/* <div className="absolute top-1/2 left-1/2 w-72 h-72 -translate-x-1/2 -translate-y-1/2 rounded-full border border-blue-100/30 animate-[spin_20s_linear_infinite_reverse]">
-            <span className="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-blue-400 rounded-full shadow-lg shadow-blue-400/50" />
-          </div> */}
-          
-          {/* <div className="w-40 h-40 bg-gradient-to-br from-blue-900 to-blue-700 rounded-3xl border-2 border-blue-600 flex items-center justify-center relative mx-auto shadow-2xl shadow-blue-500/30 animate-[float_4s_ease-in-out_infinite]"
-            style={{ boxShadow: '0 0 0 8px rgba(0,102,204,0.05), 0 0 0 16px rgba(0,102,204,0.02), 0 24px 60px rgba(0,102,204,0.25), inset 0 1px 0 rgba(255,255,255,0.2)' }}>
-            <span className="text-7xl drop-shadow-[0_0_20px_rgba(51,153,255,0.6)]">🤖</span>
-          </div>
-           */}
-          <div className="absolute -bottom-3.5 left-1/2 -translate-x-1/2 bg-white border border-blue-600 rounded-full px-3.5 py-1.5 flex items-center gap-1.5 whitespace-nowrap text-xs font-mono text-blue-600 shadow-lg">
-            <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-[pulse_1.5s_ease_infinite]" />
-            Analyzing 247 leads right now
-          </div>
-        </div>
+  {/* Center glow */}
+  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[var(--color-primary-500)]/10 rounded-full blur-3xl pointer-events-none" />
 
-        <h1 className="font-extrabold text-4xl md:text-5xl lg:text-6xl tracking-tight leading-tight mb-6 max-w-3xl animate-[fadeSlideDown_0.8s_0.2s_ease_both]">
-          Your Smartest<br />
-          <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Sales Rep</span> Never Sleeps
-        </h1>
+  {/* Background gradient */}
+  <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-primary-50)] via-white to-[var(--color-secondary-50)] opacity-80 pointer-events-none" />
 
-        <p className="text-lg text-slate-500 max-w-xl leading-relaxed font-light mb-12 animate-[fadeSlideDown_0.8s_0.3s_ease_both]">
-          LeadBot AI qualifies, scores, and routes inbound leads 24/7 — so your team closes deals instead of chasing dead ends.
-        </p>
+  {/* TEXT CONTENT */}
+  <div className="relative z-10 max-w-2xl flex flex-col items-center lg:items-start">
 
-        <div className="flex flex-wrap gap-4 justify-center animate-[fadeSlideDown_0.8s_0.4s_ease_both]">
-          <a href="#" className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-3.5 rounded-xl font-bold text-sm hover:bg-blue-500 transition-all border border-blue-500 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:-translate-y-0.5">
-            🚀 Deploy LeadBot Free
-          </a>
-          <a href="#how" className="inline-flex items-center gap-2 bg-transparent text-slate-500 px-8 py-3.5 rounded-xl font-semibold text-sm border border-slate-200 hover:border-blue-300 hover:text-slate-900 hover:bg-blue-50/50 transition-all">
-            ▶ See it in action
-          </a>
-        </div>
-        </div>
-        <img width={400} height={400} src="/assets/right-side-robo.png" className="animate-[float_4s_ease-in-out_infinite]"/>
-      </section>
+    <div className="inline-flex items-center gap-2 bg-[var(--color-primary-50)] border border-[var(--color-primary-200)] rounded-full px-4 py-1.5 text-xs font-mono text-[var(--color-primary-600)] tracking-widest uppercase mb-9 animate-[fadeSlideDown_0.8s_ease_both]">
+      <span className="w-1.5 h-1.5 bg-[var(--color-primary-500)] rounded-full animate-[pulse_2s_ease_infinite]" />
+      Lead Qualification Agent — AI-Powered
+    </div>
+
+    {/* Robot label */}
+    <div className="relative mb-12 animate-[fadeSlideDown_0.8s_0.1s_ease_both]">
+      <div className="absolute -bottom-3.5 left-1/2 lg:left-0 -translate-x-1/2 lg:translate-x-0 bg-white border border-[var(--color-primary-600)] rounded-full px-3.5 py-1.5 flex items-center gap-1.5 whitespace-nowrap text-xs font-mono text-[var(--color-primary-600)] shadow-lg">
+        <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-[pulse_1.5s_ease_infinite]" />
+        Analyzing 247 leads right now
+      </div>
+    </div>
+
+    <h1 className="font-extrabold text-4xl md:text-5xl lg:text-6xl tracking-tight leading-tight mb-6 max-w-3xl animate-[fadeSlideDown_0.8s_0.2s_ease_both]">
+      Your Smartest<br />
+      <span className="bg-gradient-to-r from-[var(--color-primary-700)] to-[var(--color-primary-600)] bg-clip-text text-transparent">
+        Sales Rep
+      </span>{" "}
+      Never Sleeps
+    </h1>
+
+    <p className="text-lg text-slate-500 max-w-xl leading-relaxed font-light mb-12 animate-[fadeSlideDown_0.8s_0.3s_ease_both]">
+      LeadBot AI qualifies, scores, and routes inbound leads 24/7 — so your team closes deals instead of chasing dead ends.
+    </p>
+
+    <div className="flex flex-wrap gap-4 justify-center lg:justify-start animate-[fadeSlideDown_0.8s_0.4s_ease_both]">
+      <a
+        href="#"
+        className="inline-flex items-center gap-2 bg-[var(--color-primary-700)] text-white px-8 py-3.5 rounded-xl font-bold text-sm hover:bg-[var(--color-primary-500)] transition-all border border-[var(--color-primary-500)] shadow-lg shadow-[var(--color-primary-500)]/25 hover:shadow-[var(--color-primary-500)]/40 hover:-translate-y-0.5"
+      >
+        🚀 Deploy LeadBot Free
+      </a>
+
+      <a
+        href="#how"
+        className="inline-flex items-center gap-2 bg-transparent text-slate-500 px-8 py-3.5 rounded-xl font-semibold text-sm border border-slate-200 hover:border-[var(--color-primary-300)] hover:text-slate-900 hover:bg-[var(--color-primary-50)]/50 transition-all"
+      >
+        ▶ See it in action
+      </a>
+    </div>
+  </div>
+
+  {/* ROBOT IMAGE */}
+<div className="relative z-10 w-full lg:w-1/2 flex justify-center">
+  <div className="w-full max-w-[500px]">
+    <img
+      src="/assets/lead-hero-robo.png"
+      alt="LeadBot AI Robot"
+      className="w-full h-auto object-contain"
+    />
+  </div>
+</div>
+</section>
 
       {/* STATS BAR */}
       <div ref={statNumbersRef} className="relative z-10 flex flex-wrap justify-center gap-0 px-6 -mt-10 mb-20 animate-[fadeSlideDown_0.8s_0.5s_ease_both]">
@@ -157,7 +175,7 @@ export default function LeadBotPage() {
           { num: '80%', label: 'Less SDR Busywork' }
         ].map((stat, idx) => (
           <div key={idx} className={`text-center px-8 md:px-14 py-8 bg-white/80 backdrop-blur-sm border-y border-slate-200 hover:bg-blue-50/30 transition-colors ${idx === 0 ? 'border-l rounded-l-xl' : ''} ${idx === 3 ? 'border-r rounded-r-xl' : 'border-r'} ${idx > 0 && idx < 3 ? 'border-r' : ''}`}>
-            <div className="stat-num text-3xl md:text-4xl font-extrabold text-blue-500 tracking-tight mb-1">{stat.num}</div>
+            <div className="stat-num text-3xl md:text-4xl font-extrabold text-[var(--color-primary-700)] tracking-tight mb-1">{stat.num}</div>
             <div className="text-xs text-slate-400 uppercase tracking-wider">{stat.label}</div>
           </div>
         ))}
@@ -166,55 +184,37 @@ export default function LeadBotPage() {
       <div className="max-w-6xl mx-auto h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent relative z-10 my-16" />
 
       {/* HOW IT WORKS */}
-      <section id="how" className="relative z-10 px-6 py-24 max-w-6xl mx-auto">
-        <p className="inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-blue-500 mb-5">
-          <span className="w-6 h-px bg-blue-600" />
-          How it works
-        </p>
-        <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight leading-tight mb-4 text-slate-900">
-          From Stranger to Qualified Lead<br />in Under 60 Seconds
-        </h2>
-        <p className="text-slate-500 text-lg leading-relaxed font-light mb-16 max-w-xl">
-          LeadBot intercepts every inbound signal, runs a deep qualification interview, and hands your reps a warm, scored prospect.
-        </p>
+     
+<section id="features" className="relative z-10 px-6 py-24 max-w-6xl mx-auto">
+   <div className="flex items-center justify-between gap-8">
+  
+  <div className="flex-1">
+    <p className="inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-blue-500 mb-5">
+      <span className="w-6 h-px bg-blue-600" />
+      Core Capabilities
+    </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0.5 bg-slate-200 rounded-2xl overflow-hidden border border-slate-200">
-          {[
-            { num: '01', icon: '📡', title: 'Lead Enters the Funnel', desc: 'Form submissions, chat, email, LinkedIn DMs — LeadBot watches every channel and intercepts the moment someone shows intent.' },
-            { num: '02', icon: '💬', title: 'Conversational Interview', desc: 'A natural, GPT-powered conversation collects BANT signals (Budget, Authority, Need, Timeline) without feeling like a questionnaire.' },
-            { num: '03', icon: '📊', title: 'AI Lead Scoring', desc: '150+ data points, firmographics, behavioural cues, and intent signals are synthesised into a 0–100 qualification score.' },
-            { num: '04', icon: '⚡', title: 'Instant Smart Routing', desc: 'Hot leads go straight to your best closers. Warm leads enter nurture sequences. Cold leads get deprioritised automatically.' }
-          ].map((step, idx) => (
-            <div key={idx} className="bg-white p-10 relative hover:bg-slate-50 transition-colors group">
-              <div className="text-xs font-mono text-blue-600 tracking-widest mb-5">{step.num} / {['CAPTURE', 'ENGAGE', 'SCORE', 'ROUTE'][idx]}</div>
-              <span className="text-4xl mb-5 block drop-shadow-[0_0_12px_rgba(51,153,255,0.4)]">{step.icon}</span>
-              <div className="font-bold text-lg text-slate-900 mb-2">{step.title}</div>
-              <p className="text-sm text-slate-500 leading-relaxed font-light">{step.desc}</p>
-              {idx < 3 && (
-                <div className="hidden lg:flex absolute top-1/2 -right-3.5 -translate-y-1/2 w-7 h-7 bg-white border border-blue-200 rounded-full items-center justify-center text-blue-500 text-sm font-bold z-10 shadow-sm">
-                  ›
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
+    <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight leading-tight mb-4 text-[var(--color-primary-700)]">
+      Everything Your SDR Team<br />Wishes They Could Do
+    </h2>
 
-      <div className="max-w-6xl mx-auto h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent relative z-10 my-16" />
+    <p className="text-slate-500 text-lg leading-relaxed font-light mb-16 max-w-xl">
+      Built for speed, accuracy, and scale — LeadBot combines AI reasoning with structured sales methodology.
+    </p>
+  </div>
 
-      {/* FEATURES */}
-      <section id="features" className="relative z-10 px-6 py-24 max-w-6xl mx-auto">
-        <p className="inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-blue-500 mb-5">
-          <span className="w-6 h-px bg-blue-600" />
-          Core Capabilities
-        </p>
-        <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight leading-tight mb-4 text-slate-900">
-          Everything Your SDR Team<br />Wishes They Could Do
-        </h2>
-        <p className="text-slate-500 text-lg leading-relaxed font-light mb-16 max-w-xl">
-          Built for speed, accuracy, and scale — LeadBot combines AI reasoning with structured sales methodology.
-        </p>
+  <div className="shrink-0 w-full max-w-[400px]">
+    <img
+      src="/assets/sdr-robo.png"
+      alt="SDR Robot"
+      className="w-full h-auto object-contain"
+    />
+  </div>
 
+</div>
+        <div className="relative">
+<span className="absolute  -top-[80px] text-7xl drop-shadow-[0_0_30px_rgba(51,153,255,0.5)] ">
+                <img width={150} height={150} src="/assets/two-side-hand-robo.png"/></span>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Featured card with terminal */}
           <div className="feature-card featured lg:col-span-2 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-gradient-to-br from-white to-blue-50/50 border border-blue-200 rounded-2xl p-9 hover:border-blue-300 transition-all hover:shadow-xl hover:shadow-blue-500/10 relative overflow-hidden group">
@@ -232,7 +232,7 @@ export default function LeadBotPage() {
             </div>
             
             <div className="flex flex-col items-center justify-center gap-5">
-              <span className="absolute -top-6 text-7xl drop-shadow-[0_0_30px_rgba(51,153,255,0.5)] animate-[float_4s_ease-in-out_infinite]"><img width={150} height={150} src="/assets/two-side-hand-robo.png"/></span>
+              
               
               {/* Terminal */}
               <div className="w-full bg-slate-900 border border-slate-700 rounded-xl overflow-hidden font-mono text-xs">
@@ -271,6 +271,47 @@ export default function LeadBotPage() {
             </div>
           ))}
         </div>
+        </div>
+      </section>
+      <div className="max-w-6xl mx-auto h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent relative z-10 my-16" />
+
+      {/* FEATURES */}
+       <section id="how" className="relative z-10 px-6 py-24 max-w-6xl mx-auto">
+     <div className='flex flex-row-reverse justify-between items-center'>  <div>
+        <p className="inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-blue-500 mb-5">
+          <span className="w-6 h-px bg-blue-600" />
+          How it works
+        </p>
+        <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight leading-tight mb-4 text-[var(--color-primary-700)]">
+          From Stranger to Qualified Lead<br />in Under 60 Seconds
+        </h2>
+        <p className="text-slate-500 text-lg leading-relaxed font-light mb-16 max-w-xl">
+          LeadBot intercepts every inbound signal, runs a deep qualification interview, and hands your reps a warm, scored prospect.
+        </p>
+        </div>
+        <img width={400} height={400} src="/assets/stranger-robo.png"/>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0.5 bg-slate-200 rounded-2xl overflow-hidden border border-slate-200">
+          {[
+            { num: '01', icon: '📡', title: 'Lead Enters the Funnel', desc: 'Form submissions, chat, email, LinkedIn DMs — LeadBot watches every channel and intercepts the moment someone shows intent.' },
+            { num: '02', icon: '💬', title: 'Conversational Interview', desc: 'A natural, GPT-powered conversation collects BANT signals (Budget, Authority, Need, Timeline) without feeling like a questionnaire.' },
+            { num: '03', icon: '📊', title: 'AI Lead Scoring', desc: '150+ data points, firmographics, behavioural cues, and intent signals are synthesised into a 0–100 qualification score.' },
+            { num: '04', icon: '⚡', title: 'Instant Smart Routing', desc: 'Hot leads go straight to your best closers. Warm leads enter nurture sequences. Cold leads get deprioritised automatically.' }
+          ].map((step, idx) => (
+            <div key={idx} className="bg-white p-10 relative hover:bg-slate-50 transition-colors group">
+              <div className="text-xs font-mono text-blue-600 tracking-widest mb-5">{step.num} / {['CAPTURE', 'ENGAGE', 'SCORE', 'ROUTE'][idx]}</div>
+              <span className="text-4xl mb-5 block drop-shadow-[0_0_12px_rgba(51,153,255,0.4)]">{step.icon}</span>
+              <div className="font-bold text-lg text-slate-900 mb-2">{step.title}</div>
+              <p className="text-sm text-slate-500 leading-relaxed font-light">{step.desc}</p>
+              {idx < 3 && (
+                <div className="hidden lg:flex absolute top-1/2 -right-3.5 -translate-y-1/2 w-7 h-7 bg-white border border-blue-200 rounded-full items-center justify-center text-blue-500 text-sm font-bold z-10 shadow-sm">
+                  ›
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </section>
 
       <div className="max-w-6xl mx-auto h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent relative z-10 my-16" />
@@ -283,7 +324,7 @@ export default function LeadBotPage() {
           <span className="w-6 h-px bg-blue-600" />
           Live Pipeline
         </p>
-        <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight leading-tight mb-2 text-slate-900">
+        <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight leading-tight mb-2 text-[var(--color-primary-700)] ">
           Watch Leads Flow Through<br />the Qualification Engine
         </h2>
         <p className="text-slate-500 text-lg leading-relaxed font-light mb-12 max-w-xl">
@@ -374,16 +415,19 @@ export default function LeadBotPage() {
 
       {/* INTEGRATIONS */}
       <section id="integrations" className="relative z-10 px-6 py-24 max-w-6xl mx-auto">
-        <p className="inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-blue-500 mb-5">
+      <div className="flex flex-row justify-between items-center">
+        <div>  <p className="inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-blue-500 mb-5">
           <span className="w-6 h-px bg-blue-600" />
           Integrations
         </p>
-        <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight leading-tight mb-4 text-slate-900">
+        <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight leading-tight mb-4 text-[var(--color-primary-700)] ">
           Plugs Into Your Entire<br />Revenue Stack
         </h2>
         <p className="text-slate-500 text-lg leading-relaxed font-light mb-12 max-w-xl">
           LeadBot connects to your CRM, calendar, communication tools, and data enrichment providers out of the box.
-        </p>
+        </p></div>
+        <img width={400} height={400} src="/assets/plugin-stack-robo.png"/>
+        </div>
 
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
           {[
@@ -410,17 +454,20 @@ export default function LeadBotPage() {
 
       {/* TESTIMONIALS */}
       <section className="relative z-10 px-6 py-24 max-w-6xl mx-auto">
-        <p className="inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-blue-500 mb-5">
+        <div className="flex flex-row-reverse  justify-between items-center">
+          <div><p className="inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-blue-500 mb-5">
           <span className="w-6 h-px bg-blue-600" />
           Social Proof
         </p>
-        <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight leading-tight mb-4 text-slate-900">
+        <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight leading-tight mb-4 text-[var(--color-primary-700)] ">
           Trusted by High-Growth<br />Sales Teams
         </h2>
         <p className="text-slate-500 text-lg leading-relaxed font-light mb-12 max-w-xl">
           From seed-stage startups to enterprise revenue orgs — LeadBot works at every scale.
         </p>
-
+</div>
+<img width={400} height={400} src="/assets/trusted-robo.png"/>
+</div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {[
             { stars: '⭐⭐⭐⭐⭐', text: '"We deployed LeadBot in 2 hours and booked 40% more demos the very first week. Our SDRs now only talk to leads that are genuinely interested."', avatar: '👨', name: 'Marcus Chen', title: 'VP Sales, Finova (Series B)' },
@@ -449,12 +496,12 @@ export default function LeadBotPage() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
         
         <div className="flex justify-center gap-4 mb-12">
-          <span className="text-4xl opacity-70 drop-shadow-[0_0_12px_rgba(51,153,255,0.4)] animate-[float_4s_ease-in-out_infinite]">🤖</span>
-          <span className="text-5xl drop-shadow-[0_0_12px_rgba(51,153,255,0.4)] animate-[float_4s_ease-in-out_infinite]" style={{ animationDelay: '0.7s' }}>🤖</span>
-          <span className="text-4xl opacity-70 drop-shadow-[0_0_12px_rgba(51,153,255,0.4)] animate-[float_4s_ease-in-out_infinite]" style={{ animationDelay: '1.4s' }}>🤖</span>
+          <span className="text-4xl opacity-70 drop-shadow-[0_0_12px_rgba(51,153,255,0.4)] animate-[float_4s_ease-in-out_infinite]"><img width={50} height={50} src="/assets/head-robo.png"/></span>
+          <span className="text-5xl drop-shadow-[0_0_12px_rgba(51,153,255,0.4)] animate-[float_4s_ease-in-out_infinite]" style={{ animationDelay: '0.7s' }}><img width={80} height={80} src="/assets/head-robo.png"/></span>
+          <span className="text-4xl opacity-70 drop-shadow-[0_0_12px_rgba(51,153,255,0.4)] animate-[float_4s_ease-in-out_infinite]" style={{ animationDelay: '1.4s' }}><img width={50} height={50} src="/assets/head-robo.png"/></span>
         </div>
         
-        <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight mb-5 text-slate-900">
+        <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight mb-5 text-[var(--color-primary-700)] ">
           Your Pipeline Won't<br />Fill Itself
         </h2>
         <p className="text-slate-500 text-lg font-light mb-12 max-w-md mx-auto leading-relaxed">

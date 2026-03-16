@@ -219,7 +219,22 @@ const Analytics = () => {
         <p className="text-center text-[var(--color-text-muted)] max-w-2xl mx-auto mb-16 text-lg">
           Lead management Follow-ups Customer profiles Property tracking Deal pipeline Analytics.
         </p>
-  <div className="relative w-full">
+
+         <div className="relative w-full h-full ">
+            
+            <div className="relative w-full h-full"
+            >
+              
+              <img
+                src="/assets/sec-3-img.jpeg"
+                className="w-full h-full object-cover rounded-2xl"
+                alt="CRM Collaboration"
+              />
+        
+            </div>
+        
+          </div>
+  <div className="relative w-full mt-10">
 
       <HomeAutomationsPage/>
 

@@ -279,41 +279,36 @@ const navItems: NavItem[] = [
     href: "#resources",
     hasDropdown: true,
     dropdownContent: {
-      title: "Learn & Grow",
+      title: "Grow with Ai",
       description: "Resources to help you succeed",
       sections: [
-        {
-          title: "Learn",
-          items: [
-            {
-              icon: <BookA className="w-5 h-5" />,
-              title: "Documentation",
-              description: "Guides and API references",
-              href: "/resources/documentation"
-            },
-            {
-              icon: <PlayCircle className="w-5 h-5" />,
-              title: "Video Tutorials",
-              description: "Step-by-step walkthroughs",
-              href: "/resources/video-tutorials"
-            },
-            {
-              icon: <GraduationCapIcon className="w-5 h-5" />,
-              title: "CRM Academy",
-              description: "Free certification courses",
-              href: "/resources/crm-academy"
-            }
-          ]
-        },
         {
           title: "Support",
           items: [
             {
+              icon: <BookA className="w-5 h-5" />,
+              title: "How-It-Works",
+              description: "Guides and API references",
+              href: "/resources/howitworks"
+            },
+            {
+              icon: <PlayCircle className="w-5 h-5" />,
+              title: "About Us",
+              description: "Step-by-step walkthroughs",
+              href: "/resources/about-us"
+            },
+             {
               icon: <HelpCircleIcon className="w-5 h-5" />,
               title: "Help Center",
               description: "FAQs and troubleshooting",
               href: "/resources/help-center"
             },
+          ]
+        },
+        {
+          title: "",
+          items: [
+         
             {
               icon: <MessageSquareCode className="w-5 h-5" />,
               title: "Community",
@@ -325,6 +320,13 @@ const navItems: NavItem[] = [
               title: "Contact Support",
               description: "24/7 expert assistance",
               href: "/resources/contact-support"
+            }
+            ,
+            {
+              icon: <HeadphonesIcon className="w-5 h-5" />,
+              title: "Broker Network",
+              description: "All broker is active",
+              href: "/resources/broker-network"
             }
           ]
         }

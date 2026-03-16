@@ -99,17 +99,17 @@ function Features() {
             <div className="relative flex flex-col items-center mb-6">
               <div className="relative z-10 mb-[-20px]">
                 <div className="relative">
-                  <img 
+                  {/* <img 
                     src={robotImages.hero}
                     alt="AI Agent"
                     width={120}
                     height={120}
                     className="w-28 h-28 object-cover rounded-3xl shadow-2xl border-4 border-white transform hover:scale-105 transition-transform duration-500"
-                  />
+                  /> */}
                   {/* Glow Effect */}
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-blue-500/20 to-transparent" />
+                  {/* <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-blue-500/20 to-transparent" /> */}
                   {/* Live Indicator */}
-                  <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-green-500 rounded-full border-4 border-white shadow-lg animate-pulse" />
+                  {/* <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-green-500 rounded-full border-4 border-white shadow-lg animate-pulse" /> */}
                 </div>
               </div>
               

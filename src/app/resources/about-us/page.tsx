@@ -744,51 +744,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="relative z-10 border-t border-[var(--color-primary-200)] bg-white/80 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
-            <div className="col-span-2">
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--color-primary-600)] to-[var(--color-primary-800)] flex items-center justify-center">
-                  <Bot className="w-5 h-5 text-white" />
-                </div>
-                <span className="text-lg font-bold text-[var(--color-primary-900)]">AgentFlow</span>
-              </div>
-              <p className="text-[var(--color-primary-800)]/70 text-sm max-w-sm">
-                Building the future of work with intelligent AI agents that automate 
-                business workflows and amplify human potential.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4 text-[var(--color-primary-900)]">Platform</h4>
-              <ul className="space-y-2 text-sm text-[var(--color-primary-700)]">
-                <li><a href="#" className="hover:text-[var(--color-primary-900)] transition-colors">AI Agents</a></li>
-                <li><a href="#" className="hover:text-[var(--color-primary-900)] transition-colors">Integrations</a></li>
-                <li><a href="#" className="hover:text-[var(--color-primary-900)] transition-colors">Pricing</a></li>
-                <li><a href="#" className="hover:text-[var(--color-primary-900)] transition-colors">Security</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4 text-[var(--color-primary-900)]">Company</h4>
-              <ul className="space-y-2 text-sm text-[var(--color-primary-700)]">
-                <li><a href="#" className="hover:text-[var(--color-primary-900)] transition-colors">About</a></li>
-                <li><a href="#" className="hover:text-[var(--color-primary-900)] transition-colors">Blog</a></li>
-                <li><a href="#" className="hover:text-[var(--color-primary-900)] transition-colors">Careers</a></li>
-                <li><a href="#" className="hover:text-[var(--color-primary-900)] transition-colors">Contact</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="pt-8 border-t border-[var(--color-primary-200)] flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-[var(--color-primary-700)]">
-            <p>© 2024 AgentFlow. All rights reserved.</p>
-            <div className="flex gap-6">
-              <a href="#" className="hover:text-[var(--color-primary-900)] transition-colors">Privacy</a>
-              <a href="#" className="hover:text-[var(--color-primary-900)] transition-colors">Terms</a>
-              <a href="#" className="hover:text-[var(--color-primary-900)] transition-colors">Cookies</a>
-            </div>
-          </div>
-        </div>
-      </footer>
+
     </div>
   );
 }
