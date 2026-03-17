@@ -220,20 +220,15 @@ const Analytics = () => {
           Lead management Follow-ups Customer profiles Property tracking Deal pipeline Analytics.
         </p>
 
-         <div className="relative w-full h-full ">
-            
-            <div className="relative w-full h-full"
-            >
-              
-              <img
-                src="/assets/sec-3-img.jpeg"
-                className="w-full h-full object-cover rounded-2xl"
-                alt="CRM Collaboration"
-              />
-        
-            </div>
-        
-          </div>
+       <div className="relative w-full flex justify-center">
+  <div className="w-full">
+    <img
+      src="/assets/ai.png"
+      className="w-full h-auto object-cover rounded-2xl"
+      alt="CRM Collaboration"
+    />
+  </div>
+</div>
   <div className="relative w-full mt-10">
 
       <HomeAutomationsPage/>
