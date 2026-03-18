@@ -260,282 +260,125 @@ const heroRef = useRef<HTMLDivElement>(null);
 
 
       {/* HERO */}
-  <section ref={heroRef} className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden perspective-1000">
-        <div className="max-w-7xl mx-auto w-full relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+ <section
+  ref={heroRef}
+  className="relative min-h-screen flex items-center px-4 py-20 overflow-hidden perspective-1000"
+>
+  <div className="max-w-7xl mx-auto w-full relative z-10">
+    
+    {/* Main Grid */}
+    <div className="grid lg:grid-cols-12 items-center  ">
 
-            {/* Left: Content */}
-            <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8 hover:bg-white transition-colors cursor-default group border border-[#99ccff]">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                </span>
-                <span className="text-sm font-medium text-[#0057ad] group-hover:text-[#00478f] transition-colors">Lead Qualification Agent — AI-Powered</span>
-                <Sparkles className="w-4 h-4 text-[#0066cc] animate-pulse" />
-              </div>
+      {/* Left: Content */}
+      <div
+        className={`lg:col-span-7 xl:col-span-7 transition-all py-10 duration-1000 ${
+          isVisible
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-10"
+        }`}
+      >
+        <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold  leading-[0.9] mb-8 tracking-tight text-[var(--color-primary-800)]">
+          Your Smartest Sales{" "}
+          <span className="relative inline-block">
+            <span className="text-gradient animate-gradient">
+              Rep Never    
+            </span>                       <span>Sleeps</span>
+                          
+          </span>
+        
+        </h1>
 
-              {/* Robot Status Label */}
-              <div className="relative mb-8 inline-block">
-                <div className="glass rounded-full px-4 py-2 flex items-center gap-2 text-sm font-medium text-[#0066cc] border border-[#99ccff] shadow-lg">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                  </span>
-                  <Bot className="w-4 h-4" />
-                  Analyzing {leadCount} leads right now
-                </div>
-              </div>
+        <p className="text-lg sm:text-xl text-[#0057ad] mb-10 max-w-xl leading-relaxed font-light">
+          LeadBot AI qualifies, scores, and routes inbound leads 24/7 — so your
+          team closes deals instead of chasing dead ends.
+          <span className="text-[#0066cc] font-medium">
+            {" "}
+            94% accuracy. Instant engagement.
+          </span>
+        </p>
 
-              <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold leading-[0.9] mb-8 tracking-tight text-[#003871]">
-                Your Smartest{' '}
-                <span className="relative inline-block">
-                  <span className="text-gradient animate-gradient">Sales Rep</span>
-                  <svg className="absolute -bottom-2 left-0 w-full h-4 text-[#99ccff]" viewBox="0 0 200 9" fill="none">
-                    <path d="M2.00025 6.99997C25.7509 9.37499 83.415 -3.73631 198 3.49999" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
-                  </svg>
-                </span>
-                <br />
-                Never Sleeps
-              </h1>
+        {/* Premium CTA */}
+        <div className="flex flex-wrap gap-4 mb-10">
+          <button className="relative px-4 py-2 rounded-2xl bg-gradient-to-r from-[#0066cc] to-[#3399ff] text-white font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.04] active:scale-[0.98] flex items-center gap-2 group">
+            {/* <Sparkles className="w-5 h-5" /> */}
+            Deploy LeadBot Free
+            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+          </button>
 
-              <p className="text-xl sm:text-2xl text-[#0057ad] mb-10 max-w-xl leading-relaxed font-light">
-                LeadBot AI qualifies, scores, and routes inbound leads 24/7 — so your team closes deals instead of chasing dead ends.
-                <span className="text-[#0066cc] font-medium"> 94% accuracy. Instant engagement.</span>
-              </p>
+          <button className="px-4 py-2 rounded-2xl border border-[#99ccff] text-[#0057ad] font-semibold text-lg backdrop-blur-md hover:bg-white hover:border-[#0066cc] hover:text-[#003871] transition-all duration-300 flex items-center gap-2">
+            {/* <Play className="w-5 h-5" /> */}
+            See it in action
+          </button>
+        </div>
 
-              {/* CTA Buttons */}
-              <div className="flex flex-wrap gap-4 mb-8">
-                <button className="px-8 py-5 rounded-2xl bg-[#0066cc] hover:bg-[#0057ad] text-white font-bold text-lg transition-all hover:scale-105 active:scale-95 shadow-xl shadow-[#cce5ff] flex items-center justify-center gap-2 group">
-                  <Sparkles className="w-5 h-5" />
-                  Deploy LeadBot Free
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
-
-                <button className="px-8 py-5 rounded-2xl glass text-[#0057ad] font-semibold text-lg border border-[#99ccff] hover:border-[#0066cc] hover:text-[#003871] hover:bg-white transition-all flex items-center justify-center gap-2">
-                  <Play className="w-5 h-5" />
-                  See it in action
-                </button>
-              </div>
-
-              <div className="flex items-center gap-6 text-sm text-[#0066cc] flex-wrap">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#0066cc]" />
-                  <span>Free 14-day trial</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#0066cc]" />
-                  <span>No credit card</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#0066cc]" />
-                  <span>5-min setup</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right: Lead Qualification Dashboard */}
-            <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <div className="relative transform-style-3d ">
-                {/* Main Dashboard Interface */}
-                <div className="glass-strong rounded-3xl overflow-hidden shadow-2xl shadow-[#cce5ff] border border-[#99ccff]">
-                  {/* Header */}
-                  <div className="px-6 py-4 border-b border-[#99ccff] flex items-center justify-between bg-[#e6f2ff]">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#0066cc] to-[#0057ad] flex items-center justify-center shadow-lg shadow-[#66b2ff]">
-                        <Bot className="w-5 h-5 text-white" />
-                      </div>
-                      <div>
-                        <div className="font-semibold text-[#003871]">LeadBot AI</div>
-                        <div className="text-xs text-[#0066cc] flex items-center gap-1">
-                          <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
-                          Live Qualification Engine
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="px-3 py-1 rounded-full bg-green-500/20 text-green-600 text-xs font-medium border border-green-500/30 animate-pulse">
-                        LIVE
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Dashboard Content */}
-                  <div className="p-6 bg-gradient-to-b from-white to-[#e6f2ff] min-h-[450px]">
-                    {/* Stats Overview */}
-                    <div className="grid grid-cols-3 gap-3 mb-6">
-                      <div className="bg-white rounded-xl p-3 border border-[#99ccff] text-center">
-                        <div className="text-xl font-bold text-[#0066cc]">{leadCount}</div>
-                        <div className="text-xs text-[#3399ff]">Active Leads</div>
-                      </div>
-                      <div className="bg-white rounded-xl p-3 border border-[#99ccff] text-center">
-                        <div className="text-xl font-bold text-green-500">94%</div>
-                        <div className="text-xs text-[#3399ff]">Accuracy</div>
-                      </div>
-                      <div className="bg-white rounded-xl p-3 border border-[#99ccff] text-center">
-                        <div className="text-xl font-bold text-[#0066cc]">12</div>
-                        <div className="text-xs text-[#3399ff]">Routed Today</div>
-                      </div>
-                    </div>
-
-                    {/* Lead Queue */}
-                    <div className="bg-white rounded-xl border border-[#99ccff] overflow-hidden mb-4">
-                      <div className="px-4 py-3 border-b border-[#99ccff] bg-[#e6f2ff] flex items-center justify-between">
-                        <span className="text-sm font-medium text-[#003871]">Lead Queue</span>
-                        <span className="text-xs text-[#3399ff]">Auto-qualifying...</span>
-                      </div>
-                      <div className="divide-y divide-[#cce5ff] max-h-48 overflow-y-auto">
-                        {leads.map((lead) => (
-                          <div 
-                            key={lead.id}
-                            onClick={() => setSelectedLead(lead.id)}
-                            className={`px-4 py-3 flex items-center gap-3 cursor-pointer transition-colors ${
-                              selectedLead === lead.id ? 'bg-[#e6f2ff]' : 'hover:bg-[#e6f2ff]/50'
-                            }`}
-                          >
-                            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#0066cc] to-[#3399ff] flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
-                              {lead.name.split(' ').map(n => n[0]).join('')}
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <div className="flex items-center justify-between">
-                                <span className="font-medium text-[#003871] text-sm truncate">{lead.name}</span>
-                                <span className={`px-2 py-0.5 rounded-full text-xs font-bold ${getStatusColor(lead.status)}`}>
-                                  {lead.status.toUpperCase()}
-                                </span>
-                              </div>
-                              <div className="flex items-center gap-2 text-xs text-[#3399ff]">
-                                <span className="truncate">{lead.email}</span>
-                                <span>•</span>
-                                <span className={getScoreColor(lead.score)}>Score: {lead.score}</span>
-                              </div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Selected Lead Detail */}
-                    {selectedLead && (
-                      <div className="bg-gradient-to-r from-[#0066cc] to-[#3399ff] rounded-xl p-4 text-white mb-4">
-                        <div className="flex items-center justify-between mb-3">
-                          <div className="flex items-center gap-2">
-                            <Shield className="w-5 h-5" />
-                            <span className="font-medium">AI Analysis Complete</span>
-                          </div>
-                          <div className="flex items-center gap-1">
-                            <Star className="w-4 h-4 fill-white" />
-                            <span className="font-bold">{leads.find(l => l.id === selectedLead)?.score}/100</span>
-                          </div>
-                        </div>
-                        <div className="grid grid-cols-2 gap-2 text-sm">
-                          <div className="bg-white/20 rounded-lg p-2">
-                            <div className="opacity-80 text-xs">Intent</div>
-                            <div className="font-medium">High Purchase Intent</div>
-                          </div>
-                          <div className="bg-white/20 rounded-lg p-2">
-                            <div className="opacity-80 text-xs">Budget</div>
-                            <div className="font-medium">$50K - $100K</div>
-                          </div>
-                        </div>
-                        <div className="mt-3 flex gap-2">
-                          <button className="flex-1 py-2 rounded-lg bg-white text-[#0066cc] text-sm font-medium hover:bg-white/90 transition-colors">
-                            Route to Sales
-                          </button>
-                          <button className="flex-1 py-2 rounded-lg bg-white/20 text-white text-sm hover:bg-white/30 transition-colors">
-                            View Profile
-                          </button>
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Activity Feed */}
-                    <div className="bg-white rounded-xl border border-[#99ccff] overflow-hidden">
-                      <div className="px-4 py-3 border-b border-[#99ccff] bg-[#e6f2ff]">
-                        <span className="text-sm font-medium text-[#003871]">Live Activity</span>
-                      </div>
-                      <div className="p-3 space-y-2">
-                        {activities.slice(0, 3).map((activity) => (
-                          <div key={activity.id} className="flex items-center gap-3 text-sm">
-                            <div className={`w-2 h-2 rounded-full ${
-                              activity.type === 'qualified' ? 'bg-green-500' :
-                              activity.type === 'routed' ? 'bg-blue-500' : 'bg-yellow-500'
-                            }`} />
-                            <span className="text-[#003871] flex-1">{activity.action}</span>
-                            <span className="text-[#3399ff] text-xs">{activity.time}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Dashboard Stats */}
-                  <div className="px-6 py-4 border-t border-[#99ccff] bg-[#e6f2ff]">
-                    <div className="grid grid-cols-3 gap-4 text-center">
-                      <div>
-                        <div className="text-lg font-bold text-[#003871]">2.4K</div>
-                        <div className="text-xs text-[#3399ff]">Leads Processed</div>
-                      </div>
-                      <div>
-                        <div className="text-lg font-bold text-[#003871]">847</div>
-                        <div className="text-xs text-[#3399ff]">Qualified</div>
-                      </div>
-                      <div>
-                        <div className="text-lg font-bold text-[#003871]">156</div>
-                        <div className="text-xs text-[#3399ff]">Deals Closed</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Floating Stats Cards */}
-                {/* <div className="absolute -bottom-6 -left-6 glass rounded-2xl p-4 animate-float border border-[#99ccff] shadow-xl">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#0066cc] to-[#3399ff] flex items-center justify-center shadow-md">
-                      <Target className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <div className="text-lg font-bold text-[#003871]">94%</div>
-                      <div className="text-xs text-[#3399ff]">Qualification Accuracy</div>
-                    </div>
-                  </div>
-                </div> */}
-
-                {/* <div className="absolute -top-4 -right-4 glass rounded-2xl p-4 animate-float-delayed border border-[#99ccff] shadow-xl">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center shadow-md">
-                      <Zap className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <div className="text-lg font-bold text-[#003871]">3×</div>
-                      <div className="text-xs text-[#3399ff]">Faster Response</div>
-                    </div>
-                  </div>
-                </div> */}
-              </div>
-            </div>
+        {/* Features */}
+        <div className="flex items-center gap-6 text-sm text-[#0066cc] flex-wrap">
+          <div className="flex items-center gap-2">
+            <CheckCircle2 className="w-4 h-4 text-[#0066cc]" />
+            <span>Free 14-day trial</span>
           </div>
-
-          {/* Stats Bar */}
-          <div className={`mt-24 grid grid-cols-2 lg:grid-cols-4 gap-4 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            {stats.map((stat, idx) => (
-              <div key={idx} className="glass rounded-2xl p-6 text-center hover:bg-white transition-all duration-300 group border border-[#99ccff] hover:border-[#0066cc] shadow-sm hover:shadow-md">
-                <div className="flex items-center justify-center gap-2 mb-2">
-                  <div className="text-[#0066cc]">{stat.icon}</div>
-                  <div className="text-3xl lg:text-4xl font-bold text-gradient group-hover:scale-110 transition-transform">
-                    {stat.value}
-                  </div>
-                </div>
-                <div className="text-sm font-semibold text-[#003871] mb-1">{stat.label}</div>
-                <div className="text-xs text-[#3399ff]">{stat.subtext}</div>
-              </div>
-            ))}
+          <div className="flex items-center gap-2">
+            <CheckCircle2 className="w-4 h-4 text-[#0066cc]" />
+            <span>No credit card</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <CheckCircle2 className="w-4 h-4 text-[#0066cc]" />
+            <span>5-min setup</span>
           </div>
         </div>
-      </section>
+      </div>
+
+      {/* Right: Bigger Image */}
+      <div
+        className={`lg:col-span-5 xl:col-span-5  relative right-10  flex items-center justify-center transition-all duration-1000 delay-300 ${
+          isVisible
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-10"
+        }`}
+      >
+        <div className="relative transform-style-3d">
+          
+          <img
+            src="/assets/lead-ai-hero-robo.png"
+            alt="AI Robot"
+            className="w-[120%] max-w-none lg:w-[130%] xl:w-full object-contain translate-x-6 lg:translate-x-10"
+          />
+
+        </div>
+      </div>
+    </div>
+
+    {/* Stats Bar */}
+    <div
+      className={`mt-24 grid grid-cols-2 lg:grid-cols-4 gap-4 transition-all duration-1000 delay-500 ${
+        isVisible
+          ? "opacity-100 translate-y-0"
+          : "opacity-0 translate-y-10"
+      }`}
+    >
+      {stats.map((stat, idx) => (
+        <div
+          key={idx}
+          className="glass rounded-2xl p-6 text-center hover:bg-white transition-all duration-300 group border border-[#99ccff] hover:border-[#0066cc] shadow-sm hover:shadow-md"
+        >
+          <div className="flex items-center justify-center gap-2 mb-2">
+            <div className="text-[#0066cc]">{stat.icon}</div>
+            <div className="text-3xl lg:text-4xl font-bold text-gradient group-hover:scale-110 transition-transform">
+              {stat.value}
+            </div>
+          </div>
+          <div className="text-sm font-semibold text-[#003871] mb-1">
+            {stat.label}
+          </div>
+          <div className="text-xs text-[#3399ff]">{stat.subtext}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
      
 
-      <div className="max-w-6xl mx-auto h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent relative z-10 my-16" />
+      <div className="max-w-6xl mx-auto h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent relative z-10 my-4" />
 
       {/* HOW IT WORKS */}
      
@@ -589,24 +432,59 @@ const heroRef = useRef<HTMLDivElement>(null);
               
               
               {/* Terminal */}
-              <div className="w-full bg-slate-900 border border-slate-700 rounded-xl overflow-hidden font-mono text-xs">
-                <div className="bg-slate-800 px-4 py-2.5 flex items-center gap-1.5 border-b border-slate-700">
-                  <span className="w-2.5 h-2.5 rounded-full bg-red-400" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-green-400" />
-                  <span className="text-slate-400 text-xs ml-2">leadbot-qualify.ts</span>
-                </div>
-                <div className="p-5 text-blue-200 leading-7">
-                  <span className="block"><span className="text-blue-500">›</span> Analyzing prospect profile...</span>
-                  <span className="block text-slate-400">  Company: Acme Corp (Series B)</span>
-                  <span className="block text-slate-400">  Team: 48 SDRs, $2.4M ARR</span>
-                  <span className="block"><span className="text-blue-500">›</span> BANT score: <span className="text-blue-300 font-semibold">87 / 100</span></span>
-                  <span className="block text-green-400">  ✓ Budget confirmed: $50k+/yr</span>
-                  <span className="block text-green-400">  ✓ Authority: VP Sales</span>
-                  <span className="block text-yellow-400">  ~ Timeline: Q2 (soft)</span>
-                  <span className="block"><span className="text-blue-500">›</span> Routing to AE: Sarah K.<span className="inline-block w-2 h-3.5 bg-blue-400 ml-0.5 animate-[pulse_1s_steps(1)_infinite]" /></span>
-                </div>
-              </div>
+              <div className="w-full bg-white border border-[var(--color-primary-200)] rounded-xl overflow-hidden font-mono text-xs shadow-sm">
+
+  {/* Header */}
+  <div className="bg-[var(--color-primary-50)] px-4 py-2.5 flex items-center gap-1.5 border-b border-[var(--color-primary-200)]">
+    <span className="w-2.5 h-2.5 rounded-full bg-red-400" />
+    <span className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
+    <span className="w-2.5 h-2.5 rounded-full bg-green-400" />
+    <span className="text-[var(--color-primary-600)] text-xs ml-2 font-medium">
+      leadbot-qualify.ts
+    </span>
+  </div>
+
+  {/* Body */}
+  <div className="p-5 leading-7 text-[var(--color-primary-800)]">
+
+    <span className="block">
+      <span className="text-[var(--color-primary-600)]">›</span> Analyzing prospect profile...
+    </span>
+
+    <span className="block text-[var(--color-primary-600)]/70">
+      &nbsp;&nbsp;Company: Acme Corp (Series B)
+    </span>
+
+    <span className="block text-[var(--color-primary-600)]/70">
+      &nbsp;&nbsp;Team: 48 SDRs, $2.4M ARR
+    </span>
+
+    <span className="block">
+      <span className="text-[var(--color-primary-600)]">›</span> BANT score:{" "}
+      <span className="text-[var(--color-primary-700)] font-semibold">
+        87 / 100
+      </span>
+    </span>
+
+    <span className="block text-green-600">
+      &nbsp;&nbsp;✓ Budget confirmed: $50k+/yr
+    </span>
+
+    <span className="block text-green-600">
+      &nbsp;&nbsp;✓ Authority: VP Sales
+    </span>
+
+    <span className="block text-yellow-500">
+      &nbsp;&nbsp;~ Timeline: Q2 (soft)
+    </span>
+
+    <span className="block">
+      <span className="text-[var(--color-primary-600)]">›</span> Routing to AE: Sarah K.
+      <span className="inline-block w-2 h-3.5 bg-[var(--color-primary-500)] ml-0.5 animate-[pulse_1s_steps(1)_infinite]" />
+    </span>
+
+  </div>
+</div>
             </div>
           </div>
 
@@ -631,7 +509,8 @@ const heroRef = useRef<HTMLDivElement>(null);
 
       {/* FEATURES */}
        <section id="how" className="relative z-10 px-6 py-24 max-w-6xl mx-auto">
-     <div className='flex flex-row-reverse justify-between items-center'>  <div>
+     <div className='flex flex-row justify-between items-center'> 
+       <div>
         <p className="inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-blue-500 mb-5">
           <span className="w-6 h-px bg-blue-600" />
           How it works
@@ -643,7 +522,7 @@ const heroRef = useRef<HTMLDivElement>(null);
           LeadBot intercepts every inbound signal, runs a deep qualification interview, and hands your reps a warm, scored prospect.
         </p>
         </div>
-        <img width={400} height={400} src="/assets/stranger-robo.png"/>
+        <img width={400} height={400} src="/assets/lead-crm-with-robo.png"/>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0.5 bg-slate-200 rounded-2xl overflow-hidden border border-slate-200">
@@ -780,7 +659,7 @@ const heroRef = useRef<HTMLDivElement>(null);
         <p className="text-slate-500 text-lg leading-relaxed font-light mb-12 max-w-xl">
           LeadBot connects to your CRM, calendar, communication tools, and data enrichment providers out of the box.
         </p></div>
-        <img width={400} height={400} src="/assets/plugin-stack-robo.png"/>
+        <img width={400} height={400} src="/assets/stack-robo.png"/>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
@@ -820,7 +699,7 @@ const heroRef = useRef<HTMLDivElement>(null);
           From seed-stage startups to enterprise revenue orgs — LeadBot works at every scale.
         </p>
 </div>
-<img width={400} height={400} src="/assets/trusted-robo.png"/>
+<img width={400} height={400} src="/assets/pc-robo.png" className="pb-4"/>
 </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {[

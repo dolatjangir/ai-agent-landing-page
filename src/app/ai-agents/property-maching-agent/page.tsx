@@ -434,312 +434,90 @@ export default function PropertyMatcherPage() {
       </div>
 
       {/* Hero Section */}
-         <section ref={heroRef} className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden perspective-1000">
+         <section ref={heroRef} 
+         className="relative min-h-screen flex items-center px-4 py-20 overflow-hidden perspective-1000">
         <div className="max-w-7xl mx-auto w-full relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-12  items-center">
 
-            {/* Left: Content */}
-            <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8 hover:bg-white transition-colors cursor-default group border border-[#99ccff]">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                </span>
-                <span className="text-sm font-medium text-[#0057ad] group-hover:text-[#00478f] transition-colors">AI-Powered Property Matching</span>
-                <Sparkles className="w-4 h-4 text-[#0066cc] animate-pulse" />
-              </div>
-
-              <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold leading-[0.9] mb-8 tracking-tight text-[#003871]">
-                Find Your Perfect{' '}
-                <span className="relative inline-block">
-                  <span className="text-gradient animate-gradient">Match in Seconds</span>
-                  <svg className="absolute -bottom-2 left-0 w-full h-4 text-[#99ccff]" viewBox="0 0 200 9" fill="none">
-                    <path d="M2.00025 6.99997C25.7509 9.37499 83.415 -3.73631 198 3.49999" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
-                  </svg>
-                </span>
-              </h1>
-
-              <p className="text-xl sm:text-2xl text-[#0057ad] mb-10 max-w-xl leading-relaxed font-light">
-                AI that understands buyer preferences, matches properties instantly, and closes deals 3× faster. 
-                <span className="text-[#0066cc] font-medium"> 98% match accuracy. 24/7 availability.</span>
-              </p>
-
-              {/* Email Capture */}
-              <div className="flex flex-col sm:flex-row gap-4 max-w-lg mb-8">
-                <div className="flex-1 relative">
-                  <input 
-                    type="email" 
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email"
-                    className="w-full px-6 py-5 rounded-2xl bg-white border-2 border-[#99ccff] text-[#003871] placeholder:text-[#3399ff] focus:outline-none focus:border-[#0066cc] focus:ring-4 focus:ring-[#cce5ff] transition-all text-lg shadow-sm"
-                  />
-                </div>
-                <button className="px-8 py-5 rounded-2xl bg-[#0066cc] hover:bg-[#0057ad] text-white font-bold text-lg transition-all hover:scale-105 active:scale-95 shadow-xl shadow-[#cce5ff] flex items-center justify-center gap-2 group whitespace-nowrap">
-                  Get Started
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
-              </div>
-
-              <div className="flex items-center gap-6 text-sm text-[#0066cc] flex-wrap">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#0066cc]" />
-                  <span>Free 14-day trial</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#0066cc]" />
-                  <span>No credit card</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#0066cc]" />
-                  <span>5-min setup</span>
-                </div>
-              </div>
-            </div>
+              {/* Left: Content */}
+                 <div
+                   className={`lg:col-span-7 xl:col-span-7 transition-all py-10 duration-1000 ${
+                     isVisible
+                       ? "opacity-100 translate-y-0"
+                       : "opacity-0 translate-y-10"
+                   }`}
+                 >
+                   <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold  leading-[0.9] mb-8 tracking-tight text-[var(--color-primary-800)]">
+                    Find Your Perfect{" "} <br/>
+                     <span className="relative inline-block">
+                       <span className="text-gradient animate-gradient">
+                        Match in Seconds   
+                       </span>                       
+                                     
+                     </span>
+                   
+                   </h1>
+           
+                   <p className="text-lg sm:text-xl text-[#0057ad] mb-10 max-w-xl leading-relaxed font-light">
+                    AI that understands buyer preferences, matches properties instantly, and closes deals 3× faster. 
+                     <span className="text-[#0066cc] font-medium">
+                       {" "}
+                      98% match accuracy. 24/7 availability.
+                     </span>
+                   </p>
+           
+                  {/* Email Capture */}
+                               <div className="flex flex-col sm:flex-row gap-4 max-w-lg mb-8">
+                                 <div className="flex-1 relative">
+                                   <input 
+                                     type="email" 
+                                     value={email}
+                                     onChange={(e) => setEmail(e.target.value)}
+                                     placeholder="Enter your email"
+                                     className="w-full px-6 py-3 rounded-2xl bg-white border-2 border-[#99ccff] text-[#003871] placeholder:text-[#3399ff] focus:outline-none focus:border-[#0066cc] focus:ring-4 focus:ring-[#cce5ff] transition-all text-lg shadow-sm"
+                                   />
+                                 </div>
+                                 <button className="px-4 py-2 rounded-2xl bg-[#0066cc] hover:bg-[#0057ad] text-white font-bold text-lg transition-all hover:scale-105 active:scale-95 shadow-xl shadow-[#cce5ff] flex items-center justify-center gap-2 group whitespace-nowrap">
+                                   Get Started
+                                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                                 </button>
+                               </div>
+           
+                   {/* Features */}
+                   <div className="flex items-center gap-6 text-sm text-[#0066cc] flex-wrap">
+                     <div className="flex items-center gap-2">
+                       <CheckCircle2 className="w-4 h-4 text-[#0066cc]" />
+                       <span>Free 14-day trial</span>
+                     </div>
+                     <div className="flex items-center gap-2">
+                       <CheckCircle2 className="w-4 h-4 text-[#0066cc]" />
+                       <span>No credit card</span>
+                     </div>
+                     <div className="flex items-center gap-2">
+                       <CheckCircle2 className="w-4 h-4 text-[#0066cc]" />
+                       <span>5-min setup</span>
+                     </div>
+                   </div>
+                 </div>
 
             {/* Right: Property Matching Interface */}
-            <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <div className="relative transform-style-3d ">
-                {/* Main Property Matching Interface */}
-                <div className="glass-strong rounded-3xl overflow-hidden shadow-2xl shadow-[#cce5ff] border border-[#99ccff]">
-                  {/* Header */}
-                  <div className="px-6 py-4 border-b border-[#99ccff] flex items-center justify-between bg-[#e6f2ff]">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#0066cc] to-[#0057ad] flex items-center justify-center shadow-lg shadow-[#66b2ff]">
-                        <Home className="w-5 h-5 text-white" />
-                      </div>
-                      <div>
-                        <div className="font-semibold text-[#003871]">PropertyMatch AI</div>
-                        <div className="text-xs text-[#0066cc] flex items-center gap-1">
-                          <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
-                          Live Matching Engine
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex gap-2">
-                      <button 
-                        onClick={() => setActiveTabhero('buyer')}
-                        className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
-                          activeTabhero === 'buyer' 
-                            ? 'bg-[#0066cc] text-white' 
-                            : 'bg-[#e6f2ff] text-[#3399ff] hover:text-[#0066cc]'
-                        }`}
-                      >
-                        For Buyers
-                      </button>
-                      <button 
-                        onClick={() => setActiveTabhero('agent')}
-                        className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
-                          activeTabhero === 'agent' 
-                            ? 'bg-[#0066cc] text-white' 
-                            : 'bg-[#e6f2ff] text-[#3399ff] hover:text-[#0066cc]'
-                        }`}
-                      >
-                        For Agents
-                      </button>
-                    </div>
-                  </div>
+          <div
+        className={`lg:col-span-5 xl:col-span-5  relative right-10  flex items-center justify-center transition-all duration-1000 delay-300 ${
+          isVisible
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-10"
+        }`}
+      >
+        <div className="relative transform-style-3d">
+          
+          <img
+            src="/assets/lead-ai-hero-rob.png"
+            alt="AI Robot"
+            className="w-[120%] max-w-none lg:w-[130%] xl:w-full object-contain translate-x-6 lg:translate-x-10"
+          />
 
-                  {/* Dashboard Content */}
-                  <div className="p-6 bg-gradient-to-b from-white to-[#e6f2ff] min-h-[450px]">
-                    {activeTabhero === 'buyer' ? (
-                      <div className="space-y-4">
-                        {/* Buyer Profile */}
-                        <div className="bg-white rounded-xl p-4 border border-[#99ccff]">
-                          <div className="flex items-center gap-3 mb-3">
-                            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#0066cc] to-[#3399ff] flex items-center justify-center text-white font-bold text-sm">
-                              SC
-                            </div>
-                            <div>
-                              <div className="font-semibold text-[#003871] text-sm">Sarah Chen</div>
-                              <div className="text-xs text-[#3399ff]">Looking for: 4BR, Pool, View</div>
-                            </div>
-                            <div className="ml-auto px-3 py-1 rounded-full bg-green-100 text-green-600 text-xs font-medium">
-                              Active
-                            </div>
-                          </div>
-                          <div className="flex gap-2">
-                            <span className="px-2 py-1 bg-[#e6f2ff] rounded text-xs text-[#0066cc]">$1.2M - $1.5M</span>
-                            <span className="px-2 py-1 bg-[#e6f2ff] rounded text-xs text-[#0066cc]">Pacific Heights</span>
-                          </div>
-                        </div>
-
-                        {/* AI Matching Button */}
-                        <button 
-                          onClick={startMatching}
-                          disabled={isMatching}
-                          className="w-full py-3 rounded-xl bg-gradient-to-r from-[#0066cc] to-[#3399ff] text-white font-medium flex items-center justify-center gap-2 hover:shadow-lg transition-all disabled:opacity-70"
-                        >
-                          {isMatching ? (
-                            <>
-                              <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                              AI Matching... {matchProgress}%
-                            </>
-                          ) : (
-                            <>
-                              <Sparkles className="w-5 h-5" />
-                              Find Perfect Matches
-                            </>
-                          )}
-                        </button>
-
-                        {/* Property Cards */}
-                        <div className="space-y-3">
-                          {properties.map((property, idx) => (
-                            <div 
-                              key={property.id}
-                              onClick={() => setSelectedProperty(property.id)}
-                              className={`bg-white rounded-xl p-4 border cursor-pointer transition-all hover:shadow-md ${
-                                selectedProperty === property.id 
-                                  ? 'border-[#0066cc] ring-2 ring-[#cce5ff]' 
-                                  : 'border-[#99ccff]'
-                              }`}
-                            >
-                              <div className="flex gap-4">
-                                <div className="w-20 h-20 rounded-xl bg-gradient-to-br from-[#cce5ff] to-[#99ccff] flex items-center justify-center text-[#0066cc] flex-shrink-0">
-                                  <Building2 className="w-8 h-8" />
-                                </div>
-                                <div className="flex-1 min-w-0">
-                                  <div className="flex items-start justify-between mb-1">
-                                    <h4 className="font-semibold text-[#003871] text-sm truncate">{property.image}</h4>
-                                    <div className="flex items-center gap-1 px-2 py-1 rounded-full bg-green-100 text-green-600 text-xs font-bold">
-                                      <Target className="w-3 h-3" />
-                                      {property.matchScore}%
-                                    </div>
-                                  </div>
-                                  <p className="text-[#0066cc] font-bold text-sm mb-1">{property.price}</p>
-                                  <p className="text-xs text-[#3399ff] mb-2 truncate">{property.address}</p>
-                                  <div className="flex items-center gap-3 text-xs text-[#3399ff]">
-                                    <span className="flex items-center gap-1">
-                                      <Bed className="w-3 h-3" /> {property.beds}
-                                    </span>
-                                    <span className="flex items-center gap-1">
-                                      <Bath className="w-3 h-3" /> {property.baths}
-                                    </span>
-                                    <span className="flex items-center gap-1">
-                                      <Square className="w-3 h-3" /> {property.sqft}
-                                    </span>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="flex gap-2 mt-3">
-                                {property.tags.map((tag, tidx) => (
-                                  <span key={tidx} className="px-2 py-1 rounded-full bg-[#e6f2ff] text-[#0066cc] text-xs">
-                                    {tag}
-                                  </span>
-                                ))}
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="space-y-4">
-                        {/* Agent Dashboard */}
-                        <div className="bg-white rounded-xl p-4 border border-[#99ccff]">
-                          <div className="flex items-center justify-between mb-4">
-                            <span className="text-sm font-medium text-[#003871]">Active Buyers</span>
-                            <span className="text-xs text-[#3399ff]">3 qualified leads</span>
-                          </div>
-
-                          {buyers.map((buyer, idx) => (
-                            <div key={buyer.id} className="flex items-center gap-3 p-3 rounded-lg bg-[#e6f2ff] mb-2 last:mb-0">
-                              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#0066cc] to-[#3399ff] flex items-center justify-center text-white font-bold text-sm">
-                                {/* {buyer.avatar} */} avtar
-                              </div>
-                              <div className="flex-1 min-w-0">
-                                <div className="font-medium text-[#003871] text-sm">{buyer.name}</div>
-                                <div className="text-xs text-[#3399ff] truncate">{buyer.budget} • {buyer.preferences.join(', ')}</div>
-                              </div>
-                              <div className={`px-2 py-1 rounded-full text-xs font-medium ${
-                                buyer.status === 'matched' ? 'bg-green-100 text-green-600' :
-                                buyer.status === 'closed' ? 'bg-blue-100 text-blue-600' :
-                                'bg-yellow-100 text-yellow-600'
-                              }`}>
-                                {buyer.status.charAt(0).toUpperCase() + buyer.status.slice(1)}
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-
-                        {/* Quick Stats */}
-                        <div className="grid grid-cols-2 gap-3">
-                          <div className="bg-white rounded-xl p-4 border border-[#99ccff] text-center">
-                            <div className="text-2xl font-bold text-[#0066cc]">12</div>
-                            <div className="text-xs text-[#3399ff]">New Matches Today</div>
-                          </div>
-                          <div className="bg-white rounded-xl p-4 border border-[#99ccff] text-center">
-                            <div className="text-2xl font-bold text-[#0066cc]">4</div>
-                            <div className="text-xs text-[#3399ff]">Viewings Scheduled</div>
-                          </div>
-                        </div>
-
-                        {/* AI Actions */}
-                        <div className="bg-gradient-to-r from-[#0066cc] to-[#3399ff] rounded-xl p-4 text-white">
-                          <div className="flex items-center gap-2 mb-2">
-                            <Bot className="w-5 h-5" />
-                            <span className="font-medium">AI Assistant Active</span>
-                          </div>
-                          <p className="text-sm opacity-90 mb-3">Automatically qualifying leads and scheduling viewings</p>
-                          <div className="flex gap-2">
-                            <button className="flex-1 py-2 rounded-lg bg-white/20 hover:bg-white/30 text-sm transition-colors">
-                              View Reports
-                            </button>
-                            <button className="flex-1 py-2 rounded-lg bg-white hover:bg-white/90 text-[#0066cc] text-sm font-medium transition-colors">
-                              Manage Listings
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Dashboard Stats */}
-                  <div className="px-6 py-4 border-t border-[#99ccff] bg-[#e6f2ff]">
-                    <div className="grid grid-cols-3 gap-4 text-center">
-                      <div>
-                        <div className="text-lg font-bold text-[#003871]">2.4K</div>
-                        <div className="text-xs text-[#3399ff]">Properties</div>
-                      </div>
-                      <div>
-                        <div className="text-lg font-bold text-[#003871]">847</div>
-                        <div className="text-xs text-[#3399ff]">Active Buyers</div>
-                      </div>
-                      <div>
-                        <div className="text-lg font-bold text-[#003871]">156</div>
-                        <div className="text-xs text-[#3399ff]">Deals Closed</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Floating Stats Cards */}
-                {/* <div className="absolute -bottom-6 -left-6 glass rounded-2xl p-4 animate-float border border-[#99ccff] shadow-xl">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#0066cc] to-[#3399ff] flex items-center justify-center shadow-md">
-                      <Target className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <div className="text-lg font-bold text-[#003871]">98%</div>
-                      <div className="text-xs text-[#3399ff]">Match Accuracy</div>
-                    </div>
-                  </div>
-                </div> */}
-{/* 
-                <div className="absolute -top-4 -right-4 glass rounded-2xl p-4 animate-float-delayed border border-[#99ccff] shadow-xl">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center shadow-md">
-                      <Key className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <div className="text-lg font-bold text-[#003871]">3×</div>
-                      <div className="text-xs text-[#3399ff]">Faster Closings</div>
-                    </div>
-                  </div>
-                </div> */}
-              </div>
-            </div>
+        </div>
+      </div>
           </div>
 
          
@@ -800,8 +578,8 @@ export default function PropertyMatcherPage() {
       </section>
 
       {/* How It Works */}
-      <section id="how-it-works" className="py-20 lg:py-32 bg-slate-900 text-white overflow-hidden relative">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-blue-900/40 via-slate-900 to-slate-900" />
+      <section id="how-it-works" className="py-20 lg:py-32 bg-[var(--color-primary-900)] text-white overflow-hidden relative">
+        {/* <div className="absolute inset-0 w-90 h-90 rounded-full bg-linear-to-tr from-[var(--color-primary-900)]/90 via-slate-900/40 to-[var(--color-primary-900)]" /> */}
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20 reveal">
