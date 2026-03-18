@@ -511,7 +511,7 @@ export default function PropertyMatcherPage() {
         <div className="relative transform-style-3d">
           
           <img
-            src="/assets/lead-ai-hero-rob.png"
+            src="/assets/property-hero-robo.png"
             alt="AI Robot"
             className="w-[120%] max-w-none lg:w-[130%] xl:w-full object-contain translate-x-6 lg:translate-x-10"
           />

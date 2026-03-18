@@ -210,212 +210,98 @@ export default function CampaignAutomationAgentLanding() {
       </div>
 
       {/* HERO SECTION */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center px-4 py-20">
-        <div className="max-w-7xl mx-auto w-full relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            
-            {/* Left: Content */}
-            <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 backdrop-blur-xl border border-[var(--color-primary-200)] shadow-sm mb-8 hover:bg-white transition-colors cursor-default group">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--color-primary-400)] opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--color-primary-600)]"></span>
-                </span>
-                <span className="text-sm font-medium text-[var(--color-primary-700)]">AI-Powered Campaign Engine</span>
-                <Sparkles className="w-4 h-4 text-[var(--color-primary-500)] animate-pulse" />
-              </div>
-
-              <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold leading-[0.9] mb-8 tracking-tight text-[var(--color-primary-900)]">
-                Campaigns That{' '}
-                <span className="bg-gradient-to-r from-[var(--color-primary-600)] via-[var(--color-secondary-600)] to-[var(--color-primary-800)] bg-clip-text text-transparent animate-gradient bg-[length:200%_200%]">
-                  Run Themselves
-                </span>
-              </h1>
-
-              <p className="text-xl sm:text-2xl text-[var(--color-primary-700)] mb-10 max-w-xl leading-relaxed font-light">
-                An AI agent that plans, creates, launches, and optimizes your marketing campaigns across all channels. 
-                <span className="text-[var(--color-primary-600)] font-medium"> From strategy to execution—fully automated.</span>
-              </p>
-
-              {/* Email Capture */}
-              <div className="flex flex-col sm:flex-row gap-4 max-w-lg mb-8">
-                <div className="flex-1 relative">
-                  <input 
-                    type="email" 
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email"
-                    className="w-full px-6 py-5 rounded-2xl bg-white border-2 border-[var(--color-primary-200)] text-[var(--color-primary-900)] placeholder:text-[var(--color-primary-400)] focus:outline-none focus:border-[var(--color-primary-600)] focus:ring-4 focus:ring-[var(--color-primary-100)] transition-all text-lg shadow-sm"
-                  />
-                </div>
-                <button className="px-8 py-5 rounded-2xl bg-[var(--color-primary-600)] hover:bg-[var(--color-primary-700)] text-white font-bold text-lg transition-all hover:scale-105 active:scale-95 shadow-xl shadow-[var(--color-primary-200)] flex items-center justify-center gap-2 group whitespace-nowrap">
-                  Deploy Agent
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
-              </div>
-
-              <div className="flex items-center gap-6 text-sm text-[var(--color-primary-600)] flex-wrap">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[var(--color-primary-600)]" />
-                  <span>Free 14-day trial</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[var(--color-primary-600)]" />
-                  <span>No credit card</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[var(--color-primary-600)]" />
-                  <span>5-min setup</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right: Campaign Visualizer */}
-            <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <div className="relative animate-[float_8s_ease-in-out_infinite]">
-                {/* Main Interface Card */}
-                <div className="bg-white/90 backdrop-blur-xl rounded-3xl overflow-hidden shadow-2xl shadow-[var(--color-primary-200)] border border-white">
-                  {/* Header */}
-                  <div className="px-6 py-4 border-b border-[var(--color-primary-200)] flex items-center justify-between bg-[var(--color-primary-50)]">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[var(--color-primary-500)] to-[var(--color-primary-700)] flex items-center justify-center shadow-lg shadow-[var(--color-primary-300)]">
-                        <Rocket className="w-5 h-5 text-white" />
-                      </div>
-                      <div>
-                        <div className="font-semibold text-[var(--color-primary-900)]">CampaignAgent</div>
-                        <div className="text-xs text-[var(--color-primary-600)] flex items-center gap-1">
-                          <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
-                          3 Active Campaigns • Optimizing
+            <section ref={heroRef} 
+            className="relative min-h-screen flex items-center px-4 py-20 overflow-hidden perspective-1000">
+           <div className="max-w-7xl mx-auto w-full relative z-10">
+             <div className="grid lg:grid-cols-12  items-center">
+   
+                 {/* Left: Content */}
+                    <div
+                      className={`lg:col-span-7 xl:col-span-7 transition-all py-10 duration-1000 ${
+                        isVisible
+                          ? "opacity-100 translate-y-0"
+                          : "opacity-0 translate-y-10"
+                      }`}
+                    >
+                      <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold  leading-[0.9] mb-8 tracking-tight text-[var(--color-primary-800)]">
+                      Campaigns That {" "} <br/>
+                        <span className="relative inline-block">
+                          <span className="text-gradient animate-gradient">
+                         Run Themselves
+                          </span>                       
+                                        
+                        </span>
+                      
+                      </h1>
+              
+                      <p className="text-lg sm:text-xl text-[#0057ad] mb-10 max-w-xl leading-relaxed font-light">
+                    An AI agent that plans, creates, launches, and optimizes your marketing campaigns across all channels.
+                        <span className="text-[#0066cc] font-medium">
+                          {" "}
+                          From strategy to execution—fully automated.
+                        </span>
+                      </p>
+              
+                     {/* Email Capture */}
+                                  <div className="flex flex-col sm:flex-row gap-4 max-w-lg mb-8">
+                                    <div className="flex-1 relative">
+                                      <input 
+                                        type="email" 
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        placeholder="Enter your email"
+                                        className="w-full px-6 py-3 rounded-2xl bg-white border-2 border-[#99ccff] text-[#003871] placeholder:text-[#3399ff] focus:outline-none focus:border-[#0066cc] focus:ring-4 focus:ring-[#cce5ff] transition-all text-lg shadow-sm"
+                                      />
+                                    </div>
+                                    <button className="px-4 py-2 rounded-2xl bg-[#0066cc] hover:bg-[#0057ad] text-white font-bold text-lg transition-all hover:scale-105 active:scale-95 shadow-xl shadow-[#cce5ff] flex items-center justify-center gap-2 group whitespace-nowrap">
+                                     Deploy Agent
+                                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                                    </button>
+                                    
+                                  </div>
+              
+                      {/* Features */}
+                      <div className="flex items-center gap-6 text-sm text-[#0066cc] flex-wrap">
+                        <div className="flex items-center gap-2">
+                          <CheckCircle2 className="w-4 h-4 text-[#0066cc]" />
+                          <span>Free 14-day trial</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <CheckCircle2 className="w-4 h-4 text-[#0066cc]" />
+                          <span>No credit card</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <CheckCircle2 className="w-4 h-4 text-[#0066cc]" />
+                          <span>5-min setup</span>
                         </div>
                       </div>
                     </div>
-                    <div className="flex gap-2">
-                      <button 
-                        onClick={() => setIsPlaying(!isPlaying)}
-                        className="p-2 rounded-lg hover:bg-[var(--color-primary-100)] transition-colors"
-                      >
-                        {isPlaying ? <Pause className="w-4 h-4 text-[var(--color-primary-600)]" /> : <Play className="w-4 h-4 text-[var(--color-primary-600)]" />}
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Campaign Workflow */}
-                  <div className="p-6 bg-gradient-to-b from-white to-[var(--color-primary-50)]">
-                    <div className="mb-4 flex items-center justify-between">
-                      <span className="text-sm font-semibold text-[var(--color-primary-800)]">Q1 Product Launch Campaign</span>
-                      <span className="text-xs text-[var(--color-primary-600)] bg-[var(--color-primary-100)] px-3 py-1 rounded-full">Auto-Pilot</span>
-                    </div>
-
-                    {/* Progress Steps */}
-                    <div className="space-y-3">
-                      {campaignSteps.map((step, idx) => (
-                        <div 
-                          key={idx} 
-                          className={`flex items-center gap-4 p-3 rounded-xl transition-all duration-500 ${
-                            idx === activeStep 
-                              ? 'bg-white border-2 border-[var(--color-primary-400)] shadow-lg scale-105' 
-                              : idx < activeStep 
-                                ? 'bg-[var(--color-primary-100)]/50 opacity-70' 
-                                : 'bg-white/50 opacity-50'
-                          }`}
-                        >
-                          {/* Status Indicator */}
-                          <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ${
-                            idx < activeStep 
-                              ? 'bg-green-500 text-white' 
-                              : idx === activeStep 
-                                ? 'bg-[var(--color-primary-600)] text-white animate-pulse' 
-                                : 'bg-[var(--color-primary-200)] text-[var(--color-primary-600)]'
-                          }`}>
-                            {idx < activeStep ? <CheckCircle2 className="w-5 h-5" /> : step.icon}
-                          </div>
-
-                          {/* Content */}
-                          <div className="flex-1">
-                            <div className="flex items-center gap-2 mb-1">
-                              <span className="text-xs font-bold text-[var(--color-primary-700)] uppercase">{step.step}</span>
-                              <span className="text-sm font-semibold text-[var(--color-primary-900)]">{step.title}</span>
-                              {idx === activeStep && (
-                                <span className="ml-auto text-xs font-bold text-[var(--color-primary-600)] animate-pulse">IN PROGRESS...</span>
-                              )}
-                            </div>
-                            <p className={`text-xs ${idx <= activeStep ? 'text-[var(--color-primary-700)]' : 'text-[var(--color-primary-500)]'}`}>
-                              {step.desc}
-                            </p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Campaign Stats */}
-                    <div className="mt-6 grid grid-cols-3 gap-4 p-4 bg-white rounded-xl border border-[var(--color-primary-200)]">
-                      <div className="text-center">
-                        <div className="text-xl font-bold text-[var(--color-primary-900)]">24.5K</div>
-                        <div className="text-xs text-[var(--color-primary-600)]">Reach</div>
-                      </div>
-                      <div className="text-center border-x border-[var(--color-primary-200)]">
-                        <div className="text-xl font-bold text-green-600">34%</div>
-                        <div className="text-xs text-[var(--color-primary-600)]">Open Rate</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-xl font-bold text-[var(--color-primary-900)]">$12K</div>
-                        <div className="text-xs text-[var(--color-primary-600)]">Revenue</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Channel Icons */}
-                  <div className="px-6 py-4 border-t border-[var(--color-primary-200)] bg-[var(--color-primary-50)]">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-semibold text-[var(--color-primary-600)] uppercase">Active Channels</span>
-                      <div className="flex gap-2">
-                        {channels.slice(0, 4).map((channel, idx) => (
-                          <div key={idx} className={`w-8 h-8 rounded-lg ${channel.color} flex items-center justify-center text-white shadow-md`}>
-                            {React.cloneElement(channel.icon, { className: "w-4 h-4" })}
-                          </div>
-                        ))}
-                        <div className="w-8 h-8 rounded-lg bg-[var(--color-primary-200)] flex items-center justify-center text-[var(--color-primary-600)] text-xs font-bold">
-                          +2
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Floating Stats Cards */}
-                <div className="absolute -bottom-6 -left-6 bg-white/90 backdrop-blur-xl rounded-2xl p-4 animate-[float_8s_ease-in-out_infinite] border border-[var(--color-primary-200)] shadow-xl">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center shadow-md">
-                      <TrendingUp className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <div className="text-lg font-bold text-[var(--color-primary-900)]">5×</div>
-                      <div className="text-xs text-[var(--color-primary-600)]">ROI Increase</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="absolute -top-4 -right-4 bg-white/90 backdrop-blur-xl rounded-2xl p-4 animate-[float_8s_ease-in-out_infinite_4s] border border-[var(--color-primary-200)] shadow-xl">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[var(--color-secondary-500)] to-[var(--color-secondary-700)] flex items-center justify-center shadow-md">
-                      <Clock className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <div className="text-lg font-bold text-[var(--color-primary-900)]">80%</div>
-                      <div className="text-xs text-[var(--color-primary-600)]">Time Saved</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Stats Bar */}
+   
+               {/* Right: Property Matching Interface */}
+             <div
+           className={`lg:col-span-5 xl:col-span-5  relative right-10  flex items-center justify-center transition-all duration-1000 delay-300 ${
+             isVisible
+               ? "opacity-100 translate-y-0"
+               : "opacity-0 translate-y-10"
+           }`}
+         >
+           <div className="relative transform-style-3d">
+             
+             <img
+               src="/assets/campaign-auto-hero-robo.png"
+               alt="AI Robot"
+               className="w-[120%] max-w-none lg:w-[130%] xl:w-full object-contain translate-x-6 lg:translate-x-10"
+             />
+   
+           </div>
+         </div>
+             </div>
+   
+              {/* Stats Bar */}
           <div className={`mt-24 grid grid-cols-2 lg:grid-cols-4 gap-4 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             {stats.map((stat, idx) => (
-              <div key={idx} className="bg-white/70 backdrop-blur-xl rounded-2xl p-6 text-center hover:bg-white transition-all duration-300 group border border-[var(--color-primary-200)] hover:border-[var(--color-primary-400)] shadow-sm hover:shadow-md">
-                <div className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-[var(--color-primary-600)] via-[var(--color-secondary-600)] to-[var(--color-primary-800)] bg-clip-text text-transparent mb-1 group-hover:scale-110 transition-transform inline-block">
+              <div key={idx} className="glass rounded-2xl p-6 text-center hover:bg-white transition-all duration-300 group border border-[var(--color-primary-200)] hover:border-[var(--color-primary-400)] shadow-sm hover:shadow-md">
+                <div className="text-3xl lg:text-4xl font-bold text-gradient mb-1 group-hover:scale-110 transition-transform inline-block">
                   {stat.value}
                 </div>
                 <div className="text-sm font-semibold text-[var(--color-primary-900)] mb-1">{stat.label}</div>
@@ -423,8 +309,9 @@ export default function CampaignAutomationAgentLanding() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
+           </div>
+           
+         </section>
 
       {/* FEATURES - Bento Grid */}
       <section className="relative py-32 px-4">

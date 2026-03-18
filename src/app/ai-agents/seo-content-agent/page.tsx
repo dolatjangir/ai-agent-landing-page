@@ -389,384 +389,108 @@ export default function AISEOContentAgentLanding() {
       </div>
 
       {/* HERO SECTION - Same structure, SEO content */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden perspective-1000">
-        <div className="max-w-7xl mx-auto w-full relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-
-            {/* Left: Content */}
-            <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8 hover:bg-white transition-colors cursor-default group border border-[#99ccff]">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#3399ff] opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0066cc]"></span>
-                </span>
-                <span className="text-sm font-medium text-[#0057ad] group-hover:text-[#00478f] transition-colors">AI-Powered SEO Engine</span>
-                <Sparkles className="w-4 h-4 text-[#0066cc] animate-pulse" />
-              </div>
-
-              <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold leading-[0.9] mb-8 tracking-tight text-[#003871]">
-                AI That Ranks{' '}
-                <span className="relative inline-block">
-                  <span className="text-gradient animate-gradient">#1 on Google</span>
-                  <svg className="absolute -bottom-2 left-0 w-full h-4 text-[#99ccff]" viewBox="0 0 200 9" fill="none">
-                    <path d="M2.00025 6.99997C25.7509 9.37499 83.415 -3.73631 198 3.49999" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
-                  </svg>
-                </span>
-              </h1>
-
-              <p className="text-xl sm:text-2xl text-[#0057ad] mb-10 max-w-xl leading-relaxed font-light">
-                Autonomous SEO content creation from keyword research to published article. 
-                <span className="text-[#0066cc] font-medium"> 10× faster. 340% more organic traffic.</span>
-              </p>
-
-              {/* Email Capture */}
-              <div className="flex flex-col sm:flex-row gap-4 max-w-lg mb-8">
-                <div className="flex-1 relative">
-                  <input 
-                    type="email" 
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email"
-                    className="w-full px-6 py-5 rounded-2xl bg-white border-2 border-[#99ccff] text-[#003871] placeholder:text-[#3399ff] focus:outline-none focus:border-[#0066cc] focus:ring-4 focus:ring-[#cce5ff] transition-all text-lg shadow-sm"
-                  />
-                </div>
-                <button className="px-8 py-5 rounded-2xl bg-[#0066cc] hover:bg-[#0057ad] text-white font-bold text-lg transition-all hover:scale-105 active:scale-95 shadow-xl shadow-[#cce5ff] flex items-center justify-center gap-2 group whitespace-nowrap">
-                  Start Writing
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
-              </div>
-
-              <div className="flex items-center gap-6 text-sm text-[#0066cc] flex-wrap">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#0066cc]" />
-                  <span>Free 14-day trial</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#0066cc]" />
-                  <span>No credit card</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#0066cc]" />
-                  <span>5-min setup</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right: SEO Dashboard Interface */}
-            <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <div className="relative transform-style-3d animate-float">
-                {/* Main SEO Dashboard Interface */}
-                <div className="glass-strong rounded-3xl overflow-hidden shadow-2xl shadow-[#cce5ff] border border-[#99ccff]">
-                  {/* Header */}
-                  <div className="px-6 py-4 border-b border-[#99ccff] flex items-center justify-between bg-[#e6f2ff]">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#0066cc] to-[#0057ad] flex items-center justify-center shadow-lg shadow-[#66b2ff]">
-                        <Search className="w-5 h-5 text-white" />
-                      </div>
-                      <div>
-                        <div className="font-semibold text-[#003871]">SEOContent AI</div>
-                        <div className="text-xs text-[#0066cc] flex items-center gap-1">
-                          <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
-                          AI Agent Active
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="px-3 py-1 rounded-full bg-green-500/20 text-green-600 text-xs font-medium border border-green-500/30">
-                        Live
-                      </div>
+      <section ref={heroRef} 
+                     className="relative min-h-screen flex items-center px-4 py-20 overflow-hidden perspective-1000">
+                    <div className="max-w-7xl mx-auto w-full relative z-10">
+                      <div className="grid lg:grid-cols-12  items-center">
+            
+                          {/* Left: Content */}
+                             <div
+                               className={`lg:col-span-7 xl:col-span-7 transition-all py-10 duration-1000 ${
+                                 isVisible
+                                   ? "opacity-100 translate-y-0"
+                                   : "opacity-0 translate-y-10"
+                               }`}
+                             >
+                               <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold  leading-[0.9] mb-8 tracking-tight text-[var(--color-primary-800)]">
+                               AI That Ranks{" "} <br/>
+                                 <span className="relative inline-block">
+                                   <span className="text-gradient animate-gradient">
+                            #1 on Google
+                                   </span>                       
+                                                 
+                                 </span>
+                               
+                               </h1>
+                       
+                               <p className="text-lg sm:text-xl text-[#0057ad] mb-10 max-w-xl leading-relaxed font-light">
+                           Autonomous SEO content creation from keyword research to published article.
+                                 <span className="text-[#0066cc] font-medium">
+                                   {" "}
+                                    10× faster. 340% more organic traffic.
+                                 </span>
+                               </p>
+                       
+                              {/* Email Capture */}
+                                           <div className="flex flex-col sm:flex-row gap-4 max-w-lg mb-8">
+                                             <div className="flex-1 relative">
+                                               <input 
+                                                 type="email" 
+                                                 value={email}
+                                                 onChange={(e) => setEmail(e.target.value)}
+                                                 placeholder="Enter your email"
+                                                 className="w-full px-6 py-3 rounded-2xl bg-white border-2 border-[#99ccff] text-[#003871] placeholder:text-[#3399ff] focus:outline-none focus:border-[#0066cc] focus:ring-4 focus:ring-[#cce5ff] transition-all text-lg shadow-sm"
+                                               />
+                                             </div>
+                                             <button className="px-4 py-2 rounded-2xl bg-[#0066cc] hover:bg-[#0057ad] text-white font-bold text-lg transition-all hover:scale-105 active:scale-95 shadow-xl shadow-[#cce5ff] flex items-center justify-center gap-2 group whitespace-nowrap">
+                                              Start Writing
+                                               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                                             </button>
+                                             
+                                           </div>
+                       
+                               {/* Features */}
+                               <div className="flex items-center gap-6 text-sm text-[#0066cc] flex-wrap">
+                                 <div className="flex items-center gap-2">
+                                   <CheckCircle2 className="w-4 h-4 text-[#0066cc]" />
+                                   <span>Free 14-day trial</span>
+                                 </div>
+                                 <div className="flex items-center gap-2">
+                                   <CheckCircle2 className="w-4 h-4 text-[#0066cc]" />
+                                   <span>No credit card</span>
+                                 </div>
+                                 <div className="flex items-center gap-2">
+                                   <CheckCircle2 className="w-4 h-4 text-[#0066cc]" />
+                                   <span>5-min setup</span>
+                                 </div>
+                               </div>
+                             </div>
+            
+                        {/* Right: Property Matching Interface */}
+                      <div
+                    className={`lg:col-span-5 xl:col-span-5  relative right-10  flex items-center justify-center transition-all duration-1000 delay-300 ${
+                      isVisible
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 translate-y-10"
+                    }`}
+                  >
+                    <div className="relative transform-style-3d">
+                      
+                      <img
+                        src="/assets/seo-hero-robo.png"
+                        alt="AI Robot"
+                        className="w-[120%] max-w-none lg:w-[130%] xl:w-full object-contain translate-x-6 lg:translate-x-10"
+                      />
+            
                     </div>
                   </div>
-
-                  {/* Dashboard Content */}
-                  <div className="p-6 bg-gradient-to-b from-white to-[#e6f2ff] min-h-[450px]">
-                    {/* Tabs */}
-                    <div className="flex gap-2 mb-6 p-1 bg-[#e6f2ff] rounded-xl">
-                      {(['research', 'write', 'optimize'] as const).map((tab) => (
-                        <button
-                          key={tab}
-                          onClick={() => setActiveTab(tab)}
-                          className={`flex-1 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                            activeTab === tab 
-                              ? 'bg-white text-[#0066cc] shadow-sm' 
-                              : 'text-[#3399ff] hover:text-[#0066cc]'
-                          }`}
-                        >
-                          {tab.charAt(0).toUpperCase() + tab.slice(1)}
-                        </button>
-                      ))}
-                    </div>
-
-                    {/* Research Tab */}
-                    {activeTab === 'research' && (
-                      <div className="space-y-4">
-                        <div className="bg-white rounded-xl p-4 border border-[#99ccff]">
-                          <div className="flex items-center gap-2 mb-3">
-                            <Target className="w-5 h-5 text-[#0066cc]" />
-                            <span className="text-sm font-medium text-[#003871]">Keyword Research</span>
-                          </div>
-                          <div className="relative">
-                            <input 
-                              type="text" 
-                              placeholder="Enter topic or keyword..."
-                              className="w-full px-4 py-3 rounded-lg bg-[#e6f2ff] border border-[#99ccff] text-[#003871] placeholder:text-[#3399ff] text-sm focus:outline-none focus:border-[#0066cc]"
-                              defaultValue="AI content creation tools"
-                            />
-                            <button 
-                              onClick={startGeneration}
-                              disabled={isGenerating}
-                              className="absolute right-2 top-1/2 -translate-y-1/2 px-4 py-1.5 rounded-lg bg-[#0066cc] hover:bg-[#0057ad] text-white text-sm font-medium transition-all disabled:opacity-50 flex items-center gap-2"
-                            >
-                              {isGenerating ? (
-                                <RefreshCw className="w-4 h-4 animate-spin" />
-                              ) : (
-                                <Search className="w-4 h-4" />
-                              )}
-                              Analyze
-                            </button>
-                          </div>
-                        </div>
-
-                        {/* Keywords Table */}
-                        <div className="bg-white rounded-xl border border-[#99ccff] overflow-hidden">
-                          <div className="px-4 py-3 border-b border-[#99ccff] bg-[#e6f2ff] flex items-center justify-between">
-                            <span className="text-sm font-medium text-[#003871]">Related Keywords</span>
-                            <span className="text-xs text-[#3399ff]">4 results</span>
-                          </div>
-                          <div className="divide-y divide-[#cce5ff]">
-                            {keywords.map((kw, idx) => (
-                              <div key={idx} className="px-4 py-3 flex items-center justify-between hover:bg-[#e6f2ff] transition-colors">
-                                <div className="flex items-center gap-3">
-                                  <Hash className="w-4 h-4 text-[#3399ff]" />
-                                  <span className="text-sm text-[#003871] font-medium">{kw.keyword}</span>
-                                </div>
-                                <div className="flex items-center gap-4 text-xs">
-                                  <span className="text-[#3399ff]">Vol: {kw.volume}</span>
-                                  <span className={`px-2 py-1 rounded-full ${
-                                    kw.difficulty === 'Low' ? 'bg-green-100 text-green-600' :
-                                    kw.difficulty === 'Medium' ? 'bg-yellow-100 text-yellow-600' :
-                                    'bg-red-100 text-red-600'
-                                  }`}>{kw.difficulty}</span>
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* Content Brief */}
-                        <div className="bg-gradient-to-r from-[#0066cc] to-[#3399ff] rounded-xl p-4 text-white">
-                          <div className="flex items-center gap-2 mb-2">
-                            <FileText className="w-5 h-5" />
-                            <span className="font-medium">AI Content Brief Ready</span>
-                          </div>
-                          <p className="text-sm opacity-90 mb-3">SERP analysis complete. Top 10 competitors analyzed. Recommended word count: 2,400 words.</p>
-                          <button className="text-sm bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition-colors">
-                            View Full Brief →
-                          </button>
-                        </div>
                       </div>
-                    )}
-
-                    {/* Write Tab */}
-                    {activeTab === 'write' && (
-                      <div className="space-y-4">
-                        {/* Progress Bar */}
-                        {isGenerating && (
-                          <div className="bg-white rounded-xl p-4 border border-[#99ccff]">
-                            <div className="flex items-center justify-between mb-2">
-                              <span className="text-sm font-medium text-[#003871]">Generating Article...</span>
-                              <span className="text-sm text-[#0066cc] font-bold">{contentProgress}%</span>
-                            </div>
-                            <div className="h-2 bg-[#e6f2ff] rounded-full overflow-hidden">
-                              <div 
-                                className="h-full bg-gradient-to-r from-[#0066cc] to-[#3399ff] transition-all duration-300"
-                                style={{ width: `${contentProgress}%` }}
-                              />
-                            </div>
-                            <div className="mt-2 text-xs text-[#3399ff]">
-                              {contentProgress < 30 ? 'Researching topic...' : 
-                               contentProgress < 60 ? 'Creating outline...' : 
-                               contentProgress < 90 ? 'Writing content...' : 
-                               'Optimizing for SEO...'}
-                            </div>
-                          </div>
-                        )}
-
-                        {/* Article Outline */}
-                        <div className="bg-white rounded-xl border border-[#99ccff] overflow-hidden">
-                          <div className="px-4 py-3 border-b border-[#99ccff] bg-[#e6f2ff]">
-                            <span className="text-sm font-medium text-[#003871]">Article Structure</span>
-                          </div>
-                          <div className="p-4 space-y-2">
-                            {outline.map((item) => (
-                              <div key={item.id} className={`flex items-center gap-2 ${item.type === 'h3' ? 'ml-6' : ''}`}>
-                                {item.type === 'h2' ? (
-                                  <Heading className="w-4 h-4 text-[#0066cc]" />
-                                ) : (
-                                  <AlignLeft className="w-4 h-4 text-[#3399ff]" />
-                                )}
-                                <span className={`text-sm ${item.type === 'h2' ? 'text-[#003871] font-medium' : 'text-[#0057ad]'}`}>
-                                  {item.title}
-                                </span>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* Content Preview */}
-                        <div className="bg-white rounded-xl p-4 border border-[#99ccff]">
-                          <div className="flex items-center justify-between mb-3">
-                            <span className="text-sm font-medium text-[#003871]">Content Preview</span>
-                            <button 
-                              onClick={copyToClipboard}
-                              className="text-xs flex items-center gap-1 text-[#0066cc] hover:text-[#0057ad]"
-                            >
-                              {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
-                              {copied ? 'Copied!' : 'Copy'}
-                            </button>
-                          </div>
-                          <div className="text-sm text-[#0057ad] space-y-2 max-h-32 overflow-y-auto">
-                            <p className="font-medium text-[#003871]">Introduction to AI SEO Content Creation</p>
-                            <p className="text-xs leading-relaxed">
-                              Artificial intelligence has revolutionized how we approach SEO content creation. 
-                              Modern AI tools can analyze search intent, identify content gaps, and generate 
-                              optimized articles that rank higher in search results...
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Optimize Tab */}
-                    {activeTab === 'optimize' && (
-                      <div className="space-y-4">
-                        {/* SEO Score Circle */}
-                        <div className="bg-white rounded-xl p-6 border border-[#99ccff] text-center">
-                          <div className="relative inline-flex items-center justify-center">
-                            <svg className="w-24 h-24 transform -rotate-90">
-                              <circle cx="48" cy="48" r="40" stroke="#e6f2ff" strokeWidth="8" fill="none" />
-                              <circle 
-                                cx="48" 
-                                cy="48" 
-                                r="40" 
-                                stroke="#0066cc" 
-                                strokeWidth="8" 
-                                fill="none"
-                                strokeDasharray={`${showScores ? 251 : 0} 251`}
-                                className="transition-all duration-1000"
-                              />
-                            </svg>
-                            <div className="absolute inset-0 flex items-center justify-center">
-                              <span className="text-3xl font-bold text-[#0066cc]">{showScores ? '94' : '--'}</span>
-                            </div>
-                          </div>
-                          <p className="text-sm text-[#3399ff] mt-2">Overall SEO Score</p>
-                        </div>
-
-                        {/* Score Breakdown */}
-                        <div className="bg-white rounded-xl border border-[#99ccff] overflow-hidden">
-                          <div className="px-4 py-3 border-b border-[#99ccff] bg-[#e6f2ff]">
-                            <span className="text-sm font-medium text-[#003871]">Optimization Checklist</span>
-                          </div>
-                          <div className="divide-y divide-[#cce5ff]">
-                            {contentScores.map((score, idx) => (
-                              <div key={idx} className="px-4 py-3 flex items-center justify-between">
-                                <span className="text-sm text-[#003871]">{score.category}</span>
-                                <div className="flex items-center gap-2">
-                                  <div className="w-20 h-2 bg-[#e6f2ff] rounded-full overflow-hidden">
-                                    <div 
-                                      className={`h-full ${getScoreBg(score.score)} transition-all duration-1000`}
-                                      style={{ width: showScores ? `${score.score}%` : '0%' }}
-                                    />
-                                  </div>
-                                  <span className={`text-sm font-bold ${getScoreColor(score.score)} w-8`}>
-                                    {showScores ? score.score : '--'}
-                                  </span>
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* Suggestions */}
-                        <div className="bg-gradient-to-r from-green-500/10 to-emerald-500/10 rounded-xl p-4 border border-green-500/20">
-                          <div className="flex items-start gap-3">
-                            <CheckCircle2 className="w-5 h-5 text-green-500 mt-0.5" />
-                            <div>
-                              <p className="text-sm font-medium text-green-700">Optimization Complete</p>
-                              <p className="text-xs text-green-600 mt-1">AI has optimized 12 elements. 3 manual suggestions available.</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Dashboard Stats */}
-                  <div className="px-6 py-4 border-t border-[#99ccff] bg-[#e6f2ff]">
-                    <div className="grid grid-cols-3 gap-4 text-center">
-                      <div>
-                        <div className="text-lg font-bold text-[#003871]">2.4K</div>
-                        <div className="text-xs text-[#3399ff]">Words</div>
-                      </div>
-                      <div>
-                        <div className="text-lg font-bold text-[#003871]">12</div>
-                        <div className="text-xs text-[#3399ff]">Keywords</div>
-                      </div>
-                      <div>
-                        <div className="text-lg font-bold text-[#003871]">94</div>
-                        <div className="text-xs text-[#3399ff]">SEO Score</div>
-                      </div>
+            
+                       {/* Stats Bar */}
+                   <div className={`mt-24 grid grid-cols-2 lg:grid-cols-4 gap-4 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                     {stats.map((stat, idx) => (
+                       <div key={idx} className="glass rounded-2xl p-6 text-center hover:bg-white transition-all duration-300 group border border-[var(--color-primary-200)] hover:border-[var(--color-primary-400)] shadow-sm hover:shadow-md">
+                         <div className="text-3xl lg:text-4xl font-bold text-gradient mb-1 group-hover:scale-110 transition-transform inline-block">
+                           {stat.value}
+                         </div>
+                         <div className="text-sm font-semibold text-[var(--color-primary-900)] mb-1">{stat.label}</div>
+                         <div className="text-xs text-[var(--color-primary-600)]">{stat.subtext}</div>
+                       </div>
+                     ))}
+                   </div>
                     </div>
-                  </div>
-                </div>
-
-                {/* Floating Stats Cards */}
-                <div className="absolute -bottom-6 -left-6 glass rounded-2xl p-4 animate-float border border-[#99ccff] shadow-xl">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#0066cc] to-[#3399ff] flex items-center justify-center shadow-md">
-                      <TrendingUp className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <div className="text-lg font-bold text-[#003871]">340%</div>
-                      <div className="text-xs text-[#3399ff]">Traffic Growth</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="absolute -top-4 -right-4 glass rounded-2xl p-4 animate-float-delayed border border-[#99ccff] shadow-xl">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#2676d9] to-[#1d5aa6] flex items-center justify-center shadow-md">
-                      <Clock className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <div className="text-lg font-bold text-[#003871]">10×</div>
-                      <div className="text-xs text-[#3399ff]">Faster</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Stats Bar */}
-          <div className={`mt-24 grid grid-cols-2 lg:grid-cols-4 gap-4 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            {stats.map((stat, idx) => (
-              <div key={idx} className="glass rounded-2xl p-6 text-center hover:bg-white transition-all duration-300 group border border-[#99ccff] hover:border-[#0066cc] shadow-sm hover:shadow-md">
-                <div className="flex items-center justify-center gap-2 mb-2">
-                  <div className="text-[#0066cc]">{stat.icon}</div>
-                  <div className="text-3xl lg:text-4xl font-bold text-gradient group-hover:scale-110 transition-transform">
-                    {stat.value}
-                  </div>
-                </div>
-                <div className="text-sm font-semibold text-[#003871] mb-1">{stat.label}</div>
-                <div className="text-xs text-[#3399ff]">{stat.subtext}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+                    
+                  </section>
 
       {/* FEATURES - Zig Zag Layout */}
       <section className="relative py-32 px-4">

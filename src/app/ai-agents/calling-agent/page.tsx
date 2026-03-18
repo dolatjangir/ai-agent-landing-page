@@ -298,284 +298,95 @@ export default function AICallingAgentLanding() {
       </div>
 
       {/* HERO SECTION */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden perspective-1000">
-        <div className="max-w-7xl mx-auto w-full relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            
-            {/* Left: Content */}
-            <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8 hover:bg-white transition-colors cursor-default group border border-[var(--color-primary-200)]">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                </span>
-                <span className="text-sm font-medium text-[var(--color-primary-700)] group-hover:text-[var(--color-primary-800)] transition-colors">Live AI Voice Conversations</span>
-                <Sparkles className="w-4 h-4 text-[var(--color-primary-500)] animate-pulse" />
-              </div>
-
-              <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold leading-[0.9] mb-8 tracking-tight text-[var(--color-primary-900)]">
-                AI That Makes{' '}
-                <span className="relative inline-block">
-                  <span className="text-gradient animate-gradient">Real Calls</span>
-                  <svg className="absolute -bottom-2 left-0 w-full h-4 text-[var(--color-primary-300)]" viewBox="0 0 200 9" fill="none">
-                    <path d="M2.00025 6.99997C25.7509 9.37499 83.415 -3.73631 198 3.49999" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
-                  </svg>
-                </span>
-              </h1>
-
-              <p className="text-xl sm:text-2xl text-[var(--color-primary-700)] mb-10 max-w-xl leading-relaxed font-light">
-                An AI calling agent that dials, converses, qualifies, and books meetings—automatically. 
-                <span className="text-[var(--color-primary-600)] font-medium"> Human-like voice. Superhuman scale.</span>
-              </p>
-
-              {/* Email Capture */}
-              <div className="flex flex-col sm:flex-row gap-4 max-w-lg mb-8">
-                <div className="flex-1 relative">
-                  <input 
-                    type="email" 
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email"
-                    className="w-full px-6 py-5 rounded-2xl bg-white border-2 border-[var(--color-primary-200)] text-[var(--color-primary-900)] placeholder:text-[var(--color-primary-400)] focus:outline-none focus:border-[var(--color-primary-600)] focus:ring-4 focus:ring-[var(--color-primary-100)] transition-all text-lg shadow-sm"
-                  />
-                </div>
-                <button className="px-8 py-5 rounded-2xl bg-[var(--color-primary-600)] hover:bg-[var(--color-primary-700)] text-white font-bold text-lg transition-all hover:scale-105 active:scale-95 shadow-xl shadow-[var(--color-primary-200)] flex items-center justify-center gap-2 group whitespace-nowrap">
-                  Deploy AI Caller
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
-              </div>
-
-              <div className="flex items-center gap-6 text-sm text-[var(--color-primary-600)] flex-wrap">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[var(--color-primary-600)]" />
-                  <span>Free 14-day trial</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[var(--color-primary-600)]" />
-                  <span>No credit card</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[var(--color-primary-600)]" />
-                  <span>5-min setup</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right: Live Call Interface */}
-            <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <div className="relative transform-style-3d animate-float">
-                {/* Main Call Interface */}
-                <div className="glass-strong rounded-3xl overflow-hidden shadow-2xl shadow-[var(--color-primary-200)] border border-[var(--color-primary-200)]">
-                  {/* Header */}
-                  <div className="px-6 py-4 border-b border-[var(--color-primary-200)] flex items-center justify-between bg-[var(--color-primary-50)]">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[var(--color-primary-500)] to-[var(--color-primary-700)] flex items-center justify-center shadow-lg shadow-[var(--color-primary-300)]">
-                        <Phone className="w-5 h-5 text-white" />
-                      </div>
-                      <div>
-                        <div className="font-semibold text-[var(--color-primary-900)]">AICaller</div>
-                        <div className="text-xs text-[var(--color-primary-600)] flex items-center gap-1">
-                          {callStatus === 'active' ? (
-                            <>
-                              <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
-                              Live Call in Progress
-                            </>
-                          ) : callStatus === 'connecting' ? (
-                            <>
-                              <span className="w-1.5 h-1.5 bg-yellow-500 rounded-full animate-pulse"></span>
-                              Connecting...
-                            </>
-                          ) : (
-                            <>
-                              <span className="w-1.5 h-1.5 bg-[var(--color-primary-400)] rounded-full"></span>
-                              Ready to Call
-                            </>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                    {callStatus === 'active' && (
-                      <div className="px-3 py-1 rounded-full bg-green-500/20 text-green-600 text-xs font-medium border border-green-500/30 animate-pulse">
-                        LIVE
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Call Visualizer */}
-                  <div className="p-6 bg-gradient-to-b from-white to-[var(--color-primary-50)] min-h-[400px]">
-                    {/* Prospect Card */}
-                    <div className="flex items-center gap-4 mb-6 p-4 bg-white rounded-2xl border border-[var(--color-primary-200)] shadow-sm">
-                      <div className="relative">
-                        <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[var(--color-secondary-400)] to-[var(--color-secondary-600)] flex items-center justify-center text-white font-bold text-lg">
-                          SC
-                        </div>
-                        {callStatus === 'active' && (
-                          <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
-                            <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
-                          </div>
-                        )}
-                      </div>
-                      <div className="flex-1">
-                        <div className="font-bold text-[var(--color-primary-900)]">Sarah Chen</div>
-                        <div className="text-sm text-[var(--color-primary-600)]">VP Sales, TechCorp</div>
-                        <div className="text-xs text-[var(--color-primary-500)] mt-1">+1 (415) 555-0123 • San Francisco, CA</div>
-                      </div>
-                      <div className="text-right">
-                        {callStatus === 'active' ? (
-                          <div className="text-2xl font-mono font-bold text-green-600">{formatTime(callDuration)}</div>
-                        ) : callStatus === 'ended' ? (
-                          <div className="text-sm font-medium text-[var(--color-primary-600)]">Call Ended</div>
-                        ) : (
-                          <div className="text-sm font-medium text-[var(--color-primary-500)]">Ready</div>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Waveform Visualizer */}
-                    {callStatus === 'active' && (
-                      <div className="flex items-center justify-center gap-1 h-16 mb-6">
-                        {[...Array(20)].map((_, i) => (
-                          <div 
-                            key={i} 
-                            className="waveform-bar animate-wave"
-                            style={{ 
-                              height: `${Math.random() * 100}%`, 
-                              animationDelay: `${i * 0.05}s`,
-                              opacity: 0.3 + (Math.random() * 0.7)
-                            }}
-                          />
-                        ))}
-                      </div>
-                    )}
-
-                    {/* Call Controls */}
-                    <div className="flex justify-center gap-4 mb-6">
-                      {callStatus === 'idle' ? (
-                        <button 
-                          onClick={startDemoCall}
-                          className="w-16 h-16 rounded-full bg-green-500 hover:bg-green-600 text-white flex items-center justify-center shadow-lg shadow-green-500/30 transition-all hover:scale-110"
-                        >
-                          <Phone className="w-7 h-7" />
-                        </button>
-                      ) : callStatus === 'connecting' ? (
-                        <div className="w-16 h-16 rounded-full bg-yellow-500 text-white flex items-center justify-center animate-pulse">
-                          <RefreshCw className="w-7 h-7 animate-spin" />
-                        </div>
-                      ) : callStatus === 'active' ? (
-                        <>
-                          <button className="w-12 h-12 rounded-full bg-white border border-[var(--color-primary-200)] text-[var(--color-primary-600)] flex items-center justify-center hover:bg-[var(--color-primary-50)]">
-                            <Volume2 className="w-5 h-5" />
-                          </button>
-                          <button 
-                            onClick={() => {setCallStatus('ended'); setIsPlaying(false);}}
-                            className="w-16 h-16 rounded-full bg-red-500 hover:bg-red-600 text-white flex items-center justify-center shadow-lg shadow-red-500/30 transition-all hover:scale-110"
-                          >
-                            <Phone className="w-7 h-7 rotate-[135deg]" />
-                          </button>
-                          <button className="w-12 h-12 rounded-full bg-white border border-[var(--color-primary-200)] text-[var(--color-primary-600)] flex items-center justify-center hover:bg-[var(--color-primary-50)]">
-                            <MoreHorizontal className="w-5 h-5" />
-                          </button>
-                        </>
-                      ) : (
-                        <button 
-                          onClick={startDemoCall}
-                          className="px-6 py-3 rounded-full bg-[var(--color-primary-600)] text-white font-medium flex items-center gap-2 hover:bg-[var(--color-primary-700)] transition-colors"
-                        >
-                          <RefreshCw className="w-4 h-4" />
-                          Replay Demo
-                        </button>
-                      )}
-                    </div>
-
-                    {/* Live Transcript */}
-                    <div className="bg-white rounded-2xl border border-[var(--color-primary-200)] p-4 h-48 overflow-y-auto">
-                      <div className="flex items-center gap-2 mb-3 pb-2 border-b border-[var(--color-primary-100)]">
-                        <MessageSquare className="w-4 h-4 text-[var(--color-primary-500)]" />
-                        <span className="text-xs font-semibold text-[var(--color-primary-600)] uppercase">Live Transcript</span>
-                      </div>
+       {/* Hero Section */}
+            <section ref={heroRef} 
+            className="relative min-h-screen flex items-center px-4 py-20 overflow-hidden perspective-1000">
+           <div className="max-w-7xl mx-auto w-full relative z-10">
+             <div className="grid lg:grid-cols-12  items-center">
+   
+                 {/* Left: Content */}
+                    <div
+                      className={`lg:col-span-7 xl:col-span-7 transition-all py-10 duration-1000 ${
+                        isVisible
+                          ? "opacity-100 translate-y-0"
+                          : "opacity-0 translate-y-10"
+                      }`}
+                    >
+                      <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold  leading-[0.9] mb-8 tracking-tight text-[var(--color-primary-800)]">
+                       AI That Makes{" "} <br/>
+                        <span className="relative inline-block">
+                          <span className="text-gradient animate-gradient">
+                         Real Calls 
+                          </span>                       
+                                        
+                        </span>
                       
-                      {transcript.length === 0 ? (
-                        <div className="h-full flex items-center justify-center text-[var(--color-primary-400)] text-sm">
-                          {callStatus === 'idle' ? 'Click the call button to start demo' : 'Waiting for conversation...'}
-                        </div>
-                      ) : (
-                        <div className="space-y-3">
-                          {transcript.map((msg, idx) => (
-                            <div key={idx} className="animate-slide-up" style={{ animationDelay: `${idx * 100}ms` }}>
-                              <div className="flex items-start gap-2">
-                                <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 ${
-                                  msg.role === 'agent' 
-                                    ? 'bg-[var(--color-primary-600)] text-white' 
-                                    : 'bg-[var(--color-secondary-400)] text-white'
-                                }`}>
-                                  {msg.role === 'agent' ? 'AI' : 'SC'}
-                                </div>
-                                <div className="flex-1">
-                                  <div className="flex items-center gap-2 mb-1">
-                                    <span className="text-xs font-medium text-[var(--color-primary-700)]">
-                                      {msg.role === 'agent' ? 'AI Caller' : 'Sarah Chen'}
-                                    </span>
-                                    <span className="text-xs text-[var(--color-primary-400)]">{msg.time}</span>
+                      </h1>
+              
+                      <p className="text-lg sm:text-xl text-[#0057ad] mb-10 max-w-xl leading-relaxed font-light">
+                     An AI calling agent that dials, converses, qualifies, and books meetings—automatically. 
+                        <span className="text-[#0066cc] font-medium">
+                          {" "}
+                         Human-like voice. Superhuman scale.
+                        </span>
+                      </p>
+              
+                     {/* Email Capture */}
+                                  <div className="flex flex-col sm:flex-row gap-4 max-w-lg mb-8">
+                                    <div className="flex-1 relative">
+                                      <input 
+                                        type="email" 
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        placeholder="Enter your email"
+                                        className="w-full px-6 py-3 rounded-2xl bg-white border-2 border-[#99ccff] text-[#003871] placeholder:text-[#3399ff] focus:outline-none focus:border-[#0066cc] focus:ring-4 focus:ring-[#cce5ff] transition-all text-lg shadow-sm"
+                                      />
+                                    </div>
+                                    <button className="px-4 py-2 rounded-2xl bg-[#0066cc] hover:bg-[#0057ad] text-white font-bold text-lg transition-all hover:scale-105 active:scale-95 shadow-xl shadow-[#cce5ff] flex items-center justify-center gap-2 group whitespace-nowrap">
+                                     Deploy Ai Caller
+                                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                                    </button>
+                                    
                                   </div>
-                                  <p className="text-sm text-[var(--color-primary-800)] leading-relaxed">{msg.text}</p>
-                                </div>
-                              </div>
-                            </div>
-                          ))}
+              
+                      {/* Features */}
+                      <div className="flex items-center gap-6 text-sm text-[#0066cc] flex-wrap">
+                        <div className="flex items-center gap-2">
+                          <CheckCircle2 className="w-4 h-4 text-[#0066cc]" />
+                          <span>Free 14-day trial</span>
                         </div>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Call Stats */}
-                  <div className="px-6 py-4 border-t border-[var(--color-primary-200)] bg-[var(--color-primary-50)]">
-                    <div className="grid grid-cols-3 gap-4 text-center">
-                      <div>
-                        <div className="text-lg font-bold text-[var(--color-primary-900)]">{callStatus === 'active' ? '94%' : '--'}</div>
-                        <div className="text-xs text-[var(--color-primary-600)]">Confidence</div>
-                      </div>
-                      <div>
-                        <div className="text-lg font-bold text-[var(--color-primary-900)]">{callStatus === 'active' ? 'Warm' : '--'}</div>
-                        <div className="text-xs text-[var(--color-primary-600)]">Lead Score</div>
-                      </div>
-                      <div>
-                        <div className="text-lg font-bold text-[var(--color-primary-900)]">{callStatus === 'active' ? 'High' : '--'}</div>
-                        <div className="text-xs text-[var(--color-primary-600)]">Intent</div>
+                        <div className="flex items-center gap-2">
+                          <CheckCircle2 className="w-4 h-4 text-[#0066cc]" />
+                          <span>No credit card</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <CheckCircle2 className="w-4 h-4 text-[#0066cc]" />
+                          <span>5-min setup</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-
-                {/* Floating Stats Cards */}
-                <div className="absolute -bottom-6 -left-6 glass rounded-2xl p-4 animate-float border border-[var(--color-primary-200)] shadow-xl">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center shadow-md">
-                      <TrendingUp className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <div className="text-lg font-bold text-[var(--color-primary-900)]">3×</div>
-                      <div className="text-xs text-[var(--color-primary-600)]">More Conversations</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="absolute -top-4 -right-4 glass rounded-2xl p-4 animate-float-delayed border border-[var(--color-primary-200)] shadow-xl">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[var(--color-secondary-500)] to-[var(--color-secondary-700)] flex items-center justify-center shadow-md">
-                      <Users className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <div className="text-lg font-bold text-[var(--color-primary-900)]">500+</div>
-                      <div className="text-xs text-[var(--color-primary-600)]">Calls/Day</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Stats Bar */}
+   
+               {/* Right: Property Matching Interface */}
+             <div
+           className={`lg:col-span-5 xl:col-span-5  relative right-10  flex items-center justify-center transition-all duration-1000 delay-300 ${
+             isVisible
+               ? "opacity-100 translate-y-0"
+               : "opacity-0 translate-y-10"
+           }`}
+         >
+           <div className="relative transform-style-3d">
+             
+             <img
+               src="/assets/property-hero-robo.png"
+               alt="AI Robot"
+               className="w-[120%] max-w-none lg:w-[130%] xl:w-full object-contain translate-x-6 lg:translate-x-10"
+             />
+   
+           </div>
+         </div>
+             </div>
+   
+              {/* Stats Bar */}
           <div className={`mt-24 grid grid-cols-2 lg:grid-cols-4 gap-4 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             {stats.map((stat, idx) => (
               <div key={idx} className="glass rounded-2xl p-6 text-center hover:bg-white transition-all duration-300 group border border-[var(--color-primary-200)] hover:border-[var(--color-primary-400)] shadow-sm hover:shadow-md">
@@ -587,8 +398,9 @@ export default function AICallingAgentLanding() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
+           </div>
+           
+         </section>
 
       {/* FEATURES - Bento Grid */}
       <section className="relative py-32 px-4">

@@ -360,354 +360,109 @@ export default function AISocialMediaAgentLanding() {
       </div>
 
       {/* HERO SECTION */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden perspective-1000">
-        <div className="max-w-7xl mx-auto w-full relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-
-            {/* Left: Content */}
-            <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8 hover:bg-white transition-colors cursor-default group border border-[#99ccff]">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#3399ff] opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0066cc]"></span>
-                </span>
-                <span className="text-sm font-medium text-[#0057ad] group-hover:text-[#00478f] transition-colors">AI-Powered Social Automation</span>
-                <Sparkles className="w-4 h-4 text-[#0066cc] animate-pulse" />
-              </div>
-
-              <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold leading-[0.9] mb-8 tracking-tight text-[#003871]">
-                AI That Posts{' '}
-                <span className="relative inline-block">
-                  <span className="text-gradient animate-gradient">While You Sleep</span>
-                  <svg className="absolute -bottom-2 left-0 w-full h-4 text-[#99ccff]" viewBox="0 0 200 9" fill="none">
-                    <path d="M2.00025 6.99997C25.7509 9.37499 83.415 -3.73631 198 3.49999" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
-                  </svg>
-                </span>
-              </h1>
-
-              <p className="text-xl sm:text-2xl text-[#0057ad] mb-10 max-w-xl leading-relaxed font-light">
-                Generate, schedule, and optimize content across all platforms automatically. 
-                <span className="text-[#0066cc] font-medium"> 10× faster. 340% more engagement.</span>
-              </p>
-
-              {/* Email Capture */}
-              <div className="flex flex-col sm:flex-row gap-4 max-w-lg mb-8">
-                <div className="flex-1 relative">
-                  <input 
-                    type="email" 
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email"
-                    className="w-full px-6 py-5 rounded-2xl bg-white border-2 border-[#99ccff] text-[#003871] placeholder:text-[#3399ff] focus:outline-none focus:border-[#0066cc] focus:ring-4 focus:ring-[#cce5ff] transition-all text-lg shadow-sm"
-                  />
-                </div>
-                <button className="px-8 py-5 rounded-2xl bg-[#0066cc] hover:bg-[#0057ad] text-white font-bold text-lg transition-all hover:scale-105 active:scale-95 shadow-xl shadow-[#cce5ff] flex items-center justify-center gap-2 group whitespace-nowrap">
-                  Start Creating
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
-              </div>
-
-              <div className="flex items-center gap-6 text-sm text-[#0066cc] flex-wrap">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#0066cc]" />
-                  <span>Free 14-day trial</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#0066cc]" />
-                  <span>No credit card</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#0066cc]" />
-                  <span>5-min setup</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right: Live Dashboard Interface */}
-            <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <div className="relative transform-style-3d animate-float">
-                {/* Main Dashboard Interface */}
-                <div className="glass-strong rounded-3xl overflow-hidden shadow-2xl shadow-[#cce5ff] border border-[#99ccff]">
-                  {/* Header */}
-                  <div className="px-6 py-4 border-b border-[#99ccff] flex items-center justify-between bg-[#e6f2ff]">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#0066cc] to-[#0057ad] flex items-center justify-center shadow-lg shadow-[#66b2ff]">
-                        <Share2 className="w-5 h-5 text-white" />
-                      </div>
-                      <div>
-                        <div className="font-semibold text-[#003871]">SocialAI</div>
-                        <div className="text-xs text-[#0066cc] flex items-center gap-1">
-                          <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
-                          AI Agent Active
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex gap-2">
-                      {platforms.slice(0, 4).map((platform, idx) => (
-                        <div key={idx} className={`w-8 h-8 rounded-lg ${platform.bgColor} flex items-center justify-center text-white`}>
-                          {platform.icon}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Dashboard Content */}
-                  <div className="p-6 bg-gradient-to-b from-white to-[#e6f2ff] min-h-[450px]">
-                    {/* Tabs */}
-                    <div className="flex gap-2 mb-6 p-1 bg-[#e6f2ff] rounded-xl">
-                      {(['create', 'schedule', 'analyze'] as const).map((tab) => (
-                        <button
-                          key={tab}
-                          onClick={() => setActiveTab(tab)}
-                          className={`flex-1 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                            activeTab === tab 
-                              ? 'bg-white text-[#0066cc] shadow-sm' 
-                              : 'text-[#3399ff] hover:text-[#0066cc]'
-                          }`}
-                        >
-                          {tab.charAt(0).toUpperCase() + tab.slice(1)}
-                        </button>
-                      ))}
-                    </div>
-
-                    {/* Content Creation Area */}
-                    {activeTab === 'create' && (
-                      <div className="space-y-4">
-                        <div className="bg-white rounded-xl p-4 border border-[#99ccff]">
-                          <div className="flex items-center gap-2 mb-3">
-                            <Bot className="w-5 h-5 text-[#0066cc]" />
-                            <span className="text-sm font-medium text-[#003871]">AI Content Generator</span>
-                          </div>
-                          <textarea 
-                            placeholder="Describe what you want to post about..."
-                            className="w-full h-20 resize-none border-none focus:outline-none text-[#003871] placeholder:text-[#3399ff] text-sm"
-                            defaultValue="Launch announcement for our new AI productivity feature"
-                          />
-                          <div className="flex items-center justify-between mt-3 pt-3 border-t border-[#cce5ff]">
-                            <div className="flex gap-2">
-                              <button className="p-2 rounded-lg hover:bg-[#e6f2ff] text-[#3399ff]">
-                                <Image className="w-4 h-4" />
-                              </button>
-                              <button className="p-2 rounded-lg hover:bg-[#e6f2ff] text-[#3399ff]">
-                                <Hash className="w-4 h-4" />
-                              </button>
-                              <button className="p-2 rounded-lg hover:bg-[#e6f2ff] text-[#3399ff]">
-                                <Globe className="w-4 h-4" />
-                              </button>
-                            </div>
-                            <button 
-                              onClick={startGeneration}
-                              disabled={isGenerating}
-                              className="px-4 py-2 rounded-lg bg-[#0066cc] hover:bg-[#0057ad] text-white text-sm font-medium flex items-center gap-2 transition-all disabled:opacity-50"
-                            >
-                              {isGenerating ? (
-                                <>
-                                  <RefreshCw className="w-4 h-4 animate-spin" />
-                                  Generating...
-                                </>
-                              ) : (
-                                <>
-                                  <Sparkles className="w-4 h-4" />
-                                  Generate Posts
-                                </>
-                              )}
-                            </button>
-                          </div>
-                        </div>
-
-                        {/* Generated Posts */}
-                        {generatedPosts.length > 0 && (
-                          <div className="space-y-3 max-h-48 overflow-y-auto">
-                            {generatedPosts.map((post, idx) => (
-                              <div key={post.id} className="bg-white rounded-xl p-4 border border-[#99ccff] animate-slide-up" style={{ animationDelay: `${idx * 100}ms` }}>
-                                <div className="flex items-start gap-3">
-                                  <div className={`w-8 h-8 rounded-lg ${getPlatformColor(post.platform)} flex items-center justify-center text-white flex-shrink-0`}>
-                                    {getPlatformIcon(post.platform)}
-                                  </div>
-                                  <div className="flex-1 min-w-0">
-                                    <p className="text-sm text-[#003871] line-clamp-2 mb-2">{post.content}</p>
-                                    <div className="flex items-center gap-4 text-xs text-[#3399ff]">
-                                      <span className="flex items-center gap-1">
-                                        <Heart className="w-3 h-3" /> {post.likes.toLocaleString()}
-                                      </span>
-                                      <span className="flex items-center gap-1">
-                                        <MessageCircle className="w-3 h-3" /> {post.comments}
-                                      </span>
-                                      <span className="flex items-center gap-1">
-                                        <Eye className="w-3 h-3" /> {post.reach}
-                                      </span>
-                                      <span className="ml-auto px-2 py-1 rounded-full bg-[#e6f2ff] text-[#0066cc]">
-                                        {post.status}
-                                      </span>
+     <section ref={heroRef} 
+                        className="relative min-h-screen flex items-center px-4 py-20 overflow-hidden perspective-1000">
+                       <div className="max-w-7xl mx-auto w-full relative z-10">
+                         <div className="grid lg:grid-cols-12  items-center">
+               
+                             {/* Left: Content */}
+                                <div
+                                  className={`lg:col-span-7 xl:col-span-7 transition-all py-10 duration-1000 ${
+                                    isVisible
+                                      ? "opacity-100 translate-y-0"
+                                      : "opacity-0 translate-y-10"
+                                  }`}
+                                >
+                                  <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold  leading-[0.9] mb-8 tracking-tight text-[var(--color-primary-800)]">
+                                  AI That Posts {" "} <br/>
+                                    <span className="relative inline-block">
+                                      <span className="text-gradient animate-gradient">
+                              While You Sleep
+                                      </span>                       
+                                                    
+                                    </span>
+                                  
+                                  </h1>
+                          
+                                  <p className="text-lg sm:text-xl text-[#0057ad] mb-10 max-w-xl leading-relaxed font-light">
+                             Generate, schedule, and optimize content across all platforms automatically.
+                                    <span className="text-[#0066cc] font-medium">
+                                      {" "}
+                                      10× faster. 340% more engagement.
+                                    </span>
+                                  </p>
+                          
+                                 {/* Email Capture */}
+                                              <div className="flex flex-col sm:flex-row gap-4 max-w-lg mb-8">
+                                                <div className="flex-1 relative">
+                                                  <input 
+                                                    type="email" 
+                                                    value={email}
+                                                    onChange={(e) => setEmail(e.target.value)}
+                                                    placeholder="Enter your email"
+                                                    className="w-full px-6 py-3 rounded-2xl bg-white border-2 border-[#99ccff] text-[#003871] placeholder:text-[#3399ff] focus:outline-none focus:border-[#0066cc] focus:ring-4 focus:ring-[#cce5ff] transition-all text-lg shadow-sm"
+                                                  />
+                                                </div>
+                                                <button className="px-4 py-2 rounded-2xl bg-[#0066cc] hover:bg-[#0057ad] text-white font-bold text-lg transition-all hover:scale-105 active:scale-95 shadow-xl shadow-[#cce5ff] flex items-center justify-center gap-2 group whitespace-nowrap">
+                                                 Start Creating
+                                                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                                                </button>
+                                                
+                                              </div>
+                          
+                                  {/* Features */}
+                                  <div className="flex items-center gap-6 text-sm text-[#0066cc] flex-wrap">
+                                    <div className="flex items-center gap-2">
+                                      <CheckCircle2 className="w-4 h-4 text-[#0066cc]" />
+                                      <span>Free 14-day trial</span>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                      <CheckCircle2 className="w-4 h-4 text-[#0066cc]" />
+                                      <span>No credit card</span>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                      <CheckCircle2 className="w-4 h-4 text-[#0066cc]" />
+                                      <span>5-min setup</span>
                                     </div>
                                   </div>
                                 </div>
-                              </div>
-                            ))}
-                          </div>
-                        )}
-
-                        {isGenerating && generatedPosts.length === 0 && (
-                          <div className="flex items-center justify-center h-32">
-                            <div className="flex items-center gap-2 text-[#0066cc]">
-                              <RefreshCw className="w-5 h-5 animate-spin" />
-                              <span className="text-sm">AI is crafting your content...</span>
+               
+                           {/* Right: Property Matching Interface */}
+                         <div
+                       className={`lg:col-span-5 xl:col-span-5  relative right-10  flex items-center justify-center transition-all duration-1000 delay-300 ${
+                         isVisible
+                           ? "opacity-100 translate-y-0"
+                           : "opacity-0 translate-y-10"
+                       }`}
+                     >
+                       <div className="relative transform-style-3d">
+                         
+                         <img
+                           src="/assets/social-media-hero-robo.png"
+                           alt="AI Robot"
+                           className="w-[120%] max-w-none lg:w-[130%] xl:w-full object-contain translate-x-6 lg:translate-x-10"
+                         />
+               
+                       </div>
+                     </div>
+                         </div>
+               
+                          {/* Stats Bar */}
+                      <div className={`mt-24 grid grid-cols-2 lg:grid-cols-4 gap-4 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                        {stats.map((stat, idx) => (
+                          <div key={idx} className="glass rounded-2xl p-6 text-center hover:bg-white transition-all duration-300 group border border-[var(--color-primary-200)] hover:border-[var(--color-primary-400)] shadow-sm hover:shadow-md">
+                            <div className="text-3xl lg:text-4xl font-bold text-gradient mb-1 group-hover:scale-110 transition-transform inline-block">
+                              {stat.value}
                             </div>
+                            <div className="text-sm font-semibold text-[var(--color-primary-900)] mb-1">{stat.label}</div>
+                            <div className="text-xs text-[var(--color-primary-600)]">{stat.subtext}</div>
                           </div>
-                        )}
+                        ))}
                       </div>
-                    )}
-
-                    {activeTab === 'schedule' && (
-                      <div className="space-y-4">
-                        <div className="bg-white rounded-xl p-4 border border-[#99ccff]">
-                          <div className="flex items-center justify-between mb-4">
-                            <span className="text-sm font-medium text-[#003871]">Content Calendar</span>
-                            <span className="text-xs text-[#3399ff]">This Week</span>
-                          </div>
-                          <div className="grid grid-cols-7 gap-2">
-                            {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day, idx) => (
-                              <div key={day} className="text-center">
-                                <div className="text-xs text-[#3399ff] mb-1">{day}</div>
-                                <div className={`aspect-square rounded-lg flex items-center justify-center text-sm font-medium ${
-                                  idx === 2 ? 'bg-[#0066cc] text-white' : 'bg-[#e6f2ff] text-[#0066cc]'
-                                }`}>
-                                  {12 + idx}
-                                </div>
-                                {idx < 5 && (
-                                  <div className="mt-1 flex justify-center gap-0.5">
-                                    <div className="w-1 h-1 rounded-full bg-green-500"></div>
-                                    {idx % 2 === 0 && <div className="w-1 h-1 rounded-full bg-blue-500"></div>}
-                                  </div>
-                                )}
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                        <div className="bg-gradient-to-r from-[#0066cc] to-[#3399ff] rounded-xl p-4 text-white">
-                          <div className="flex items-center gap-2 mb-2">
-                            <Zap className="w-5 h-5" />
-                            <span className="font-medium">Optimal Posting Times</span>
-                          </div>
-                          <p className="text-sm opacity-90">AI recommends: 9:00 AM, 1:00 PM, 6:00 PM for maximum engagement</p>
-                        </div>
-                      </div>
-                    )}
-
-                    {activeTab === 'analyze' && (
-                      <div className="space-y-4">
-                        <div className="grid grid-cols-2 gap-3">
-                          <div className="bg-white rounded-xl p-4 border border-[#99ccff]">
-                            <div className="text-xs text-[#3399ff] mb-1">Total Reach</div>
-                            <div className="text-2xl font-bold text-[#003871]">847.2K</div>
-                            <div className="text-xs text-green-500 flex items-center gap-1 mt-1">
-                              <TrendingUp className="w-3 h-3" /> +24.5%
-                            </div>
-                          </div>
-                          <div className="bg-white rounded-xl p-4 border border-[#99ccff]">
-                            <div className="text-xs text-[#3399ff] mb-1">Engagement</div>
-                            <div className="text-2xl font-bold text-[#003871]">12.8%</div>
-                            <div className="text-xs text-green-500 flex items-center gap-1 mt-1">
-                              <TrendingUp className="w-3 h-3" /> +8.2%
-                            </div>
-                          </div>
-                        </div>
-                        <div className="bg-white rounded-xl p-4 border border-[#99ccff]">
-                          <div className="flex items-center justify-between mb-3">
-                            <span className="text-sm font-medium text-[#003871]">Top Performing Content</span>
-                          </div>
-                          <div className="space-y-2">
-                            {[
-                              { type: 'Carousel', perf: '98%', icon: <Image className="w-4 h-4" /> },
-                              { type: 'Reels', perf: '94%', icon: <Video className="w-4 h-4" /> },
-                              { type: 'Stories', perf: '87%', icon: <Clock className="w-4 h-4" /> },
-                            ].map((item, idx) => (
-                              <div key={idx} className="flex items-center gap-3">
-                                <div className="w-8 h-8 rounded-lg bg-[#e6f2ff] flex items-center justify-center text-[#0066cc]">
-                                  {item.icon}
-                                </div>
-                                <div className="flex-1">
-                                  <div className="flex items-center justify-between text-sm">
-                                    <span className="text-[#003871]">{item.type}</span>
-                                    <span className="text-[#0066cc] font-medium">{item.perf}</span>
-                                  </div>
-                                  <div className="h-1.5 bg-[#e6f2ff] rounded-full mt-1 overflow-hidden">
-                                    <div 
-                                      className="h-full bg-gradient-to-r from-[#0066cc] to-[#3399ff] rounded-full"
-                                      style={{ width: item.perf }}
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Dashboard Stats */}
-                  <div className="px-6 py-4 border-t border-[#99ccff] bg-[#e6f2ff]">
-                    <div className="grid grid-cols-3 gap-4 text-center">
-                      <div>
-                        <div className="text-lg font-bold text-[#003871]">12</div>
-                        <div className="text-xs text-[#3399ff]">Posts Today</div>
-                      </div>
-                      <div>
-                        <div className="text-lg font-bold text-[#003871]">4.2K</div>
-                        <div className="text-xs text-[#3399ff]">New Followers</div>
-                      </div>
-                      <div>
-                        <div className="text-lg font-bold text-[#003871]">98%</div>
-                        <div className="text-xs text-[#3399ff]">AI Score</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Floating Stats Cards */}
-                <div className="absolute -bottom-6 -left-6 glass rounded-2xl p-4 animate-float border border-[#99ccff] shadow-xl">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#0066cc] to-[#3399ff] flex items-center justify-center shadow-md">
-                      <TrendingUp className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <div className="text-lg font-bold text-[#003871]">340%</div>
-                      <div className="text-xs text-[#3399ff]">Engagement Boost</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="absolute -top-4 -right-4 glass rounded-2xl p-4 animate-float-delayed border border-[#99ccff] shadow-xl">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#2676d9] to-[#1d5aa6] flex items-center justify-center shadow-md">
-                      <Clock className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <div className="text-lg font-bold text-[#003871]">25hrs</div>
-                      <div className="text-xs text-[#3399ff]">Saved Weekly</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Stats Bar */}
-          <div className={`mt-24 grid grid-cols-2 lg:grid-cols-4 gap-4 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            {stats.map((stat, idx) => (
-              <div key={idx} className="glass rounded-2xl p-6 text-center hover:bg-white transition-all duration-300 group border border-[#99ccff] hover:border-[#0066cc] shadow-sm hover:shadow-md">
-                <div className="text-3xl lg:text-4xl font-bold text-gradient mb-1 group-hover:scale-110 transition-transform inline-block">
-                  {stat.value}
-                </div>
-                <div className="text-sm font-semibold text-[#003871] mb-1">{stat.label}</div>
-                <div className="text-xs text-[#3399ff]">{stat.subtext}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+                       </div>
+                       
+                     </section>
+   
 
       {/* FEATURES - Bento Grid */}
       <section className="relative py-32 px-4">

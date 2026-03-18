@@ -239,176 +239,94 @@ return (
    
 
     {/* Hero Section - Asymmetric Layout */}
-    <section ref={heroRef} className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden bg-gradient-to-br from-[var(--color-primary-50)] via-white to-[var(--color-secondary-50)]">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-[var(--color-primary-200)] rounded-full mix-blend-multiply filter blur-3xl animate-float-slow" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[var(--color-secondary-200)] rounded-full mix-blend-multiply filter blur-3xl animate-float-slow" style={{ animationDelay: '2s' }} />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="grid lg:grid-cols-12 gap-12 items-center">
-          {/* Left Content - 7 cols */}
-          <div className={`lg:col-span-7 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[var(--color-primary-200)] shadow-sm mb-6">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--color-primary-500)] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--color-primary-600)]"></span>
-              </span>
-              <span className="text-xs font-semibold text-[var(--color-primary-700)] uppercase tracking-wider">Now with GPT-4 Powered Conversations</span>
-            </div>
-
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[var(--color-primary-900)] leading-tight mb-6">
-              Never Lose Another{' '}
-              <span className="relative inline-block">
-                <span className="relative z-10 text-gradient">Real Estate Lead</span>
-                <svg className="absolute -bottom-2 left-0 w-full h-3 text-[var(--color-primary-200)]" viewBox="0 0 200 9" fill="none">
-                  <path d="M2.00025 6.99997C25.7509 9.37499 83.415 -3.73631 198 3.49999" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
-                </svg>
-              </span>
-            </h1>
-
-            <p className="text-lg sm:text-xl text-slate-600 mb-8 max-w-2xl leading-relaxed">
-              AI-powered lead capture that qualifies prospects 24/7, routes hot leads instantly, and nurtures cold leads automatically. Convert more inquiries into appointments.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 mb-12">
-              <button className="group inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-[var(--color-primary-600)] text-white font-semibold hover:bg-[var(--color-primary-700)] transition-all shadow-lg shadow-[var(--color-primary-200)] hover:shadow-xl hover:shadow-[var(--color-primary-300)]">
-                Start 14-Day Free Trial
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white text-[var(--color-primary-700)] font-semibold border-2 border-[var(--color-primary-200)] hover:border-[var(--color-primary-400)] transition-colors">
-                <Play className="w-4 h-4 fill-current" />
-                Watch Demo
-              </button>
-            </div>
-
-            {/* Trust Badges */}
-            <div className="flex flex-wrap items-center gap-6 text-sm text-slate-500">
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-[var(--color-primary-600)]" />
-                <span>No credit card required</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-[var(--color-primary-600)]" />
-                <span>Setup in 5 minutes</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-[var(--color-primary-600)]" />
-                <span>Cancel anytime</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Content - 5 cols - Interactive Widget */}
-          <div className={`lg:col-span-5 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <div className="relative">
-              {/* Main Chat Widget */}
-              <div className="glass-card rounded-3xl shadow-2xl shadow-[var(--color-primary-100)] overflow-hidden border border-[var(--color-primary-100)]">
-                {/* Widget Header */}
-                <div className="bg-gradient-brand px-6 py-4 flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                      <Bot className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <div className="font-semibold text-white">LeadCapture AI</div>
-                      <div className="text-xs text-[var(--color-primary-100)] flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></span>
-                        Online now
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex gap-1">
-                    <div className="w-2 h-2 rounded-full bg-white/40"></div>
-                    <div className="w-2 h-2 rounded-full bg-white/40"></div>
-                  </div>
-                </div>
-
-                {/* Chat Content */}
-                <div className="p-6 space-y-4 bg-white">
-                  <div className="flex gap-3">
-                    <div className="w-8 h-8 rounded-full bg-[var(--color-primary-100)] flex items-center justify-center flex-shrink-0">
-                      <Bot className="w-4 h-4 text-[var(--color-primary-600)]" />
-                    </div>
-                    <div className="bg-[var(--color-primary-50)] rounded-2xl rounded-tl-none px-4 py-3 text-sm text-slate-700 max-w-[80%]">
-                      Hi! 👋 I'm here to help you find your dream home. Are you looking to buy or sell?
-                    </div>
-                  </div>
-
-                  <div className="flex gap-3 justify-end">
-                    <div className="bg-[var(--color-primary-600)] rounded-2xl rounded-tr-none px-4 py-3 text-sm text-white max-w-[80%]">
-                      Looking to buy in Austin
-                    </div>
-                  </div>
-
-                  <div className="flex gap-3">
-                    <div className="w-8 h-8 rounded-full bg-[var(--color-primary-100)] flex items-center justify-center flex-shrink-0">
-                      <Bot className="w-4 h-4 text-[var(--color-primary-600)]" />
-                    </div>
-                    <div className="bg-[var(--color-primary-50)] rounded-2xl rounded-tl-none px-4 py-3 text-sm text-slate-700 max-w-[80%]">
-                      Great! What's your budget range? This helps me find the perfect matches for you. 💰
-                    </div>
-                  </div>
-
-                  {/* Typing Indicator */}
-                  <div className="flex gap-3">
-                    <div className="w-8 h-8 rounded-full bg-[var(--color-primary-100)] flex items-center justify-center flex-shrink-0">
-                      <Bot className="w-4 h-4 text-[var(--color-primary-600)]" />
-                    </div>
-                    <div className="bg-[var(--color-primary-50)] rounded-2xl rounded-tl-none px-4 py-3 flex gap-1">
-                      <span className="w-2 h-2 bg-[var(--color-primary-400)] rounded-full animate-bounce"></span>
-                      <span className="w-2 h-2 bg-[var(--color-primary-400)] rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></span>
-                      <span className="w-2 h-2 bg-[var(--color-primary-400)] rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Input Area */}
-                <div className="p-4 border-t border-[var(--color-primary-100)] bg-[var(--color-primary-50)]">
-                  <div className="flex gap-2">
-                    <input 
-                      type="text" 
-                      placeholder="Type your message..."
-                      className="flex-1 px-4 py-3 rounded-full bg-white border border-[var(--color-primary-200)] text-sm focus:outline-none focus:border-[var(--color-primary-500)]"
-                      readOnly
-                    />
-                    <button className="w-10 h-10 rounded-full bg-[var(--color-primary-600)] flex items-center justify-center text-white hover:bg-[var(--color-primary-700)] transition-colors">
-                      <ArrowRight className="w-4 h-4" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {/* Floating Stats Cards */}
-              {/* <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl shadow-[var(--color-primary-100)] p-4 border border-[var(--color-primary-100)] animate-float-slow">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
-                    <TrendingUp className="w-5 h-5 text-green-600" />
-                  </div>
-                  <div>
-                    <div className="text-lg font-bold text-[var(--color-primary-900)]">+127%</div>
-                    <div className="text-xs text-slate-500">Lead Volume</div>
-                  </div>
-                </div>
-              </div> */}
-
-              {/* <div className="absolute -top-4 -right-4 bg-white rounded-2xl shadow-xl shadow-[var(--color-primary-100)] p-4 border border-[var(--color-primary-100)] animate-float-slow" style={{ animationDelay: '1s' }}>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[var(--color-primary-100)] flex items-center justify-center">
-                    <Clock className="w-5 h-5 text-[var(--color-primary-600)]" />
-                  </div>
-                  <div>
-                    <div className="text-lg font-bold text-[var(--color-primary-900)]">24/7</div>
-                    <div className="text-xs text-slate-500">Availability</div>
-                  </div>
-                </div>
-              </div> */}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+   <section ref={heroRef} 
+                    className="relative min-h-screen flex items-center px-4 py-20 overflow-hidden perspective-1000">
+                   <div className="max-w-7xl mx-auto w-full relative z-10">
+                     <div className="grid lg:grid-cols-12  items-center">
+           
+                         {/* Left: Content */}
+                            <div
+                              className={`lg:col-span-7 xl:col-span-7 transition-all py-10 duration-1000 ${
+                                isVisible
+                                  ? "opacity-100 translate-y-0"
+                                  : "opacity-0 translate-y-10"
+                              }`}
+                            >
+                              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold  leading-[0.9] mb-8 tracking-tight text-[var(--color-primary-800)]">
+                             Never Lose Another{" "} <br/>
+                                <span className="relative inline-block">
+                                  <span className="text-gradient animate-gradient">
+                           Real Estate Lead
+                                  </span>                       
+                                                
+                                </span>
+                              
+                              </h1>
+                      
+                              <p className="text-lg sm:text-xl text-[#0057ad] mb-10 max-w-xl leading-relaxed font-light">
+                          AI-powered lead capture that qualifies prospects 24/7, routes hot leads instantly, and nurtures cold leads automatically.
+                                <span className="text-[#0066cc] font-medium">
+                                  {" "}
+                                Convert more inquiries into appointments.
+                                </span>
+                              </p>
+                      
+                             {/* Email Capture */}
+                                          <div className="flex flex-wrap gap-4 mb-10">
+                                                  <button className="relative px-4 py-2 rounded-2xl bg-gradient-to-r from-[#0066cc] to-[#3399ff] text-white font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.04] active:scale-[0.98] flex items-center gap-2 group">
+                                                    {/* <Sparkles className="w-5 h-5" /> */}
+                                                    Start 14-Days Free Trial
+                                                    <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                                                  </button>
+                                        
+                                                  <button className="px-4 py-2 rounded-2xl border border-[#99ccff] text-[#0057ad] font-semibold text-lg backdrop-blur-md hover:bg-white hover:border-[#0066cc] hover:text-[#003871] transition-all duration-300 flex items-center gap-2">
+                                                    {/* <Play className="w-5 h-5" /> */}
+                                                    Watch Demo
+                                                  </button>
+                                                </div>
+                      
+                              {/* Features */}
+                              <div className="flex items-center gap-6 text-sm text-[#0066cc] flex-wrap">
+                                <div className="flex items-center gap-2">
+                                  <CheckCircle2 className="w-4 h-4 text-[#0066cc]" />
+                                  <span>Free 14-day trial</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <CheckCircle2 className="w-4 h-4 text-[#0066cc]" />
+                                  <span>No credit card</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <CheckCircle2 className="w-4 h-4 text-[#0066cc]" />
+                                  <span>5-min setup</span>
+                                </div>
+                              </div>
+                            </div>
+           
+                       {/* Right: Property Matching Interface */}
+                     <div
+                   className={`lg:col-span-5 xl:col-span-5  relative right-10  flex items-center justify-center transition-all duration-1000 delay-300 ${
+                     isVisible
+                       ? "opacity-100 translate-y-0"
+                       : "opacity-0 translate-y-10"
+                   }`}
+                 >
+                   <div className="relative transform-style-3d">
+                     
+                     <img
+                       src="/assets/lead-capture-hero-robo.png"
+                       alt="AI Robot"
+                       className="w-[120%] max-w-none lg:w-[130%] xl:w-full object-contain translate-x-6 lg:translate-x-10"
+                     />
+           
+                   </div>
+                 </div>
+                     </div>
+           
+                      {/* Stats Bar */}
+                
+                   </div>
+                   
+                 </section>
 
     {/* Live Activity Bar */}
     <div className="bg-[var(--color-primary-900)] py-4 overflow-hidden">

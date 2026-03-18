@@ -271,7 +271,7 @@ const heroRef = useRef<HTMLDivElement>(null);
 
       {/* Left: Content */}
       <div
-        className={`lg:col-span-7 xl:col-span-7 transition-all py-10 duration-1000 ${
+        className={`lg:col-span-7 xl:col-span-7 transition-all py-10 duration-1000 order-2 sm:order-1 ${
           isVisible
             ? "opacity-100 translate-y-0"
             : "opacity-0 translate-y-10"
@@ -330,18 +330,18 @@ const heroRef = useRef<HTMLDivElement>(null);
 
       {/* Right: Bigger Image */}
       <div
-        className={`lg:col-span-5 xl:col-span-5  relative right-10  flex items-center justify-center transition-all duration-1000 delay-300 ${
+        className={`lg:col-span-5 xl:col-span-5  relative right-10 order-1 sm:order-2  flex items-center justify-center transition-all duration-1000 delay-300 ${
           isVisible
             ? "opacity-100 translate-y-0"
             : "opacity-0 translate-y-10"
         }`}
       >
-        <div className="relative transform-style-3d">
+        <div className="relative transform-style-3d flex sm:block items-center justify-center">
           
           <img
             src="/assets/lead-ai-hero-robo.png"
             alt="AI Robot"
-            className="w-[120%] max-w-none lg:w-[130%] xl:w-full object-contain translate-x-6 lg:translate-x-10"
+            className="w-[90%] max-w-none lg:w-[110%] xl:w-full object-contain translate-x-6 lg:translate-x-10"
           />
 
         </div>
@@ -360,9 +360,9 @@ const heroRef = useRef<HTMLDivElement>(null);
         <div
           key={idx}
           className="glass rounded-2xl p-6 text-center hover:bg-white transition-all duration-300 group border border-[#99ccff] hover:border-[#0066cc] shadow-sm hover:shadow-md"
-        >
+        ><div className="flex sm:hidden items-center justify-center mb-2 text-[#0066cc]">{stat.icon}</div>
           <div className="flex items-center justify-center gap-2 mb-2">
-            <div className="text-[#0066cc]">{stat.icon}</div>
+            <div className="hidden sm:block text-[#0066cc]">{stat.icon}</div>
             <div className="text-3xl lg:text-4xl font-bold text-gradient group-hover:scale-110 transition-transform">
               {stat.value}
             </div>
@@ -382,11 +382,11 @@ const heroRef = useRef<HTMLDivElement>(null);
 
       {/* HOW IT WORKS */}
      
-<section id="features" className="relative z-10 px-6 py-24 max-w-6xl mx-auto">
-   <div className="flex items-center justify-between gap-8">
+<section id="features" className="relative z-10 px-3 sm:px-6 py-16 sm:py-24 max-w-6xl mx-auto">
+   <div className="flex flex-col sm:flex-row items-center justify-between gap-8">
   
   <div className="flex-1">
-    <p className="inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-blue-500 mb-5">
+    <p className="inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-blue-500 ">
       <span className="w-6 h-px bg-blue-600" />
       Core Capabilities
     </p>
@@ -402,7 +402,7 @@ const heroRef = useRef<HTMLDivElement>(null);
 
   <div className="shrink-0 w-full max-w-[400px]">
     <img
-      src="/assets/sdr-robo.png"
+      src="/assets/half-body-robo.png"
       alt="SDR Robot"
       className="w-full h-auto object-contain"
     />
@@ -410,8 +410,7 @@ const heroRef = useRef<HTMLDivElement>(null);
 
 </div>
         <div className="relative">
-<span className="absolute  -top-[80px] text-7xl drop-shadow-[0_0_30px_rgba(51,153,255,0.5)] ">
-                <img width={150} height={150} src="/assets/two-side-hand-robo.png"/></span>
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Featured card with terminal */}
           <div className="feature-card featured lg:col-span-2 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-gradient-to-br from-white to-blue-50/50 border border-blue-200 rounded-2xl p-9 hover:border-blue-300 transition-all hover:shadow-xl hover:shadow-blue-500/10 relative overflow-hidden group">
@@ -508,8 +507,8 @@ const heroRef = useRef<HTMLDivElement>(null);
       <div className="max-w-6xl mx-auto h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent relative z-10 my-16" />
 
       {/* FEATURES */}
-       <section id="how" className="relative z-10 px-6 py-24 max-w-6xl mx-auto">
-     <div className='flex flex-row justify-between items-center'> 
+       <section id="how" className="relative z-10 px-3 sm:px-6 py-16 sm:py-24 max-w-6xl mx-auto">
+     <div className='flex flex-col sm:flex-row justify-between items-center'> 
        <div>
         <p className="inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-blue-500 mb-5">
           <span className="w-6 h-px bg-blue-600" />
@@ -550,14 +549,14 @@ const heroRef = useRef<HTMLDivElement>(null);
       <div className="max-w-6xl mx-auto h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent relative z-10 my-16" />
 
       {/* PIPELINE */}
-      <section id="pipeline" className="relative z-10 bg-white border border-slate-200 rounded-3xl p-10 md:p-16 mx-6 max-w-6xl xl:mx-auto overflow-hidden">
+      <section id="pipeline" className="relative z-10 bg-white border border-slate-200 rounded-3xl p-3 sm:p-10 md:p-16 mx-3 sm:mx-6 max-w-6xl xl:mx-auto overflow-hidden">
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
         
         <p className="inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-blue-500 mb-5">
           <span className="w-6 h-px bg-blue-600" />
           Live Pipeline
         </p>
-        <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight leading-tight mb-2 text-[var(--color-primary-700)] ">
+        <h2 className="text-xl md:text-4xl font-extrabold tracking-tight leading-tight mb-2 text-[var(--color-primary-700)] ">
           Watch Leads Flow Through<br />the Qualification Engine
         </h2>
         <p className="text-slate-500 text-lg leading-relaxed font-light mb-12 max-w-xl">
@@ -573,7 +572,7 @@ const heroRef = useRef<HTMLDivElement>(null);
             { icon: '🚦', label: 'Classify', sub: 'Hot / Warm / Cold' },
             { icon: '📤', label: 'Route', sub: 'CRM + AE Alert' }
           ].map((stage, idx) => (
-            <div key={idx} className={`flex-1 min-w-[140px] p-7 text-center relative bg-white hover:bg-blue-50/30 transition-colors ${idx < 5 ? 'border-r border-slate-200' : ''}`}>
+            <div key={idx} className={`flex-1 min-w-[140px] p-4 sm:p-7 text-center relative bg-white hover:bg-blue-50/30 transition-colors ${idx < 5 ? 'border-r border-slate-200' : ''}`}>
               {idx < 5 && (
                 <div className="absolute right-0 top-1/2 -translate-y-1/2 w-0 h-0 border-t-8 border-b-8 border-l-8 border-t-transparent border-b-transparent border-l-slate-200 z-10 hidden lg:block" />
               )}
@@ -587,13 +586,13 @@ const heroRef = useRef<HTMLDivElement>(null);
         {/* Lead Score Preview */}
         <div ref={scoreCardsRef} className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
           {/* Hot Lead */}
-          <div className="score-card bg-slate-50 border border-slate-200 rounded-xl p-7 hover:border-blue-300 transition-colors">
+          <div className="score-card bg-slate-50 border border-slate-200 rounded-xl p-4 sm:p-7 hover:border-blue-300 transition-colors">
             <div className="flex items-center justify-between mb-5">
               <div className="flex items-center gap-2.5 font-bold text-slate-900">
-                <div className="w-10 h-10 bg-blue-100 border border-blue-200 rounded-full flex items-center justify-center text-xl">👨‍💼</div>
+                <div className="min-w-10 min-h-10 bg-blue-100 border border-blue-200 rounded-full flex items-center justify-center text-xl">👨‍💼</div>
                 James Whitfield
               </div>
-              <span className="font-mono text-xs px-2.5 py-1 rounded-md bg-red-50 text-red-500 border border-red-200 font-medium">🔥 HOT</span>
+              <span className="font-mono text-xs px-2.5 py-1 rounded-md bg-red-50 text-red-500 border border-red-200 sm:font-medium">🔥 HOT</span>
             </div>
             <div className="text-5xl font-extrabold tracking-tight text-red-500 mb-1">92</div>
             <div className="text-slate-400 text-xs font-mono mb-4">/100 qualification score</div>
@@ -647,8 +646,8 @@ const heroRef = useRef<HTMLDivElement>(null);
       </section>
 
       {/* INTEGRATIONS */}
-      <section id="integrations" className="relative z-10 px-6 py-24 max-w-6xl mx-auto">
-      <div className="flex flex-row justify-between items-center">
+      <section id="integrations" className="relative z-10 px-3 sm:px-6 py-16 sm:py-24 max-w-6xl mx-auto">
+      <div className="flex flex-col sm:flex-row justify-between items-center">
         <div>  <p className="inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-blue-500 mb-5">
           <span className="w-6 h-px bg-blue-600" />
           Integrations
@@ -686,8 +685,8 @@ const heroRef = useRef<HTMLDivElement>(null);
       <div className="max-w-6xl mx-auto h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent relative z-10 my-16" />
 
       {/* TESTIMONIALS */}
-      <section className="relative z-10 px-6 py-24 max-w-6xl mx-auto">
-        <div className="flex flex-row-reverse  justify-between items-center">
+      <section className="relative z-10 px-3 sm:px-6 py-16 sm:py-24 max-w-6xl mx-auto">
+        <div className="flex flex-col sm:flex-row-reverse  justify-between items-center">
           <div><p className="inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-blue-500 mb-5">
           <span className="w-6 h-px bg-blue-600" />
           Social Proof
@@ -725,7 +724,7 @@ const heroRef = useRef<HTMLDivElement>(null);
       </section>
 
       {/* CTA */}
-      <section className="relative z-10 text-center px-6 py-32 overflow-hidden">
+      <section className="relative z-10 text-center px-3 sm:px-6 py-24 sm:py-32 overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
         
         <div className="flex justify-center gap-4 mb-12">
