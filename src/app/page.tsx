@@ -554,7 +554,7 @@ const StayPilotLanding = () => {
   return (
     <div className="min-h-screen  bg-[var(--bg-secondary)] font-sans text-[var(--text-primary)] overflow-hidden">
       <Head>
-        <title> - Smart Hotel & BnB Management Platform</title>
+        <title> - Smart Estate Ai agenties Platform</title>
         <meta name="description" content="Manage all your properties in one smart dashboard. Automate bookings, pricing, and guest communication." />
       </Head>
 
