@@ -218,22 +218,7 @@ body {
   --radius-full: 9999px;
 }
 
-/* Dark Mode Support */
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --bg-primary: var(--color-neutral-900);
-    --bg-secondary: var(--color-neutral-800);
-    --bg-tertiary: var(--color-neutral-700);
-    
-    --text-primary: var(--color-primary-600);
-    --text-secondary: var(--color-primary-300);
-    --text-tertiary: var(--color-primary-400);
-    
-    --border-light: var(--color-neutral-800);
-    --border-medium: var(--color-neutral-700);
-    --border-dark: var(--color-neutral-600);
-  }
-} */
+
 
 /* Utility Classes using CSS Variables */
 @layer utilities {
@@ -253,57 +238,27 @@ body {
 }
 
 
-/* this is for zAi */
-
-/* --- DYNAMIC COLOR VARIABLES --- */
-:root {
-  /* Backgrounds */
-  --color-bg-dark: #0f172a;
-  --color-bg-card: #1e293b;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
   
-  /* Brands */
-  --color-primary: #6366f1; /* Indigo */
-  --color-primary-glow: rgba(99, 102, 241, 0.4);
-  --color-accent: #10b981; /* Emerald */
-  --color-accent-glow: rgba(16, 185, 129, 0.4);
+  body {
+    @apply antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
   
-  /* Text */
-  --color-text-main: #f8fafc;
-  --color-text-muted: #94a3b8;
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
   
-  /* Effects */
-  --color-glass: rgba(30, 41, 59, 0.7);
-  --color-glass-border: rgba(255, 255, 255, 0.1);
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
 }
-
-/* --- GLOBAL SETTINGS --- */
-body {
-  background-color: var(--color-bg-dark);
-  color: var(--color-text-main);
-  /* Background radial gradients matching the original design */
-  background-image: 
-    radial-gradient(circle at 10% 20%, var(--color-primary-glow) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, var(--color-accent-glow) 0%, transparent 40%);
-  min-height: 100vh;
-}
-
-/* --- ANIMATIONS --- */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
-}
-
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes drawLine {
-  to { stroke-dashoffset: 0; }
-}
-
-/* Utility classes for animations */
-.animate-float { animation: float 6s ease-in-out infinite; }
-.animate-float-reverse { animation: float 6s ease-in-out infinite reverse; }
-.animate-rotate-slow { animation: rotate 20s linear infinite; }
-.animate-draw { animation: drawLine 2s ease-out forwards 0.5s; }

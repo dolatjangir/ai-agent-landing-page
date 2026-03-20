@@ -12,7 +12,7 @@ import {
 
 function Footer() {
   return (
-    <footer className="absolute z-10 bg-[var(--color-primary-100)] text-[var(--text-secondary)] pt-[var(--space-6)] pb-[var(--space-10)] border-t border-neutral-300">
+    <footer className="relative z-10 bg-[var(--color-primary-100)] text-[var(--text-secondary)] pt-[var(--space-6)] pb-[var(--space-10)] border-t border-neutral-300">
       <div className="max-w-7xl mx-auto px-[var(--space-4)] sm:px-[var(--space-6)] lg:px-[var(--space-8)]">
 
         {/* Top Section */}

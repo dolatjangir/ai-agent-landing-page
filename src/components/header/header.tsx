@@ -152,49 +152,49 @@ const navItems: NavItem[] = [
       description: "Everything you need to manage customer relationships at scale",
       sections: [
         {
-          title: "Core CRM",
+          title: "Automation feature",
           items: [
             {
-              icon: <Users className="w-5 h-5" />,
-              title: "Contact Management",
-              description: "Organize and segment your customer data",
-              href: "/features/contact-management"
+              icon: <img src="/assets/feature-ai-auto-robo.png" className="max-w-16 max-h-16" />,
+              title: "AI Automation",
+              description: "your core (agents power)",
+              href: "/features/ai-automation"
             },
             {
               icon: <Target className="w-5 h-5" />,
-              title: "Lead Scoring",
-              description: "AI-powered lead qualification",
-              href: "/features/lead-scoring",
+              title: "Lead Management",
+              description: "AI-powered real estate main value",
+              href: "/features/smart-lead",
               badge: "AI"
             },
             {
               icon: <LineChart className="w-5 h-5" />,
-              title: "Sales Pipeline",
-              description: "Visual deal tracking and forecasting",
-              href: "/features/sales-pipeline"
+              title: "Property Intelligence",
+              description: "Visual deal Property Intelligence",
+              href: "/features/property-ai"
             }
           ]
         },
         {
-          title: "Automation",
+          title: "   .",
           items: [
             {
               icon: <Workflow className="w-5 h-5" />,
-              title: "Workflow Automation",
-              description: "Automate repetitive tasks",
-              href: "/features/workflow-automation"
+              title: "Marketing Automation",
+              description: "Automate growth",
+              href: "/features/growth-automation"
             },
             {
               icon: <Clock className="w-5 h-5" />,
-              title: "Smart Scheduling",
-              description: "AI meeting scheduler",
-              href: "/features/smart-scheduling"
+              title: "Smart Communication",
+              description: "AI calls, chats, follow-ups",
+              href: "/features/Conversational-ai"
             },
             {
               icon: <Zap className="w-5 h-5" />,
-              title: "Instant Actions",
-              description: "Trigger-based automation",
-              href: "/features/instant-action"
+              title: "Analytics & Insights",
+              description: "data + decisions automation",
+              href: "/features/Performance-analytics"
             }
           ]
         }
