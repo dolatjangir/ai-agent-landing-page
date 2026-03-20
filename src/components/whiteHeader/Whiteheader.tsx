@@ -359,7 +359,7 @@ function WhiteHeader() {
               boxShadow: "0 10px 15px -3px var(--color-primary-600)/25",
             }}
           >
-           <Link href="/">  <img width={220} height={220} src="/assets/white-bnb-logo.png" /></Link>
+           <Link href="/">  <img width={220} height={220} src="/assets/estateai.png" /></Link>
           </div>
         </div>
 
