@@ -1,11 +1,11 @@
 {
-  "name": "BNB Property management solution",
-  "short_name": "BNB",
-  "description": "Next-Gen Property Management",
+  "name": "Estate-Ai-agentic-Platform",
+  "short_name": "EstateAi",
+  "description": "Next-Gen Real Estate Management",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#006838",
+  "theme_color": "#3b82f6",
   "icons": [
     {
       "src": "/icons/icon-192.png",
