@@ -18,7 +18,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "BNB Pro | Next-Gen Property Management",
+  title: "Estate Ai | Next-Gen Property Management",
   description: "Turn your property into a revenue engine with data-driven management.",
 
     manifest: "/manifest.json",
