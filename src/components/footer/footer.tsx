@@ -12,11 +12,11 @@ import {
 
 function Footer() {
   return (
-    <footer className="bg-linear-to-b from-[var(--bg-secondary)] to-[var(--bg-tertiary)] text-[var(--text-secondary)] pt-[var(--space-6)] pb-[var(--space-10)] border-t border-neutral-700">
+    <footer className="absolute z-10 bg-[var(--color-primary-100)] text-[var(--text-secondary)] pt-[var(--space-6)] pb-[var(--space-10)] border-t border-neutral-300">
       <div className="max-w-7xl mx-auto px-[var(--space-4)] sm:px-[var(--space-6)] lg:px-[var(--space-8)]">
 
         {/* Top Section */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-[var(--space-12)] mb-[var(--space-14)]">
+        <div className="grid  md:grid-cols-2 lg:grid-cols-5 gap-[var(--space-12)] mb-[var(--space-14)]">
 
           {/* Brand */}
           <div className="lg:col-span-2">
@@ -50,9 +50,9 @@ function Footer() {
               ))}
             </div>
           </div>
-
+              
           {/* Platform */}
-          <div>
+          <div className="">
             <h4 className="text-[var(--text-primary)] font-semibold mb-[var(--space-2)]">
               Platform
             </h4>

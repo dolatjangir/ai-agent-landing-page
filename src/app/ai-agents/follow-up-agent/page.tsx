@@ -590,23 +590,23 @@ export default function FollowUpAgentLanding() {
       </section>
 
       {/* FINAL CTA */}
-      <section className="relative py-32 px-4">
+      <section className="relative py-16 px-3 sm:py-32 sm:px-4">
         <div className="max-w-5xl mx-auto">
           <div className="glass-strong rounded-3xl p-12 lg:p-20 text-center relative overflow-hidden border border-[var(--color-primary-300)] shadow-2xl">
             <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-primary-100)]/50 via-[var(--color-secondary-100)]/50 to-[var(--color-primary-100)]/50" />
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[var(--color-primary-200)]/30 via-transparent to-transparent" />
             
             <div className="relative z-10">
-              <div className="w-24 h-24 rounded-3xl bg-gradient-to-br from-[var(--color-primary-500)] to-[var(--color-primary-700)] flex items-center justify-center mx-auto mb-8 shadow-2xl shadow-[var(--color-primary-300)] animate-pulse-glow">
-                <Send className="w-12 h-12 text-white" />
+              <div className="w-12 h-12 sm:w-24 sm:h-24 rounded-3xl bg-gradient-to-br from-[var(--color-primary-500)] to-[var(--color-primary-700)] flex items-center justify-center mx-auto mb-8 shadow-2xl shadow-[var(--color-primary-300)] animate-pulse-glow">
+                <Send className="w-8 h-8 sm:w-12 sm:h-12 text-white" />
               </div>
 
-              <h2 className="text-4xl lg:text-6xl font-bold mb-6 text-[var(--color-primary-900)]">
+              <h2 className="text-2xl sm:text-4xl lg:text-6xl font-bold mb-6 text-[var(--color-primary-900)]">
                 Stop Losing Leads to{' '}
                 <span className="text-gradient">Silence</span>
               </h2>
               
-              <p className="text-xl text-[var(--color-primary-700)] mb-10 max-w-2xl mx-auto">
+              <p className="text-md sm:text-xl text-[var(--color-primary-700)] mb-10 max-w-2xl mx-auto">
                 Join 5,000+ sales teams who never miss a follow-up. 
                 Deploy your AI agent in 5 minutes.
               </p>
