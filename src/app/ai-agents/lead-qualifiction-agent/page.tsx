@@ -341,7 +341,7 @@ const heroRef = useRef<HTMLDivElement>(null);
           <img
             src="/assets/lead-ai-hero-robo.png"
             alt="AI Robot"
-            className="w-[90%] max-w-none lg:w-[110%] xl:w-full object-contain translate-x-6 lg:translate-x-10"
+            className="w-[100%] max-w-none lg:w-[110%] xl:w-full object-contain translate-x-2 lg:translate-x-10"
           />
 
         </div>
