@@ -396,7 +396,7 @@ export default function AISEOContentAgentLanding() {
             
                           {/* Left: Content */}
                              <div
-                               className={`lg:col-span-7 xl:col-span-7 transition-all py-10 duration-1000 ${
+                               className={`lg:col-span-7 xl:col-span-7 transition-all order-2 sm:order-1 py-10 duration-1000 ${
                                  isVisible
                                    ? "opacity-100 translate-y-0"
                                    : "opacity-0 translate-y-10"
@@ -458,7 +458,7 @@ export default function AISEOContentAgentLanding() {
             
                         {/* Right: Property Matching Interface */}
                       <div
-                    className={`lg:col-span-5 xl:col-span-5  relative right-10  flex items-center justify-center transition-all duration-1000 delay-300 ${
+                    className={`lg:col-span-5 xl:col-span-5 order-1 sm:order-2 relative right-10  flex items-center justify-center transition-all duration-1000 delay-300 ${
                       isVisible
                         ? "opacity-100 translate-y-0"
                         : "opacity-0 translate-y-10"
@@ -469,7 +469,7 @@ export default function AISEOContentAgentLanding() {
                       <img
                         src="/assets/seo-hero-robo.png"
                         alt="AI Robot"
-                        className="w-[120%] max-w-none lg:w-[130%] xl:w-full object-contain translate-x-6 lg:translate-x-10"
+                        className="w-fit xl:w-full object-contain translate-x-6 lg:translate-x-10"
                       />
             
                     </div>

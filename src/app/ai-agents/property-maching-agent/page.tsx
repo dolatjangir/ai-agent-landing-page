@@ -441,7 +441,7 @@ export default function PropertyMatcherPage() {
 
               {/* Left: Content */}
                  <div
-                   className={`lg:col-span-7 xl:col-span-7 transition-all py-10 duration-1000 ${
+                   className={`lg:col-span-7 xl:col-span-7 order-2 lg:order-1 transition-all py-10 duration-1000 ${
                      isVisible
                        ? "opacity-100 translate-y-0"
                        : "opacity-0 translate-y-10"
@@ -451,7 +451,7 @@ export default function PropertyMatcherPage() {
                     Find Your Perfect{" "} <br/>
                      <span className="relative inline-block">
                        <span className="text-gradient animate-gradient">
-                        Match in Seconds   
+                        Match in Second  
                        </span>                       
                                      
                      </span>
@@ -502,7 +502,7 @@ export default function PropertyMatcherPage() {
 
             {/* Right: Property Matching Interface */}
           <div
-        className={`lg:col-span-5 xl:col-span-5  relative right-10  flex items-center justify-center transition-all duration-1000 delay-300 ${
+        className={`lg:col-span-5 xl:col-span-5  relative order-1 lg:order-2 sm:right-10  flex items-center justify-center transition-all duration-1000 delay-300 ${
           isVisible
             ? "opacity-100 translate-y-0"
             : "opacity-0 translate-y-10"
@@ -513,7 +513,7 @@ export default function PropertyMatcherPage() {
           <img
             src="/assets/property-hero-robo.png"
             alt="AI Robot"
-            className="w-[120%] max-w-none lg:w-[130%] xl:w-full object-contain translate-x-6 lg:translate-x-10"
+            className="w-[100%] max-w-none pt-6 lg:pt-0 lg:w-[90%] xl:w-full object-contain translate-x-2 lg:translate-x-10"
           />
 
         </div>

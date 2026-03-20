@@ -36,7 +36,7 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
 const [activeFeature, setActiveFeature] = useState(0);
 const [formStep, setFormStep] = useState(0);
 const [isVisible, setIsVisible] = useState(false);
-
+ const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 }); 
 const heroRef = useRef<HTMLDivElement>(null);
 
 useEffect(() => {
@@ -59,7 +59,22 @@ useEffect(() => {
   handleScroll();
   return () => window.removeEventListener('scroll', handleScroll);
 }, []);
+ useEffect(() => {
+    setIsVisible(true);
 
+    const handleMouseMove = (e: MouseEvent) => {
+      if (heroRef.current) {
+        const rect = heroRef.current.getBoundingClientRect();
+        setMousePosition({
+          x: (e.clientX - rect.left) / rect.width,
+          y: (e.clientY - rect.top) / rect.height
+        });
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []); 
 const features = [
   {
     icon: <Bot className="w-6 h-6" />,
@@ -237,7 +252,32 @@ return (
     `}</style>
 
    
+   {/* Dynamic Background */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute inset-0 grid-bg" />
 
+        {/* Animated Orbs */}
+        <div 
+          className="absolute w-[600px] h-[600px] rounded-full mix-blend-multiply filter blur-[100px] opacity-30 animate-pulse-glow bg-[#66b2ff]"
+          style={{
+            left: `${mousePosition.x * 30}%`,
+            top: `${mousePosition.y * 30}%`,
+            transition: 'left 0.3s ease-out, top 0.3s ease-out'
+          }}
+        />
+        <div 
+          className="absolute w-[500px] h-[500px] rounded-full mix-blend-multiply filter blur-[100px] opacity-20 animate-pulse-glow bg-[#4096ff]"
+          style={{
+            right: `${(1 - mousePosition.x) * 20}%`,
+            bottom: `${(1 - mousePosition.y) * 20}%`,
+            transition: 'right 0.5s ease-out, bottom 0.5s ease-out',
+            animationDelay: '2s'
+          }}
+        />
+
+        {/* Gradient Mesh */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#cce5ff]/30 via-transparent to-[#d9eaff]/30" />
+      </div>
     {/* Hero Section - Asymmetric Layout */}
    <section ref={heroRef} 
                     className="relative min-h-screen flex items-center px-4 py-20 overflow-hidden perspective-1000">
@@ -246,7 +286,7 @@ return (
            
                          {/* Left: Content */}
                             <div
-                              className={`lg:col-span-7 xl:col-span-7 transition-all py-10 duration-1000 ${
+                              className={`lg:col-span-7 xl:col-span-7 order-2 sm:order-1 transition-all py-10 duration-1000 ${
                                 isVisible
                                   ? "opacity-100 translate-y-0"
                                   : "opacity-0 translate-y-10"
@@ -304,7 +344,7 @@ return (
            
                        {/* Right: Property Matching Interface */}
                      <div
-                   className={`lg:col-span-5 xl:col-span-5  relative right-10  flex items-center justify-center transition-all duration-1000 delay-300 ${
+                   className={`lg:col-span-5 xl:col-span-5  order-1 sm:order-2 relative sm:right-10  flex items-center justify-center transition-all duration-1000 delay-300 ${
                      isVisible
                        ? "opacity-100 translate-y-0"
                        : "opacity-0 translate-y-10"
@@ -315,7 +355,7 @@ return (
                      <img
                        src="/assets/lead-capture-hero-robo.png"
                        alt="AI Robot"
-                       className="w-[120%] max-w-none lg:w-[130%] xl:w-full object-contain translate-x-6 lg:translate-x-10"
+                       className="w-[90%] xs:w-[50%] xl:w-full object-contain translate-x-6 lg:translate-x-10"
                      />
            
                    </div>

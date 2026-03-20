@@ -67,32 +67,32 @@ const navItems: NavItem[] = [
           title: "Core CRM",
           items: [
             {
-              icon: <img src="/assets/img-1.png" className="w-10 h-10" />,
+              icon: <img src="/assets/img-1.png" className="min-w-10 min-h-10" />,
               title: "Ai Lead Qualification Agent",
               description: "Organize and segment your customer Qualification",
               href: "/ai-agents/lead-qualifiction-agent"
             },
             {
-              icon: <img src="/assets/img-2.png" className="w-10 h-10" />,
+              icon: <img src="/assets/img-2.png" className="min-w-10 min-h-10" />,
               title: "Ai Property Matching Agent",
               description: "AI-powered lead qualification",
               href: "/ai-agents/property-maching-agent",
               badge: "AI"
             },
             {
-              icon: <img src="/assets/img-3.png" className="w-10 h-10" />,
+              icon: <img src="/assets/img-3.png" className="min-w-10 min-h-10" />,
               title: "Lead Capture Agent",
               description: "Ai Lead Capture tracking and forecasting",
               href: "/ai-agents/lead-capture-agent"
             },
             {
-              icon: <img src="/assets/img-4.png" className="w-10 h-10" />,
+              icon: <img src="/assets/img-4.png" className="min-w-10 min-h-10" />,
               title: "Ai Content Creation Agent",
               description: "Content Creation  tracking and forecasting",
               href: "/ai-agents/content-creation-agent"
             },
              {
-              icon: <img src="/assets/img-555.png" className="w-10 h-10" />,
+              icon: <img src="/assets/img-555.png" className="min-w-10 min-h-10" />,
               title: "Ai  Follow-Up Agent",
               description: "AI-powered lead qualification",
               href: "/ai-agents/follow-up-agent",
@@ -104,31 +104,31 @@ const navItems: NavItem[] = [
           title: "Automation",
           items: [
             {
-              icon: <img src="/assets/img-6.png" className="w-10 h-10" />,
+              icon: <img src="/assets/img-6.png" className="min-w-10 min-h-10" />,
               title: "Ai Calling Agent",
               description: "Automate Calling tasks",
               href: "/ai-agents/calling-agent"
             },
             {
-              icon: <img src="/assets/img-7.png" className="w-10 h-10" />,
+              icon: <img src="/assets/img-7.png" className="min-w-10 min-h-10" />,
               title: "Ai Campaign Automation Agent",
               description: "AI meeting scheduler",
               href: "/ai-agents/campaign-automation"
             },
             {
-              icon: <img src="/assets/img-8.png" className="w-10 h-10" />,
+              icon: <img src="/assets/img-8.png" className="min-w-10 min-h-10" />,
               title: "Data Mining Agent",
               description: "Data Mining  automation",
               href: "/ai-agents/data-mining-agent"
             },
              {
-              icon: <img src="/assets/img-9.png" className="w-10 h-10" />,
+              icon: <img src="/assets/img-9.png" className="min-w-10 min-h-10" />,
               title: "Social Media Agent",
               description: "Social Media automation",
               href: "/ai-agents/social-media-agent"
             },
             {
-              icon: <img src="/assets/img-10.png" className="w-10 h-10 rounded-xl" />,
+              icon: <img src="/assets/img-10.png" className="min-w-10 min-h-10 rounded-xl" />,
               title: "Ai SEO Content Agent",
               description: "SEO Content scheduler",
               href: "/ai-agents/seo-content-agent"
