@@ -367,7 +367,7 @@ export default function AISocialMediaAgentLanding() {
                
                              {/* Left: Content */}
                                 <div
-                                  className={`lg:col-span-7 xl:col-span-7 transition-all py-10 duration-1000 ${
+                                  className={`lg:col-span-7 xl:col-span-7 order-2 lg:order-1 transition-all py-10 duration-1000 ${
                                     isVisible
                                       ? "opacity-100 translate-y-0"
                                       : "opacity-0 translate-y-10"
@@ -429,7 +429,7 @@ export default function AISocialMediaAgentLanding() {
                
                            {/* Right: Property Matching Interface */}
                          <div
-                       className={`lg:col-span-5 xl:col-span-5  relative right-10  flex items-center justify-center transition-all duration-1000 delay-300 ${
+                       className={`lg:col-span-5 xl:col-span-5  relative order-1 lg:order-2 sm:right-10  flex items-center justify-center transition-all duration-1000 delay-300 ${
                          isVisible
                            ? "opacity-100 translate-y-0"
                            : "opacity-0 translate-y-10"
@@ -440,7 +440,7 @@ export default function AISocialMediaAgentLanding() {
                          <img
                            src="/assets/social-media-hero-robo.png"
                            alt="AI Robot"
-                           className="w-[120%] max-w-none lg:w-[130%] xl:w-full object-contain translate-x-6 lg:translate-x-10"
+                           className="w-[100%] max-w-none lg:w-[90%] xl:w-full object-contain translate-x-2 lg:translate-x-10"
                          />
                
                        </div>
@@ -701,27 +701,6 @@ export default function AISocialMediaAgentLanding() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="relative py-12 px-4 border-t border-[#99ccff] bg-white/50">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#0066cc] to-[#0057ad] flex items-center justify-center shadow-md">
-              <Share2 className="w-5 h-5 text-white" />
-            </div>
-            <span className="font-bold text-xl text-[#003871]">SocialAI</span>
-          </div>
-
-          <div className="flex gap-8 text-sm text-[#3399ff]">
-            <a href="#" className="hover:text-[#003871] transition-colors">Privacy</a>
-            <a href="#" className="hover:text-[#003871] transition-colors">Terms</a>
-            <a href="#" className="hover:text-[#003871] transition-colors">Contact</a>
-          </div>
-
-          <div className="text-sm text-[#3399ff]">
-            © 2026 SocialAI
-          </div>
-        </div>
-      </footer>
     </main>
   );
 }
