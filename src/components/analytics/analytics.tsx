@@ -209,6 +209,7 @@ const Analytics = () => {
       <polyline points="17 6 23 6 23 12"></polyline>
     </svg>
   );
+  
   return (
     <>
     <section id="analytics" className="py-20 ">
@@ -223,7 +224,7 @@ const Analytics = () => {
        <div className="relative w-full flex justify-center">
   <div className="w-full">
     <img
-      src="/assets/ai-dashboard.png"
+      src="/assets/ai.png"
       className="w-full h-auto object-cover rounded-2xl"
       alt="CRM Collaboration"
     />
