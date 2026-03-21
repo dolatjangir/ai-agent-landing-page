@@ -42,7 +42,7 @@ export default function RootLayout({
     <html lang="en">
       
       <body className={`${inter.variable} ${spaceGrotesk.variable} antialiased text-slate-900 `}>
-        <Header/>
+        <Header/> 
         <div className=" bg-[var(--bg-secondary)]">
         {children}
         </div>
