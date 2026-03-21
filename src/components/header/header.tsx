@@ -206,68 +206,68 @@ const navItems: NavItem[] = [
       }
     }
   },
-  {
-    label: "Solutions",
-    href: "#solutions",
-    hasDropdown: true,
-    dropdownContent: {
-      title: "Solutions by Industry",
-      description: "Tailored CRM solutions for every business type",
-      sections: [
-        {
-          title: "By Industry",
-          items: [
-            {
-              icon: <Layers className="w-5 h-5" />,
-              title: "Enterprise",
-              description: "Scale with confidence",
-              href: "/industry/enterprise"
-            },
-            {
-              icon: <Sparkles className="w-5 h-5" />,
-              title: "Startups",
-              description: "Grow from day one",
-              href: "/industry/startup"
-            },
-            {
-              icon: <BarChart3 className="w-5 h-5" />,
-              title: "Agencies",
-              description: "Manage multiple clients",
-              href: "/industry/agencies"
-            }
-          ]
-        },
-        {
-          title: "By Team",
-          items: [
-            {
-              icon: <Users className="w-5 h-5" />,
-              title: "Sales Teams",
-              description: "Close more deals faster",
-              href: "/industry/sales-team"
-            },
-            {
-              icon: <Target className="w-5 h-5" />,
-              title: "Marketing",
-              description: "Align sales and marketing",
-              href: "/industry/marketing"
-            },
-            {
-              icon: <Shield className="w-5 h-5" />,
-              title: "Customer Success",
-              description: "Reduce churn, increase LTV",
-              href: "/industry/customer-sucess"
-            }
-          ]
-        }
-      ],
-      footer: {
-        text: "Not sure where to start?",
-        link: "Talk to Sales →",
-        href: "/contact"
+ {
+  label: "Solutions",
+  href: "#solutions",
+  hasDropdown: true,
+  dropdownContent: {
+    title: "AI-Powered Solutions",
+    description: "End-to-end automation systems built with intelligent AI agents",
+    sections: [
+      {
+        title: "Core Solutions",
+        items: [
+          {
+            icon: <Layers className="w-5 h-5" />,
+            title: "Data Mining",
+            description: "Extract and organize high-quality leads automatically",
+            href: "/solutions/data-mining"
+          },
+          {
+            icon: <Sparkles className="w-5 h-5" />,
+            title: "Lead Funnel Automation",
+            description: "Capture, qualify, and convert leads on autopilot",
+            href: "/solutions/lead-funnal"
+          },
+          {
+            icon: <BarChart3 className="w-5 h-5" />,
+            title: "Campaign Automation",
+            description: "Launch and optimize marketing campaigns with AI",
+            href: "/solutions/campaign-running"
+          }
+        ]
+      },
+      {
+        title: "Growth & Engagement",
+        items: [
+          {
+            icon: <Users className="w-5 h-5" />,
+            title: "Customer Engagement Solutions",
+            description: "Automate conversations across chat, calls, and social",
+            href: "/solutions/ai-customer-engagement-solution"
+          },
+          {
+            icon: <Target className="w-5 h-5" />,
+            title: "Lead Follow-Up",
+            description: "Never miss a lead with smart follow-up automation",
+            href: "/solutions/lead-followup"
+          },
+          {
+            icon: <Shield className="w-5 h-5" />,
+            title: "Content & SEO Automation",
+            description: "Create, optimize, and distribute high-ranking content",
+            href: "/solutions/ai-content-seo-solution"
+          }
+        ]
       }
+    ],
+    footer: {
+      text: "Not sure which solution fits your business?",
+      link: "Talk to Sales →",
+      href: "/contact"
     }
-  },
+  }
+},
   {
     label: "Pricing",
     href: "/pricing",
