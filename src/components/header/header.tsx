@@ -155,20 +155,20 @@ const navItems: NavItem[] = [
           title: "Automation feature",
           items: [
             {
-              icon: <img src="/assets/feature-ai-auto-robo.png" className="max-w-16 max-h-16" />,
+              icon: <img src="/assets/feature-ai-auto-robo.png" className="max-w-10 max-h-10" />,
               title: "AI Automation",
               description: "your core (agents power)",
               href: "/features/ai-automation"
             },
             {
-              icon: <Target className="w-5 h-5" />,
+              icon: <img src="/assets/lead-management-icon.png" className="max-w-10 max-h-10" />,
               title: "Lead Management",
               description: "AI-powered real estate main value",
               href: "/features/smart-lead",
               badge: "AI"
             },
             {
-              icon: <LineChart className="w-5 h-5" />,
+              icon: <img src="/assets/property-icon.png" className="max-w-10 max-h-10" />,
               title: "Property Intelligence",
               description: "Visual deal Property Intelligence",
               href: "/features/property-ai"
@@ -179,19 +179,19 @@ const navItems: NavItem[] = [
           title: "   .",
           items: [
             {
-              icon: <Workflow className="w-5 h-5" />,
+              icon: <img src="/assets/marketing-icon.png" className="max-w-10 max-h-10" />,
               title: "Marketing Automation",
               description: "Automate growth",
               href: "/features/growth-automation"
             },
             {
-              icon: <Clock className="w-5 h-5" />,
+              icon: <img src="/assets/smart-icon.png" className="max-w-10 max-h-10" />,
               title: "Smart Communication",
               description: "AI calls, chats, follow-ups",
               href: "/features/Conversational-ai"
             },
             {
-              icon: <Zap className="w-5 h-5" />,
+              icon: <img src="/assets/analtics-icon.png" className="max-w-10 max-h-10" />,
               title: "Analytics & Insights",
               description: "data + decisions automation",
               href: "/features/Performance-analytics"
@@ -218,19 +218,19 @@ const navItems: NavItem[] = [
         title: "Core Solutions",
         items: [
           {
-            icon: <Layers className="w-5 h-5" />,
+            icon: <img src="/assets/data-mining-icon.png" className="max-w-10 max-h-10" />,
             title: "Data Mining",
             description: "Extract and organize high-quality leads automatically",
             href: "/solutions/data-mining"
           },
           {
-            icon: <Sparkles className="w-5 h-5" />,
+            icon: <img src="/assets/funnal-icon.png" className="max-w-10 max-h-10" />,
             title: "Lead Funnel Automation",
             description: "Capture, qualify, and convert leads on autopilot",
             href: "/solutions/lead-funnal"
           },
           {
-            icon: <BarChart3 className="w-5 h-5" />,
+            icon: <img src="/assets/campaign-auto-solution-icon.png" className="max-w-10 max-h-10" />,
             title: "Campaign Automation",
             description: "Launch and optimize marketing campaigns with AI",
             href: "/solutions/campaign-running"
@@ -241,19 +241,19 @@ const navItems: NavItem[] = [
         title: "Growth & Engagement",
         items: [
           {
-            icon: <Users className="w-5 h-5" />,
+            icon: <img src="/assets/customer-engage-icon.png" className="max-w-10 max-h-10" />,
             title: "Customer Engagement Solutions",
             description: "Automate conversations across chat, calls, and social",
             href: "/solutions/ai-customer-engagement-solution"
           },
           {
-            icon: <Target className="w-5 h-5" />,
+            icon: <img src="/assets/follow-up-icon.png" className="max-w-10 max-h-10" />,
             title: "Lead Follow-Up",
             description: "Never miss a lead with smart follow-up automation",
             href: "/solutions/lead-followup"
           },
           {
-            icon: <Shield className="w-5 h-5" />,
+            icon: <img src="/assets/seo-solution-icon.png" className="max-w-10 max-h-10" />,
             title: "Content & SEO Automation",
             description: "Create, optimize, and distribute high-ranking content",
             href: "/solutions/ai-content-seo-solution"
@@ -286,19 +286,19 @@ const navItems: NavItem[] = [
           title: "Support",
           items: [
             {
-              icon: <BookA className="w-5 h-5" />,
+              icon: <img src="/assets/how-it-works-icon.png" className="max-w-10 max-h-10" />,
               title: "How-It-Works",
               description: "Guides and API references",
               href: "/resources/howitworks"
             },
             {
-              icon: <PlayCircle className="w-5 h-5" />,
+              icon: <img src="/assets/about-us-icon.png" className="max-w-10 max-h-10" />,
               title: "About Us",
               description: "Step-by-step walkthroughs",
               href: "/resources/about-us"
             },
              {
-              icon: <HelpCircleIcon className="w-5 h-5" />,
+              icon: <img src="/assets/how-it-works-icon.png" className="max-w-10 max-h-10" />,
               title: "Help Center",
               description: "FAQs and troubleshooting",
               href: "/resources/help-center"
@@ -310,20 +310,20 @@ const navItems: NavItem[] = [
           items: [
          
             {
-              icon: <MessageSquareCode className="w-5 h-5" />,
+              icon: <img src="/assets/community-icon.png" className="max-w-10 max-h-10" />,
               title: "Community",
               description: "Join the conversation",
               href: "/resources/community"
             },
             {
-              icon: <HeadphonesIcon className="w-5 h-5" />,
+              icon: <img src="/assets/contact-support-icon.png" className="max-w-10 max-h-10" />,
               title: "Contact Support",
               description: "24/7 expert assistance",
               href: "/resources/contact-support"
             }
             ,
             {
-              icon: <HeadphonesIcon className="w-5 h-5" />,
+              icon: <img src="/assets/broker-network-icon.png" className="max-w-10 max-h-10" />,
               title: "Broker Network",
               description: "All broker is active",
               href: "/resources/broker-network"

@@ -53,10 +53,11 @@ function Hero() {
                         Start Free Trial
                         <ArrowRight className="w-5 h-5 hover:translate-x-1 transition-transform duration-[var(--duration-fast)]" />
                       </button>
+                      <Link href='/book-demo' className="cursor-pointer">
                       <button className="group px-[var(--space-8)] py-[var(--space-4)] bg-[var(--bg-primary)] hover:bg-[var(--bg-secondary)] text-[var(--text-primary)] font-semibold rounded-[var(--radius-full)] transition-all duration-[var(--duration-fast)] border border-[var(--border-medium)] shadow-lg flex items-center justify-center gap-[var(--space-2)]">
                         <Play className="w-5 h-5 text-[var(--color-primary-600)] " />
                         Book a Demo
-                      </button>
+                      </button></Link>
                     </div>
       
                     <div className="flex items-center gap-[var(--space-6)] pt-[var(--space-4)]">
