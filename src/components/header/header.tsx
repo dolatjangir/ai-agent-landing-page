@@ -67,32 +67,32 @@ const navItems: NavItem[] = [
           title: "Automation",
           items: [
             {
-              icon: <img src="/assets/img-1.png" className="max-w-16 max-h-16" />,
+              icon: <img src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774335520/img-1_nz99v7.png" className="max-w-16 max-h-16" />,
               title: "Ai Lead Qualification Agent",
               description: "Organize and segment your customer Qualification",
               href: "/ai-agents/lead-qualifiction-agent"
             },
             {
-              icon: <img src="/assets/img-2.png" className="max-w-16 max-h-16" />,
+              icon: <img src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774335520/img-2_l1xdll.png" className="max-w-16 max-h-16" />,
               title: "Ai Property Matching Agent",
               description: "AI-powered lead qualification",
               href: "/ai-agents/property-maching-agent",
               badge: "AI"
             },
             {
-              icon: <img src="/assets/img-3.png" className="max-w-16 max-h-16" />,
+              icon: <img src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774335520/img-3_scja92.png" className="max-w-16 max-h-16" />,
               title: "Lead Capture Agent",
               description: "Ai Lead Capture tracking and forecasting",
               href: "/ai-agents/lead-capture-agent"
             },
             {
-              icon: <img src="/assets/img-4.png" className="max-w-16 max-h-16" />,
+              icon: <img src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774335521/img-4_damgxf.png" className="max-w-16 max-h-16" />,
               title: "Ai Content Creation Agent",
               description: "Content Creation  tracking and forecasting",
               href: "/ai-agents/content-creation-agent"
             },
              {
-              icon: <img src="/assets/img-555.png" className="max-w-16 max-h-16" />,
+              icon: <img src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774335553/img-555_kabvyd.png" className="max-w-16 max-h-16" />,
               title: "Ai  Follow-Up Agent",
               description: "AI-powered lead qualification",
               href: "/ai-agents/follow-up-agent",
@@ -104,31 +104,31 @@ const navItems: NavItem[] = [
           title: "Automation",
           items: [
             {
-              icon: <img src="/assets/img-6.png" className="max-w-16 max-h-16" />,
+              icon: <img src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774335521/img-6_mky5rb.png" className="max-w-16 max-h-16" />,
               title: "Ai Calling Agent",
               description: "Automate Calling tasks",
               href: "/ai-agents/calling-agent"
             },
             {
-              icon: <img src="/assets/img-7.png" className="max-w-16 max-h-16" />,
+              icon: <img src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774335523/img-7_xjwzbl.png" className="max-w-16 max-h-16" />,
               title: "Ai Campaign Automation Agent",
               description: "AI meeting scheduler",
               href: "/ai-agents/campaign-automation"
             },
             {
-              icon: <img src="/assets/img-8.png" className="max-w-16 max-h-16" />,
+              icon: <img src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774335552/img-8_twulvb.png" className="max-w-16 max-h-16" />,
               title: "Data Mining Agent",
               description: "Data Mining  automation",
               href: "/ai-agents/data-mining-agent"
             },
              {
-              icon: <img src="/assets/img-9.png" className="max-w-16 max-h-16" />,
+              icon: <img src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774335553/img-9_i1wlut.png" className="max-w-16 max-h-16" />,
               title: "Social Media Agent",
               description: "Social Media automation",
               href: "/ai-agents/social-media-agent"
             },
             {
-              icon: <img src="/assets/img-10.png" className="max-w-16 max-h-16 rounded-xl" />,
+              icon: <img src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774335553/img-10_ajsusz.png" className="max-w-16 max-h-16 rounded-xl" />,
               title: "Ai SEO Content Agent",
               description: "SEO Content scheduler",
               href: "/ai-agents/seo-content-agent"
@@ -155,20 +155,20 @@ const navItems: NavItem[] = [
           title: "Automation feature",
           items: [
             {
-              icon: <img src="/assets/feature-ai-auto-robo.png" className="max-w-10 max-h-10" />,
+              icon: <img src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774335511/feature-ai-auto-robo_ze335e.png" className="max-w-10 max-h-10" />,
               title: "AI Automation",
               description: "your core (agents power)",
               href: "/features/ai-automation"
             },
             {
-              icon: <img src="/assets/lead-management-icon.png" className="max-w-10 max-h-10" />,
+              icon: <img src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774335566/lead-management-icon_v2yheh.png" className="max-w-10 max-h-10" />,
               title: "Lead Management",
               description: "AI-powered real estate main value",
               href: "/features/smart-lead",
               badge: "AI"
             },
             {
-              icon: <img src="/assets/property-icon.png" className="max-w-10 max-h-10" />,
+              icon: <img src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774335575/property-icon_cyrnaf.png" className="max-w-10 max-h-10" />,
               title: "Property Intelligence",
               description: "Visual deal Property Intelligence",
               href: "/features/property-ai"
@@ -179,19 +179,19 @@ const navItems: NavItem[] = [
           title: "   .",
           items: [
             {
-              icon: <img src="/assets/marketing-icon.png" className="max-w-10 max-h-10" />,
+              icon: <img src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774335571/marketing-icon_hsbqzs.png" className="max-w-10 max-h-10" />,
               title: "Marketing Automation",
               description: "Automate growth",
               href: "/features/growth-automation"
             },
             {
-              icon: <img src="/assets/smart-icon.png" className="max-w-10 max-h-10" />,
+              icon: <img src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774335598/smart-icon_s79g76.png" className="max-w-10 max-h-10" />,
               title: "Smart Communication",
               description: "AI calls, chats, follow-ups",
               href: "/features/Conversational-ai"
             },
             {
-              icon: <img src="/assets/analtics-icon.png" className="max-w-10 max-h-10" />,
+              icon: <img src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774335510/analtics-icon_pbc1mb.png" className="max-w-10 max-h-10" />,
               title: "Analytics & Insights",
               description: "data + decisions automation",
               href: "/features/Performance-analytics"
@@ -218,19 +218,19 @@ const navItems: NavItem[] = [
         title: "Core Solutions",
         items: [
           {
-            icon: <img src="/assets/data-mining-icon.png" className="max-w-10 max-h-10" />,
+            icon: <img src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774335511/data-mining-icon_duckos.png" className="max-w-10 max-h-10" />,
             title: "Data Mining",
             description: "Extract and organize high-quality leads automatically",
             href: "/solutions/data-mining"
           },
           {
-            icon: <img src="/assets/funnal-icon.png" className="max-w-10 max-h-10" />,
+            icon: <img src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774335515/funnal-icon_arbhbv.png" className="max-w-10 max-h-10" />,
             title: "Lead Funnel Automation",
             description: "Capture, qualify, and convert leads on autopilot",
             href: "/solutions/lead-funnal"
           },
           {
-            icon: <img src="/assets/campaign-auto-solution-icon.png" className="max-w-10 max-h-10" />,
+            icon: <img src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774335513/campaign-auto-solution-icon_ke7mcm.png" className="max-w-10 max-h-10" />,
             title: "Campaign Automation",
             description: "Launch and optimize marketing campaigns with AI",
             href: "/solutions/campaign-running"
@@ -241,19 +241,19 @@ const navItems: NavItem[] = [
         title: "Growth & Engagement",
         items: [
           {
-            icon: <img src="/assets/customer-engage-icon.png" className="max-w-10 max-h-10" />,
+            icon: <img src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774335509/customer-engage-icon_vafyry.png" className="max-w-10 max-h-10" />,
             title: "Customer Engagement Solutions",
             description: "Automate conversations across chat, calls, and social",
             href: "/solutions/ai-customer-engagement-solution"
           },
           {
-            icon: <img src="/assets/follow-up-icon.png" className="max-w-10 max-h-10" />,
+            icon: <img src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774335514/follow-up-icon_gyzki7.png" className="max-w-10 max-h-10" />,
             title: "Lead Follow-Up",
             description: "Never miss a lead with smart follow-up automation",
             href: "/solutions/lead-followup"
           },
           {
-            icon: <img src="/assets/seo-solution-icon.png" className="max-w-10 max-h-10" />,
+            icon: <img src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774335601/seo-solution-icon_zx5kjy.png" className="max-w-10 max-h-10" />,
             title: "Content & SEO Automation",
             description: "Create, optimize, and distribute high-ranking content",
             href: "/solutions/ai-content-seo-solution"
@@ -286,19 +286,19 @@ const navItems: NavItem[] = [
           title: "Support",
           items: [
             {
-              icon: <img src="/assets/how-it-works-icon.png" className="max-w-10 max-h-10" />,
+              icon: <img src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774335521/how-it-works-icon_ymaoex.png" className="max-w-10 max-h-10" />,
               title: "How-It-Works",
               description: "Guides and API references",
               href: "/resources/howitworks"
             },
             {
-              icon: <img src="/assets/about-us-icon.png" className="max-w-10 max-h-10" />,
+              icon: <img src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774335509/about-us-icon_rkp7wa.png" className="max-w-10 max-h-10" />,
               title: "About Us",
               description: "Step-by-step walkthroughs",
               href: "/resources/about-us"
             },
              {
-              icon: <img src="/assets/how-it-works-icon.png" className="max-w-10 max-h-10" />,
+              icon: <img src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774335509/customer-engage-icon_vafyry.png" className="max-w-10 max-h-10" />,
               title: "Help Center",
               description: "FAQs and troubleshooting",
               href: "/resources/help-center"
@@ -306,24 +306,24 @@ const navItems: NavItem[] = [
           ]
         },
         {
-          title: "",
+          title: ".",
           items: [
          
             {
-              icon: <img src="/assets/community-icon.png" className="max-w-10 max-h-10" />,
+              icon: <img src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774335513/community-icon_r7i3kj.png" className="max-w-10 max-h-10" />,
               title: "Community",
               description: "Join the conversation",
               href: "/resources/community"
             },
             {
-              icon: <img src="/assets/contact-support-icon.png" className="max-w-10 max-h-10" />,
+              icon: <img src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774335515/contact-support-icon_bmjjs7.png" className="max-w-10 max-h-10" />,
               title: "Contact Support",
               description: "24/7 expert assistance",
               href: "/resources/contact-support"
             }
             ,
             {
-              icon: <img src="/assets/broker-network-icon.png" className="max-w-10 max-h-10" />,
+              icon: <img src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774334758/broker-network-icon_jcgfal.png" className="max-w-10 max-h-10" />,
               title: "Broker Network",
               description: "All broker is active",
               href: "/resources/broker-network"
@@ -512,7 +512,7 @@ onMouseLeave={() => item.hasDropdown && handleMouseLeave()}
         </nav>
 
         <div className="hidden md:flex items-center gap-[var(--space-4)]">
-          <Link href="https://bnb.ibigdata.in/admin" target='_blank'>
+          <Link href="/login" target='_blank'>
           <button className="text-[var(--text-secondary)] hover:text-[var(--color-primary-600)] font-medium transition-colors duration-[var(--duration-fast)]">
             Log in
           </button></Link>
@@ -636,7 +636,7 @@ onMouseLeave={() => item.hasDropdown && handleMouseLeave()}
       {/* <hr className="border-[var(--border-light)]" /> */}
 <div className='sticky bottom-0 bg-[var(--color-primary-50)] border-t border-neutral-50'>
       {/* Auth Buttons */}
-      <Link href="https://bnb.ibigdata.in/admin" target='_blank'>
+      <Link href="/login" target='_blank'>
       <button className="w-full py-[var(--space-3)] text-[var(--text-secondary)] font-medium">
         Log in
       </button>

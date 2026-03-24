@@ -49,10 +49,11 @@ function Hero() {
                     </p>
       
                     <div className="flex flex-col sm:flex-row gap-[var(--space-4)]">
+                      <Link href='/start-free-trial' className="cursor-pointer">
                       <button className="group px-[var(--space-8)] py-[var(--space-4)] bg-[var(--color-primary-600)] hover:bg-[var(--color-primary-700)] text-[var(--text-inverse)] font-semibold rounded-[var(--radius-full)] transition-all duration-[var(--duration-fast)] shadow-xl hover:shadow-2xl flex items-center justify-center gap-[var(--space-2)]" style={{ boxShadow: '0 20px 25px -5px var(--color-primary-600)/25' }}>
                         Start Free Trial
                         <ArrowRight className="w-5 h-5 hover:translate-x-1 transition-transform duration-[var(--duration-fast)]" />
-                      </button>
+                      </button></Link>
                       <Link href='/book-demo' className="cursor-pointer">
                       <button className="group px-[var(--space-8)] py-[var(--space-4)] bg-[var(--bg-primary)] hover:bg-[var(--bg-secondary)] text-[var(--text-primary)] font-semibold rounded-[var(--radius-full)] transition-all duration-[var(--duration-fast)] border border-[var(--border-medium)] shadow-lg flex items-center justify-center gap-[var(--space-2)]">
                         <Play className="w-5 h-5 text-[var(--color-primary-600)] " />
@@ -83,7 +84,7 @@ function Hero() {
                  <div className="hero-visual relative">
                        <div className="bg-transparent   rounded-3xl   relative z-10 ">
                         <img
-                          src="/assets/hero-right-img-estateai.png" 
+                          src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774335519/hero-right-img-estateai_qvw9of.png" 
                            alt="Modern Luxury Apartment" 
                            
                            className="rounded-2xl w-full h-full object-cover"

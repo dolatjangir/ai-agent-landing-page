@@ -1,6 +1,5 @@
-
 "use client"
-import React from "react"
+import React, { useState } from "react"
 import Link from "next/link"
 import {
   Facebook,
@@ -8,126 +7,223 @@ import {
   Linkedin,
   Twitter,
   ArrowRight,
+  Send,
+  Zap,
+  CheckCircle2,
 } from "lucide-react"
 
-function Footer() {
+// ─── Data ─────────────────────────────────────────────────────────────────────
+
+const NAV_LINKS = {
+  Platform: [
+    { label: "Contact Management", href: "/features/contact-management" },
+    { label: "Lead Scoring",        href: "/features/lead-scoring" },
+    { label: "Sales Pipeline",      href: "/features/sales-pipeline" },
+    { label: "Automation",          href: "/features/workflow-automation" },
+  ],
+  Solutions: [
+    { label: "Enterprise", href: "/industry/enterprise" },
+    { label: "Startups",   href: "/industry/startup" },
+    { label: "Agencies",   href: "/industry/agencies" },
+    { label: "Sales Teams",href: "/industry/sales-team" },
+  ],
+  Resources: [
+    { label: "Documentation", href: "/resources/documentation" },
+    { label: "How it Works",  href: "/howitworks" },
+    { label: "Help Center",   href: "/resources/help-center" },
+    { label: "About Us",      href: "/about-us" },
+  ],
+}
+
+const SOCIALS = [
+  { Icon: Twitter,   label: "Twitter",   href: "#", color: "hover:bg-sky-500"    },
+  { Icon: Linkedin,  label: "LinkedIn",  href: "#", color: "hover:bg-blue-600"   },
+  { Icon: Instagram, label: "Instagram", href: "#", color: "hover:bg-pink-500"   },
+  { Icon: Facebook,  label: "Facebook",  href: "#", color: "hover:bg-blue-700"   },
+]
+
+const STATS = [
+  { value: "12K+", label: "Properties managed" },
+  { value: "98%",  label: "Uptime SLA"         },
+  { value: "4.9★", label: "G2 rating"          },
+  { value: "3 min",label: "Avg. setup time"    },
+]
+
+// ─── Component ────────────────────────────────────────────────────────────────
+
+export default function Footer() {
+  const [email, setEmail] = useState("")
+  const [subscribed, setSubscribed] = useState(false)
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!email) return
+    setSubscribed(true)
+    setEmail("")
+  }
+
   return (
-    <footer className="relative z-10 bg-[var(--color-primary-100)] text-[var(--text-secondary)] pt-[var(--space-6)] pb-[var(--space-10)] border-t border-neutral-300">
-      <div className="max-w-7xl mx-auto px-[var(--space-4)] sm:px-[var(--space-6)] lg:px-[var(--space-8)]">
+    <footer className="relative overflow-hidden bg-blue-50 text-slate-400">
 
-        {/* Top Section */}
-        <div className="grid  md:grid-cols-2 lg:grid-cols-5 gap-[var(--space-12)] mb-[var(--space-14)]">
+      {/* ── Background atmosphere ─── */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        {/* Blue glow — top left */}
+        <div className="absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full bg-blue-600/10 blur-[120px]" />
+        {/* Blue glow — bottom right */}
+        <div className="absolute -bottom-32 -right-32 w-[400px] h-[400px] rounded-full bg-blue-500/8 blur-[100px]" />
+        {/* Subtle dot grid */}
+        <svg className="absolute inset-0 w-full h-full opacity-[0.025]" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+              <circle cx="2" cy="2" r="1.2" fill="white" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#dots)" />
+        </svg>
+        {/* Top border glow line */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/60 to-transparent" />
+      </div>
 
-          {/* Brand */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+
+        {/* ── Newsletter strip ────────────────────────────────── */}
+        <div className="border-b border-slate-800/80 py-10">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
+            <div className="text-center lg:text-left">
+              <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-3.5 py-1 mb-3">
+                <Zap className="w-3 h-3 text-blue-400" />
+                <span className="text-xs font-semibold text-blue-400 tracking-wide uppercase">Product updates</span>
+              </div>
+              <h3 className="text-xl font-bold text-[var(--color-primary-700)] mb-1 tracking-tight">
+                Stay ahead of the curve.
+              </h3>
+              <p className="text-sm text-slate-500">
+                Tips, product news, and early-access features — straight to your inbox.
+              </p>
+            </div>
+
+            <form onSubmit={handleSubscribe} className="flex w-full lg:w-auto min-w-[340px]">
+              {subscribed ? (
+                <div className="flex items-center gap-2.5 px-5 py-3 rounded-xl bg-green-500/10 border border-green-500/25 w-full justify-center">
+                  <CheckCircle2 className="w-4 h-4 text-green-400" />
+                  <span className="text-sm font-semibold text-green-400">You're subscribed!</span>
+                </div>
+              ) : (
+                <div className="flex w-full rounded-xl overflow-hidden border border-slate-700/80 bg-blue-200/60 focus-within:border-blue-500/60 focus-within:ring-1 focus-within:ring-blue-500/20 transition-all duration-200">
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="your@company.com"
+                    className="flex-1 bg-transparent px-4 py-3 text-sm text-[var(--color-primary-700)] placeholder-blue-700 outline-none"
+                  />
+                  <button
+                    type="submit"
+                    className="flex items-center gap-2 px-5 py-3 bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold transition-colors duration-200 shrink-0"
+                  >
+                    <Send className="w-3.5 h-3.5" />
+                    Subscribe
+                  </button>
+                </div>
+              )}
+            </form>
+          </div>
+        </div>
+
+        {/* ── Main grid ──────────────────────────────────────── */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 py-14">
+
+          {/* Brand column */}
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center gap-3 mb-[var(--space-2)]">
+            <Link href="/" className="inline-block mb-5">
               <img
                 src="/assets/estateai.png"
                 width={200}
-                height={70}
-                alt="BNB"
+                height={60}
+                alt="Estate-Ai"
+                className=""
               />
             </Link>
 
-            <p className="max-w-sm mb-[var(--space-3)] text-[var(--text-secondary)]">
-              The modern platform for hotel owners, Airbnb hosts, and property
-              managers. Automate operations, increase bookings, and grow revenue.
+            <p className="text-sm text-slate-500 leading-relaxed max-w-xs mb-6">
+              The modern platform for hotel owners, Airbnb hosts, and property managers.
+              Automate operations, increase bookings, and grow revenue — on autopilot.
             </p>
 
-            {/* Social */}
-            <div className="flex gap-3">
-              {[Twitter, Linkedin, Instagram, Facebook].map((Icon, i) => (
+            {/* Social icons */}
+            <div className="flex gap-2.5 mb-8">
+              {SOCIALS.map(({ Icon, label, href, color }) => (
                 <a
-                  key={i}
-                  href="#"
-                  className="w-10 h-10 rounded-full bg-white border border-[var(--border-light)]
-                  flex items-center justify-center text-[var(--text-primary)]
-                  hover:bg-[var(--color-primary-600)] hover:text-white
-                  transition-all duration-200 shadow-sm"
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  className={`group w-9 h-9 rounded-lg bg-slate-800/80 border border-slate-700/60 flex items-center justify-center text-slate-500 ${color} hover:text-white hover:border-transparent transition-all duration-200`}
                 >
-                  <Icon className="w-5 h-5" />
+                  <Icon className="w-4 h-4" />
                 </a>
               ))}
             </div>
-          </div>
-              
-          {/* Platform */}
-          <div className="">
-            <h4 className="text-[var(--text-primary)] font-semibold mb-[var(--space-2)]">
-              Platform
-            </h4>
-            <ul className="space-y-3 text-sm">
-              <li><Link href="/features/contact-management" className="hover:text-[var(--color-primary-600)]">Contact Management</Link></li>
-              <li><Link href="/features/lead-scoring" className="hover:text-[var(--color-primary-600)]">Lead Scoring</Link></li>
-              <li><Link href="/features/sales-pipeline" className="hover:text-[var(--color-primary-600)]">Sales Pipeline</Link></li>
-              <li><Link href="/features/workflow-automation" className="hover:text-[var(--color-primary-600)]">Automation</Link></li>
-            </ul>
+
+            {/* Status pill */}
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-slate-900 border border-slate-800 text-xs font-medium text-slate-400">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-60" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-green-400" />
+              </span>
+              All systems operational
+            </div>
           </div>
 
-          {/* Solutions */}
-          <div>
-            <h4 className="text-[var(--text-primary)] font-semibold mb-[var(--space-4)]">
-              Solutions
-            </h4>
-            <ul className="space-y-3 text-sm">
-              <li><Link href="/industry/enterprise" className="hover:text-[var(--color-primary-600)]">Enterprise</Link></li>
-              <li><Link href="/industry/startup" className="hover:text-[var(--color-primary-600)]">Startups</Link></li>
-              <li><Link href="/industry/agencies" className="hover:text-[var(--color-primary-600)]">Agencies</Link></li>
-              <li><Link href="/industry/sales-team" className="hover:text-[var(--color-primary-600)]">Sales Teams</Link></li>
-            </ul>
-          </div>
-
-          {/* Resources */}
-          <div>
-            <h4 className="text-[var(--text-primary)] font-semibold mb-[var(--space-4)] ">
-              Resources
-            </h4>
-            <ul className="space-y-3 text-sm">
-              <li><Link href="/resources/documentation" className="hover:text-[var(--color-primary-600)]">Documentation</Link></li>
-              <li><Link href="/howitworks" className="hover:text-[var(--color-primary-600)]">How it Works</Link></li>
-              <li><Link href="/resources/help-center" className="hover:text-[var(--color-primary-600)]">Help Center</Link></li>
-              <li><Link href="/about-us" className="hover:text-[var(--color-primary-600)]">about-us</Link></li>
-            </ul>
-          </div>
+          {/* Nav link columns */}
+          {Object.entries(NAV_LINKS).map(([title, links]) => (
+            <div key={title}>
+              <h4 className="text-xs font-bold uppercase tracking-widest text-slate-500 mb-5">
+                {title}
+              </h4>
+              <ul className="space-y-3.5">
+                {links.map(({ label, href }) => (
+                  <li key={label}>
+                    <Link
+                      href={href}
+                      className="group flex items-center gap-1.5 text-sm text-slate-500 hover:text-[var(--color-primary-700)] transition-colors duration-200"
+                    >
+                      <span className="w-0 group-hover:w-3 overflow-hidden transition-all duration-200 opacity-0 group-hover:opacity-100">
+                        <ArrowRight className="w-3 h-3 text-blue-500 shrink-0" />
+                      </span>
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
-        {/* CTA Banner */}
-        <div className="bg-[var(--bg-primary)] border border-[var(--border-light)] rounded-2xl p-4 md:p-6 flex flex-col md:flex-row items-center justify-between gap-6 mb-[var(--space-6)] mt-2 shadow-sm">
-          <div>
-            <h3 className="text-lg font-semibold text-[var(--text-primary)]">
-              Ready to grow your business?
-            </h3>
-            <p className="text-sm text-[var(--text-secondary)] mt-1">
-              Start your free trial today. No credit card required.
-            </p>
+
+
+        {/* ── Bottom bar ─────────────────────────────────────── */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 py-6 border-t border-slate-800/80 text-xs text-slate-600">
+          <div className="flex items-center gap-3">
+            <span>© 2026 Estate Management. All rights reserved.</span>
+            <span className="hidden md:inline text-slate-800">·</span>
+            <span className="hidden md:inline">Made with ♥ for property managers</span>
           </div>
 
-          <Link
-            href="/signup"
-            className="flex items-center gap-2 px-6 py-3 rounded-lg
-            bg-[var(--color-primary-600)] hover:bg-[var(--color-primary-700)]
-            text-white font-semibold transition-all shadow-lg"
-          >
-            Start Free Trial
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
-
-        {/* Bottom */}
-        <div className="pt-3 border-t border-[var(--border-light)] flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-[var(--text-tertiary)]">
-
-          <p>© 2026 BNB Management. All rights reserved.</p>
-
-          <div className="flex gap-6">
-            <Link href="/privacy" className="hover:text-[var(--color-primary-600)]">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="hover:text-[var(--color-primary-600)]">
-              Terms of Service
-            </Link>
-            <Link href="/cookies" className="hover:text-[var(--color-primary-600)]">
-              Cookies
-            </Link>
+          <div className="flex items-center gap-5">
+            {[
+              { label: "Privacy Policy", href: "/privacy"  },
+              { label: "Terms of Service", href: "/terms"  },
+              { label: "Cookies",          href: "/cookies"},
+              { label: "Sitemap",          href: "/sitemap"},
+            ].map(({ label, href }) => (
+              <Link
+                key={label}
+                href={href}
+                className="hover:text-slate-300 transition-colors duration-200"
+              >
+                {label}
+              </Link>
+            ))}
           </div>
         </div>
 
@@ -135,6 +231,3 @@ function Footer() {
     </footer>
   )
 }
-
-export default Footer
-

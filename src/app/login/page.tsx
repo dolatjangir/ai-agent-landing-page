@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { FaUserAlt, FaLock, FaEye, FaEyeSlash, FaShieldAlt, FaGoogle, FaGithub, FaCog } from "react-icons/fa";
@@ -20,7 +21,7 @@ const Login = () => {
   };
 
   return (
-     <div className="min-h-screen w-full 
+    <div className="min-h-screen w-full 
 bg-[url('/assets/login-bg.png')] 
 bg-cover bg-center bg-no-repeat after:absolute after:bg-slate-900/10 after:top-0 after:left-0 after:w-full after:h-full">
     <div
@@ -31,10 +32,11 @@ bg-cover bg-center bg-no-repeat after:absolute after:bg-slate-900/10 after:top-0
 
 
       {/* TOP-LEFT LOGO */}
+       <Link href="/">
       <div className="absolute top-6 left-8 z-10 flex items-center gap-2">
         {/* estateai logo */}
         <img width={200} height={200} src="/assets/estateai.png"/>
-      </div>
+      </div></Link>
 
       {/* MAIN CONTENT */}
       <div className="flex items-center  justify-center px-6 min-h-screen">
