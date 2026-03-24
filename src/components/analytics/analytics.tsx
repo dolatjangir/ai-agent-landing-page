@@ -224,7 +224,7 @@ const Analytics = () => {
        <div className="relative w-full flex justify-center">
   <div className="w-full">
     <img
-      src="/assets/ai-dashboard.png"
+      src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774338372/ai-dashboard_jnxlju.png"
       className="w-full h-auto object-cover rounded-2xl"
       alt="CRM Collaboration"
     />

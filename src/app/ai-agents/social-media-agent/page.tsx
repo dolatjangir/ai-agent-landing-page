@@ -440,7 +440,7 @@ export default function AISocialMediaAgentLanding() {
                          <img
                            src="/assets/social-media-hero-robo.png"
                            alt="AI Robot"
-                           className="w-[100%] max-w-none lg:w-[90%] xl:w-full object-contain translate-x-2 lg:translate-x-10"
+                           className="w-[100%] max-w-none lg:w-[90%] xl:w-[80%] object-contain translate-x-2 lg:translate-x-10"
                          />
                
                        </div>

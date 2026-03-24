@@ -290,7 +290,7 @@ export default function CampaignAutomationAgentLanding() {
              <img
                src="/assets/campaign-auto-hero-robo.png"
                alt="AI Robot"
-               className="w-[90%] max-w-none lg:w-[90%] xl:w-full object-contain translate-x-6 lg:translate-x-10"
+               className="w-[90%] max-w-none lg:w-[90%] xl:w-[70%] object-contain translate-x-6 lg:translate-x-10"
              />
    
            </div>
