@@ -333,9 +333,9 @@ export default function ContentCreationAgentLanding() {
             <div className="relative transform-style-3d">
               
               <img
-                src="/assets/property-hero-robo.png"
+                src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774344447/content-creation_vx9cdv.png"
                 alt="AI Robot"
-                className="w-[100%] max-w-none lg:w-[90%] xl:w-full object-contain translate-x-2 lg:translate-x-10"
+                className="w-[100%] max-w-none lg:w-[90%] xl:w-[80%] object-contain translate-x-2 lg:translate-x-10"
               />
     
             </div>

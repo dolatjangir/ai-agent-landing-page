@@ -25,7 +25,7 @@ function Hero() {
     <div>
          {/* Hero Section */}
             <section className="relative mt-12 pt-28 pb-20 lg:pt-24 lg:pb-32 overflow-hidden">
-              <div className="absolute inset-0 bg-[url('/assets/hero-2.png')] bg-center bg-cover lg:h-screen after:bg-slate-900/10 after:absolute after:top-0 after:left-0 after:w-full after:h-full bg-no-repeat " />
+              <div className="absolute inset-0 bg-[url('https://res.cloudinary.com/djipgt6vc/image/upload/v1774335521/hero-2_daxnm1.png')] bg-center bg-cover lg:h-screen after:bg-slate-900/10 after:absolute after:top-0 after:left-0 after:w-full after:h-full bg-no-repeat " />
               <div className="absolute top-0 right-0 w-1/2 h-full  to-transparent " />
               
               <div className="relative w-full h-full  px-[var(--space-4)] sm:px-[var(--space-6)] lg:px-[var(--space-8)]">
@@ -76,7 +76,7 @@ function Hero() {
                             <Star key={i} className="w-4 h-4 fill-[var(--color-warning-500)] text-[var(--color-warning-500)]" />
                           ))}
                         </div>
-                        <p className="text-sm text-[var(--text-secondary)]">4.9/5 from 2,000+ reviews</p>
+                        <p className="text-sm text-white">4.9/5 from 2,000+ reviews</p>
                       </div>
                     </div>
                   </div>

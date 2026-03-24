@@ -109,43 +109,56 @@ function Trusted() {
             EstateAI combines CRM, AI automation, marketing tools, and property matching in one platform.
           </p>
           
-          <div className="relative overflow-hidden w-full py-10">
-            {/* Gradient masks for smooth fade effect on edges */}
-            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#f8fafc] to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#f8fafc] to-transparent z-10 pointer-events-none" />
-            
-            <div className="flex animate-marquee gap-6 hover:[animation-play-state:paused]">
-             {duplicatedAgents.map((card, i) => (
-          <div
-            key={i}
-            className="min-w-[300px] bg-[var(--color-secondary-100)]
-            border border-[var(--color-glass-border)] rounded-2xl my-4
-            overflow-hidden hover:border-[var(--color-primary-500)]
-            hover:-translate-y-1 transition-all duration-300"
-          >
+       <div className="relative overflow-hidden w-full py-8 sm:py-10">
+  
+  {/* Gradient masks */}
+  <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 md:w-32 bg-gradient-to-r from-[#f8fafc] to-transparent z-10 pointer-events-none" />
+  <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 md:w-32 bg-gradient-to-l from-[#f8fafc] to-transparent z-10 pointer-events-none" />
 
-            {/* Image */}
-            <img
-              src={card.img}
-              alt={card.title}
-              className="w-3/4 h-[220px] object-cover p-2"
-            />
+  {/* Marquee */}
+  <div className="flex animate-marquee gap-4 sm:gap-6 hover:[animation-play-state:paused]">
 
-            {/* Content */}
-            <div className="px-6 py-4">
-              <h3 className="text-lg font-semibold text-[var(--color-primary-500)]">
-                {card.title}
-              </h3>
+    {duplicatedAgents.map((card, i) => (
+      <div
+        key={i}
+        className="
+          min-w-[220px] sm:min-w-[260px] md:min-w-[300px]
+          max-w-[220px] sm:max-w-[260px] md:max-w-[300px]
+          bg-[var(--color-secondary-100)]
+          border border-[var(--color-glass-border)]
+          rounded-2xl my-3 sm:my-4
+          overflow-hidden
+          hover:border-[var(--color-primary-500)]
+          hover:-translate-y-1
+          transition-all duration-300
+        "
+      >
 
-              <p className="text-sm text-[var(--color-primary-500)] mt-2">
-                {card.desc}
-              </p>
-            </div>
+        {/* Image */}
+        <div className="w-full flex justify-center items-center p-3">
+          <img
+            src={card.img}
+            alt={card.title}
+            className="w-full h-[160px] sm:h-[180px] md:h-[220px] object-cover rounded-xl"
+          />
+        </div>
 
-          </div>
-        ))}
-            </div>
-          </div>
+        {/* Content */}
+        <div className="px-4 sm:px-6 pb-4">
+          <h3 className="text-base sm:text-lg font-semibold text-[var(--color-primary-600)]">
+            {card.title}
+          </h3>
+
+          <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
+            {card.desc}
+          </p>
+        </div>
+
+      </div>
+    ))}
+
+  </div>
+</div>
         </div>
       </section>
 

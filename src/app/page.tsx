@@ -577,12 +577,13 @@ const StayPilotLanding = () => {
     
       {/* Features Section */}
       {/* <Features/> */}
+      {/* hand image section */}
 <section className="py-20 bg-white">
   <div className="max-w-6xl mx-auto px-6">
     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
       
       {/* LEFT - Image */}
-      <div className="flex justify-center relative after:absolute after:-bottom-14 after:left-0 after:w-1/2 after:h-1/2 after:bg-linear-to-t  after:from-white after:via-white/100 after:to-transparent after:rotate-45">
+      <div className="flex justify-center relative after:absolute after:-bottom-10 sm:after:-bottom-14 after:left-0 after:w-1/2 after:h-1/2 after:bg-linear-to-t  after:from-white after:via-white/100 after:to-transparent after:rotate-35 sm:after:rotate-35">
         <img 
           src="/assets/hand-phone-img.png" 
           alt="LeadBot AI Mobile" 
