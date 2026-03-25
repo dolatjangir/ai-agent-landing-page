@@ -21,9 +21,12 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen w-full 
+ <div className="min-h-screen w-full 
 bg-[url('/assets/login-bg.png')] 
-bg-cover bg-center bg-no-repeat after:absolute after:bg-slate-900/10 after:top-0 after:left-0 after:w-full after:h-full">
+bg-cover bg-center bg-no-repeat 
+after:absolute after:bg-slate-900/10 
+after:top-0 after:left-0 after:w-full after:h-full
+after:pointer-events-none">
     <div
       className="min-h-screen w-full relative overflow-hidden "
       
@@ -53,7 +56,7 @@ bg-cover bg-center bg-no-repeat after:absolute after:bg-slate-900/10 after:top-0
             }}
           >
             <h2 className="text-base font-semibold text-gray-300 mb-1 tracking-widest uppercase">
-              WELCOME, <span className="text-white">[User Name]!</span>
+              WELCOME,
             </h2>
 
             <h1 className="text-3xl font-black leading-snug mb-7 text-white">
@@ -161,9 +164,9 @@ bg-cover bg-center bg-no-repeat after:absolute after:bg-slate-900/10 after:top-0
 
             <div className="text-center mt-6 text-gray-400 text-sm">
               Don't have an account?{" "}
-              <span className="text-white font-bold cursor-pointer hover:underline">
+            <Link href="/register">  <span className="text-white font-bold cursor-pointer hover:underline">
                 Sign Up
-              </span>
+              </span></Link>
             </div>
           </div>
 

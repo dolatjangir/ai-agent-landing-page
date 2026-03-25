@@ -139,7 +139,7 @@ const navItems: NavItem[] = [
       footer: {
         text: "See all features",
         link: "Explore →",
-        href: "/features"
+        href: "/explore-ai-agent"
       }
     }
   },
@@ -202,7 +202,7 @@ const navItems: NavItem[] = [
       footer: {
         text: "See all features",
         link: "Explore →",
-        href: "/features"
+        href: "/explore-feature"
       }
     }
   },
@@ -264,7 +264,7 @@ const navItems: NavItem[] = [
     footer: {
       text: "Not sure which solution fits your business?",
       link: "Talk to Sales →",
-      href: "/contact"
+      href: "/talk-to-sales"
     }
   }
 },
@@ -334,7 +334,7 @@ const navItems: NavItem[] = [
       footer: {
         text: "Need personalized help?",
         link: "Book a Demo →",
-        href: "/demo"
+        href: "/book-demo"
       }
     }
   }
@@ -512,11 +512,11 @@ onMouseLeave={() => item.hasDropdown && handleMouseLeave()}
         </nav>
 
         <div className="hidden md:flex items-center gap-[var(--space-4)]">
-          <Link href="/login" target='_blank'>
+          <Link href="/login">
           <button className="text-[var(--text-secondary)] hover:text-[var(--color-primary-600)] font-medium transition-colors duration-[var(--duration-fast)]">
             Log in
           </button></Link>
-          <Link href="https://bnb.ibigdata.in/register" target='_blank'>
+          <Link href="/register">
           <button
             className="px-[var(--space-6)] py-[var(--space-2)] bg-[var(--color-primary-600)] hover:bg-[var(--color-primary-700)] text-[var(--text-inverse)] font-semibold rounded-lg transition-all duration-[var(--duration-fast)] shadow-lg hover:shadow-xl"
             style={{
@@ -641,7 +641,7 @@ onMouseLeave={() => item.hasDropdown && handleMouseLeave()}
         Log in
       </button>
       </Link>
-      <Link href="https://bnb.ibigdata.in/register" target='_blank'>
+      <Link href="/register" target='_blank'>
       <button className="w-full py-[var(--space-3)] bg-[var(--color-primary-600)] text-[var(--text-inverse)] font-semibold rounded-[var(--radius-xl)]">
         Start Free Trial
       </button></Link>

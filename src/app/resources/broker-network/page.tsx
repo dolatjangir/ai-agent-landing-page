@@ -32,6 +32,7 @@ import {
   X,
   Menu,
 } from "lucide-react";
+import Link from "next/link";
 
 // Animation variants
 const fadeInUp = {
@@ -235,7 +236,7 @@ export default function BrokerNetworkPage(): React.ReactElement {
 
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
+      <section className="relative pt-32 pb-20 lg:pt-28 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#e6f2ff] via-white to-[#eef6ff]" />
         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blue-50/50 to-transparent" />
         
@@ -723,14 +724,14 @@ export default function BrokerNetworkPage(): React.ReactElement {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-[#0066cc] font-semibold rounded-xl hover:bg-blue-50 transition-all duration-300 shadow-lg">
+                <Link href="/start-free-trial"> <button className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-[#0066cc] font-semibold rounded-xl hover:bg-blue-50 transition-all duration-300 shadow-lg">
                   Join the Broker Network
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
-                <button className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent text-white font-semibold rounded-xl border-2 border-white/30 hover:bg-white/10 transition-all duration-300">
+                </button></Link>
+                <Link href="/book-demo"><button className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent text-white font-semibold rounded-xl border-2 border-white/30 hover:bg-white/10 transition-all duration-300">
                   <Phone className="w-5 h-5" />
                   Book Demo
-                </button>
+                </button></Link>
               </div>
 
               <div className="mt-10 flex flex-wrap justify-center gap-6 text-sm text-blue-200">
