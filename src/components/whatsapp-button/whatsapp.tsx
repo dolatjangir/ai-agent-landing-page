@@ -144,7 +144,7 @@ export default function WhatsAppChatbot() {
   // Button visible state
   if (showButton && !isOpen) {
     return (
-      <div className={`fixed bottom-8 right-8 z-50 transition-all duration-500 ${
+      <div className={`fixed bottom-3 right-4 z-50 transition-all duration-500 ${
         isAnimating ? 'scale-0 opacity-0' : 'scale-100 opacity-100'
       }`}>
         {/* Pulse Effect Behind Button */}
@@ -154,7 +154,7 @@ export default function WhatsAppChatbot() {
         {/* Main Button */}
         <button
           onClick={handleOpen}
-          className="relative group flex items-center gap-3 pr-4 pl-4 sm:pr-6 sm:pl-4 py-4 bg-gradient-to-r from-[#0066cc]/90 to-[#0052a3]/90 rounded-full shadow-2xl shadow-blue-500/30 hover:shadow-blue-500/50 transition-all duration-300 hover:scale-105 active:scale-95"
+          className="relative group flex items-center gap-3 pr-4 pl-4 sm:pr-6 sm:pl-4 py-4 bg-gradient-to-r from-[#0066cc]/50 to-[#0052a3]/50 rounded-full shadow-2xl shadow-blue-500/30 hover:shadow-blue-500/50 transition-all duration-300 hover:scale-105 active:scale-95"
         >
           <div className="relative">
             <MessageCircle className="w-7 h-7 text-white" />
