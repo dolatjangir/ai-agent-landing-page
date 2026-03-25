@@ -22,7 +22,7 @@ const Login = () => {
 
   return (
  <div className="min-h-screen w-full 
-bg-[url('/assets/login-bg.png')] 
+bg-[url('https://res.cloudinary.com/djipgt6vc/image/upload/v1774335586/login-bg_myf3hh.png')] 
 bg-cover bg-center bg-no-repeat 
 after:absolute after:bg-slate-900/10 
 after:top-0 after:left-0 after:w-full after:h-full
@@ -179,7 +179,7 @@ after:pointer-events-none">
             
             >
               <img
-                src="/assets/login-robo.png"
+                src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774335570/login-robo_y9a5vm.png"
                 alt="Cyber AI Robot"
                 className="w-60 h-60 object-contain"
               />

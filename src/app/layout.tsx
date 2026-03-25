@@ -6,6 +6,7 @@ import Header from "@/components/header/header";
 import Footer from "@/components/footer/footer";
 import HeaderSwitcher from "@/components/HeaderSwitcher/Headerswitcher";
 import LayoutWrapper from "@/components/layoutwrapper/layoutwrapper";
+import WhatsAppButton from "@/components/whatsapp-button/whatsapp";
 
 
 const inter = Inter({ 
@@ -45,7 +46,9 @@ export default function RootLayout({
       <body className={`${inter.variable} ${spaceGrotesk.variable} antialiased text-slate-900 `}>
        
         <div className=" bg-[var(--bg-secondary)]">
-       <LayoutWrapper>{children}
+       <LayoutWrapper>
+        {children}
+        <WhatsAppButton/>
         </LayoutWrapper> 
         </div>
       

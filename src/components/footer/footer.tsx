@@ -16,22 +16,22 @@ import {
 
 const NAV_LINKS = {
   Platform: [
-    { label: "Contact Management", href: "/features/contact-management" },
-    { label: "Lead Scoring",        href: "/features/lead-scoring" },
-    { label: "Sales Pipeline",      href: "/features/sales-pipeline" },
-    { label: "Automation",          href: "/features/workflow-automation" },
+    { label: "Ai Automation", href: "/features/ai-automation" },
+    { label: "Lead Management",   href: "/features/lead-management" },
+    { label: "Property Intelligence", href: "/features/property-ai" },
+    { label: "Smart communication",   href: "/features/conversational-ai" },
   ],
   Solutions: [
-    { label: "Enterprise", href: "/industry/enterprise" },
-    { label: "Startups",   href: "/industry/startup" },
-    { label: "Agencies",   href: "/industry/agencies" },
-    { label: "Sales Teams",href: "/industry/sales-team" },
+    { label: "Data Mining", href: "/solutions/data-mining" },
+    { label: "Lead Funnal",   href: "/solutions/lead-funnal" },
+    { label: "campaign Automation",   href: "/solutions/campaign-running" },
+    { label: "Lead Follow-Up",href: "/solutions/lead-followup" },
   ],
   Resources: [
-    { label: "Documentation", href: "/resources/documentation" },
-    { label: "How it Works",  href: "/howitworks" },
+    { label: "Contact Us", href: "/contact-us" },
+    { label: "How it Works",  href: "/resources/howitworks" },
     { label: "Help Center",   href: "/resources/help-center" },
-    { label: "About Us",      href: "/about-us" },
+    { label: "About Us",      href: "/resources/about-us" },
   ],
 }
 
@@ -87,7 +87,7 @@ export default function Footer() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* ── Newsletter strip ────────────────────────────────── */}
-        <div className="border-b border-slate-800/80 py-10">
+        <div className="border-b border-slate-300/80 py-10">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
             <div className="text-center lg:text-left">
               <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-3.5 py-1 mb-3">
@@ -109,7 +109,7 @@ export default function Footer() {
                   <span className="text-sm font-semibold text-green-400">You're subscribed!</span>
                 </div>
               ) : (
-                <div className="flex w-full rounded-xl overflow-hidden border border-slate-700/80 bg-blue-200/60 focus-within:border-blue-500/60 focus-within:ring-1 focus-within:ring-blue-500/20 transition-all duration-200">
+                <div className="flex w-full rounded-xl overflow-hidden border border-blue-700/80 bg-blue-200/60 focus-within:border-blue-500/60 focus-within:ring-1 focus-within:ring-blue-500/20 transition-all duration-200">
                   <input
                     type="email"
                     value={email}
@@ -157,7 +157,7 @@ export default function Footer() {
                   key={label}
                   href={href}
                   aria-label={label}
-                  className={`group w-9 h-9 rounded-lg bg-slate-800/80 border border-slate-700/60 flex items-center justify-center text-slate-500 ${color} hover:text-white hover:border-transparent transition-all duration-200`}
+                  className={`group w-9 h-9 rounded-lg bg-blue-200/80 border border-blue-700/60 flex items-center justify-center text-blue-900 ${color} hover:text-white hover:border-transparent transition-all duration-200`}
                 >
                   <Icon className="w-4 h-4" />
                 </a>
@@ -165,7 +165,7 @@ export default function Footer() {
             </div>
 
             {/* Status pill */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-slate-900 border border-slate-800 text-xs font-medium text-slate-400">
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-blue-200 border border-blue-800 text-xs font-medium text-blue-900">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-60" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-green-400" />
@@ -202,7 +202,7 @@ export default function Footer() {
 
 
         {/* ── Bottom bar ─────────────────────────────────────── */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4 py-6 border-t border-slate-800/80 text-xs text-slate-600">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 py-6 border-t border-slate-300/80 text-xs text-slate-600">
           <div className="flex items-center gap-3">
             <span>© 2026 Estate Management. All rights reserved.</span>
             <span className="hidden md:inline text-slate-800">·</span>

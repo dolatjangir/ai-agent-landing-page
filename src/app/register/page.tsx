@@ -38,7 +38,7 @@ const Register = () => {
 
   return (
     <div className="min-h-screen w-full 
-bg-[url('/assets/login-bg.png')] 
+bg-[url('https://res.cloudinary.com/djipgt6vc/image/upload/v1774335586/login-bg_myf3hh.png')] 
 bg-cover bg-center bg-no-repeat 
 after:absolute after:bg-slate-900/10 
 after:top-0 after:left-0 after:w-full after:h-full
@@ -172,7 +172,7 @@ after:pointer-events-none">
             <div className="hidden lg:flex flex-col items-center text-center max-w-md">
               <div className="w-72 h-72 rounded-full flex items-center justify-center mb-8">
                 <img
-                  src="/assets/login-robo.png"
+                  src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774335570/login-robo_y9a5vm.png"
                   className="w-60 h-60 object-contain"
                 />
               </div>
