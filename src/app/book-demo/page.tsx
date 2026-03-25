@@ -159,7 +159,7 @@ function StepIndicator({ step }: { step: Step }) {
         <div key={s.n} className="flex items-center">
           <div className="flex flex-col items-center gap-2">
             <div
-              className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold transition-all duration-300 ${
+              className={`w-6 h-6 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-sm font-semibold transition-all duration-300 ${
                 step > s.n
                   ? "bg-[#0066cc] text-white"
                   : step === s.n
@@ -174,7 +174,7 @@ function StepIndicator({ step }: { step: Step }) {
             </span>
           </div>
           {i < steps.length - 1 && (
-            <div className={`h-0.5 w-16 sm:w-24 mx-2 mb-5 transition-all duration-500 ${step > s.n ? "bg-[#0066cc]" : "bg-gray-200"}`} />
+            <div className={`h-0.5 w-5 sm:w-16 lg:w-24 mx-2 mb-5 transition-all duration-500 ${step > s.n ? "bg-[#0066cc]" : "bg-gray-200"}`} />
           )}
         </div>
       ))}
@@ -274,7 +274,7 @@ function StepOne({
       <button
         onClick={onNext}
         disabled={!valid}
-        className="mt-8 w-full py-4 rounded-xl bg-[#0066cc] text-white font-semibold text-base hover:bg-[#0052a3] active:scale-[0.99] disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center gap-2"
+        className="mt-8 w-full py-4 rounded-xl bg-[#0066cc] text-white font-semibold text-xs sm:text-base hover:bg-[#0052a3] active:scale-[0.99] disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center gap-2"
       >
         Continue to Scheduling
         <ArrowRight className="w-5 h-5" />
@@ -557,7 +557,7 @@ export default function BookDemoPage() {
 
         {/* Booking Form - Centered */}
         <div className="max-w-2xl mx-auto mb-20">
-          <div className="bg-white rounded-3xl border border-gray-200 shadow-2xl shadow-slate-200/60 p-8 sm:p-10">
+          <div className="bg-white rounded-3xl border border-gray-200 shadow-2xl shadow-slate-200/60 px-4 py-8 sm:p-10">
             {!isSuccess ? (
               <>
                 <StepIndicator step={step} />
@@ -644,19 +644,7 @@ export default function BookDemoPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-gray-100 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-6 py-8">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500">
-            <p>© 2026 EstateAI. All rights reserved.</p>
-            <div className="flex items-center gap-6">
-              <Link href="/privacy" className="hover:text-[#0066cc] transition-colors">Privacy</Link>
-              <Link href="/terms" className="hover:text-[#0066cc] transition-colors">Terms</Link>
-              <Link href="/help" className="hover:text-[#0066cc] transition-colors">Help Center</Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+    
     </div>
   )
 }

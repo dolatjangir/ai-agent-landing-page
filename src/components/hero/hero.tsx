@@ -66,7 +66,7 @@ function Hero() {
                         {topUsers.map((user) => (
                           <img key={user.id} src={user.avatar} alt={user.name} className="w-10 h-10 rounded-full border-2 border-[var(--color-primary-100)] bg-[var(--color-primary-50)]" />
                         ))}
-                        <div className="w-10 h-10 rounded-full bg-[var(--color-primary-50)] border-2 border-[var(--color-primary-100)] flex items-center justify-center text-xs text-[var(--color-primary-500)]">
+                        <div className="min-w-10 min-h-10 rounded-full bg-[var(--color-primary-50)] border-2 border-[var(--color-primary-100)] flex items-center justify-center text-xs text-[var(--color-primary-500)]">
                   +886
                 </div>
                       </div>
