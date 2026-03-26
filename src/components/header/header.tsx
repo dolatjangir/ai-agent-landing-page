@@ -553,7 +553,7 @@ onMouseLeave={() => item.hasDropdown && handleMouseLeave()}
  <div
   className={`
     md:hidden
-    bg-[var(--color-primary-50))]
+    bg-[var(--color-primary-50)]
     border-t border-[var(--border-light)]
     absolute top-0 right-0 w-full  max-h-[100vh] overflow-y-auto
     transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
@@ -568,15 +568,18 @@ onMouseLeave={() => item.hasDropdown && handleMouseLeave()}
  <div onClick={() => {setIsMenuOpen(!isMenuOpen)
   setOpenMobileItem(null)}
  } className={`  w-fit absolute p-1 right-2 shadow-xl rounded-md bg-[var(--color-primary-100)] ${isMenuOpen ? 'block' : 'hidden'}`}> <X className="w-6 h-6 text-[var(--color-primary-800)]" /></div></div>
-    <div className="px-[var(--space-4)] py-[var(--space-6)] space-y-6">
-
-      {navItems.map((item) => (
-        <div key={item.label} className="space-y-3">
-
-          {/* Section Title (Clickable) */}
+   {/* Mobile Navigation */}
+<div className="px-[var(--space-4)] py-[var(--space-6)] space-y-6">
+  {navItems.map((item) => (
+    <div key={item.label} className="space-y-3">
+      
+      {/* Check if item has dropdown */}
+      {item.hasDropdown ? (
+        <>
+          {/* Dropdown Item - Toggle on click */}
           <button
             onClick={() => toggleMobileItem(item.label)}
-            className="w-full flex justify-between items-center text-sm font-semibold text-[var(--text-primary)]"
+            className="w-full flex justify-between items-center text-sm font-semibold text-[var(--text-primary)] py-2"
           >
             {item.label}
             <ChevronDown
@@ -591,11 +594,9 @@ onMouseLeave={() => item.hasDropdown && handleMouseLeave()}
             <>
               {item.dropdownContent?.sections.map((section, idx) => (
                 <div key={idx} className="space-y-2">
-
                   <div className="text-xs uppercase tracking-wide text-[var(--text-tertiary)]">
                     {section.title}
                   </div>
-
                   {section.items.map((subItem, subIdx) => (
                     <Link
                       key={subIdx}
@@ -606,20 +607,17 @@ onMouseLeave={() => item.hasDropdown && handleMouseLeave()}
                       <div className="w-8 h-8 rounded-lg bg-[var(--color-primary-50)] text-[var(--color-primary-600)] flex items-center justify-center">
                         {subItem.icon}
                       </div>
-
                       <div className="flex-1">
                         <div className="flex items-center gap-2">
                           <span className="text-sm font-medium text-[var(--text-primary)]">
                             {subItem.title}
                           </span>
-
                           {subItem.badge && (
                             <span className="px-1.5 py-0.5 text-[10px] font-semibold bg-[var(--color-primary-100)] text-[var(--color-primary-700)] rounded-full">
                               {subItem.badge}
                             </span>
                           )}
                         </div>
-
                         <p className="text-xs text-[var(--text-tertiary)]">
                           {subItem.description}
                         </p>
@@ -630,23 +628,34 @@ onMouseLeave={() => item.hasDropdown && handleMouseLeave()}
               ))}
             </>
           )}
-        </div>
-      ))}
+        </>
+      ) : (
+        /* No Dropdown - Direct Link */
+        <Link
+          href={item.href}
+          onClick={() => setIsMenuOpen(false)}
+          className="block w-full text-sm font-semibold text-[var(--text-primary)] py-2 hover:text-[var(--color-primary-600)] transition-colors"
+        >
+          {item.label}
+        </Link>
+      )}
+    </div>
+  ))}
 
-      {/* <hr className="border-[var(--border-light)]" /> */}
-<div className='sticky bottom-0 bg-[var(--color-primary-50)] border-t border-neutral-50'>
-      {/* Auth Buttons */}
-      <Link href="/login" target='_blank'>
+  {/* Sticky Bottom Auth Buttons */}
+  <div className='sticky bottom-0 bg-[var(--color-primary-50)] border-t border-neutral-50 pt-4'>
+    <Link href="/login">
       <button className="w-full py-[var(--space-3)] text-[var(--text-secondary)] font-medium">
         Log in
       </button>
-      </Link>
-      <Link href="/register" target='_blank'>
-      <button className="w-full py-[var(--space-3)] bg-[var(--color-primary-600)] text-[var(--text-inverse)] font-semibold rounded-[var(--radius-xl)]">
+    </Link>
+    <Link href="/register">
+      <button className="w-full py-[var(--space-3)] bg-[var(--color-primary-600)] text-[var(--text-inverse)] font-semibold rounded-[var(--radius-xl)] mt-2">
         Start Free Trial
-      </button></Link>
-      </div>
-    </div>
+      </button>
+    </Link>
+  </div>
+</div>
   </div>
 
 

@@ -64,7 +64,7 @@ export default function WhatsAppChatbot() {
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
-
+// this is send message on openai function
   useEffect(() => {
     scrollToBottom()
   }, [messages, isTyping])
@@ -85,33 +85,105 @@ export default function WhatsAppChatbot() {
     }, 400)
   }
 
-  const handleSendMessage = (text: string = inputText) => {
-    if (!text.trim()) return
 
-    const userMessage = {
-      id: Date.now().toString(),
-      type: 'user',
-      text: text,
-      time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      status: 'sent'
-    }
+  // const handleSendMessage = (text: string = inputText) => {
+  //   if (!text.trim()) return
 
-    setMessages(prev => [...prev, userMessage])
-    setInputText('')
-    setIsTyping(true)
+  //   const userMessage = {
+  //     id: Date.now().toString(),
+  //     type: 'user',
+  //     text: text,
+  //     time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+  //     status: 'sent'
+  //   }
 
-    setTimeout(() => {
-      const botResponse = getBotResponse(text)
-      setMessages(prev => [...prev, {
-        id: (Date.now() + 1).toString(),
-        type: 'bot',
-        text: botResponse,
-        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        quickReplies: true
-      }])
-      setIsTyping(false)
-    }, 1200)
+  //   setMessages(prev => [...prev, userMessage])
+  //   setInputText('')
+  //   setIsTyping(true)
+
+  //   setTimeout(() => {
+  //     const botResponse = getBotResponse(text)
+  //     setMessages(prev => [...prev, {
+  //       id: (Date.now() + 1).toString(),
+  //       type: 'bot',
+  //       text: botResponse,
+  //       time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+  //       quickReplies: true
+  //     }])
+  //     setIsTyping(false)
+  //   }, 1200)
+  // }
+const handleSendMessage = async (text: string = inputText) => {
+  if (!text.trim()) return;
+
+  // ✅ USER MESSAGE (UI FORMAT)
+  const userMessage = {
+    id: Date.now().toString(),
+    type: "user",
+    text: text,
+    time: new Date().toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    }),
+    status: "sent",
+  };
+
+  // 👉 Convert existing messages to API format
+  const apiMessages = [
+    ...messages.map((msg) => ({
+      role: msg.type === "user" ? "user" : "assistant",
+      content: msg.text,
+    })),
+    { role: "user", content: text },
+  ];
+
+  setMessages((prev) => [...prev, userMessage]);
+  setInputText("");
+  setIsTyping(true);
+
+  try {
+    const res = await fetch("/api/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ messages: apiMessages }),
+    });
+
+    const data = await res.json();
+
+    // ✅ BOT MESSAGE (UI FORMAT)
+    const botMessage = {
+      id: (Date.now() + 1).toString(),
+      type: "bot",
+      text: data.message?.content || "No response",
+      time: new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
+      quickReplies: true,
+    };
+
+    setMessages((prev) => [...prev, botMessage]);
+  } catch (error) {
+    console.error(error);
+
+    setMessages((prev) => [
+      ...prev,
+      {
+        id: (Date.now() + 2).toString(),
+        type: "bot",
+        text: "Something went wrong ❌",
+        time: new Date().toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
+      },
+    ]);
   }
+
+  setIsTyping(false);
+};
 
   const getBotResponse = (input: string): string => {
     const lower = input.toLowerCase()
