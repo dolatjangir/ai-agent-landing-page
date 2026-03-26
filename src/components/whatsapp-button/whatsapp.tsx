@@ -18,14 +18,17 @@ import {
   Star,
   Calendar
 } from 'lucide-react'
+
 type Message = {
   id: string;
   type: string;
   text: string;
   time: string;
-  quickReplies?: boolean; // ✅ make optional
-  status?: string;        // ✅ add this
+  quickReplies?: boolean;
+  status?: string;
+  showForm?: boolean; // Add this to track which message has the form
 };
+
 // Predefined quick replies
 const QUICK_REPLIES = [
   { icon: Calendar, text: "Book a demo", color: "bg-blue-500" },
@@ -35,12 +38,13 @@ const QUICK_REPLIES = [
   { icon: Shield, text: "Support help", color: "bg-rose-500" },
 ]
 
-const WELCOME_MESSAGE = {
+const WELCOME_MESSAGE: Message = {
   id: 'welcome',
   type: 'bot',
   text: "👋 Welcome to EstateAI!\n\nI'm your AI assistant, here to help you discover how our intelligent agents can transform your real estate business.\n\nWhat brings you here today?",
   time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-  quickReplies: true
+  quickReplies: true,
+  showForm: false
 }
 
 // Feature highlights for the sidebar
@@ -59,12 +63,20 @@ export default function WhatsAppChatbot() {
   const [isTyping, setIsTyping] = useState(false)
   const [showButton, setShowButton] = useState(true)
   const messagesEndRef = useRef<HTMLDivElement>(null)
+  
+  // Form state - only show when AI triggers it
+  const [activeFormMessageId, setActiveFormMessageId] = useState<string | null>(null);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [description, setDescription] = useState("");
+  const [formFields, setFormFields] = useState<string[]>([]);
 
   // Scroll to bottom of messages
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
-// this is send message on openai function
+
   useEffect(() => {
     scrollToBottom()
   }, [messages, isTyping])
@@ -85,127 +97,189 @@ export default function WhatsAppChatbot() {
     }, 400)
   }
 
+  const handleSendMessage = async (text: string = inputText) => {
+    if (!text.trim()) return;
 
-  // const handleSendMessage = (text: string = inputText) => {
-  //   if (!text.trim()) return
-
-  //   const userMessage = {
-  //     id: Date.now().toString(),
-  //     type: 'user',
-  //     text: text,
-  //     time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-  //     status: 'sent'
-  //   }
-
-  //   setMessages(prev => [...prev, userMessage])
-  //   setInputText('')
-  //   setIsTyping(true)
-
-  //   setTimeout(() => {
-  //     const botResponse = getBotResponse(text)
-  //     setMessages(prev => [...prev, {
-  //       id: (Date.now() + 1).toString(),
-  //       type: 'bot',
-  //       text: botResponse,
-  //       time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-  //       quickReplies: true
-  //     }])
-  //     setIsTyping(false)
-  //   }, 1200)
-  // }
-const handleSendMessage = async (text: string = inputText) => {
-  if (!text.trim()) return;
-
-  // ✅ USER MESSAGE (UI FORMAT)
-  const userMessage = {
-    id: Date.now().toString(),
-    type: "user",
-    text: text,
-    time: new Date().toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit",
-    }),
-    status: "sent",
-  };
-
-  // 👉 Convert existing messages to API format
-  const apiMessages = [
-    ...messages.map((msg) => ({
-      role: msg.type === "user" ? "user" : "assistant",
-      content: msg.text,
-    })),
-    { role: "user", content: text },
-  ];
-
-  setMessages((prev) => [...prev, userMessage]);
-  setInputText("");
-  setIsTyping(true);
-
-  try {
-    const res = await fetch("/api/chat", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ messages: apiMessages }),
-    });
-
-    const data = await res.json();
-
-    // ✅ BOT MESSAGE (UI FORMAT)
-    const botMessage = {
-      id: (Date.now() + 1).toString(),
-      type: "bot",
-      text: data.message?.content || "No response",
+    // USER MESSAGE (UI FORMAT)
+    const userMessage: Message = {
+      id: Date.now().toString(),
+      type: "user",
+      text: text,
       time: new Date().toLocaleTimeString([], {
         hour: "2-digit",
         minute: "2-digit",
       }),
-      quickReplies: true,
+      status: "sent",
+      showForm: false
     };
 
-    setMessages((prev) => [...prev, botMessage]);
-  } catch (error) {
-    console.error(error);
+    // Convert existing messages to API format
+    const apiMessages = [
+      ...messages.map((msg) => ({
+        role: msg.type === "user" ? "user" : "assistant",
+        content: msg.text,
+      })),
+      { role: "user", content: text },
+    ];
 
-    setMessages((prev) => [
-      ...prev,
-      {
-        id: (Date.now() + 2).toString(),
+    setMessages((prev) => [...prev, userMessage]);
+    setInputText("");
+    setIsTyping(true);
+    
+    // Hide any previous form when user sends a new message
+    setActiveFormMessageId(null);
+
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ messages: apiMessages }),
+      });
+
+      const data = await res.json();
+      
+      console.log("API Response:", data);
+
+      // Create bot message
+      const botMessageId = (Date.now() + 1).toString();
+      const botMessage: Message = {
+        id: botMessageId,
         type: "bot",
-        text: "Something went wrong ❌",
+        text: data.aiMessage || "No response",
         time: new Date().toLocaleTimeString([], {
           hour: "2-digit",
           minute: "2-digit",
         }),
+        quickReplies: true,
+        showForm: data.isDemo || false
+      };
+
+      setMessages((prev) => [...prev, botMessage]);
+      
+      // If demo is requested, show form for this specific message
+      if (data.isDemo) {
+        setActiveFormMessageId(botMessageId);
+        setFormFields(data.formFields || ["name", "email", "phone", "message"]);
+      }
+
+    } catch (error) {
+      console.error(error);
+
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: (Date.now() + 2).toString(),
+          type: "bot",
+          text: "Something went wrong ❌. Please try again.",
+          time: new Date().toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+          }),
+          quickReplies: true,
+          showForm: false
+        },
+      ]);
+    }
+
+    setIsTyping(false);
+  };
+
+const handleDemoSubmit = async () => {
+  if (!name || !email || !phone) {
+    alert("Please fill all required fields");
+    return;
+  }
+
+  // Email validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    alert("Please enter a valid email address");
+    return;
+  }
+
+  try {
+    const res = await fetch("/api/demo", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        phone,
+        description,
+      }),
+    });
+
+    const data = await res.json();
+
+    // Check if request failed
+    if (!data.success) {
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: Date.now().toString(),
+          type: "bot",
+          text: `❌ ${data.error || "Failed to submit demo request. Please try again."}`,
+          time: new Date().toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+          }),
+          quickReplies: true,
+          showForm: false
+        },
+      ]);
+      return;
+    }
+
+    // Success - show confirmation in chat
+    setMessages((prev) => [
+      ...prev,
+      {
+        id: Date.now().toString(),
+        type: "bot",
+        text: "✅ Your demo request has been submitted!\n\n📧 Check your email for confirmation.\n\n⏰ Our team will contact you within 24 hours.",
+        time: new Date().toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
+        quickReplies: true,
+        showForm: false
+      },
+    ]);
+
+    // Hide the form
+    setActiveFormMessageId(null);
+    
+    // Reset form
+    setName("");
+    setEmail("");
+    setPhone("");
+    setDescription("");
+    setFormFields([]);
+
+  } catch (err) {
+    console.error(err);
+    
+    // Show error in chat instead of alert
+    setMessages((prev) => [
+      ...prev,
+      {
+        id: Date.now().toString(),
+        type: "bot",
+        text: "❌ Something went wrong. Please try again or contact us directly at sales@estateai.com",
+        time: new Date().toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
+        quickReplies: true,
+        showForm: false
       },
     ]);
   }
-
-  setIsTyping(false);
 };
-
-  const getBotResponse = (input: string): string => {
-    const lower = input.toLowerCase()
-    
-    if (lower.includes('demo') || lower.includes('book')) {
-      return "🎯 **Book a Demo**\n\nI'd love to show you EstateAI in action! Our 30-minute personalized demo includes:\n\n✓ Live platform walkthrough\n✓ Custom use-case discussion\n✓ ROI calculation for your business\n✓ Q&A with our solutions expert\n\n**[Click here to schedule →]**\n\nOr reply with your email and I'll send you a calendar link!"
-    }
-    if (lower.includes('price') || lower.includes('cost') || lower.includes('plan')) {
-      return "💰 **Pricing Plans**\n\nWe offer flexible pricing for every stage:\n\n**Starter** - $49/month\n• Up to 10 users\n• Core AI features\n• Email support\n\n**Professional** - $149/month\n• Up to 50 users\n• Advanced automation\n• Priority support\n• Custom integrations\n\n**Enterprise** - Custom\n• Unlimited users\n• Dedicated success manager\n• SLA guarantees\n• White-label options\n\nWant a personalized quote? Just ask!"
-    }
-    if (lower.includes('feature') || lower.includes('product') || lower.includes('what')) {
-      return "🤖 **EstateAI Features**\n\nOur platform includes 6 powerful modules:\n\n**1. AI Automation Engine**\nOrchestrate complex workflows automatically\n\n**2. Lead Management**\nAI-powered scoring and qualification\n\n**3. Property Intelligence**\nMarket analysis and price predictions\n\n**4. Marketing Automation**\nCampaign creation and optimization\n\n**5. Smart Communication**\nAI calls, chats, and follow-ups\n\n**6. Analytics & Insights**\nReal-time dashboards and reports\n\nWhich feature interests you most?"
-    }
-    if (lower.includes('sales') || lower.includes('talk') || lower.includes('contact')) {
-      return "📞 **Connect with Sales**\n\nOur sales team is ready to help!\n\n**Contact Options:**\n• 📱 Phone: +1 (555) 123-4567\n• 📧 Email: sales@estateai.com\n• 💬 Live Chat: Available now\n\n**Hours:** Monday-Friday, 9am-6pm EST\n**Response Time:** Under 2 hours\n\nWould you prefer a call, email, or live video meeting?"
-    }
-    if (lower.includes('support') || lower.includes('help') || lower.includes('issue')) {
-      return "🆘 **Technical Support**\n\nI'm here to help resolve any issues!\n\n**Quick Support Options:**\n• 📚 Help Center: docs.estateai.com\n• 💬 Live Chat: 5 min avg response\n• 📧 Email: support@estateai.com\n• 📞 Phone: +1 (555) 123-4567\n\n**Common Topics:**\n• Account setup\n• Integration help\n• Billing questions\n• Feature requests\n\nWhat do you need help with?"
-    }
-    
-    return "💬 Thanks for reaching out!\n\nI can help you with:\n\n• 🎯 **Book a demo** - See the platform live\n• 💰 **Pricing info** - Find the right plan\n• 🤖 **Product features** - Explore capabilities\n• 📞 **Talk to sales** - Connect with our team\n• 🆘 **Support help** - Get technical assistance\n\nWhat would you like to explore?"
-  }
 
   const openWhatsApp = () => {
     const phone = "15551234567"
@@ -216,7 +290,7 @@ const handleSendMessage = async (text: string = inputText) => {
   // Button visible state
   if (showButton && !isOpen) {
     return (
-      <div className={`fixed bottom-3 right-4 z-50 transition-all duration-500 ${
+      <div className={`fixed bottom-6 right-6 z-50 transition-all duration-500 ${
         isAnimating ? 'scale-0 opacity-0' : 'scale-100 opacity-100'
       }`}>
         {/* Pulse Effect Behind Button */}
@@ -226,7 +300,7 @@ const handleSendMessage = async (text: string = inputText) => {
         {/* Main Button */}
         <button
           onClick={handleOpen}
-          className="relative group flex items-center gap-3 pr-4 pl-4 sm:pr-6 sm:pl-4 py-4 bg-gradient-to-r from-[#0066cc]/50 to-[#0052a3]/50 rounded-full shadow-2xl shadow-blue-500/30 hover:shadow-blue-500/50 transition-all duration-300 hover:scale-105 active:scale-95"
+          className="relative group flex items-center gap-3 pr-4 pl-4 sm:pr-6 sm:pl-4 py-4 bg-gradient-to-r from-[#0066cc]/60 to-[#0052a3]/60 rounded-full shadow-2xl shadow-blue-500/30 hover:shadow-blue-500/50 transition-all duration-300 hover:scale-105 active:scale-95"
         >
           <div className="relative">
             <MessageCircle className="w-7 h-7 text-white" />
@@ -349,7 +423,7 @@ const handleSendMessage = async (text: string = inputText) => {
                 </p>
               </div>
             </div>
-            
+  
             <div className="flex items-center gap-3">
               <button 
                 onClick={openWhatsApp}
@@ -378,7 +452,7 @@ const handleSendMessage = async (text: string = inputText) => {
 
             {messages.map((msg, idx) => (
               <div key={msg.id} className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div className={`flex items-end gap-3 max-w-[90%] sm:max-w-[80%] ${msg.type === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
+                <div className={`flex items-start gap-3 max-w-[90%] sm:max-w-[80%] ${msg.type === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
                   {/* Avatar */}
                   {msg.type === 'bot' ? (
                     <div className="w-10 h-10 bg-gradient-to-br from-[#0066cc] to-[#0052a3] rounded-full flex items-center justify-center flex-shrink-0 shadow-md">
@@ -390,21 +464,97 @@ const handleSendMessage = async (text: string = inputText) => {
                     </div>
                   )}
 
-                  {/* Message Bubble */}
-                  <div className={`relative px-3 sm:px-5 py-3 rounded-2xl text-sm leading-relaxed shadow-sm ${
-                    msg.type === 'user' 
-                      ? 'bg-[#0066cc] text-white rounded-br-md' 
-                      : 'bg-white text-gray-800 rounded-bl-md border border-gray-100'
-                  }`}>
-                    <div className="whitespace-pre-line">{msg.text}</div>
-                    
-                    {/* Time & Status */}
-                    <div className={`flex items-center gap-1 mt-2 text-[11px] ${
-                      msg.type === 'user' ? 'text-blue-100' : 'text-gray-400'
+                  {/* Message Bubble + Form Container */}
+                  <div className="flex flex-col gap-3">
+                    {/* Message Bubble */}
+                    <div className={`relative px-3 sm:px-5 py-3 rounded-2xl text-sm leading-relaxed shadow-sm ${
+                      msg.type === 'user' 
+                        ? 'bg-[#0066cc] text-white rounded-br-md' 
+                        : 'bg-white text-gray-800 rounded-bl-md border border-gray-100'
                     }`}>
-                      <span>{msg.time}</span>
-                      {msg.type === 'user' && <CheckCheck className="w-3 h-3" />}
+                      <div className="whitespace-pre-line">{msg.text}</div>
+                      
+                      {/* Time & Status */}
+                      <div className={`flex items-center gap-1 mt-2 text-[11px] ${
+                        msg.type === 'user' ? 'text-blue-100' : 'text-gray-400'
+                      }`}>
+                        <span>{msg.time}</span>
+                        {msg.type === 'user' && <CheckCheck className="w-3 h-3" />}
+                      </div>
                     </div>
+
+                    {/* Demo Form - Only show if this specific message triggered it */}
+                    {msg.type === 'bot' && activeFormMessageId === msg.id && (
+                      <div className="p-4 bg-white rounded-xl shadow-md border border-gray-200 w-full sm:w-[350px]">
+                        <h3 className="font-bold text-gray-900 mb-1 flex items-center gap-2">
+                          <Calendar className="w-4 h-4 text-[#0066cc]" />
+                          Book a Demo
+                        </h3>
+                        <p className="text-xs text-gray-500 mb-3">Fill in your details and we'll contact you shortly.</p>
+
+                        <div className="space-y-3">
+                          {formFields.includes("name") && (
+                            <div>
+                              <label className="text-xs font-medium text-gray-700 block mb-1">Name *</label>
+                              <input
+                                type="text"
+                                placeholder="John Doe"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                className="w-full p-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0066cc]/20 focus:border-[#0066cc] transition-all"
+                              />
+                            </div>
+                          )}
+
+                          {formFields.includes("email") && (
+                            <div>
+                              <label className="text-xs font-medium text-gray-700 block mb-1">Email *</label>
+                              <input
+                                type="email"
+                                placeholder="john@example.com"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                className="w-full p-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0066cc]/20 focus:border-[#0066cc] transition-all"
+                              />
+                            </div>
+                          )}
+
+                          {formFields.includes("phone") && (
+                            <div>
+                              <label className="text-xs font-medium text-gray-700 block mb-1">Phone *</label>
+                              <input
+                                type="tel"
+                                placeholder="+1 (555) 000-0000"
+                                value={phone}
+                                onChange={(e) => setPhone(e.target.value)}
+                                className="w-full p-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0066cc]/20 focus:border-[#0066cc] transition-all"
+                              />
+                            </div>
+                          )}
+
+                          {formFields.includes("message") && (
+                            <div>
+                              <label className="text-xs font-medium text-gray-700 block mb-1">Message (Optional)</label>
+                              <textarea
+                                placeholder="Tell us about your requirements..."
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
+                                rows={3}
+                                className="w-full p-2.5 border border-gray-300 rounded-lg text-sm resize-none focus:outline-none focus:ring-2 focus:ring-[#0066cc]/20 focus:border-[#0066cc] transition-all"
+                              />
+                            </div>
+                          )}
+
+                          <button
+                            onClick={handleDemoSubmit}
+                            className="w-full bg-[#0066cc] hover:bg-[#0052a3] text-white font-medium py-2.5 rounded-lg transition-colors flex items-center justify-center gap-2"
+                          >
+                            <Send className="w-4 h-4" />
+                            Submit Request
+                          </button>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -429,7 +579,7 @@ const handleSendMessage = async (text: string = inputText) => {
             )}
 
             {/* Quick Replies */}
-            {messages[messages.length - 1]?.quickReplies && !isTyping && (
+            {messages[messages.length - 1]?.quickReplies && !isTyping && !activeFormMessageId && (
               <div className="flex flex-wrap gap-2 pl-14">
                 {QUICK_REPLIES.map((reply) => {
                   const Icon = reply.icon
@@ -462,7 +612,7 @@ const handleSendMessage = async (text: string = inputText) => {
                   value={inputText}
                   onChange={(e) => setInputText(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-                  placeholder="Type your message..."
+                  placeholder={activeFormMessageId ? "Type your message or fill the form above..." : "Type your message..."}
                   className="w-full pl-5 pr-12 py-4 bg-gray-100 rounded-full text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#0066cc]/20 focus:bg-white transition-all"
                 />
                 <button
