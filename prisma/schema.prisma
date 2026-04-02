@@ -29,3 +29,55 @@ model DemoRequest {
   @@index([createdAt])
   @@map("demo_requests")
 }
+
+model Contact {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  message   String
+  createdAt DateTime @default(now())
+}
+
+model ContactSupport {
+  id            String   @id @default(cuid())
+  name          String
+  email         String
+  subject       String
+  message       String
+  inquiryType   String?
+  priority      String?
+  supportMethod String?
+  preferredTime String?
+  createdAt     DateTime @default(now())
+}
+
+model SEOEntry {
+  id                 String   @id @default(uuid())
+  pageName           String
+  slug               String   @unique
+  url                String   @unique
+  metaTitle          String
+  metaDescription    String   @db.Text
+  keywords           String // Stored as JSON string array
+  canonicalUrl       String?
+  ogTitle            String?
+  ogDescription      String?  @db.Text
+  ogImage            String?
+  twitterTitle       String?
+  twitterDescription String?  @db.Text
+  twitterImage       String?
+  seoScore           Int      @default(0)
+  status             Status   @default(draft)
+  indexable          Boolean  @default(true)
+  lastModified       DateTime @updatedAt
+  createdAt          DateTime @default(now())
+
+  @@index([status])
+  @@index([seoScore])
+  @@map("seo_entries")
+}
+
+enum Status {
+  published
+  draft
+}

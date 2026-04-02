@@ -3,18 +3,20 @@
 import { usePathname } from "next/navigation";
 import Header from "../header/header";
 import Footer from "../footer/footer";
+import WhatsAppButton from "@/components/whatsapp-button/whatsapp";
 
 
 export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
-  const hideRoutes = ["/login","/register"];
+  const hideRoutes = ["/login","/register","/seodashboard","/seo"];
   const hideLayout = hideRoutes.includes(pathname);
 
   return (
     <>
       {!hideLayout && <Header />}
       {children}
+       {!hideLayout && <WhatsAppButton/>}
       {!hideLayout && <Footer />}
     </>
   );

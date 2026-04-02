@@ -6,7 +6,8 @@ import Header from "@/components/header/header";
 import Footer from "@/components/footer/footer";
 import HeaderSwitcher from "@/components/HeaderSwitcher/Headerswitcher";
 import LayoutWrapper from "@/components/layoutwrapper/layoutwrapper";
-import WhatsAppButton from "@/components/whatsapp-button/whatsapp";
+import { generateSEOMetadata } from "../../lib/seometadata";
+
 
 
 const inter = Inter({ 
@@ -18,19 +19,20 @@ const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-space",
 });
-
-export const metadata: Metadata = {
-  title: "Estate Ai | Next-Gen Property Management",
-  description: "Turn your property into a revenue engine with data-driven management.",
+export const metadata : Metadata ={
+   // 👇 keep global defaults here
+    title: {
+      default: "Estate AI",
+      template: "%s | Estate AI",
+    },
 
     manifest: "/manifest.json",
 
-
-  icons: {
-     icon: "/icons/icon-192.png",
-    apple: "/icons/icon-192.png",
-  },
-};
+    icons: {
+      icon: "/icons/icon-192.png",
+      apple: "/icons/icon-192.png",
+    },
+}
 export const viewport: Viewport = {
   themeColor: "#3b82f6",
 };
@@ -48,7 +50,7 @@ export default function RootLayout({
         <div className=" bg-[var(--bg-secondary)]">
        <LayoutWrapper>
         {children}
-        <WhatsAppButton/>
+        
         </LayoutWrapper> 
         </div>
       

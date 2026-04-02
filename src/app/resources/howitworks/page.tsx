@@ -1,13 +1,13 @@
-"use client"
+
 import HowItWorksPage from '@/components/howitworks/howItWorks'
-import React from 'react'
+import { generateSEOMetadata } from '../../../../lib/seometadata';
+
+
+export const generateMetadata = generateSEOMetadata;
 
 function page() {
-  return (
-    <div>
-      <HowItWorksPage/>
-    </div>
-  )
+  return <HowItWorksPage/>
+  
 }
 
 export default page

@@ -129,7 +129,7 @@ function HomeAutomationsPage(): React.JSX.Element {
               </p>
             </div>
 
-            <div className="relative w-full h-48 lg:h-56 overflow-hidden mt-auto">
+            <div className="relative w-full h-48 lg:h-68 overflow-hidden mt-auto">
               <img
                 src={automation.imageSrc}
                 alt={automation.imageAlt}
@@ -215,10 +215,10 @@ const Analytics = () => {
     <section id="analytics" className="py-20 ">
       <div className="container mx-auto px-4">
         <h2 className="font-['var(--font-head)]  text-[var(--color-primary-600)]  text-3xl md:text-5xl text-center mb-4">
-          Powerful CRM Built for Real Estate
+         Everything You Need in One Platform
         </h2>
         <p className="text-center text-[var(--color-text-muted)] max-w-2xl mx-auto mb-16 text-lg">
-          Lead management Follow-ups Customer profiles Property tracking Deal pipeline Analytics.
+         Manage leads, track clients, automate marketing, close deals faster
         </p>
 
        <div className="relative w-full flex justify-center">

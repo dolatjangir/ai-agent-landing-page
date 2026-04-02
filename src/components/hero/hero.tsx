@@ -37,15 +37,15 @@ function Hero() {
                     </div>
                     
                     <h1 className="text-4xl lg:text-6xl font-bold leading-tight tracking-tight text-white ">
-                      AI-Powered Real{" "}
+                      AI That Closes{" "}
                       <span className="bg-white bg-clip-text text-transparent">
-                        Estate
+                       Real Estate
                       </span>{" "}
-                      Platform of AI Agents
+                      Deals
                     </h1>
                     
                     <p className="text-xl text-[var(--color-secondary-50)] leading-relaxed max-w-xl">
-                     Automate lead generation, match buyers with properties, run marketing campaigns, and manage your real estate business with AI.
+                    Capture leads, match buyers with properties,automate follow-ups, run campaigns and close more deals.
                     </p>
       
                     <div className="flex flex-col sm:flex-row gap-[var(--space-4)]">

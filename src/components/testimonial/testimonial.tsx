@@ -66,7 +66,7 @@ const TESTIMONIALS: Testimonial[] = [
     image: "https://i.pravatar.cc/96?img=47",
     rating: 5,
     agentUsed: "Lease Analyzer",
-    metric: "−$84k",
+    metric: "−₹84k",
     metricLabel: "Legal risk avoided",
   },
   {
@@ -144,7 +144,7 @@ const TESTIMONIALS: Testimonial[] = [
 const STATS: StatItemProps[] = [
   { value: "10k+",  label: "Properties managed"  },
   { value: "98.5%", label: "Satisfaction score"   },
-  { value: "$2.1M", label: "Client savings / mo"  },
+  { value: "₹40k", label: "Client savings / mo"  },
   { value: "4 min", label: "Avg. response time"   },
 ];
 

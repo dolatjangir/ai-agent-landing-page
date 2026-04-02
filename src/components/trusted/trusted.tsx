@@ -12,17 +12,17 @@ interface Card {
 const cards: Card[] = [
   {
     title: "AI Lead Qualification Agent",
-    desc: "Automatically qualify and segment leads based on behavior, intent, and property preferences.",
+    desc: "Understands buyer requirements and filters serious leads.",
     img: "/assets/leadai.png",
   },
   {
     title: "AI Property Matching Agent",
-    desc: "Match buyers with the most relevant properties using intelligent AI recommendations.",
+    desc: "Finds the best matching properties instantly for every buyer.",
     img: "/assets/propertmachingai.png",
   },
   {
     title: "Lead Capture Agent",
-    desc: "Capture and organize leads from multiple channels with smart AI tracking.",
+    desc: "Automatically captures leads from website, WhatsApp, ads and property pages.",
     img: "/assets/leadai.png",
   },
   {
@@ -37,17 +37,17 @@ const cards: Card[] = [
   },
   {
     title: "AI Calling Agent",
-    desc: "Automate calls with clients using AI-powered voice interactions and responses.",
+    desc: "Calls new leads automatically and collects requirements.",
     img: "/assets/img-5.png",
   },
   {
     title: "AI Campaign Automation Agent",
-    desc: "Run and optimize marketing campaigns across platforms with zero manual effort.",
+    desc: "Runs WhatsApp, email and SMS campaigns automatically.",
     img: "/assets/leadai.png",
   },
   {
     title: "Data Mining Agent",
-    desc: "Extract valuable insights and trends from real estate data using AI.",
+    desc: "Collects property data from multiple sources and updates your inventory.",
     img: "/assets/brockerdashai.png",
   },
   {
