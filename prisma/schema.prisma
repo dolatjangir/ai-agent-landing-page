@@ -51,7 +51,7 @@ model ContactSupport {
   createdAt     DateTime @default(now())
 }
 
-model SEOEntry {
+model SeoEntry {
   id                 String   @id @default(uuid())
   pageName           String
   slug               String   @unique

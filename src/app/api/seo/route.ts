@@ -22,13 +22,13 @@ export async function GET(request: NextRequest) {
       ],
     };
 
-    const entries = await prisma.sEOEntry.findMany({
+    const entries = await prisma.seoEntry.findMany({
       where,
       orderBy: { lastModified: 'desc' },
     });
 
     // Calculate stats
-    const allEntries = await prisma.sEOEntry.findMany();
+    const allEntries = await prisma.seoEntry.findMany();
     const avgScore = allEntries.length > 0 
       ? Math.round(allEntries.reduce((acc:any, e:any) => acc + e.seoScore, 0) / allEntries.length)
       : 0;
@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
     // Calculate SEO score
     const seoScore = calculateSEOScore(body);
 
-    const entry = await prisma.sEOEntry.create({
+    const entry = await prisma.seoEntry.create({
       data: {
         ...body,
         keywords: JSON.stringify(body.keywords || []),

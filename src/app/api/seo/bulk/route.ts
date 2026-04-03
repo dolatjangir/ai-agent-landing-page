@@ -16,20 +16,20 @@ export async function POST(request: NextRequest) {
 
     switch (operation) {
       case 'delete':
-        await prisma.sEOEntry.deleteMany({
+        await prisma.seoEntry.deleteMany({
           where: { id: { in: ids } },
         });
         return NextResponse.json({ message: `${ids.length} entries deleted` });
 
       case 'publish':
-        await prisma.sEOEntry.updateMany({
+        await prisma.seoEntry.updateMany({
           where: { id: { in: ids } },
           data: { status: 'published' },
         });
         return NextResponse.json({ message: `${ids.length} entries published` });
 
       case 'draft':
-        await prisma.sEOEntry.updateMany({
+        await prisma.seoEntry.updateMany({
           where: { id: { in: ids } },
           data: { status: 'draft' },
         });

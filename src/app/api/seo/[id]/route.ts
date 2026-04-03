@@ -9,7 +9,7 @@ export async function GET(
 ) {
   try {
     const { id } = await params;
-    const entry = await prisma.sEOEntry.findUnique({
+    const entry = await prisma.seoEntry.findUnique({
       where: { id },
     });
 
@@ -45,7 +45,7 @@ export async function PUT(
     // Calculate new SEO score
     const seoScore = calculateSEOScore(body);
 const { id: _, createdAt, ...safeData } = body;
-    const entry = await prisma.sEOEntry.update({
+    const entry = await prisma.seoEntry.update({
       where: { id },
       data: {
         ...safeData,
@@ -86,7 +86,7 @@ export async function DELETE(
 ) {
   try {
     const { id } = await params;
-    await prisma.sEOEntry.delete({
+    await prisma.seoEntry.delete({
       where: { id },
     });
 

@@ -2,7 +2,7 @@ import { prisma } from "./prisma";
 
 
 export async function getSEO(slug: string) {
-  return prisma.sEOEntry.findUnique({
+  return prisma.seoEntry.findUnique({
     where: { slug },
   });
 }

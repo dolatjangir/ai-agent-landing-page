@@ -5,7 +5,7 @@ import { prisma } from '../../../../../lib/prisma';
 // GET /api/seo/export - Export all SEO data as JSON
 export async function GET(request: NextRequest) {
   try {
-    const entries = await prisma.sEOEntry.findMany({
+    const entries = await prisma.seoEntry.findMany({
       orderBy: { pageName: 'asc' },
     });
 
@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
 
     const results = await prisma.$transaction(
       data.map((entry: any) => 
-        prisma.sEOEntry.upsert({
+        prisma.seoEntry.upsert({
           where: { slug: entry.slug },
           update: {
             ...entry,

@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import SEOLoginPage from './clientseo'
 
 export default function page() {
-  return <SEOLoginPage/>
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+  <SEOLoginPage/>
+  </Suspense>
+)
 }
