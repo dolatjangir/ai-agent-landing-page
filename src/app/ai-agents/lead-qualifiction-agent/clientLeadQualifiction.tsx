@@ -1,7 +1,8 @@
 
 'use client';
 
-import { ArrowRight, Bot, CheckCircle2, Clock, Play, Shield, Sparkles, Star, Target, TrendingUp, Zap } from 'lucide-react';
+import { ArrowRight, Bot, CheckCircle2, Clock, Play, Shield, Sparkles, Star, Target, TrendingUp, X, Zap } from 'lucide-react';
+import Link from 'next/link';
 import React, { useEffect, useRef,useState } from 'react';
 interface Lead {
   id: number;
@@ -29,6 +30,8 @@ const heroRef = useRef<HTMLDivElement>(null);
   const [leadCount, setLeadCount] = useState(247);
   const [selectedLead, setSelectedLead] = useState<number | null>(1);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
   useEffect(() => {
     // Animate score bars on scroll
     const scoreObserver = new IntersectionObserver((entries) => {
@@ -109,6 +112,16 @@ const heroRef = useRef<HTMLDivElement>(null);
     };
   }, []);
 
+
+  const handleVideoClick = () => {
+  if (!videoRef.current) return;
+
+  if (videoRef.current.paused) {
+    videoRef.current.play();
+  } else {
+    videoRef.current.pause();
+  }
+};
     const leads: Lead[] = [
     { id: 1, name: 'Sarah Chen', email: 'sarah@techcorp.com', score: 94, status: 'hot', source: 'Website', time: '2m ago' },
     { id: 2, name: 'Marcus Johnson', email: 'marcus@growth.io', score: 87, status: 'hot', source: 'LinkedIn', time: '5m ago' },
@@ -289,7 +302,7 @@ const heroRef = useRef<HTMLDivElement>(null);
         </h1>
 
         <p className="text-lg sm:text-xl text-[#0057ad] mb-10 max-w-xl leading-relaxed font-light">
-          LeadBot AI qualifies, scores, and routes inbound leads 24/7 — so your
+          leadAgent AI qualifies, scores, and routes inbound leads 24/7 — so your
           team closes deals instead of chasing dead ends.
           <span className="text-[#0066cc] font-medium">
             {" "}
@@ -299,13 +312,13 @@ const heroRef = useRef<HTMLDivElement>(null);
 
         {/* Premium CTA */}
         <div className="flex flex-wrap gap-4 mb-10">
-          <button className="relative px-4 py-2 rounded-2xl bg-gradient-to-r from-[#0066cc] to-[#3399ff] text-white font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.04] active:scale-[0.98] flex items-center gap-2 group">
+        <Link href="/register">  <button className="relative px-4 py-2 rounded-2xl bg-gradient-to-r from-[#0066cc] to-[#3399ff] text-white font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.04] active:scale-[0.98] flex items-center gap-2 group">
             {/* <Sparkles className="w-5 h-5" /> */}
-            Deploy LeadBot Free
+               leadAgent Free
             <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-          </button>
+          </button></Link>
 
-          <button className="px-4 py-2 rounded-2xl border border-[#99ccff] text-[#0057ad] font-semibold text-lg backdrop-blur-md hover:bg-white hover:border-[#0066cc] hover:text-[#003871] transition-all duration-300 flex items-center gap-2">
+          <button onClick={() => setIsVideoOpen(true)} className="px-4 py-2 rounded-2xl border border-[#99ccff] text-[#0057ad] font-semibold text-lg backdrop-blur-md hover:bg-white hover:border-[#0066cc] hover:text-[#003871] transition-all duration-300 flex items-center gap-2">
             {/* <Play className="w-5 h-5" /> */}
             See it in action
           </button>
@@ -375,6 +388,7 @@ const heroRef = useRef<HTMLDivElement>(null);
       ))}
     </div>
   </div>
+ 
 </section>
      
 
@@ -396,7 +410,7 @@ const heroRef = useRef<HTMLDivElement>(null);
     </h2>
 
     <p className="text-slate-500 text-lg leading-relaxed font-light mb-16 max-w-xl">
-      Built for speed, accuracy, and scale — LeadBot combines AI reasoning with structured sales methodology.
+      Built for speed, accuracy, and scale — leadAgent combines AI reasoning with structured sales methodology.
     </p>
   </div>
 
@@ -420,7 +434,7 @@ const heroRef = useRef<HTMLDivElement>(null);
               <div className="w-13 h-13 bg-blue-100 border border-blue-300 rounded-xl flex items-center justify-center text-2xl mb-5">🧠</div>
               <h3 className="font-bold text-xl text-slate-900 mb-2">Intelligent BANT Qualification</h3>
               <p className="text-sm text-slate-500 leading-relaxed font-light mb-4">
-                LeadBot conducts a nuanced sales conversation using proven BANT, MEDDIC, and CHAMP frameworks. It adapts tone and depth based on the prospect's seniority, industry, and engagement level — mimicking your best SDR.
+                leadAgent conducts a nuanced sales conversation using proven BANT, MEDDIC, and CHAMP frameworks. It adapts tone and depth based on the prospect's seniority, industry, and engagement level — mimicking your best SDR.
               </p>
               <span className="inline-block bg-blue-50 border border-blue-200 rounded-md px-2.5 py-1 text-xs font-mono text-blue-600">
                 BANT · MEDDIC · CHAMP · SPICED
@@ -439,7 +453,7 @@ const heroRef = useRef<HTMLDivElement>(null);
     <span className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
     <span className="w-2.5 h-2.5 rounded-full bg-green-400" />
     <span className="text-[var(--color-primary-600)] text-xs ml-2 font-medium">
-      leadbot-qualify.ts
+      leadAgent-qualify.ts
     </span>
   </div>
 
@@ -491,7 +505,7 @@ const heroRef = useRef<HTMLDivElement>(null);
             { icon: '⚡', title: 'Real-Time Lead Scoring', desc: 'Dynamic scoring that updates as the conversation evolves. Firmographic enrichment via Clearbit, Apollo, and LinkedIn — automatically.', tag: '150+ Signals' },
             { icon: '🎯', title: 'Intent Detection', desc: 'Detect buying signals in emails, chat, and web behaviour. Identify high-intent visitors before they even fill a form.', tag: 'Behavioural AI' },
             { icon: '📅', title: 'Auto Demo Booking', desc: 'Hot leads are offered a calendar slot mid-conversation. Syncs with Calendly, Cal.com, or your native CRM calendar in real time.', tag: 'Calendly · Cal.com · HubSpot' },
-            { icon: '🔁', title: 'Nurture Sequencing', desc: 'Warm leads that aren\'t ready yet? LeadBot drops them into smart email sequences based on their specific objections and interests.', tag: 'Personalised Drip' }
+            { icon: '🔁', title: 'Nurture Sequencing', desc: 'Warm leads that aren\'t ready yet? leadAgent drops them into smart email sequences based on their specific objections and interests.', tag: 'Personalised Drip' }
           ].map((feature, idx) => (
             <div key={idx} className="feature-card bg-white border border-slate-200 rounded-2xl p-9 hover:border-blue-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200/50 transition-all relative overflow-hidden group">
               <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-700 via-blue-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -518,7 +532,7 @@ const heroRef = useRef<HTMLDivElement>(null);
           From Stranger to Qualified Lead<br />in Under 60 Seconds
         </h2>
         <p className="text-slate-500 text-lg leading-relaxed font-light mb-16 max-w-xl">
-          LeadBot intercepts every inbound signal, runs a deep qualification interview, and hands your reps a warm, scored prospect.
+          leadAgent intercepts every inbound signal, runs a deep qualification interview, and hands your reps a warm, scored prospect.
         </p>
         </div>
         <img width={400} height={400} src="/assets/lead-crm-with-robo.png"/>
@@ -526,7 +540,7 @@ const heroRef = useRef<HTMLDivElement>(null);
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0.5 bg-slate-200 rounded-2xl overflow-hidden border border-slate-200">
           {[
-            { num: '01', icon: '📡', title: 'Lead Enters the Funnel', desc: 'Form submissions, chat, email, LinkedIn DMs — LeadBot watches every channel and intercepts the moment someone shows intent.' },
+            { num: '01', icon: '📡', title: 'Lead Enters the Funnel', desc: 'Form submissions, chat, email, LinkedIn DMs — leadAgent watches every channel and intercepts the moment someone shows intent.' },
             { num: '02', icon: '💬', title: 'Conversational Interview', desc: 'A natural, GPT-powered conversation collects BANT signals (Budget, Authority, Need, Timeline) without feeling like a questionnaire.' },
             { num: '03', icon: '📊', title: 'AI Lead Scoring', desc: '150+ data points, firmographics, behavioural cues, and intent signals are synthesised into a 0–100 qualification score.' },
             { num: '04', icon: '⚡', title: 'Instant Smart Routing', desc: 'Hot leads go straight to your best closers. Warm leads enter nurture sequences. Cold leads get deprioritised automatically.' }
@@ -656,7 +670,7 @@ const heroRef = useRef<HTMLDivElement>(null);
           Plugs Into Your Entire<br />Revenue Stack
         </h2>
         <p className="text-slate-500 text-lg leading-relaxed font-light mb-12 max-w-xl">
-          LeadBot connects to your CRM, calendar, communication tools, and data enrichment providers out of the box.
+          leadAgent connects to your CRM, calendar, communication tools, and data enrichment providers out of the box.
         </p></div>
         <img width={400} height={400} src="/assets/stack-robo.png"/>
         </div>
@@ -695,16 +709,16 @@ const heroRef = useRef<HTMLDivElement>(null);
           Trusted by High-Growth<br />Sales Teams
         </h2>
         <p className="text-slate-500 text-lg leading-relaxed font-light mb-12 max-w-xl">
-          From seed-stage startups to enterprise revenue orgs — LeadBot works at every scale.
+          From seed-stage startups to enterprise revenue orgs — leadAgent works at every scale.
         </p>
 </div>
 <img width={400} height={400} src="/assets/pc-robo.png" className="pb-4"/>
 </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {[
-            { stars: '⭐⭐⭐⭐⭐', text: '"We deployed LeadBot in 2 hours and booked 40% more demos the very first week. Our SDRs now only talk to leads that are genuinely interested."', avatar: '👨', name: 'Marcus Chen', title: 'VP Sales, Finova (Series B)' },
+            { stars: '⭐⭐⭐⭐⭐', text: '"We deployed leadAgent in 2 hours and booked 40% more demos the very first week. Our SDRs now only talk to leads that are genuinely interested."', avatar: '👨', name: 'Marcus Chen', title: 'VP Sales, Finova (Series B)' },
             { stars: '⭐⭐⭐⭐⭐', text: '"The BANT scoring is scarily accurate. It picks up on things our reps miss — timeline hesitation, indirect budget signals, even tone shifts."', avatar: '👩', name: 'Danielle Okonkwo', title: 'Head of RevOps, Stackr' },
-            { stars: '⭐⭐⭐⭐⭐', text: '"We reduced our cost-per-qualified-lead by 62% in 3 months. LeadBot basically paid for itself in the first two weeks."', avatar: '🧑', name: 'Raj Patel', title: 'Founder & CEO, Lumenra' }
+            { stars: '⭐⭐⭐⭐⭐', text: '"We reduced our cost-per-qualified-lead by 62% in 3 months. leadAgent basically paid for itself in the first two weeks."', avatar: '🧑', name: 'Raj Patel', title: 'Founder & CEO, Lumenra' }
           ].map((testimonial, idx) => (
             <div key={idx} className="bg-white border border-slate-200 rounded-2xl p-8 hover:border-blue-300 transition-colors">
               <div className="text-sm mb-4 tracking-widest">{testimonial.stars}</div>
@@ -737,7 +751,7 @@ const heroRef = useRef<HTMLDivElement>(null);
           Your Pipeline Won't<br />Fill Itself
         </h2>
         <p className="text-slate-500 text-lg font-light mb-12 max-w-md mx-auto leading-relaxed">
-          Deploy LeadBot in under 10 minutes. No code required. Start qualifying every single lead on autopilot — starting today.
+          Deploy leadAgent in under 10 minutes. No code required. Start qualifying every single lead on autopilot — starting today.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto mb-5">
@@ -752,7 +766,76 @@ const heroRef = useRef<HTMLDivElement>(null);
         </div>
         <p className="text-xs text-slate-400 font-mono">Free 14-day trial · No credit card · Cancel anytime</p>
       </section>
+{isVideoOpen && (
+  <div
+    className="fixed inset-0 z-[999] flex items-center justify-center p-4"
+    onClick={() => setIsVideoOpen(false)}
+  >
+    {/* Backdrop */}
+    <div className="absolute inset-0 bg-blue-950/40 backdrop-blur-md animate-fadeIn" />
 
+    {/* Modal */}
+    <div
+      className="relative z-10 w-full max-w-3xl animate-scaleIn"
+      onClick={(e) => e.stopPropagation()}
+    >
+      {/* Glow border wrapper */}
+      <div className="relative rounded-2xl p-[1.5px] bg-gradient-to-br from-[#3399ff] via-[#0066cc] to-[#99ccff] shadow-[0_8px_60px_rgba(0,102,204,0.25)]">
+
+        {/* Inner container — LIGHT theme */}
+        <div className="bg-white rounded-2xl overflow-hidden">
+
+          {/* Header */}
+          <div className="flex items-center justify-between px-5 py-3.5 border-b border-[#dbeafe]">
+            <div className="flex items-center gap-2.5">
+              <div className="w-2 h-2 rounded-full bg-[#0066cc] animate-pulse" />
+              <span className="text-sm font-semibold text-[#003871] tracking-wide">
+                leadAgent AI — Product Demo
+              </span>
+            </div>
+            <button
+              onClick={() => setIsVideoOpen(false)}
+              className="w-8 h-8 flex items-center justify-center rounded-full text-[#0066cc] hover:text-white hover:bg-[#0066cc] transition-all duration-200"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+
+          {/* Video — with padding for breathing room */}
+          <div className=" bg-[#f0f7ff]">
+            <div className=" overflow-hidden  border border-[#bfdbfe]">
+              <video
+              ref={videoRef}
+                src="https://res.cloudinary.com/djipgt6vc/video/upload/v1775287800/WhatsApp_Video_2026-04-04_at_12.42.01_PM_dthwlr.mp4"
+                className="w-full aspect-video object-contain"
+                controls
+                autoPlay
+                 onClick={handleVideoClick}
+                controlsList="nodownload nofullscreen noremoteplayback"
+                disablePictureInPicture
+
+              />
+            </div>
+          </div>
+
+          {/* Footer */}
+          <div className="px-5 py-3.5 flex items-center justify-between border-t border-[#dbeafe] bg-white">
+            <span className="text-xs text-[#0057ad] font-medium">
+              See how leadAgent qualifies leads in real time
+            </span>
+            <Link href="/register">
+              <button className="px-4 py-1.5 rounded-xl bg-gradient-to-r from-[#0066cc] to-[#3399ff] text-white text-sm font-semibold hover:scale-[1.03] hover:shadow-md transition-all duration-200 flex items-center gap-1.5">
+                Start Free Trial
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </Link>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+)}
    
     </main>
   );

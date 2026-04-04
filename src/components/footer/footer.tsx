@@ -28,7 +28,7 @@ const NAV_LINKS = {
     { label: "Lead Follow-Up",href: "/solutions/lead-followup" },
   ],
   Resources: [
-    { label: "Contact Us", href: "/contact-us" },
+    { label: "Contact Support", href: "/resources/contact-support" },
     { label: "How it Works",  href: "/resources/howitworks" },
     { label: "Help Center",   href: "/resources/help-center" },
     { label: "About Us",      href: "/resources/about-us" },

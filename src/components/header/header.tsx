@@ -317,9 +317,9 @@ const navItems: NavItem[] = [
             },
             {
               icon: <img src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774335515/contact-support-icon_bmjjs7.png" className="max-w-10 max-h-10" />,
-              title: "Contact Support",
+              title: "Contact Us",
               description: "24/7 expert assistance",
-              href: "/resources/contact-support"
+              href: "/contact-us"
             }
             ,
             {

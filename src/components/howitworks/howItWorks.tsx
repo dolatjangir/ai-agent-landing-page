@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import ChartSection from "../agentchart/agentchart";
+import Link from "next/link";
 
 // Animation variants with proper typing
 const fadeInUp: Variants = {
@@ -703,13 +704,14 @@ export default function HowItWorksPage() {
               Join hundreds of real estate professionals using EstateAI to automate their workflow and close more deals.
             </motion.p>
             <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 justify-center">
+               <Link href="/register"> 
               <button className="px-8 py-4 bg-gradient-to-r from-[var(--color-primary-600)] to-[var(--color-primary-700)] text-white rounded-xl font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all flex items-center justify-center gap-2">
-                <span>Get Started Free</span>
+              <span>Get Started Free</span>
                 <ArrowRight className="w-5 h-5" />
-              </button>
-              <button className="px-8 py-4 bg-white text-[var(--color-primary-700)] border-2 border-[var(--color-primary-200)] rounded-xl font-semibold hover:bg-[var(--color-primary-50)] transition-colors">
+              </button></Link>
+             <Link href="/book-demo"> <button className="px-8 py-4 bg-white text-[var(--color-primary-700)] border-2 border-[var(--color-primary-200)] rounded-xl font-semibold hover:bg-[var(--color-primary-50)] transition-colors">
                 Schedule Demo
-              </button>
+              </button></Link>
             </motion.div>
           </motion.div>
         </div>
