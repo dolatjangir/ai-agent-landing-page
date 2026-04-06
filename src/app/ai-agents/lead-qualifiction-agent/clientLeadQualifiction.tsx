@@ -352,7 +352,7 @@ const heroRef = useRef<HTMLDivElement>(null);
         <div className="relative transform-style-3d flex sm:block items-center justify-center">
           
           <img
-            src="/assets/lead-ai-hero-robo.png"
+            src="https://res.cloudinary.com/djipgt6vc/image/upload/v1775472300/lead-qualify-agent-hero_xoqrxc.png"
             alt="AI Robot"
             className="w-[100%] max-w-none lg:w-[110%] xl:w-full object-contain translate-x-2 lg:translate-x-10"
           />

@@ -12,7 +12,6 @@ export const openai = new OpenAI({
 export async function POST(req: Request) {
   try {
     const { messages } = await req.json();
-
     const response = await openai.chat.completions.create({
       model: "arcee-ai/trinity-mini:free",
       messages: [
@@ -100,7 +99,7 @@ Help users understand the value of AI agents and move them toward booking a demo
         ...messages,
       ],
     });
-
+     
     const reply = response.choices?.[0]?.message;
     
     // Parse the JSON content from the AI response

@@ -140,14 +140,14 @@ export default function WhatsAppChatbot() {
 
       const data = await res.json();
       
-      console.log("API Response:", data);
+      // console.log("API Response:", data);
 
       // Create bot message
       const botMessageId = (Date.now() + 1).toString();
       const botMessage: Message = {
         id: botMessageId,
         type: "bot",
-        text: data.aiMessage || "No response",
+        text: data.aiMessage || "I apologize, I couldn't process that request.",
         time: new Date().toLocaleTimeString([], {
           hour: "2-digit",
           minute: "2-digit",

@@ -53,133 +53,133 @@ interface SysStatItem {
 const AGENTS: Agent[] = [
   {
     id: 1,
-    name: "Lease Analyzer",
-    type: "Document Intelligence",
+    name: "Lease Assistant",
+    type: "Document Helper",
     icon: "📋",
     status: "active",
     metric: "1.2k",
-    metricLabel: "Leases / day",
-    task: "Reviewing contract #LX-4821...",
+    metricLabel: "Leases handled daily",
+    task: "Checking lease details...",
     bars: [4, 7, 5, 8, 9, 6, 8, 10, 7, 9, 8, 10],
     description:
-      "Reads, classifies, and extracts key clauses from lease agreements in seconds. Flags non-standard terms automatically.",
+      "Quickly reads and understands lease documents, highlighting important details so you don’t have to go through everything manually.",
   },
   {
     id: 2,
-    name: "Maintenance Predictor",
-    type: "Predictive Analytics",
+    name: "Maintenance Assistant",
+    type: "Smart Alerts",
     icon: "🔧",
     status: "busy",
     metric: "94%",
-    metricLabel: "Accuracy rate",
-    task: "HVAC failure risk flagged · Unit 3B",
+    metricLabel: "Issue detection rate",
+    task: "Checking property condition...",
     bars: [3, 5, 4, 6, 8, 5, 7, 9, 6, 8, 10, 8],
     description:
-      "Analyses sensor data and maintenance history to predict equipment failures before they happen, reducing emergency costs.",
+      "Identifies possible maintenance issues early so you can fix them before they become costly problems.",
   },
   {
     id: 3,
-    name: "Tenant Screener",
-    type: "Risk Assessment",
+    name: "Tenant Checker",
+    type: "Background Check",
     icon: "👤",
     status: "active",
     metric: "340",
-    metricLabel: "Screened today",
-    task: "Processing applicant #T-2094...",
+    metricLabel: "Checked today",
+    task: "Reviewing tenant details...",
     bars: [6, 8, 7, 9, 8, 10, 9, 8, 7, 9, 10, 9],
     description:
-      "Runs comprehensive background, credit, and rental-history checks in minutes, with a plain-language risk summary.",
+      "Checks tenant details quickly and gives you a simple summary to help you make better decisions.",
   },
   {
     id: 4,
-    name: "Market Valuation",
-    type: "Real-Time Pricing",
+    name: "Price Advisor",
+    type: "Smart Pricing",
     icon: "📈",
     status: "active",
     metric: "$2.1M",
-    metricLabel: "Portfolio valued",
-    task: "Updating comps for ZIP 90210...",
+    metricLabel: "Properties valued",
+    task: "Updating property prices...",
     bars: [5, 4, 7, 6, 8, 7, 9, 8, 10, 9, 8, 10],
     description:
-      "Pulls live comparable sales and rental data to keep your property valuations and listing prices sharp 24/7.",
+      "Helps you set the right price for your properties based on market trends and demand.",
   },
   {
     id: 5,
-    name: "Payment Tracker",
-    type: "Financial Ops",
+    name: "Payment Manager",
+    type: "Rent Tracking",
     icon: "💳",
     status: "active",
     metric: "99.1%",
-    metricLabel: "Collection rate",
-    task: "Reconciling 847 transactions...",
+    metricLabel: "Collection success",
+    task: "Tracking payments...",
     bars: [10, 9, 10, 9, 8, 10, 9, 10, 9, 10, 9, 10],
     description:
-      "Monitors rent payments, auto-sends reminders, flags late accounts, and reconciles ledgers without manual input.",
+      "Tracks rent payments, sends reminders, and keeps everything organized without manual work.",
   },
   {
     id: 6,
-    name: "Energy Optimizer",
-    type: "Smart Building AI",
+    name: "Energy Saver",
+    type: "Cost Optimization",
     icon: "⚡",
     status: "busy",
     metric: "−18%",
-    metricLabel: "Energy saved",
-    task: "Adjusting HVAC schedule for Unit 5...",
+    metricLabel: "Cost saved",
+    task: "Optimizing energy usage...",
     bars: [8, 6, 4, 5, 7, 6, 8, 5, 7, 9, 6, 8],
     description:
-      "Learns occupancy patterns and weather forecasts to dynamically control HVAC and lighting, cutting utility bills.",
+      "Helps reduce electricity and maintenance costs by optimizing property usage smartly.",
   },
   {
     id: 7,
-    name: "Document Scanner",
-    type: "OCR & Extraction",
+    name: "Document Assistant",
+    type: "File Manager",
     icon: "🔍",
     status: "active",
     metric: "4.8k",
-    metricLabel: "Docs processed",
-    task: "Extracting data from invoice #INV-7723...",
+    metricLabel: "Documents processed",
+    task: "Reading documents...",
     bars: [4, 6, 8, 5, 7, 9, 6, 8, 10, 7, 9, 8],
     description:
-      "Converts scanned invoices, receipts, and inspection reports into structured data with zero manual re-keying.",
+      "Organizes and extracts important details from documents so you don’t have to do it manually.",
   },
   {
     id: 8,
-    name: "Occupancy Forecaster",
-    type: "Demand Prediction",
+    name: "Occupancy Planner",
+    type: "Demand Insights",
     icon: "🏠",
     status: "active",
     metric: "92%",
-    metricLabel: "Forecast accuracy",
-    task: "Modelling Q2 vacancy trends...",
+    metricLabel: "Accuracy",
+    task: "Analyzing demand...",
     bars: [7, 8, 6, 9, 7, 8, 10, 9, 8, 7, 9, 10],
     description:
-      "Forecasts unit-level occupancy 90 days out so you can price, market, and staff before vacancies appear.",
+      "Predicts when properties will be vacant so you can plan ahead and avoid losses.",
   },
   {
     id: 9,
-    name: "Risk Monitor",
-    type: "Compliance & Alerts",
+    name: "Risk Checker",
+    type: "Safety Alerts",
     icon: "🛡️",
     status: "idle",
     metric: "0",
-    metricLabel: "Open alerts",
-    task: "All clear · Next compliance scan in 4 m",
+    metricLabel: "Active issues",
+    task: "Monitoring risks...",
     bars: [2, 1, 3, 2, 1, 2, 1, 3, 2, 1, 2, 1],
     description:
-      "Continuously audits properties against local housing codes and flags compliance gaps before they become violations.",
+      "Keeps an eye on risks and alerts you before small issues turn into big problems.",
   },
   {
     id: 10,
-    name: "Comms Agent",
-    type: "Tenant Engagement",
+    name: "Communication Assistant",
+    type: "Client Messaging",
     icon: "💬",
     status: "active",
     metric: "98%",
     metricLabel: "Response rate",
-    task: "Drafting reply to tenant #0823...",
+    task: "Replying to messages...",
     bars: [6, 9, 7, 10, 8, 9, 7, 8, 10, 9, 8, 10],
     description:
-      "Handles routine tenant messages, maintenance requests, and renewal enquiries instantly — in any language.",
+      "Responds to client messages instantly and keeps conversations active, even when you're busy.",
   },
 ];
 
@@ -600,13 +600,13 @@ const AgentShowcase: FC = () => {
     setActiveId((prev) => (prev === id ? null : id));
   };
 
-  const sysStats: SysStatItem[] = [
-    { label: "Network", val: "Online", dot: "#22d3a8" },
-    { label: "Agents Active", val: `${activeCount}/10`, dot: "#22d3a8" },
-    { label: "Tasks / hr", val: taskCount.toLocaleString(), dot: "#f59e0b" },
-    { label: "Uptime", val: "99.98%", dot: "#22d3a8" },
-    { label: "Model", val: "EstateAI v4", dot: null },
-  ];
+ const sysStats: SysStatItem[] = [
+  { label: "System", val: "Running", dot: "#22d3a8" },
+  { label: "Active Agents", val: `${activeCount}/10`, dot: "#22d3a8" },
+  { label: "Tasks / hour", val: taskCount.toLocaleString(), dot: "#f59e0b" },
+  { label: "Uptime", val: "99.98%", dot: "#22d3a8" },
+  { label: "Version", val: "EstateAI v4", dot: null },
+];
 
   const handleBtnEnter = (e: MouseEvent<HTMLButtonElement>): void => {
     e.currentTarget.style.transform = "translateY(-1px)";
@@ -743,7 +743,7 @@ const AgentShowcase: FC = () => {
                 fontFamily: "system-ui,sans-serif",
               }}
             >
-              10 Autonomous Agents.{" "}
+             Your AI Team is Always Working for You{" "}
               <span
                 style={{
                   background: "linear-gradient(90deg,#3399ff,#66b2ff)",
@@ -751,7 +751,7 @@ const AgentShowcase: FC = () => {
                   WebkitTextFillColor: "transparent",
                 }}
               >
-                Working While You Sleep.
+                Even when you're offline.
               </span>
             </h2>
 
@@ -764,9 +764,7 @@ const AgentShowcase: FC = () => {
                 fontFamily: "system-ui,sans-serif",
               }}
             >
-              Each agent is purpose-built, always on, and learning your
-              portfolio in real time — so every decision is faster, smarter,
-              and data-backed.
+              Each AI assistant handles a specific task for your business — from managing leads to tracking payments — so you can work faster, smarter, and close more deals.
             </p>
           </div>
 
@@ -853,7 +851,7 @@ const AgentShowcase: FC = () => {
               }}
             >
               <span style={{ color: "#fff", fontWeight: 600 }}>2,500+</span>{" "}
-              properties joined this week
+              properties added this week
             </p>
 
             <button
@@ -878,7 +876,7 @@ const AgentShowcase: FC = () => {
               onMouseEnter={handleBtnEnter}
               onMouseLeave={handleBtnLeave}
             >
-              Deploy Your Agent Network
+             Start Using Your AI Team
               <svg
                 width="16"
                 height="16"

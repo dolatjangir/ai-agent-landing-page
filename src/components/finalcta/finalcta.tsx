@@ -15,17 +15,17 @@ interface StatItem {
 
 /* ─── Static data ─────────────────────────────────────────────────────────── */
 const TRUST_ITEMS: TrustItem[] = [
-  { icon: "✦", label: "No credit card required" },
-  { icon: "✦", label: "14-day free trial" },
-  { icon: "✦", label: "Cancel anytime" },
-  { icon: "✦", label: "GST invoice included" },
+  { icon: "✦", label: "Start free — no card needed" },
+  { icon: "✦", label: "Try everything for 14 days" },
+  { icon: "✦", label: "Leave anytime, no questions asked" },
+  { icon: "✦", label: "Simple billing with GST invoice" },
 ];
 
 const STATS: StatItem[] = [
   { value: "10,000+", label: "Properties managed" },
-  { value: "20+ hrs", label: "Saved per week" },
-  { value: "98.5%",   label: "Agent accuracy"    },
-  { value: "48 hrs",  label: "Go-live time"       },
+  { value: "20+ hrs", label: "Time saved every week" },
+  { value: "98.5%",   label: "Accurate AI decisions" },
+  { value: "48 hrs",  label: "Up and running" },
 ];
 
 /* ─── FinalCTA ────────────────────────────────────────────────────────────── */
@@ -109,15 +109,15 @@ export default function FinalCTA() {
 
           {/* Headline */}
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tight mb-6">
-            Let Your Agents Work
+           Let Your Agents Work
             <span className="block mt-1 bg-gradient-to-r from-[#66b2ff] via-[#99ccff] to-[#cce5ff] bg-clip-text text-transparent">
-              While You Sleep.
+             So You Don’t Have To.
             </span>
           </h2>
 
           <p className="text-lg sm:text-xl text-[#99ccff] mb-4 max-w-2xl mx-auto leading-relaxed">
-            Join 10,000+ property managers saving 20+ hours every week.
-            Deploy your first AI agent in under 48 hours — no engineers needed.
+            Spend less time chasing tenants, fixing issues, and managing chaos.
+  Let AI handle the busywork while you focus on growing your portfolio.
           </p>
 
           {/* Stats row */}
@@ -142,7 +142,7 @@ export default function FinalCTA() {
             >
               <input
                 type="email"
-                placeholder="Enter your work email"
+                placeholder="Enter your email to get started"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -172,7 +172,7 @@ export default function FinalCTA() {
                         d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
                       />
                     </svg>
-                    Starting…
+                   Setting things up…
                   </>
                 ) : (
                   <>
@@ -204,7 +204,7 @@ export default function FinalCTA() {
                 </svg>
               </span>
               <span className="text-white font-semibold text-sm">
-                You&apos;re in! Check your inbox — we&apos;ll get you set up within 24 hours.
+               You’re all set! Check your email — we’ll help you get started shortly.
               </span>
             </div>
           )}
@@ -228,9 +228,9 @@ export default function FinalCTA() {
               <span className="absolute inset-0 rounded-full bg-[#22d3a8] animate-ping opacity-60" />
               <span className="relative rounded-full bg-[#22d3a8] w-2 h-2" />
             </span>
-            <span className="text-[11px] font-mono text-[#5580a8] tracking-wider">
-              <span className="text-white font-bold">2,500+</span> properties onboarded this month
-            </span>
+          <span className="text-[11px] font-mono text-[#5580a8] tracking-wider">
+  <span className="text-white font-bold">2,500+</span> properties joined us this month
+</span>
           </div>
 
         </div>
@@ -249,7 +249,7 @@ export default function FinalCTA() {
 
             {/* Label */}
             <p className="text-[11px] font-mono text-[#2d5a8a] tracking-widest uppercase">
-              All agents included in every trial
+              All agents included in your free trial
             </p>
 
             {/* Agent pills */}

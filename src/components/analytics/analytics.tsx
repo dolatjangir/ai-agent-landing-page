@@ -43,27 +43,27 @@ const cards: Card[] = [
 const automations: AutomationItem[] = [
   {
     id: 'agent-assistant',
-    title: 'AI Assistant, handle my daily tasks',
+    title: 'AI Assistant for your daily work',
     description:
-      'Your personal AI agent that manages tasks, reminders, and workflows automatically. Stay productive while your AI handles repetitive work for you.',
+      'Handles your daily tasks, reminders, and routine work automatically, so you can focus on closing deals.',
     imageSrc: '/assets/crmph-robo.png',
     imageAlt: 'AI Assistant Agent',
     variant: 'assistant',
   },
   {
     id: 'customer-support',
-    title: 'Support Agent, reply to my customers',
+    title: 'Customer Support Assistant',
     description:
-      'An AI customer support agent that answers inquiries, manages conversations, and provides instant responses to your customers 24/7.',
+      'Replies to your customer queries instantly and manages conversations 24/7 without delay.',
     imageSrc: '/assets/crmdash-robo.png',
     imageAlt: 'Customer Support AI Agent',
     variant: 'support',
   },
   {
     id: 'meeting-agent',
-    title: 'Meeting Agent, prepare my schedule',
+    title: 'Smart Meeting Scheduler',
     description:
-      'Your smart scheduling AI that analyzes your calendar, prepares meeting summaries, and keeps you ready for every important discussion.',
+      'Organizes your meetings, reminders, and schedules so you never miss an important discussion.',
     imageSrc: '/assets/half-robo.png',
     imageAlt: 'Meeting Preparation AI Agent',
     variant: 'meeting',
@@ -182,27 +182,26 @@ const Analytics = () => {
       }, 500);
     }
   }, []);
-   const steps = [
-    {
-      number: "01",
-      title: "Connect Properties",
-      description: "Import your listings from Airbnb, Booking.com, or add them manually. Setup takes under 5 minutes.",
-      bg: "var(--color-primary-100)"
-    },
-    {
-      number: "02",
-      title: "Automate Operations",
-      description: "Set up smart rules for pricing, messaging, and task assignments. Let the system work for you.",
-      bg: "var(--color-secondary-100)"
-    },
-    {
-      number: "03",
-      title: "Scale Revenue",
-      description: "Watch your occupancy rise and operational costs drop with data-driven insights.",
-      bg: "var(--color-primary-50)"
-    }
-  ];
-
+ const steps = [
+  {
+    number: "01",
+    title: "Add Your Properties",
+    description: "Upload your property listings or add them manually. It’s quick and easy to get started.",
+    bg: "var(--color-primary-100)"
+  },
+  {
+    number: "02",
+    title: "Set Your Preferences",
+    description: "Choose how you want to manage leads, messages, and tasks. The system will handle the rest.",
+    bg: "var(--color-secondary-100)"
+  },
+  {
+    number: "03",
+    title: "Grow Your Business",
+    description: "Get more leads, respond faster, and close more deals with the help of AI.",
+    bg: "var(--color-primary-50)"
+  }
+];
   const TrendUpIcon = ({ className }: { className?: string }) => (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
       <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
@@ -297,10 +296,10 @@ const Analytics = () => {
   </div>
   
   <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text text-transparent">
-    Your AI Agent Sets Up Everything
+   Your AI Handles the Setup for You
   </h2>
   <p className="text-xl text-slate-600 leading-relaxed">
-    No complex configurations. Our intelligent agents analyze your property and automate the entire setup in minutes.
+   No complicated setup needed. Our AI understands your business and gets everything ready for you within minutes.
   </p>
 </div>
 
@@ -432,7 +431,7 @@ const Analytics = () => {
         
         <div className="text-left">
           <p className="text-white font-semibold text-lg">Need help getting started?</p>
-          <p className="text-slate-400 text-sm">Our AI assistant is ready to guide you</p>
+          <p className="text-slate-400 text-sm">Our AI assistant is here to guide you step by step</p>
         </div>
         
         <div className="ml-4 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center

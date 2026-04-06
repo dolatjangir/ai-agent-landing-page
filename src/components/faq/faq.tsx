@@ -14,69 +14,69 @@ interface FaqItem {
 const FAQS: FaqItem[] = [
   {
     category: "Getting Started",
-    question: "What exactly is an AI agent, and how is it different from a chatbot?",
+    question: "What is an AI agent? How is it different from a chatbot?",
     answer:
-      "A chatbot responds to questions when you ask them. An AI agent acts on your behalf — autonomously, 24/7 — without you needing to prompt it. EstateAI agents monitor your portfolio, detect issues, make decisions, and take action in real time. For example, the Maintenance Predictor agent continuously analyses sensor data and flags equipment risks days before failure — no conversation required.",
+      "A chatbot only replies when someone asks a question. An AI agent works for you automatically in the background — 24/7. It handles tasks like responding to leads, tracking activity, and managing your workflow without you needing to do anything manually.",
   },
   {
     category: "Getting Started",
-    question: "How long does it take to deploy an AI agent on my portfolio?",
+    question: "How quickly can I start using this?",
     answer:
-      "Most clients are fully live within 48 hours. Day 1 is onboarding — you connect your properties, upload lease data, and set preferences. Day 2 your agents go live and begin learning. By the end of the first week, the agents have processed your portfolio history and their accuracy is already significantly higher than default. There is no engineering work required on your side.",
+      "You can get started very quickly. Just add your properties and basic details, and your AI tools will start working for you. Most users are up and running within a day.",
   },
   {
     category: "Agents",
-    question: "Do all 10 agents run simultaneously, or do I have to choose?",
+    question: "Do I need to choose which AI tools to use?",
     answer:
-      "On the Scale plan, all 10 agents run simultaneously and share a unified knowledge base about your portfolio. On Starter and Professional, your active agents still share data with each other — so the Tenant Screener and the Payment Tracker, for example, inform each other's risk model. You never have to manually coordinate between agents.",
+      "No, everything works together for you. All tools share the same information so you don’t have to manage anything manually.",
   },
   {
     category: "Agents",
-    question: "Can the AI agents make decisions without my approval?",
+    question: "Will the AI take actions on its own?",
     answer:
-      "You decide the autonomy level for each agent. 'Inform' mode means the agent surfaces insights and recommendations but takes no action — you approve everything. 'Assist' mode lets it draft responses and flag tasks for your one-click approval. 'Autonomous' mode allows full action within limits you define (e.g., reply to tenant messages under a certain urgency level). Most clients start on Assist and expand autonomy once they trust the output.",
+      "You are always in control. The AI can suggest actions, assist you, or work automatically based on your settings. You decide how much control you want to give.",
   },
   {
     category: "Agents",
-    question: "How accurate is the AI? What happens when it makes a mistake?",
+    question: "How accurate is the AI?",
     answer:
-      "Our agents report 98.5% decision accuracy across verified client results. When an agent is uncertain, it escalates to you rather than guessing — you'll see a confidence score alongside every recommendation. If an agent does make an error, our audit log captures every action with full reasoning so you can review and correct it. We also use your corrections to retrain your private model at no extra charge.",
+      "The system is highly reliable and improves over time. If something is unclear, it will ask or notify you instead of making a wrong decision.",
   },
   {
     category: "Data & Security",
-    question: "Is my property and tenant data safe? Who can see it?",
+    question: "Is my data safe?",
     answer:
-      "Your data is encrypted at rest (AES-256) and in transit (TLS 1.3), hosted on ISO 27001-certified infrastructure, and never shared with other clients or used to train shared models. EstateAI is SOC 2 Type II certified. Only you and the team members you explicitly authorise have access. We are fully compliant with India's DPDP Act 2023 and can provide a Data Processing Agreement on request.",
+      "Yes, your data is fully secure and only accessible to you and your team. We use strong security measures to keep everything protected.",
   },
   {
     category: "Data & Security",
-    question: "Do you support Indian property laws and lease formats?",
+    question: "Does this work for Indian real estate?",
     answer:
-      "Yes. The Lease Analyzer agent is trained on Indian residential and commercial lease formats including leave-and-licence agreements, rent agreements under the Model Tenancy Act, and state-specific formats for Maharashtra, Delhi, Karnataka, and 18 other states. It flags clauses that conflict with local rent control legislation and generates GST-compliant rent receipts automatically.",
+      "Yes, the system is designed to support Indian property workflows and common document formats used in real estate.",
   },
   {
     category: "Pricing",
-    question: "Are there any hidden charges or per-task fees?",
+    question: "Are there any hidden charges?",
     answer:
-      "None. Your monthly or annual plan covers unlimited agent actions across all your properties up to your portfolio limit. There are no per-screening fees, no per-document charges, and no API overage surprises on Starter and Professional plans (Scale and Enterprise include unlimited API). The price you see is the price you pay — billed in ₹ with a GST invoice included.",
+      "No, there are no hidden fees. You only pay for your plan — everything is included.",
   },
   {
     category: "Pricing",
-    question: "Can I try EstateAI before committing to a paid plan?",
+    question: "Can I try it before paying?",
     answer:
-      "Yes — every plan comes with a 14-day full-access free trial. No credit card is required to start. You get access to all the agents included in your chosen tier, real data processing, and full support. At the end of the trial you choose whether to continue — there is no automatic charge.",
+      "Yes, you can try it for free and see how it works before making any payment.",
   },
   {
     category: "Integration",
-    question: "Does EstateAI integrate with the tools I already use?",
+    question: "Can I connect this with my existing tools?",
     answer:
-      "EstateAI connects out of the box with NoBroker, MagicBricks, 99acres, Housing.com, Tally, Zoho Books, WhatsApp Business, and Google Workspace. Our REST API (available on Professional and above) lets you connect any internal tool. Enterprise clients get custom integrations built as part of onboarding at no additional cost.",
+      "Yes, it works with popular tools and platforms, and you can also connect your own systems if needed.",
   },
   {
     category: "Support",
-    question: "What kind of support is available if I get stuck?",
+    question: "What if I need help?",
     answer:
-      "Starter clients get email support with a 24-hour response SLA. Professional clients get priority support with under 4-hour response and access to our live chat. Scale clients get a dedicated Customer Success Manager and a direct escalation line. All clients get access to our documentation hub, onboarding video library, and community forum — available in English and Hindi.",
+      "Our support team is always available to help you with setup, questions, or anything else you need.",
   },
 ];
 
@@ -113,7 +113,7 @@ export default function FaqSection() {
           </div>
 
           {/* Live agent badge */}
-          <div
+          {/* <div
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] font-mono font-bold tracking-[0.12em] uppercase mb-4 ml-2"
             style={{
               background: "var(--color-primary-50)",
@@ -132,7 +132,7 @@ export default function FaqSection() {
               />
             </span>
             AI Agents · Live Support
-          </div>
+          </div> */}
 
           <h2
             className="text-4xl font-bold mb-4 block"
@@ -145,8 +145,7 @@ export default function FaqSection() {
             className="text-xl max-w-2xl mx-auto"
             style={{ color: "var(--text-secondary)" }}
           >
-            Everything you need to know about deploying AI agents on your
-            property portfolio.
+           Everything you need to know about how our AI helps you manage leads, properties, and clients more easily.
           </p>
         </div>
 
@@ -293,7 +292,7 @@ export default function FaqSection() {
                 <span className="absolute inset-0 rounded-full bg-white animate-ping opacity-70" />
                 <span className="relative rounded-full bg-white w-2 h-2" />
               </span>
-              Our team responds in under 4 hours
+              We usually reply within a few hours
             </div>
 
             <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
@@ -301,8 +300,7 @@ export default function FaqSection() {
             </h3>
 
             <p className="text-white/80 mb-6 text-lg">
-              Our property AI specialists are here to walk you through
-              anything — live demo, custom quote, or just a quick chat.
+             Our team is here to help you understand everything — whether you want a quick demo or just have a few questions.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center">

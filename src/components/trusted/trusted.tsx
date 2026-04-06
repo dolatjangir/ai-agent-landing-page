@@ -11,53 +11,53 @@ interface Card {
 
 const cards: Card[] = [
   {
-    title: "AI Lead Qualification Agent",
-    desc: "Understands buyer requirements and filters serious leads.",
-    img: "/assets/leadai.png",
+    title: "AI Lead Qualification Assistant",
+    desc: "Understands what buyers are looking for and helps you focus only on serious customers.",
+    img: "https://res.cloudinary.com/djipgt6vc/image/upload/v1775477233/lead-generation-active-robo_mu4ybt.png",
   },
   {
-    title: "AI Property Matching Agent",
-    desc: "Finds the best matching properties instantly for every buyer.",
-    img: "/assets/propertmachingai.png",
+    title: "Smart Property Matching",
+    desc: "Quickly shows the best property options based on each buyer’s needs.",
+    img: "https://res.cloudinary.com/djipgt6vc/image/upload/v1775479263/property-robo_vtrnqk.png",
   },
   {
-    title: "Lead Capture Agent",
-    desc: "Automatically captures leads from website, WhatsApp, ads and property pages.",
-    img: "/assets/leadai.png",
+    title: "Lead Capture Assistant",
+    desc: "Collects new leads automatically from your website, WhatsApp, ads, and property pages.",
+    img: "https://res.cloudinary.com/djipgt6vc/image/upload/v1775474786/lead-capture-img_kaahbt.png",
   },
   {
-    title: "AI Content Creation Agent",
-    desc: "Generate high-quality property listings, ads, and marketing content instantly.",
-    img: "/assets/propertmachingai.png",
+    title: "Content Creation Assistant",
+    desc: "Creates attractive property listings, ads, and marketing content for you in seconds.",
+    img: "https://res.cloudinary.com/djipgt6vc/image/upload/v1775477196/AI-Content-creations-robo_radj9b.png",
   },
   {
-    title: "AI Follow-Up Agent",
-    desc: "Automatically follow up with leads at the right time to increase conversions.",
+    title: "Follow-Up Assistant",
+    desc: "Reminds and follows up with your leads at the right time so you don’t miss any opportunity.",
     img: "/assets/brockerdashai.png",
   },
   {
-    title: "AI Calling Agent",
-    desc: "Calls new leads automatically and collects requirements.",
+    title: "AI Calling Assistant",
+    desc: "Automatically calls new leads and collects their requirements for you.",
     img: "/assets/img-5.png",
   },
   {
-    title: "AI Campaign Automation Agent",
-    desc: "Runs WhatsApp, email and SMS campaigns automatically.",
+    title: "Campaign Automation",
+    desc: "Sends WhatsApp, email, and SMS campaigns to your leads without manual work.",
     img: "/assets/leadai.png",
   },
   {
-    title: "Data Mining Agent",
-    desc: "Collects property data from multiple sources and updates your inventory.",
+    title: "Property Data Assistant",
+    desc: "Gathers property details from different sources and keeps your listings updated.",
     img: "/assets/brockerdashai.png",
   },
   {
-    title: "Social Media Agent",
-    desc: "Automate social media posting, engagement, and growth strategies.",
-    img: "/assets/marketingai.png",
+    title: "Social Media Assistant",
+    desc: "Handles your social media posts and helps you grow your online presence.",
+    img: "https://res.cloudinary.com/djipgt6vc/image/upload/v1775477177/marketing-automation-robo_rhqsqs.png",
   },
   {
-    title: "AI SEO Content Agent",
-    desc: "Create SEO-optimized content to rank higher and attract organic traffic.",
+    title: "SEO Content Assistant",
+    desc: "Creates content that helps your website rank higher and attract more buyers.",
     img: "/assets/leadai.png",
   },
 ]
@@ -161,10 +161,10 @@ export default function Trusted(): React.JSX.Element {
           className="text-center mb-8 sm:mb-12"
         >
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[var(--color-primary-600)] uppercase tracking-wider mb-3">
-            Everything You Need to Run a Real Estate Business
+           Your AI Team for Real Estate
           </h2>
           <p className="text-sm sm:text-base text-[var(--text-tertiary)] max-w-2xl mx-auto">
-            EstateAI combines CRM, AI automation, marketing tools, and property matching in one platform.
+           All the tools you need to manage leads, connect with buyers, and grow your real estate business — in one simple platform.
           </p>
         </motion.div>
 
@@ -193,7 +193,7 @@ export default function Trusted(): React.JSX.Element {
                       <img
                         src={card.img}
                         alt={card.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                         loading="lazy"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

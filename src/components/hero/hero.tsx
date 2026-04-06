@@ -33,25 +33,25 @@ function Hero() {
                   <div className="space-y-[var(--space-4)]">
                     <div className="inline-flex items-center gap-[var(--space-2)] px-[var(--space-2)] py-[var(--space-2)] rounded-[var(--radius-full)] bg-[var(--color-primary-100)] text-[var(--color-primary-700)] text-sm font-semibold">
                       <Sparkles className="w-4 h-4" />
-                      <span>Trusted by 10,000+ property managers</span>
+                      <span>Helping 10,000+ property managers grow faster</span>
                     </div>
                     
                     <h1 className="text-4xl lg:text-6xl font-bold leading-tight tracking-tight text-white ">
-                      AI That Closes{" "}
+                      AI That Helps You Close{" "}
                       <span className="bg-white bg-clip-text text-transparent">
-                       Real Estate
-                      </span>{" "}
-                      Deals
+                     More Property Deals
+                      </span>
+                      
                     </h1>
                     
                     <p className="text-xl text-[var(--color-secondary-50)] leading-relaxed max-w-xl">
-                    Capture leads, match buyers with properties,automate follow-ups, run campaigns and close more deals.
+                    Let AI handle leads, follow-ups, and client conversations —  so you can spend more time closing deals, not managing them.
                     </p>
       
                     <div className="flex flex-col sm:flex-row gap-[var(--space-4)]">
                       <Link href='/start-free-trial' className="cursor-pointer">
                       <button className="group px-[var(--space-8)] py-[var(--space-4)] bg-[var(--color-primary-600)] hover:bg-[var(--color-primary-700)] text-[var(--text-inverse)] font-semibold rounded-[var(--radius-full)] transition-all duration-[var(--duration-fast)] shadow-xl hover:shadow-2xl flex items-center justify-center gap-[var(--space-2)]" style={{ boxShadow: '0 20px 25px -5px var(--color-primary-600)/25' }}>
-                        Start Free Trial
+                        Get Started Free
                         <ArrowRight className="w-5 h-5 hover:translate-x-1 transition-transform duration-[var(--duration-fast)]" />
                       </button></Link>
                       <Link href='/book-demo' className="cursor-pointer">
@@ -76,7 +76,7 @@ function Hero() {
                             <Star key={i} className="w-4 h-4 fill-[var(--color-warning-500)] text-[var(--color-warning-500)]" />
                           ))}
                         </div>
-                        <p className="text-sm text-white">4.9/5 from 2,000+ reviews</p>
+                        <p className="text-sm text-white">Loved by 2,000+ property professionals</p>
                       </div>
                     </div>
                   </div>

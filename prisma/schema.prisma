@@ -77,6 +77,19 @@ model SeoEntry {
   @@map("seo_entries")
 }
 
+model Login {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
 enum Status {
   published
   draft

@@ -597,13 +597,13 @@ const Home = () => {
     className="text-3xl md:text-5xl font-bold mb-6 leading-tight"
     style={{ color: 'var(--color-primary-900)' }}
   >
-    Your AI Sales Assistant Fits in Your Pocket
+    Your AI Sales Assistant, Always With You
   </h2>
         <p 
     className="text-lg leading-relaxed mb-6"
     style={{ color: 'var(--color-primary-800)' }}
   >
-    Imagine never missing a hot lead again—whether you're commuting, grabbing coffee, or closing a deal on the golf course. The EstateAi mobile app brings the full power of our AI qualification engine to your smartphone, transforming idle moments into revenue opportunities.
+   Never miss a potential buyer again. Whether you're traveling, meeting clients, or away from your desk, your AI keeps working for you — capturing leads, responding instantly, and helping you close more deals right from your phone.
   </p>
       </div>
 
@@ -625,22 +625,22 @@ const Home = () => {
       <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
     </span>
     
-    <span className="text-sm font-medium text-blue-700">AI-Powered workflow</span>
+    <span className="text-sm font-medium text-blue-700">Smart AI Workflow</span>
   </div>
         <h2 
     className="text-3xl md:text-5xl font-bold mb-6 leading-tight"
     style={{ color: 'var(--color-primary-900)' }}
   >
-    Stop Losing Leads to Slow Response Times
+    Don’t Lose Leads Just Because You Respond Late
   </h2>
         <p 
     className="text-lg leading-relaxed mb-6"
     style={{ color: 'var(--color-primary-800)' }}
   >
- 78% of leads go with the agent who responds first. Our AI agents engage prospects instantly, 24/7—qualifying buyers, answering questions, and booking appointments before your competitors even wake up.
+Most buyers go with the agent who replies first. Our AI responds instantly to every inquiry — anytime, day or night — answering questions, understanding needs, and even booking meetings for you before someone else does.
    </p>
    <Link href="/resources/howitworks"><button className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#0066cc] to-[#3399ff] text-white font-semibold rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30 hover:-translate-y-0.5">
-  <span className="relative z-10">Know More</span>
+  <span className="relative z-10">Learn More</span>
   <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
   <div className="absolute inset-0 bg-gradient-to-r from-[#0057ad] to-[#0066cc] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 </button></Link>
