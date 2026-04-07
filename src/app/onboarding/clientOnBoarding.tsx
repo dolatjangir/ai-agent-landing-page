@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import {
   Clock,
   Users,
@@ -21,13 +21,16 @@ import {
   ArrowRight,
   MessageSquare
 } from "lucide-react";
-
+import { useRouter } from "next/navigation"; 
+import { LogOut } from 'lucide-react'; 
 interface SetupStep {
   id: string;
   icon: React.ReactNode;
   label: string;
   description: string;
   actionLabel: string;
+   restrictedTo?: "ADMIN";
+   route?:  string;
 }
 
 const setupSteps: SetupStep[] = [
@@ -41,9 +44,10 @@ const setupSteps: SetupStep[] = [
   {
     id: "pipeline",
     icon: <Layers className="w-5 h-5" />,
-    label: "Configure your deals pipeline",
+    label: "Open Your CRM Dashboard",
     description: "Set up your sales stages and customize your pipeline to match your sales process.",
-    actionLabel: "Configure pipeline"
+    actionLabel: "CRM Dashboard",
+    route: "https://property.ibigdata.in/"
   },
   {
     id: "email",
@@ -55,9 +59,11 @@ const setupSteps: SetupStep[] = [
   {
     id: "migrate",
     icon: <Database className="w-5 h-5" />,
-    label: "Migrate your existing data",
+    label: "Open Your SEO Dashboard",
     description: "Import your contacts, deals, and data from spreadsheets or other CRMs seamlessly.",
-    actionLabel: "Start migration"
+    actionLabel: "SEO Dashboard",
+    restrictedTo: "ADMIN",
+    route: "/seo"
   },
   {
     id: "integration",
@@ -68,11 +74,23 @@ const setupSteps: SetupStep[] = [
   }
 ];
 
+
 export default function CRMSetupPage() {
+  const router = useRouter();
   const [activeStep, setActiveStep] = useState<string>("invite");
   const [completedSteps, setCompletedSteps] = useState<Set<string>>(new Set());
+const [role, setRole] = useState<string | null>(null);
+useEffect(() => {
+  const cookies = document.cookie.split("; ");
+  const roleCookie = cookies.find(c => c.startsWith("user-role="));
 
-  const handleStepClick = (stepId: string) => {
+  if (roleCookie) {
+    setRole(roleCookie.split("=")[1]);
+  }
+}, []); 
+
+
+const handleStepClick = (stepId: string) => {
     setActiveStep(stepId);
   };
 
@@ -83,17 +101,22 @@ export default function CRMSetupPage() {
       setActiveStep(setupSteps[currentIndex + 1].id);
     }
   };
-
+  const handleLogout = () => {
+    // Clear cookie
+    document.cookie = 'seo-auth-token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
+    router.push('/login');
+    router.refresh();
+  };
   const activeStepData = setupSteps.find(s => s.id === activeStep);
-
+const isRestricted = activeStepData?.restrictedTo === "ADMIN" && role !== "ADMIN";
   return (
     <div className="min-h-screen bg-white">
       {/* Top Navigation Bar */}
    
 
       {/* Main Content */}
-      <main className="max-w-[1400px] mx-auto px-6 py-6 pb-24">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <main className="max-w-[1400px] mx-auto px-6 py-6 ">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 ">
           
           {/* Left Sidebar - Welcome Section */}
           <div className="lg:col-span-4">
@@ -170,7 +193,7 @@ export default function CRMSetupPage() {
 
           {/* Center - Setup Checklist */}
           <div className="lg:col-span-5">
-            <div className="relative overflow-hidden rounded-[32px] bg-gradient-to-br from-cyan-100 via-pink-50 to-blue-100 p-8 min-h-[480px]">
+            <div className="relative overflow-hidden rounded-[32px] bg-gradient-to-br from-cyan-100 via-pink-50 to-blue-100 p-8 min-h-[580px]">
               <div className="relative z-10">
                 <h2 className="text-2xl font-bold text-gray-900 mb-2">
                   Set up your CRM
@@ -184,17 +207,20 @@ export default function CRMSetupPage() {
                   {setupSteps.map((step) => {
                     const isActive = activeStep === step.id;
                     const isCompleted = completedSteps.has(step.id);
+                    const isRestricted = step.restrictedTo === "ADMIN" && role !== "ADMIN";
                     
                     return (
                       <button
                         key={step.id}
-                        onClick={() => handleStepClick(step.id)}
+                        onClick={() => !isRestricted && handleStepClick(step.id)}
+                        disabled={isRestricted}
                         className={`
                           w-full flex items-center gap-4 p-4 rounded-2xl transition-all duration-200 group text-left bg-white/80 backdrop-blur-sm
                           ${isActive 
                             ? "ring-2 ring-pink-300 shadow-lg" 
                             : "hover:bg-white shadow-sm"
                           }
+                          ${isRestricted ? "opacity-50 cursor-not-allowed hidden" : "hover:bg-white"}
                         `}
                       >
                         <div className={`
@@ -228,11 +254,12 @@ export default function CRMSetupPage() {
           </div>
 
           {/* Right Sidebar - Active Step Details */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-3 ">
             <div className="relative overflow-hidden rounded-[32px] bg-gradient-to-br from-pink-100 via-cyan-50 to-blue-100 p-6 min-h-[480px]">
               {/* Skip Button */}
-              <button className="absolute top-4 right-4 px-4 py-1.5 bg-white/80 backdrop-blur-sm border border-gray-200 text-gray-600 text-sm font-medium rounded-lg hover:bg-white transition-colors">
-                Skip
+              <button onClick={handleLogout} className="absolute top-4 right-4 z-50 flex flex-row gap-2 items-center justify-center cursor-pointer px-4 py-1.5 bg-white/80 backdrop-blur-sm border border-gray-200 text-gray-600 text-sm font-medium rounded-lg hover:bg-white transition-colors">
+                <LogOut className="w-4 h-4" />
+                     Sign Out
               </button>
 
               <div className="relative z-10 pt-12">
@@ -271,10 +298,32 @@ export default function CRMSetupPage() {
 
                 {/* CTA Button */}
                 <button 
-                  onClick={() => activeStepData && handleComplete(activeStepData.id)}
-                  className="w-full py-3 px-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl shadow-lg shadow-blue-500/30 transition-all duration-200 flex items-center justify-center gap-2"
+                disabled={isRestricted}
+                 onClick={() => {
+    if (!activeStepData) return;
+
+    const isRestricted =
+      activeStepData.restrictedTo === "ADMIN" && role !== "ADMIN";
+
+    if (isRestricted) return;
+
+    // ✅ If route exists → navigate
+    if (activeStepData.route) {
+      router.push(activeStepData.route);
+      return;
+    }
+
+    // otherwise fallback (old behavior)
+    handleComplete(activeStepData.id);
+  }}
+                  className={`w-full py-3 px-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl shadow-lg shadow-blue-500/30 transition-all duration-200 flex items-center justify-center gap-2  
+                    ${isRestricted
+      ? "bg-gray-300 cursor-not-allowed"
+      : "bg-blue-600 hover:bg-blue-700 text-white"
+    }`}
+
                 >
-                  <span>{activeStepData?.actionLabel}</span>
+                  <span> {isRestricted ? "Admin Only" : activeStepData?.actionLabel}</span>
                 </button>
               </div>
             </div>
@@ -282,48 +331,7 @@ export default function CRMSetupPage() {
         </div>
       </main>
 
-      {/* Bottom Bar */}
-      {/* <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-6 py-2">
-        <div className="max-w-[1400px] mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-2 text-gray-500 text-sm">
-            <span>Here is your Smart Chat (Ctrl+Space)</span>
-          </div>
-          <div className="flex items-center gap-4">
-            <button className="p-2 text-gray-400 hover:text-gray-600">
-              <Grid2X2 className="w-5 h-5" />
-            </button>
-            <button className="p-2 text-gray-400 hover:text-gray-600">
-              <Bell className="w-5 h-5" />
-            </button>
-            <button className="p-2 text-gray-400 hover:text-gray-600">
-              <Settings className="w-5 h-5" />
-            </button>
-            <button className="p-2 text-gray-400 hover:text-gray-600">
-              <HelpCircle className="w-5 h-5" />
-            </button>
-            <button className="p-2 text-gray-400 hover:text-gray-600 relative">
-              <Bell className="w-5 h-5" />
-              <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
-            </button>
-            <button className="p-2 text-gray-400 hover:text-gray-600">
-              <span className="text-xs font-bold">ZIA</span>
-            </button>
-            <button className="p-2 text-gray-400 hover:text-gray-600">
-              <Clock className="w-5 h-5" />
-            </button>
-            <button className="p-2 text-gray-400 hover:text-gray-600">
-              <ArrowRight className="w-5 h-5" />
-            </button>
-            <button className="p-2 text-gray-400 hover:text-gray-600">
-              <HelpCircle className="w-5 h-5" />
-            </button>
-            <button className="px-3 py-1.5 bg-purple-600 text-white text-sm font-medium rounded-lg flex items-center gap-2">
-              <HelpCircle className="w-4 h-4" />
-              Help
-            </button>
-          </div>
-        </div>
-      </div> */}
+     
     </div>
   );
 }

@@ -203,7 +203,7 @@ export default function DataMiningAgentLanding() {
                            }`}
                          >
                            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold  leading-[0.9] mb-8 tracking-tight text-[var(--color-primary-800)]">
-                           Find Gold in {" "} <br/>
+                           Find Gold Leads in {" "} <br/>
                              <span className="relative inline-block">
                                <span className="text-gradient animate-gradient">
                              Your Data

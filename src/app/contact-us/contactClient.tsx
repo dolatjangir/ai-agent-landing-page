@@ -12,7 +12,8 @@ import {
   Clock,
   ArrowRight,
   Sparkles,
-  MessageSquare
+  MessageSquare,
+  MessageCircle
 } from 'lucide-react'
 import Link from 'next/link'
 
@@ -104,7 +105,7 @@ const handleSubmit = async (e: React.FormEvent) => {
       </div>
 
       {/* Navigation */}
-      <nav className="relative z-10 px-6 py-6">
+      {/* <nav className="relative z-10 px-6 py-6">
         <Link href="/" className="inline-flex items-center gap-2 group">
           <div className="w-10 h-10 bg-gradient-to-br from-[#0066cc] to-[#0052a3] rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/25 group-hover:shadow-blue-500/40 transition-shadow">
             <Sparkles className="w-5 h-5 text-white" />
@@ -113,7 +114,7 @@ const handleSubmit = async (e: React.FormEvent) => {
             EstateAI
           </span>
         </Link>
-      </nav>
+      </nav> */}
 
       {/* Main Content */}
       <main className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
@@ -143,7 +144,7 @@ const handleSubmit = async (e: React.FormEvent) => {
               {[
                 { icon: Mail, label: 'Email', value: 'info@estateai.in', href: 'mailto:info@estateai.in' },
                 { icon: Phone, label: 'Phone', value: '+91 9649902000', href: 'tel:+919649902000' },
-                { icon: MapPin, label: 'Office', value: 'Gurjar Ki Thadi , Jaipur', href: 'https://www.google.com/maps?q=30-A,+Sultan+Nagar,+Santi+Nagar,+Gurjar+Ki+Thadi,+Jaipur,+Rajasthan+302019' },
+                {  icon: MessageCircle, label: 'Support', value: '24/7 AI Support Available', href: '/explore-ai-agent'  },
               ].map((item, idx) => {
                 const Icon = item.icon
                 return (

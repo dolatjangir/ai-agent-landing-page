@@ -23,7 +23,7 @@ const cards: Card[] = [
   {
     title: "Lead Capture Assistant",
     desc: "Collects new leads automatically from your website, WhatsApp, ads, and property pages.",
-    img: "https://res.cloudinary.com/djipgt6vc/image/upload/v1775474786/lead-capture-img_kaahbt.png",
+    img: "https://res.cloudinary.com/djipgt6vc/image/upload/v1775558338/lead_generation_active_kk7zvz.png",
   },
   {
     title: "Content Creation Assistant",

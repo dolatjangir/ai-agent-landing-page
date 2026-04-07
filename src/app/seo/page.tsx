@@ -326,7 +326,7 @@ export default function SEODashboard() {
   // Responsive-only state
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
-
+const [keywordInput, setKeywordInput] = useState('');
   const [formData, setFormData] = useState<Partial<SEOEntry>>({});
   const [isDirty, setIsDirty] = useState(false);
   const router = useRouter();
@@ -438,9 +438,16 @@ export default function SEODashboard() {
     setIsDirty(true);
   };
 
-  const handleKeywordsChange = (value: string) => {
-    handleInputChange('keywords', value.split(',').map(k => k.trim()).filter(k => k));
-  };
+const handleKeywordsChange = (value: string) => {
+  setKeywordInput(value);
+
+  const keywords = value
+    .split(',')
+    .map(k => k.trim())
+    .filter(k => k);
+
+  handleInputChange('keywords', keywords);
+};
 
   const handleExport = async () => {
     try {
@@ -955,7 +962,7 @@ export default function SEODashboard() {
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-slate-700 mb-1.5">Keywords</label>
-                      <input type="text" value={(formData.keywords || []).join(', ')} onChange={(e) => handleKeywordsChange(e.target.value)}
+                      <input type="text" value={keywordInput} onChange={(e) => handleKeywordsChange(e.target.value)}
                         className="w-full px-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-500)] transition-all"
                         placeholder="real estate, property, AI, automation" />
                       <div className="flex flex-wrap gap-2 mt-2">

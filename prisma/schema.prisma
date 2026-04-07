@@ -85,6 +85,12 @@ model Login {
   createdAt DateTime @default(now())
 }
 
+model Subscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+}
+
 enum Role {
   ADMIN
   USER

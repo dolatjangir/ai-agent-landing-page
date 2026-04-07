@@ -37,15 +37,15 @@ function Hero() {
                     </div>
                     
                     <h1 className="text-4xl lg:text-6xl font-bold leading-tight tracking-tight text-white ">
-                      AI That Helps You Close{" "}
+                      Get More Leads and Close More Deals{" "}
                       <span className="bg-white bg-clip-text text-transparent">
-                     More Property Deals
+                     with Smart AI Automation
                       </span>
                       
                     </h1>
                     
                     <p className="text-xl text-[var(--color-secondary-50)] leading-relaxed max-w-xl">
-                    Let AI handle leads, follow-ups, and client conversations —  so you can spend more time closing deals, not managing them.
+                   Capture enquiries, match the right buyers, follow up on time, and close deals faster — all in one simple system.
                     </p>
       
                     <div className="flex flex-col sm:flex-row gap-[var(--space-4)]">

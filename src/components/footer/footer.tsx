@@ -54,13 +54,37 @@ const STATS = [
 export default function Footer() {
   const [email, setEmail] = useState("")
   const [subscribed, setSubscribed] = useState(false)
-
-  const handleSubscribe = (e: React.FormEvent) => {
+const [loading, setLoading] = useState(false);
+  const handleSubscribe = async(e: React.FormEvent) => {
     e.preventDefault()
-    if (!email) return
-    setSubscribed(true)
-    setEmail("")
+      if (!email) {
+    alert("Enter email");
+    return;
   }
+  setLoading(true);
+  try{
+const res = await fetch("/api/subscribe",{
+  method:"POST",
+  headers:{
+    "Contact-Type":"application/json",
+
+  },
+  body:JSON.stringify({email}),
+});
+const data =await res.json();
+if(res.ok){
+  setSubscribed(true)
+    setEmail("")
+}else{
+  alert(data.message);
+}
+  }catch {
+    alert("Something went wrong");
+  } finally {
+    setLoading(false);
+  };
+    
+  };
 
   return (
     <footer className="relative overflow-hidden bg-blue-50 text-slate-400">
@@ -122,7 +146,7 @@ export default function Footer() {
                     className="flex items-center gap-2 px-5 py-3 bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold transition-colors duration-200 shrink-0"
                   >
                     <Send className="w-3.5 h-3.5" />
-                    Subscribe
+                   {loading ? "Subscribing..." : "Subscribe"}
                   </button>
                 </div>
               )}

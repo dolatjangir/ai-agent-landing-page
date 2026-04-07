@@ -312,7 +312,7 @@ const heroRef = useRef<HTMLDivElement>(null);
 
         {/* Premium CTA */}
         <div className="flex flex-wrap gap-4 mb-10">
-        <Link href="/register">  <button className="relative px-4 py-2 rounded-2xl bg-gradient-to-r from-[#0066cc] to-[#3399ff] text-white font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.04] active:scale-[0.98] flex items-center gap-2 group">
+        <Link href="https://app.estateai.in/register">  <button className="relative px-4 py-2 rounded-2xl bg-gradient-to-r from-[#0066cc] to-[#3399ff] text-white font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.04] active:scale-[0.98] flex items-center gap-2 group">
             {/* <Sparkles className="w-5 h-5" /> */}
                leadAgent Free
             <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />

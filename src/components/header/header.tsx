@@ -512,11 +512,11 @@ onMouseLeave={() => item.hasDropdown && handleMouseLeave()}
         </nav>
 
         <div className="hidden md:flex items-center gap-[var(--space-4)]">
-          <Link href="/login">
+          <Link href="https://app.estateai.in/login">
           <button className="text-[var(--text-secondary)] hover:text-[var(--color-primary-600)] font-medium transition-colors duration-[var(--duration-fast)]">
             Log in
           </button></Link>
-          <Link href="/register">
+          <Link href="https://app.estateai.in/register">
           <button
             className="px-[var(--space-6)] py-[var(--space-2)] bg-[var(--color-primary-600)] hover:bg-[var(--color-primary-700)] text-[var(--text-inverse)] font-semibold rounded-lg transition-all duration-[var(--duration-fast)] shadow-lg hover:shadow-xl"
             style={{
@@ -644,12 +644,12 @@ onMouseLeave={() => item.hasDropdown && handleMouseLeave()}
 
   {/* Sticky Bottom Auth Buttons */}
   <div className='sticky bottom-0 bg-[var(--color-primary-50)] border-t border-neutral-50 pt-4'>
-    <Link href="/login">
+    <Link href="https://app.estateai.in/login">
       <button className="w-full py-[var(--space-3)] text-[var(--text-secondary)] font-medium">
         Log in
       </button>
     </Link>
-    <Link href="/register">
+    <Link href="https://app.estateai.in/register">
       <button className="w-full py-[var(--space-3)] bg-[var(--color-primary-600)] text-[var(--text-inverse)] font-semibold rounded-[var(--radius-xl)] mt-2">
         Start Free Trial
       </button>
