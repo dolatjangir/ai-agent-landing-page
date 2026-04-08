@@ -156,6 +156,7 @@ const heroRef = useRef<HTMLDivElement>(null);
     return 'text-slate-400';
   };
   return (
+    
     <main className="min-h-screen bg-white text-slate-900 font-sans overflow-x-hidden">
       {/* Global Styles for Animations */}
       <style jsx global>{`

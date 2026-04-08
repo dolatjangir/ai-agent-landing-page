@@ -46,7 +46,12 @@ export default function SEOLoginPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center p-4">
+      <a href='/'>
+      <div className='absolute left-4 top-4 hidden sm:block'>
+        <img width={200} height={200} src="/assets/estateai.png"/>
+      </div></a>
       <div className="w-full max-w-md">
+        
         {/* Logo/Brand */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-[#0066cc] rounded-2xl mb-4 shadow-lg shadow-blue-500/25">
