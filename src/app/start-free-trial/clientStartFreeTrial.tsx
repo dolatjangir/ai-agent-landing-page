@@ -212,7 +212,7 @@ function SuccessScreen({ email }: { email: string }) {
           {[
             { n: "01", title: "Verify your email", sub: "Check your inbox — it takes under 30 seconds." },
             { n: "02", title: "Connect your first integration", sub: "Slack, Notion, HubSpot — pick what matters." },
-            { n: "03", title: "Launch your first agent", sub: "Use a template or build from scratch." },
+            { n: "03", title: "After Email Approval Show All Agents", sub: "Use a template or build from scratch." },
           ].map((s) => (
             <div key={s.n} className="flex items-start gap-4">
               <span className="text-sm font-black text-blue-200 shrink-0 w-7">{s.n}</span>
@@ -226,7 +226,7 @@ function SuccessScreen({ email }: { email: string }) {
       </div>
 
       <a
-        href="/dashboard"
+        href="/"
         className="w-full py-4 rounded-xl bg-blue-600 text-white font-bold text-base hover:bg-blue-700 active:scale-[0.99] transition-all duration-200 flex items-center justify-center gap-2"
       >
         Open my workspace
@@ -362,7 +362,7 @@ export default function FreeTrialPage() {
         </div>
 
         {/* ── Right panel (form) ──────────────────────────── */}
-        <div className="flex items-center justify-center px-6 py-12 bg-white">
+        <div className="flex items-center justify-center px-6 py-12 bg-blue-50">
           <div className="w-full max-w-md">
 
             {submitted ? (

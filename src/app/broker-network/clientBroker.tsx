@@ -269,10 +269,10 @@ export default function BrokerNetworkPage(): React.ReactElement {
                   Join the Network
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
-                <button className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-[#0066cc] font-semibold rounded-xl border-2 border-[#0066cc]/20 hover:border-[#0066cc]/40 hover:bg-blue-50/50 transition-all duration-300">
+              <Link href="/explore-broker-public">  <button className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-[#0066cc] font-semibold rounded-xl border-2 border-[#0066cc]/20 hover:border-[#0066cc]/40 hover:bg-blue-50/50 transition-all duration-300">
                   <Play className="w-5 h-5" />
                   Explore Brokers
-                </button>
+                </button></Link>
               </div>
 
               <div className="mt-8 flex items-center gap-6 text-sm text-gray-500">

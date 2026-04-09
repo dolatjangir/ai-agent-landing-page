@@ -321,13 +321,8 @@ const navItems: NavItem[] = [
               description: "24/7 expert assistance",
               href: "/contact-us"
             }
-            ,
-            {
-              icon: <img src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774334758/broker-network-icon_jcgfal.png" className="max-w-10 max-h-10" />,
-              title: "Broker Network",
-              description: "All broker is active",
-              href: "/resources/broker-network"
-            }
+       
+           
           ]
         }
       ],
@@ -337,7 +332,12 @@ const navItems: NavItem[] = [
         href: "/book-demo"
       }
     }
-  }
+  },
+   {
+              label: "Broker Network",
+              href: "/broker-network",
+               hasDropdown: false,
+            }
 ];
 function Header() {
      const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -516,14 +516,14 @@ onMouseLeave={() => item.hasDropdown && handleMouseLeave()}
           <button className="text-[var(--text-secondary)] hover:text-[var(--color-primary-600)] font-medium transition-colors duration-[var(--duration-fast)]">
             Log in
           </button></Link>
-          <Link href="https://app.estateai.in/register">
+          <Link href="/add-requirement">
           <button
             className="px-[var(--space-6)] py-[var(--space-2)] bg-[var(--color-primary-600)] hover:bg-[var(--color-primary-700)] text-[var(--text-inverse)] font-semibold rounded-lg transition-all duration-[var(--duration-fast)] shadow-lg hover:shadow-xl"
             style={{
               boxShadow: "0 10px 15px -3px var(--color-primary-600)/25",
             }}
           >
-            Start For Free Trial
+          Add Requirement
           </button></Link>
         </div>
 
@@ -649,9 +649,9 @@ onMouseLeave={() => item.hasDropdown && handleMouseLeave()}
         Log in
       </button>
     </Link>
-    <Link href="https://app.estateai.in/register">
+    <Link href="/add-requirement">
       <button className="w-full py-[var(--space-3)] bg-[var(--color-primary-600)] text-[var(--text-inverse)] font-semibold rounded-[var(--radius-xl)] mt-2">
-        Start Free Trial
+        Add Requirements
       </button>
     </Link>
   </div>

@@ -7,9 +7,8 @@ import {
   Shield, Zap, Eye, Loader2, Globe, Save, Menu, ChevronDown, ChevronUp
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { LogOut } from 'lucide-react';
-import BrokersPage from '@/components/explore-broker/exploreBroker';
-// ── Types (untouched) ────────────────────────────────────────────────────────
+
+// ── Types ────────────────────────────────────────────────────────────────────
 interface SEOEntry {
   id: string;
   pageName: string;
@@ -46,7 +45,7 @@ interface Stats {
   totalKeywords: number;
 }
 
-// ── API Functions (untouched) ────────────────────────────────────────────────
+// ── API Functions ───────────────────────────────────────────────────────────
 const api = {
   async getEntries(status?: string, search?: string): Promise<{ entries: SEOEntry[]; stats: Stats }> {
     const params = new URLSearchParams();
@@ -99,13 +98,13 @@ const api = {
   },
 };
 
-// ── Utility Functions (untouched) ────────────────────────────────────────────
+// ── Utility Functions ───────────────────────────────────────────────────────
 const generateSlug = (name: string) =>
   name.toLowerCase()
   .trim()
-  .replace(/[^\w\s/-]/g, "") // ✅ allow slash
+  .replace(/[^\w\s/-]/g, "")
   .replace(/\s+/g, "-")
-  .replace(/-+/g, "-");;
+  .replace(/-+/g, "-");
 
 const getScoreColor = (score: number) => {
   if (score >= 80) return 'text-green-600 bg-green-50 border-green-200';
@@ -119,19 +118,20 @@ const getScoreLabel = (score: number) => {
   return 'Needs Work';
 };
 
-// ── SVG Icon components (untouched) ─────────────────────────────────────────
+// ── SVG Icon components ─────────────────────────────────────────────────────
 const FacebookIcon = ({ className = 'w-4 h-4' }: { className?: string }) => (
   <svg className={className} fill="currentColor" viewBox="0 0 24 24">
     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
   </svg>
 );
+
 const TwitterIcon = ({ className = 'w-4 h-4' }: { className?: string }) => (
   <svg className={className} fill="currentColor" viewBox="0 0 24 24">
     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
   </svg>
 );
 
-// ── Preview Panel (extracted to share between mobile & desktop) ──────────────
+// ── Preview Panel Component ──────────────────────────────────────────────────
 function PreviewPanel({
   formData,
   previewMode,
@@ -192,7 +192,6 @@ function PreviewPanel({
           <div className="bg-white rounded-lg overflow-hidden shadow-sm border border-slate-200">
             <div className="aspect-[1.91/1] bg-slate-100 flex items-center justify-center">
               {formData.ogImage ? (
-                // eslint-disable-next-line @next/next/no-img-element
                 <img src={formData.ogImage} alt="OG" className="w-full h-full object-cover" />
               ) : (
                 <div className="text-center">
@@ -217,7 +216,6 @@ function PreviewPanel({
           <div className="bg-white rounded-lg overflow-hidden shadow-sm border border-slate-200">
             <div className="aspect-[2/1] bg-slate-100 flex items-center justify-center">
               {formData.twitterImage ? (
-                // eslint-disable-next-line @next/next/no-img-element
                 <img src={formData.twitterImage} alt="Twitter" className="w-full h-full object-cover" />
               ) : (
                 <div className="text-center">
@@ -310,34 +308,26 @@ function PreviewPanel({
   );
 }
 
-// ── Main Component ────────────────────────────────────────────────────────────
-export default function SEODashboard() {
+// ── Main SEOManager Component ────────────────────────────────────────────────
+export default function SEOManager() {
   const [entries, setEntries] = useState<SEOEntry[]>([]);
   const [stats, setStats] = useState<Stats>({ avgScore: 0, published: 0, needsAttention: 0, total: 0, totalKeywords: 0 });
- const [brokerCount, setBrokerCount] = useState(0);
   const [selectedEntry, setSelectedEntry] = useState<SEOEntry | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCreateMode, setIsCreateMode] = useState(false);
   const [activeTab, setActiveTab] = useState<'all' | 'published' | 'draft'>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [notifications, setNotifications] = useState<Notification[]>([]);
-  const [activeSidebarItem, setActiveSidebarItem] = useState('seo');
   const [previewMode, setPreviewMode] = useState<'google' | 'facebook' | 'twitter'>('google');
   const [isLoading, setIsLoading] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
-  // Responsive-only state
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
-const [keywordInput, setKeywordInput] = useState('');
+  const [keywordInput, setKeywordInput] = useState('');
   const [formData, setFormData] = useState<Partial<SEOEntry>>({});
   const [isDirty, setIsDirty] = useState(false);
   const router = useRouter();
-   const handleLogout = () => {
-    // Clear cookie
-    document.cookie = 'seo-auth-token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
-    router.push('/seo-login');
-    router.refresh();
-  };
+
   // Close mobile sidebar on desktop resize
   useEffect(() => {
     const onResize = () => { if (window.innerWidth >= 1024) setIsMobileSidebarOpen(false); };
@@ -359,6 +349,8 @@ const [keywordInput, setKeywordInput] = useState('');
   }, [activeTab, searchQuery]);
 
   useEffect(() => { loadData(); }, [loadData]);
+  
+  // Debounce search
   useEffect(() => {
     const t = setTimeout(() => loadData(), 300);
     return () => clearTimeout(t);
@@ -384,6 +376,7 @@ const [keywordInput, setKeywordInput] = useState('');
     setIsCreateMode(false);
     setSelectedEntry(entry);
     setFormData({ ...entry });
+    setKeywordInput(entry.keywords.join(', '));
     setIsModalOpen(true);
     setIsDirty(false);
     setIsPreviewOpen(false);
@@ -440,16 +433,14 @@ const [keywordInput, setKeywordInput] = useState('');
     setIsDirty(true);
   };
 
-const handleKeywordsChange = (value: string) => {
-  setKeywordInput(value);
-
-  const keywords = value
-    .split(',')
-    .map(k => k.trim())
-    .filter(k => k);
-
-  handleInputChange('keywords', keywords);
-};
+  const handleKeywordsChange = (value: string) => {
+    setKeywordInput(value);
+    const keywords = value
+      .split(',')
+      .map(k => k.trim())
+      .filter(k => k);
+    handleInputChange('keywords', keywords);
+  };
 
   const handleExport = async () => {
     try {
@@ -481,19 +472,6 @@ const handleKeywordsChange = (value: string) => {
     e.target.value = '';
   };
 
-  const loadBrokerStats = async () => {
-  try {
-    const res = await fetch("/api/brokers"); //  broker API
-    const data = await res.json();
-
-    setBrokerCount(data.length); // or data.total if you return it
-  } catch (err) {
-    console.error(err);
-  }
-};
-useEffect(() => {
-  loadBrokerStats();
-}, []);
   const calculatePreviewScore = (entry: Partial<SEOEntry>): number => {
     let score = 0;
     if (entry.metaTitle && entry.metaTitle.length >= 50 && entry.metaTitle.length <= 60) score += 25;
@@ -508,376 +486,256 @@ useEffect(() => {
     return Math.max(0, Math.min(100, score));
   };
 
-  const navItems = [
-    { id: 'dashboard', icon: Layout, label: 'Dashboard' },
-    { id: 'seo',       icon: Search, label: 'SEO Manager', badge: stats.total },
-    { id: 'explore',       icon: Search, label: 'Broker Manager', badge: brokerCount },
-    { id: 'users',     icon: Users,  label: 'Users' },
-    { id: 'settings',  icon: Settings, label: 'Settings' },
-  ];
-
-  const SidebarNav = ({ onItemClick }: { onItemClick?: () => void }) => (
-    <>
-      {navItems.map(({ id, icon: Icon, label, badge }) => (
-        <button
-          key={id}
-          onClick={() => { setActiveSidebarItem(id); onItemClick?.(); }}
-          className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
-            activeSidebarItem === id
-              ? 'bg-[var(--color-primary-50)] text-[var(--color-primary-700)] shadow-sm border border-[var(--color-primary-100)]'
-              : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
-          }`}
-        >
-          <Icon className="w-5 h-5 shrink-0" />
-          <span className="truncate">{label}</span>
-          {badge !== undefined && (
-            <span className="ml-auto bg-[var(--color-primary-600)] text-white text-xs px-2 py-0.5 rounded-full shrink-0">
-              {badge}
-            </span>
-          )}
-        </button>
-      ))}
-    </>
-  );
-
-  const AdminBadge = () => (
-    <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-gradient-to-r from-[var(--color-primary-50)] to-white border border-[var(--color-primary-100)]">
-      <div className="w-8 h-8 rounded-full bg-[var(--color-primary-600)] flex items-center justify-center shrink-0">
-        <Shield className="w-4 h-4 text-white" />
-      </div>
-      <div className="flex-1 min-w-0">
-        <p className="text-sm font-medium text-[var(--color-primary-900)] truncate">Admin User</p>
-        <p className="text-xs text-[var(--color-primary-600)] truncate">admin@estateai.com</p>
-      </div>
-    </div>
-  );
-
   return (
-    <div className="min-h-screen bg-[var(--color-secondary-50)] flex">
-
-      {/* Mobile sidebar overlay */}
-      {isMobileSidebarOpen && (
-        <div
-          className="fixed inset-0 z-40 bg-slate-900/50 backdrop-blur-sm lg:hidden"
-          onClick={() => setIsMobileSidebarOpen(false)}
-        />
-      )}
-
-      {/* Mobile sidebar drawer */}
-      <aside className={`fixed top-0 left-0 h-full w-72 bg-white border-r border-[var(--color-primary-100)] z-50 flex flex-col
-        transform transition-transform duration-300 ease-in-out lg:hidden
-        ${isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}
-      >
-        <div className="p-5 border-b border-[var(--color-primary-100)] flex items-center justify-between shrink-0">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[var(--color-primary-500)] to-[var(--color-primary-700)] flex items-center justify-center">
-              <Zap className="w-5 h-5 text-white" />
-            </div>
-            <div>
-              <h1 className="font-bold text-lg text-[var(--color-primary-900)]">EstateAI</h1>
-              <p className="text-xs text-[var(--color-primary-600)]">Admin Dashboard</p>
+    <div className="min-h-screen bg-[var(--color-secondary-50)] flex flex-col">
+      {/* Header */}
+      <header className="bg-white border-b border-[var(--color-primary-100)] sticky top-0 z-20">
+        <div className="px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-3 min-w-0">
+            <div className="min-w-0">
+              <h2 className="text-lg sm:text-2xl font-bold text-slate-900 leading-tight truncate">SEO Manager</h2>
+              <p className="text-xs sm:text-sm text-slate-500 hidden sm:block mt-0.5">Manage meta tags and optimize your site for search engines</p>
             </div>
           </div>
-          <button onClick={() => setIsMobileSidebarOpen(false)} className="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg">
-            <X className="w-5 h-5" />
-          </button>
-        </div>
-        <nav className="p-4 space-y-1 flex-1 overflow-y-auto">
-          <SidebarNav onItemClick={() => setIsMobileSidebarOpen(false)} />
-        </nav>
-        <div className="p-4 border-t border-[var(--color-primary-100)] shrink-0">
-          <AdminBadge />
-        </div>
-      </aside>
-
-      {/* Desktop sidebar */}
-      <aside className="w-64 bg-white border-r border-[var(--color-primary-100)] fixed h-full z-10 hidden lg:flex lg:flex-col">
-        <div className="p-6 border-b border-[var(--color-primary-100)] shrink-0">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[var(--color-primary-500)] to-[var(--color-primary-700)] flex items-center justify-center shadow-lg shadow-[var(--color-primary-200)]">
-              <Zap className="w-6 h-6 text-white" />
-            </div>
-            <div>
-              <h1 className="font-bold text-xl text-[var(--color-primary-900)]">EstateAI</h1>
-              <p className="text-xs text-[var(--color-primary-600)]">Admin Dashboard</p>
-            </div>
+          <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
+            <button onClick={handleExport} className="p-2 text-slate-400 hover:text-slate-600 rounded-lg hover:bg-slate-100 transition-colors hidden sm:flex" title="Export">
+              <Download className="w-5 h-5" />
+            </button>
+            <label className="p-2 text-slate-400 hover:text-slate-600 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer hidden sm:flex" title="Import">
+              <Upload className="w-5 h-5" />
+              <input type="file" accept=".json" onChange={handleImport} className="hidden" />
+            </label>
+            <button
+              onClick={handleCreate}
+              disabled={isLoading}
+              className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 bg-[var(--color-primary-600)] hover:bg-[var(--color-primary-700)] disabled:opacity-50 disabled:cursor-not-allowed text-white rounded-xl font-medium text-sm shadow-lg shadow-[var(--color-primary-200)] transition-all hover:shadow-xl active:scale-95"
+            >
+              {isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Plus className="w-4 h-4 sm:w-5 sm:h-5" />}
+              <span className="hidden sm:inline">Add Page SEO</span>
+              <span className="sm:hidden">Add</span>
+            </button>
           </div>
         </div>
-        <nav className="p-4 space-y-1 flex-1 overflow-y-auto">
-          <SidebarNav />
-        </nav>
-        <div className="p-4 border-t border-[var(--color-primary-100)] shrink-0">
-          <AdminBadge />
-        </div>
-      </aside>
+      </header>
 
-      {/* Main */}
-     <main className="flex-1 lg:ml-64 min-w-0">
-       {activeSidebarItem === "seo" &&  <div className=" ">
-        {/* Header */}
-        <header className="bg-white border-b border-[var(--color-primary-100)] sticky top-0 z-20">
-          <div className="px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between gap-3">
-            <div className="flex items-center gap-3 min-w-0">
-              <button
-                onClick={() => setIsMobileSidebarOpen(true)}
-                className="p-2 text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors lg:hidden shrink-0"
-              >
-                <Menu className="w-5 h-5" />
-              </button>
+      {/* Stats */}
+      <div className="px-4 sm:px-6 py-4 sm:py-6 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+        {[
+          {
+            label: 'Avg SEO Score', value: `${stats.avgScore}%`,
+            icon: <BarChart3 className="w-5 h-5 sm:w-6 sm:h-6 text-[var(--color-primary-600)]" />,
+            iconBg: 'bg-gradient-to-br from-[var(--color-primary-100)] to-[var(--color-primary-50)]',
+            sub: <span className={`text-xs font-medium px-2 py-1 rounded-full border ${getScoreColor(stats.avgScore)}`}>{getScoreLabel(stats.avgScore)}</span>,
+            valueClass: 'text-[var(--color-primary-900)]',
+          },
+          {
+            label: 'Published', value: stats.published,
+            icon: <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-green-600" />,
+            iconBg: 'bg-green-50',
+            sub: <p className="text-xs text-slate-500">of {stats.total} total pages</p>,
+            valueClass: 'text-[var(--color-primary-900)]',
+          },
+          {
+            label: 'Needs Attention', value: stats.needsAttention,
+            icon: <AlertCircle className="w-5 h-5 sm:w-6 sm:h-6 text-red-600" />,
+            iconBg: 'bg-red-50',
+            sub: <p className="text-xs text-slate-500 hidden sm:block">Pages with SEO score &lt; 60</p>,
+            valueClass: 'text-red-600',
+          },
+          {
+            label: 'Total Keywords', value: stats.totalKeywords,
+            icon: <Search className="w-5 h-5 sm:w-6 sm:h-6 text-[var(--color-secondary-600)]" />,
+            iconBg: 'bg-[var(--color-secondary-100)]',
+            sub: <p className="text-xs text-slate-500">Across all pages</p>,
+            valueClass: 'text-[var(--color-primary-900)]',
+          },
+        ].map(card => (
+          <div key={card.label} className="bg-white rounded-2xl p-4 sm:p-5 border border-[var(--color-primary-100)] shadow-sm hover:shadow-md transition-shadow">
+            <div className="flex items-center justify-between gap-2">
               <div className="min-w-0">
-                <h2 className="text-lg sm:text-2xl font-bold text-slate-900 leading-tight truncate">SEO Manager</h2>
-                <p className="text-xs sm:text-sm text-slate-500 hidden sm:block mt-0.5">Manage meta tags and optimize your site for search engines</p>
+                <p className="text-xs sm:text-sm font-medium text-slate-500 truncate">{card.label}</p>
+                <p className={`text-2xl sm:text-3xl font-bold mt-1 ${card.valueClass}`}>{card.value}</p>
+              </div>
+              <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl ${card.iconBg} flex items-center justify-center shrink-0`}>
+                {card.icon}
               </div>
             </div>
-            <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
-                <button
-        onClick={handleLogout}
-        className="flex items-center gap-2 px-4 py-2 text-slate-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all"
-      >
-        <LogOut className="w-4 h-4" />
-        Sign Out
-      </button>
-              <button onClick={handleExport} className="p-2 text-slate-400 hover:text-slate-600 rounded-lg hover:bg-slate-100 transition-colors hidden sm:flex" title="Export">
-                <Download className="w-5 h-5" />
-              </button>
-              <label className="p-2 text-slate-400 hover:text-slate-600 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer hidden sm:flex" title="Import">
-                <Upload className="w-5 h-5" />
-                <input type="file" accept=".json" onChange={handleImport} className="hidden" />
-              </label>
-              <button
-                onClick={handleCreate}
-                disabled={isLoading}
-                className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 bg-[var(--color-primary-600)] hover:bg-[var(--color-primary-700)] disabled:opacity-50 disabled:cursor-not-allowed text-white rounded-xl font-medium text-sm shadow-lg shadow-[var(--color-primary-200)] transition-all hover:shadow-xl active:scale-95"
-              >
-                {isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Plus className="w-4 h-4 sm:w-5 sm:h-5" />}
-                <span className="hidden sm:inline">Add Page SEO</span>
-                <span className="sm:hidden">Add</span>
-              </button>
-            </div>
+            <div className="mt-2 sm:mt-3">{card.sub}</div>
           </div>
-        </header>
+        ))}
+      </div>
 
-        {/* Stats */}
-        <div className="px-4 sm:px-6 py-4 sm:py-6 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-          {[
-            {
-              label: 'Avg SEO Score', value: `${stats.avgScore}%`,
-              icon: <BarChart3 className="w-5 h-5 sm:w-6 sm:h-6 text-[var(--color-primary-600)]" />,
-              iconBg: 'bg-gradient-to-br from-[var(--color-primary-100)] to-[var(--color-primary-50)]',
-              sub: <span className={`text-xs font-medium px-2 py-1 rounded-full border ${getScoreColor(stats.avgScore)}`}>{getScoreLabel(stats.avgScore)}</span>,
-              valueClass: 'text-[var(--color-primary-900)]',
-            },
-            {
-              label: 'Published', value: stats.published,
-              icon: <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-green-600" />,
-              iconBg: 'bg-green-50',
-              sub: <p className="text-xs text-slate-500">of {stats.total} total pages</p>,
-              valueClass: 'text-[var(--color-primary-900)]',
-            },
-            {
-              label: 'Needs Attention', value: stats.needsAttention,
-              icon: <AlertCircle className="w-5 h-5 sm:w-6 sm:h-6 text-red-600" />,
-              iconBg: 'bg-red-50',
-              sub: <p className="text-xs text-slate-500 hidden sm:block">Pages with SEO score &lt; 60</p>,
-              valueClass: 'text-red-600',
-            },
-            {
-              label: 'Total Keywords', value: stats.totalKeywords,
-              icon: <Search className="w-5 h-5 sm:w-6 sm:h-6 text-[var(--color-secondary-600)]" />,
-              iconBg: 'bg-[var(--color-secondary-100)]',
-              sub: <p className="text-xs text-slate-500">Across all pages</p>,
-              valueClass: 'text-[var(--color-primary-900)]',
-            },
-          ].map(card => (
-            <div key={card.label} className="bg-white rounded-2xl p-4 sm:p-5 border border-[var(--color-primary-100)] shadow-sm hover:shadow-md transition-shadow">
-              <div className="flex items-center justify-between gap-2">
-                <div className="min-w-0">
-                  <p className="text-xs sm:text-sm font-medium text-slate-500 truncate">{card.label}</p>
-                  <p className={`text-2xl sm:text-3xl font-bold mt-1 ${card.valueClass}`}>{card.value}</p>
-                </div>
-                <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl ${card.iconBg} flex items-center justify-center shrink-0`}>
-                  {card.icon}
-                </div>
+      {/* Table area */}
+      <div className="px-4 sm:px-6 pb-6 flex-1">
+        <div className="bg-white rounded-2xl border border-[var(--color-primary-100)] shadow-sm overflow-hidden h-full flex flex-col">
+
+          {/* Toolbar */}
+          <div className="p-3 sm:p-4 border-b border-[var(--color-primary-100)] space-y-3">
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-xl">
+                {(['all', 'published', 'draft'] as const).map(tab => (
+                  <button
+                    key={tab}
+                    onClick={() => setActiveTab(tab)}
+                    disabled={isLoading}
+                    className={`px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium capitalize transition-all disabled:opacity-50 ${
+                      activeTab === tab ? 'bg-white text-[var(--color-primary-700)] shadow-sm' : 'text-slate-600 hover:text-slate-900'
+                    }`}
+                  >
+                    {tab}
+                  </button>
+                ))}
               </div>
-              <div className="mt-2 sm:mt-3">{card.sub}</div>
+              <div className="flex flex-row gap-3">
+               <div className="relative">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <input
+                type="text"
+                placeholder="Search pages..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-10 pr-4 py-2 w-full sm:max-w-xs bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-500)] focus:border-transparent transition-all"
+              />
             </div>
-          ))}
-        </div>
-
-        {/* Table area */}
-        <div className="px-4 sm:px-6 pb-6">
-          <div className="bg-white rounded-2xl border border-[var(--color-primary-100)] shadow-sm overflow-hidden">
-
-            {/* Toolbar */}
-            <div className="p-3 sm:p-4 border-b border-[var(--color-primary-100)] space-y-3">
-              <div className="flex items-center justify-between gap-3">
-                <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-xl">
-                  {(['all', 'published', 'draft'] as const).map(tab => (
-                    <button
-                      key={tab}
-                      onClick={() => setActiveTab(tab)}
-                      disabled={isLoading}
-                      className={`px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium capitalize transition-all disabled:opacity-50 ${
-                        activeTab === tab ? 'bg-white text-[var(--color-primary-700)] shadow-sm' : 'text-slate-600 hover:text-slate-900'
-                      }`}
-                    >
-                      {tab}
-                    </button>
-                  ))}
-                </div>
-                <div className="flex flex-row gap-3">
-                 <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                <input
-                  type="text"
-                  placeholder="Search pages..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10 pr-4 py-2 w-full sm:max-w-xs bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-500)] focus:border-transparent transition-all"
-                />
+              <button className="p-2 text-slate-600 hover:bg-slate-100 rounded-xl transition-colors shrink-0">
+                <Filter className="min-w-4 min-h-4 sm:min-w-5 sm:min-h-5" />
+              </button>
               </div>
-                <button className="p-2 text-slate-600 hover:bg-slate-100 rounded-xl transition-colors shrink-0">
-                  <Filter className="min-w-4 min-h-4 sm:min-w-5 sm:min-h-5" />
-                </button>
-                </div>
-              </div>
-             
             </div>
+           
+          </div>
 
-            {/* Desktop table */}
-            <div className="hidden sm:block overflow-x-auto">
-              <table className="w-full">
-                <thead className="bg-slate-50 border-b border-[var(--color-primary-100)]">
-                  <tr>
-                    <th className="text-left px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Page</th>
-                    <th className="text-left px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">SEO Score</th>
-                    <th className="text-left px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Status</th>
-                    <th className="text-left px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider hidden md:table-cell">Last Modified</th>
-                    <th className="text-right px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Actions</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100">
-                  {isLoading ? (
-                    <tr><td colSpan={5} className="px-6 py-12 text-center">
-                      <Loader2 className="w-8 h-8 animate-spin mx-auto text-[var(--color-primary-600)]" />
-                      <p className="text-slate-500 mt-2">Loading...</p>
-                    </td></tr>
-                  ) : entries.length === 0 ? (
-                    <tr><td colSpan={5} className="px-6 py-12 text-center">
-                      <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-slate-100 flex items-center justify-center">
-                        <Search className="w-8 h-8 text-slate-400" />
+          {/* Desktop table */}
+          <div className="hidden sm:block overflow-x-auto flex-1">
+            <table className="w-full">
+              <thead className="bg-slate-50 border-b border-[var(--color-primary-100)]">
+                <tr>
+                  <th className="text-left px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Page</th>
+                  <th className="text-left px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">SEO Score</th>
+                  <th className="text-left px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Status</th>
+                  <th className="text-left px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider hidden md:table-cell">Last Modified</th>
+                  <th className="text-right px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Actions</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100">
+                {isLoading ? (
+                  <tr><td colSpan={5} className="px-6 py-12 text-center">
+                    <Loader2 className="w-8 h-8 animate-spin mx-auto text-[var(--color-primary-600)]" />
+                    <p className="text-slate-500 mt-2">Loading...</p>
+                  </td></tr>
+                ) : entries.length === 0 ? (
+                  <tr><td colSpan={5} className="px-6 py-12 text-center">
+                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-slate-100 flex items-center justify-center">
+                      <Search className="w-8 h-8 text-slate-400" />
+                    </div>
+                    <p className="text-slate-500 font-medium">No pages found</p>
+                    <p className="text-sm text-slate-400 mt-1">Try adjusting your search or filters</p>
+                  </td></tr>
+                ) : entries.map(entry => (
+                  <tr key={entry.id} className="hover:bg-slate-50 transition-colors group">
+                    <td className="px-6 py-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-lg bg-[var(--color-primary-50)] flex items-center justify-center border border-[var(--color-primary-100)] shrink-0">
+                          <FileText className="w-5 h-5 text-[var(--color-primary-600)]" />
+                        </div>
+                        <div className="min-w-0">
+                          <p className="font-medium text-slate-900 group-hover:text-[var(--color-primary-700)] transition-colors truncate">{entry.pageName}</p>
+                          <p className="text-sm text-slate-500 truncate">{entry.url}</p>
+                        </div>
                       </div>
-                      <p className="text-slate-500 font-medium">No pages found</p>
-                      <p className="text-sm text-slate-400 mt-1">Try adjusting your search or filters</p>
-                    </td></tr>
-                  ) : entries.map(entry => (
-                    <tr key={entry.id} className="hover:bg-slate-50 transition-colors group">
-                      <td className="px-6 py-4">
-                        <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-lg bg-[var(--color-primary-50)] flex items-center justify-center border border-[var(--color-primary-100)] shrink-0">
-                            <FileText className="w-5 h-5 text-[var(--color-primary-600)]" />
-                          </div>
-                          <div className="min-w-0">
-                            <p className="font-medium text-slate-900 group-hover:text-[var(--color-primary-700)] transition-colors truncate">{entry.pageName}</p>
-                            <p className="text-sm text-slate-500 truncate">{entry.url}</p>
-                          </div>
+                    </td>
+                    <td className="px-6 py-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-16 h-2 bg-slate-200 rounded-full overflow-hidden">
+                          <div className={`h-full rounded-full ${entry.seoScore >= 80 ? 'bg-green-500' : entry.seoScore >= 60 ? 'bg-amber-500' : 'bg-red-500'}`} style={{ width: `${entry.seoScore}%` }} />
                         </div>
-                      </td>
-                      <td className="px-6 py-4">
-                        <div className="flex items-center gap-3">
-                          <div className="w-16 h-2 bg-slate-200 rounded-full overflow-hidden">
-                            <div className={`h-full rounded-full ${entry.seoScore >= 80 ? 'bg-green-500' : entry.seoScore >= 60 ? 'bg-amber-500' : 'bg-red-500'}`} style={{ width: `${entry.seoScore}%` }} />
-                          </div>
-                          <span className={`text-sm font-medium ${entry.seoScore >= 80 ? 'text-green-600' : entry.seoScore >= 60 ? 'text-amber-600' : 'text-red-600'}`}>{entry.seoScore}</span>
-                        </div>
-                      </td>
-                      <td className="px-6 py-4">
-                        <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium ${entry.status === 'published' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-amber-50 text-amber-700 border border-amber-200'}`}>
-                          <div className={`w-1.5 h-1.5 rounded-full ${entry.status === 'published' ? 'bg-green-500' : 'bg-amber-500'}`} />
-                          {entry.status}
-                        </span>
-                      </td>
-                      <td className="px-6 py-4 text-sm text-slate-500 hidden md:table-cell">{new Date(entry.lastModified).toLocaleDateString()}</td>
-                      <td className="px-6 py-4 text-right">
-                        <div className="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                          <button onClick={() => handleEdit(entry)} className="p-2 text-slate-600 hover:text-[var(--color-primary-600)] hover:bg-[var(--color-primary-50)] rounded-lg transition-all">
-                            <Edit3 className="w-4 h-4" />
-                          </button>
-                          <button onClick={() => handleDelete(entry.id)} className="p-2 text-slate-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all">
-                            <Trash2 className="w-4 h-4" />
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                        <span className={`text-sm font-medium ${entry.seoScore >= 80 ? 'text-green-600' : entry.seoScore >= 60 ? 'text-amber-600' : 'text-red-600'}`}>{entry.seoScore}</span>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4">
+                      <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium ${entry.status === 'published' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-amber-50 text-amber-700 border border-amber-200'}`}>
+                        <div className={`w-1.5 h-1.5 rounded-full ${entry.status === 'published' ? 'bg-green-500' : 'bg-amber-500'}`} />
+                        {entry.status}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4 text-sm text-slate-500 hidden md:table-cell">{new Date(entry.lastModified).toLocaleDateString()}</td>
+                    <td className="px-6 py-4 text-right">
+                      <div className="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <button onClick={() => handleEdit(entry)} className="p-2 text-slate-600 hover:text-[var(--color-primary-600)] hover:bg-[var(--color-primary-50)] rounded-lg transition-all">
+                          <Edit3 className="w-4 h-4" />
+                        </button>
+                        <button onClick={() => handleDelete(entry.id)} className="p-2 text-slate-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all">
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
 
-            {/* Mobile card list */}
-            <div className="sm:hidden">
-              {isLoading ? (
-                <div className="py-12 text-center">
-                  <Loader2 className="w-8 h-8 animate-spin mx-auto text-[var(--color-primary-600)]" />
-                  <p className="text-slate-500 mt-2 text-sm">Loading...</p>
+          {/* Mobile card list */}
+          <div className="sm:hidden flex-1 overflow-y-auto">
+            {isLoading ? (
+              <div className="py-12 text-center">
+                <Loader2 className="w-8 h-8 animate-spin mx-auto text-[var(--color-primary-600)]" />
+                <p className="text-slate-500 mt-2 text-sm">Loading...</p>
+              </div>
+            ) : entries.length === 0 ? (
+              <div className="py-12 text-center px-6">
+                <div className="w-14 h-14 mx-auto mb-3 rounded-full bg-slate-100 flex items-center justify-center">
+                  <Search className="w-7 h-7 text-slate-400" />
                 </div>
-              ) : entries.length === 0 ? (
-                <div className="py-12 text-center px-6">
-                  <div className="w-14 h-14 mx-auto mb-3 rounded-full bg-slate-100 flex items-center justify-center">
-                    <Search className="w-7 h-7 text-slate-400" />
-                  </div>
-                  <p className="text-slate-500 font-medium text-sm">No pages found</p>
-                  <p className="text-xs text-slate-400 mt-1">Try adjusting your search or filters</p>
-                </div>
-              ) : (
-                <div className="divide-y divide-slate-100">
-                  {entries.map(entry => (
-                    <div key={entry.id} className="p-4">
-                      <div className="flex items-start gap-3">
-                        <div className="w-9 h-9 rounded-lg bg-[var(--color-primary-50)] border border-[var(--color-primary-100)] flex items-center justify-center shrink-0 mt-0.5">
-                          <FileText className="w-4 h-4 text-[var(--color-primary-600)]" />
+                <p className="text-slate-500 font-medium text-sm">No pages found</p>
+                <p className="text-xs text-slate-400 mt-1">Try adjusting your search or filters</p>
+              </div>
+            ) : (
+              <div className="divide-y divide-slate-100">
+                {entries.map(entry => (
+                  <div key={entry.id} className="p-4">
+                    <div className="flex items-start gap-3">
+                      <div className="w-9 h-9 rounded-lg bg-[var(--color-primary-50)] border border-[var(--color-primary-100)] flex items-center justify-center shrink-0 mt-0.5">
+                        <FileText className="w-4 h-4 text-[var(--color-primary-600)]" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-start justify-between gap-2">
+                          <div className="min-w-0">
+                            <p className="font-medium text-slate-900 text-sm truncate">{entry.pageName}</p>
+                            <p className="text-xs text-slate-500 truncate mt-0.5">{entry.url}</p>
+                          </div>
+                          <div className="flex items-center gap-1 shrink-0">
+                            <button onClick={() => handleEdit(entry)} className="p-1.5 text-slate-500 hover:text-[var(--color-primary-600)] hover:bg-[var(--color-primary-50)] rounded-lg transition-all">
+                              <Edit3 className="w-4 h-4" />
+                            </button>
+                            <button onClick={() => handleDelete(entry.id)} className="p-1.5 text-slate-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all">
+                              <Trash2 className="w-4 h-4" />
+                            </button>
+                          </div>
                         </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-start justify-between gap-2">
-                            <div className="min-w-0">
-                              <p className="font-medium text-slate-900 text-sm truncate">{entry.pageName}</p>
-                              <p className="text-xs text-slate-500 truncate mt-0.5">{entry.url}</p>
+                        <div className="mt-2.5 flex items-center flex-wrap gap-2">
+                          <div className="flex items-center gap-1.5">
+                            <div className="w-12 h-1.5 bg-slate-200 rounded-full overflow-hidden">
+                              <div className={`h-full rounded-full ${entry.seoScore >= 80 ? 'bg-green-500' : entry.seoScore >= 60 ? 'bg-amber-500' : 'bg-red-500'}`} style={{ width: `${entry.seoScore}%` }} />
                             </div>
-                            <div className="flex items-center gap-1 shrink-0">
-                              <button onClick={() => handleEdit(entry)} className="p-1.5 text-slate-500 hover:text-[var(--color-primary-600)] hover:bg-[var(--color-primary-50)] rounded-lg transition-all">
-                                <Edit3 className="w-4 h-4" />
-                              </button>
-                              <button onClick={() => handleDelete(entry.id)} className="p-1.5 text-slate-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all">
-                                <Trash2 className="w-4 h-4" />
-                              </button>
-                            </div>
+                            <span className={`text-xs font-semibold ${entry.seoScore >= 80 ? 'text-green-600' : entry.seoScore >= 60 ? 'text-amber-600' : 'text-red-600'}`}>{entry.seoScore}</span>
                           </div>
-                          <div className="mt-2.5 flex items-center flex-wrap gap-2">
-                            <div className="flex items-center gap-1.5">
-                              <div className="w-12 h-1.5 bg-slate-200 rounded-full overflow-hidden">
-                                <div className={`h-full rounded-full ${entry.seoScore >= 80 ? 'bg-green-500' : entry.seoScore >= 60 ? 'bg-amber-500' : 'bg-red-500'}`} style={{ width: `${entry.seoScore}%` }} />
-                              </div>
-                              <span className={`text-xs font-semibold ${entry.seoScore >= 80 ? 'text-green-600' : entry.seoScore >= 60 ? 'text-amber-600' : 'text-red-600'}`}>{entry.seoScore}</span>
-                            </div>
-                            <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium ${entry.status === 'published' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-amber-50 text-amber-700 border border-amber-200'}`}>
-                              <div className={`w-1.5 h-1.5 rounded-full ${entry.status === 'published' ? 'bg-green-500' : 'bg-amber-500'}`} />
-                              {entry.status}
-                            </span>
-                            <span className="text-xs text-slate-400 ml-auto">{new Date(entry.lastModified).toLocaleDateString()}</span>
-                          </div>
+                          <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium ${entry.status === 'published' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-amber-50 text-amber-700 border border-amber-200'}`}>
+                            <div className={`w-1.5 h-1.5 rounded-full ${entry.status === 'published' ? 'bg-green-500' : 'bg-amber-500'}`} />
+                            {entry.status}
+                          </span>
+                          <span className="text-xs text-slate-400 ml-auto">{new Date(entry.lastModified).toLocaleDateString()}</span>
                         </div>
                       </div>
                     </div>
-                  ))}
-                </div>
-              )}
-            </div>
-
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
+
         </div>
-        </div>}
-        {activeSidebarItem === "explore" && <BrokersPage/>}
-      </main>
+      </div>
 
       {/* Modal */}
       {isModalOpen && (

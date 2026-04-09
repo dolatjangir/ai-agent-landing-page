@@ -9,7 +9,7 @@ import WhatsAppButton from "@/components/whatsapp-button/whatsapp";
 export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
-  const hideRoutes = ["/login","/register","/seodashboard","/seo","/onboarding","/seo-login"];
+  const hideRoutes = ["/login","/register","/seodashboard","/seo","/onboarding","/seo-login","/explore-broker"];
   const hideLayout = hideRoutes.includes(pathname);
 
   return (
