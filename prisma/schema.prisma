@@ -111,6 +111,23 @@ model Broker {
   @@map("brokers")
 }
 
+model Requirement {
+  id              String  @id @default(cuid())
+  requirementType String // buy | rent
+  propertyType    String
+  propertySubtype String
+  city            String
+  location        String
+  minPrice        Int
+  maxPrice        Int
+  name            String
+  contactNumber   String
+  email           String
+  description     String?
+
+  createdAt DateTime @default(now())
+}
+
 enum Role {
   ADMIN
   USER

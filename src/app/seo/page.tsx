@@ -9,6 +9,7 @@ import {
 import { useRouter } from 'next/navigation';
 import { LogOut } from 'lucide-react';
 import BrokersPage from '@/components/explore-broker/exploreBroker';
+import RequirementsPage from '@/components/getRequirement/requirement';
 // ── Types (untouched) ────────────────────────────────────────────────────────
 interface SEOEntry {
   id: string;
@@ -512,7 +513,7 @@ useEffect(() => {
     { id: 'dashboard', icon: Layout, label: 'Dashboard' },
     { id: 'seo',       icon: Search, label: 'SEO Manager', badge: stats.total },
     { id: 'explore',       icon: Search, label: 'Broker Manager', badge: brokerCount },
-    { id: 'users',     icon: Users,  label: 'Users' },
+    { id: 'requirement',     icon: Users,  label: 'Added Requirements' },
     { id: 'settings',  icon: Settings, label: 'Settings' },
   ];
 
@@ -877,6 +878,7 @@ useEffect(() => {
         </div>
         </div>}
         {activeSidebarItem === "explore" && <BrokersPage/>}
+        {activeSidebarItem === "requirement" && <RequirementsPage/>}
       </main>
 
       {/* Modal */}

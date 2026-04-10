@@ -268,12 +268,7 @@ const navItems: NavItem[] = [
     }
   }
 },
-  {
-    label: "Pricing",
-    href: "/pricing",
-    hasDropdown: false,
-  
-  },
+
   {
     label: "Resources",
     href: "#resources",
@@ -303,6 +298,7 @@ const navItems: NavItem[] = [
               description: "FAQs and troubleshooting",
               href: "/resources/help-center"
             },
+          
           ]
         },
         {
@@ -320,7 +316,13 @@ const navItems: NavItem[] = [
               title: "Contact Us",
               description: "24/7 expert assistance",
               href: "/contact-us"
-            }
+            },
+              {
+              icon: <img src="https://res.cloudinary.com/djipgt6vc/image/upload/v1774335509/customer-engage-icon_vafyry.png" className="max-w-10 max-h-10" />,
+              title: "Pricing",
+              description: "make a best position",
+              href: "/resources/pricing"
+            },
        
            
           ]
@@ -334,7 +336,7 @@ const navItems: NavItem[] = [
     }
   },
    {
-              label: "Broker Network",
+              label: "Associates",
               href: "/broker-network",
                hasDropdown: false,
             }
