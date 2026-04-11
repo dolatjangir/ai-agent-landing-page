@@ -18,7 +18,7 @@ model DemoRequest {
   name      String
   email     String
   phone     String
-  message   String?
+  message   String?  @db.VarChar(2000)
   status    String   @default("pending")
   source    String   @default("chatbot")
   createdAt DateTime @default(now())
@@ -34,7 +34,7 @@ model Contact {
   id        String   @id @default(cuid())
   name      String
   email     String
-  message   String
+  message   String   @db.VarChar(2000)
   createdAt DateTime @default(now())
 }
 
@@ -43,11 +43,11 @@ model ContactSupport {
   name          String
   email         String
   subject       String
-  message       String
-  inquiryType   String?
-  priority      String?
-  supportMethod String?
-  preferredTime String?
+  message       String   @db.VarChar(2000)
+  inquiryType   String?  @db.VarChar(255)
+  priority      String?  @db.VarChar(100)
+  supportMethod String?  @db.VarChar(100)
+  preferredTime String?  @db.VarChar(100)
   createdAt     DateTime @default(now())
 }
 
@@ -57,15 +57,15 @@ model SeoEntry {
   slug               String   @unique
   url                String   @unique
   metaTitle          String
-  metaDescription    String   @db.Text
-  keywords           String // Stored as JSON string array
-  canonicalUrl       String?
-  ogTitle            String?
-  ogDescription      String?  @db.Text
-  ogImage            String?
-  twitterTitle       String?
-  twitterDescription String?  @db.Text
-  twitterImage       String?
+  metaDescription    String   @db.VarChar(1000)
+  keywords           String   @db.VarChar(1000) // Stored as JSON string array
+  canonicalUrl       String?  @db.VarChar(500)
+  ogTitle            String?  @db.VarChar(255)
+  ogDescription      String?  @db.VarChar(1000)
+  ogImage            String?  @db.VarChar(500)
+  twitterTitle       String?  @db.VarChar(255)
+  twitterDescription String?  @db.VarChar(1000)
+  twitterImage       String?  @db.VarChar(500)
   seoScore           Int      @default(0)
   status             Status   @default(draft)
   indexable          Boolean  @default(true)
@@ -98,11 +98,11 @@ model Broker {
   company        String
   role           String
   location       String   @default("")
-  description    String   @default("") @db.Text
+  description    String   @default("") @db.VarChar(2000)
   email          String
   phone          String   @default("")
   experience     String   @default("")
-  specialization Json     @default("[]")
+  specialization Json
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 
