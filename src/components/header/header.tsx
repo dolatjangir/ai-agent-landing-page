@@ -339,6 +339,11 @@ const navItems: NavItem[] = [
               label: "Associates",
               href: "/broker-network",
                hasDropdown: false,
+            },
+            {
+              label: "Property",
+              href: "/properties",
+               hasDropdown: false,
             }
 ];
 function Header() {

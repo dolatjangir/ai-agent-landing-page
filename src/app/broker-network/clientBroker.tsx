@@ -343,18 +343,18 @@ useEffect(() => {
         variants={scaleIn}
         className="relative hidden sm:block"
       >
-        <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0066cc]/20 to-[#3399ff]/20" />
-          <div className="bg-white p-8">
+        <div className="relative rounded-2xl">
+          <div className="" />
+          <div className=" p-8">
             {/* Network Graph Illustration */}
             <div className="relative h-90 w-full">
               {/* Central Node */}
               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#0066cc] to-[#3399ff] flex items-center justify-center shadow-lg shadow-blue-500/30 z-10 relative">
-                  <Brain className="w-10 h-10 text-white" />
+                <div className="w-30 h-30 rounded-full bg-gradient-to-br from-[#0066cc] to-[#3399ff] flex items-center justify-center shadow-lg shadow-blue-500/30 z-10 relative">
+                  <Brain className="w-16 h-16 text-white" />
                 </div>
                 <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 whitespace-nowrap">
-                  <span className="text-sm font-semibold text-[#003871]">AI Matchmaker</span>
+                  <span className="text-lg font-semibold text-[#003871]">AI Matchmaker</span>
                 </div>
               </div>
 
@@ -367,7 +367,7 @@ useEffect(() => {
                 { angle: 240, icon: MapPin, color: "from-cyan-500 to-blue-400", label: "Local Experts" },
                 { angle: 300, icon: Users, color: "from-indigo-500 to-blue-400", label: "Teams" },
               ].map((node, i) => {
-                const radius = 160;
+                const radius = 210;
                 const angle = (node.angle * Math.PI) / 180;
                 const x = Math.round(Math.cos(angle) * radius);
 const y = Math.round(Math.sin(angle) * radius);
@@ -408,8 +408,8 @@ const y = Math.round(Math.sin(angle) * radius);
     className="absolute w-2 h-2 rounded-full bg-[#0066cc]"
     style={dot}
                   animate={{
-                    opacity: [0.2, 1, 0.2],
-                    scale: [1, 1.5, 1],
+                    opacity: [0.2, 2, 0.2],
+                    scale: [1.5, 1.5, 1],
                   }}
                   transition={{
                     duration: 2,

@@ -13,7 +13,8 @@ export async function POST(req: Request) {
   try {
     const { messages } = await req.json();
     const response = await openai.chat.completions.create({
-      model: "arcee-ai/trinity-mini:free",
+      // arcee-ai/trinity-mini:free
+       model : process.env.CHATBOT_MODEL || "meta-llama/llama-3-8b-instruct",
       messages: [
         {
           role: "system",
