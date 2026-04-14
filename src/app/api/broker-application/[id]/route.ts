@@ -8,11 +8,12 @@ import { join } from 'path';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await context.params;
     const application = await prisma.brokerApplication.findUnique({
-      where: { id: params.id }
+      where: { id }
     });
     
     if (!application) {
@@ -96,11 +97,13 @@ export async function PATCH(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: { id: string } }
 ) {
   try {
+      const { id } = await context.params;
+
     const application = await prisma.brokerApplication.findUnique({
-      where: { id: params.id }
+      where: { id }
     });
     
     if (!application) {
