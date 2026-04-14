@@ -34,8 +34,8 @@ interface Property {
   beds: number;
   baths: number;
   sqft: number;
-  type: 'House' | 'Apartment' | 'Condo' | 'Villa' | 'Townhouse';
-  status: 'For Sale' | 'For Rent';
+  type: string;
+  status: string;
   image: string;
   images: string[];
   description: string;
@@ -53,177 +53,177 @@ interface Property {
 }
 
 // Mock Data
-const properties: Property[] = [
-  {
-    id: '1',
-    title: 'Modern Luxury Villa',
-    address: '123 Palm Avenue, Beverly Hills, CA 90210',
-    price: 2850000,
-    beds: 5,
-    baths: 4,
-    sqft: 4200,
-    type: 'Villa',
-    status: 'For Sale',
-    image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80',
-    images: [
-      'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80',
-      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80',
-      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80'
-    ],
-    description: 'Experience luxury living in this stunning modern villa featuring floor-to-ceiling windows, a gourmet kitchen, and a private infinity pool. The open-concept design seamlessly blends indoor and outdoor living.',
-    features: ['Infinity Pool', 'Smart Home System', 'Wine Cellar', 'Home Theater', 'Gym', 'Guest House'],
-    agent: {
-      name: 'Sarah Johnson',
-      phone: '+1 (555) 123-4567',
-      email: 'sarah@estateai.com',
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80'
-    },
-    yearBuilt: 2021,
-    garage: 3,
-    lotSize: '0.5 acres',
-    pricePerSqft: 679
-  },
-  {
-    id: '2',
-    title: 'Downtown Penthouse',
-    address: '456 Skyline Drive, Los Angeles, CA 90015',
-    price: 1850000,
-    beds: 3,
-    baths: 3,
-    sqft: 2800,
-    type: 'Apartment',
-    status: 'For Sale',
-    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80',
-    images: [
-      'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80',
-      'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80'
-    ],
-    description: 'Spectacular penthouse with panoramic city views. Features include a private elevator, designer finishes, and access to world-class amenities.',
-    features: ['Private Elevator', 'Rooftop Terrace', 'Concierge Service', 'Fitness Center', 'Valet Parking'],
-    agent: {
-      name: 'Michael Chen',
-      phone: '+1 (555) 234-5678',
-      email: 'michael@estateai.com',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80'
-    },
-    yearBuilt: 2019,
-    garage: 2,
-    lotSize: 'N/A',
-    pricePerSqft: 661
-  },
-  {
-    id: '3',
-    title: 'Cozy Family Home',
-    address: '789 Maple Street, Pasadena, CA 91105',
-    price: 1250000,
-    beds: 4,
-    baths: 3,
-    sqft: 2400,
-    type: 'House',
-    status: 'For Sale',
-    image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80',
-    images: [
-      'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80',
-      'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&q=80'
-    ],
-    description: 'Charming family home in a quiet neighborhood. Recently renovated with modern amenities while maintaining its classic character.',
-    features: ['Updated Kitchen', 'Hardwood Floors', 'Fireplace', 'Large Backyard', 'Near Schools'],
-    agent: {
-      name: 'Emily Rodriguez',
-      phone: '+1 (555) 345-6789',
-      email: 'emily@estateai.com',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80'
-    },
-    yearBuilt: 2005,
-    garage: 2,
-    lotSize: '0.25 acres',
-    pricePerSqft: 521
-  },
-  {
-    id: '4',
-    title: 'Seaside Condo',
-    address: '321 Ocean View Blvd, Santa Monica, CA 90401',
-    price: 950000,
-    beds: 2,
-    baths: 2,
-    sqft: 1400,
-    type: 'Condo',
-    status: 'For Rent',
-    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80',
-    images: [
-      'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80',
-      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80'
-    ],
-    description: 'Beautiful condo steps from the beach. Enjoy ocean breezes and stunning sunsets from your private balcony.',
-    features: ['Ocean View', 'Beach Access', 'Pool', 'Gated Community', 'Covered Parking'],
-    agent: {
-      name: 'David Kim',
-      phone: '+1 (555) 456-7890',
-      email: 'david@estateai.com',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80'
-    },
-    yearBuilt: 2015,
-    garage: 1,
-    lotSize: 'N/A',
-    pricePerSqft: 679
-  },
-  {
-    id: '5',
-    title: 'Modern Townhouse',
-    address: '654 Urban Lane, Downtown, CA 90013',
-    price: 875000,
-    beds: 3,
-    baths: 2,
-    sqft: 1800,
-    type: 'Townhouse',
-    status: 'For Sale',
-    image: 'https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=800&q=80',
-    images: [
-      'https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=800&q=80',
-      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80'
-    ],
-    description: 'Sleek modern townhouse in the heart of downtown. Walk to restaurants, shops, and entertainment.',
-    features: ['Rooftop Deck', 'Smart Home', 'EV Charging', 'Storage Unit', 'Pet Friendly'],
-    agent: {
-      name: 'Lisa Thompson',
-      phone: '+1 (555) 567-8901',
-      email: 'lisa@estateai.com',
-      image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&q=80'
-    },
-    yearBuilt: 2020,
-    garage: 1,
-    lotSize: '0.1 acres',
-    pricePerSqft: 486
-  },
-  {
-    id: '6',
-    title: 'Historic Estate',
-    address: '987 Heritage Road, San Marino, CA 91108',
-    price: 4500000,
-    beds: 6,
-    baths: 5,
-    sqft: 5500,
-    type: 'House',
-    status: 'For Sale',
-    image: 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80',
-    images: [
-      'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80',
-      'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80'
-    ],
-    description: 'Magnificent historic estate on a sprawling lot. Meticulously maintained with original details and modern updates.',
-    features: ['Guest Cottage', 'Tennis Court', 'Pool', 'Library', 'Wine Room', 'Mature Gardens'],
-    agent: {
-      name: 'James Wilson',
-      phone: '+1 (555) 678-9012',
-      email: 'james@estateai.com',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80'
-    },
-    yearBuilt: 1925,
-    garage: 4,
-    lotSize: '2 acres',
-    pricePerSqft: 818
-  }
-];
+// const properties: Property[] = [
+//   {
+//     id: '1',
+//     title: 'Modern Luxury Villa',
+//     address: '123 Palm Avenue, Beverly Hills, CA 90210',
+//     price: 2850000,
+//     beds: 5,
+//     baths: 4,
+//     sqft: 4200,
+//     type: 'Villa',
+//     status: 'For Sale',
+//     image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80',
+//     images: [
+//       'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80',
+//       'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80',
+//       'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80'
+//     ],
+//     description: 'Experience luxury living in this stunning modern villa featuring floor-to-ceiling windows, a gourmet kitchen, and a private infinity pool. The open-concept design seamlessly blends indoor and outdoor living.',
+//     features: ['Infinity Pool', 'Smart Home System', 'Wine Cellar', 'Home Theater', 'Gym', 'Guest House'],
+//     agent: {
+//       name: 'Sarah Johnson',
+//       phone: '+1 (555) 123-4567',
+//       email: 'sarah@estateai.com',
+//       image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80'
+//     },
+//     yearBuilt: 2021,
+//     garage: 3,
+//     lotSize: '0.5 acres',
+//     pricePerSqft: 679
+//   },
+//   {
+//     id: '2',
+//     title: 'Downtown Penthouse',
+//     address: '456 Skyline Drive, Los Angeles, CA 90015',
+//     price: 1850000,
+//     beds: 3,
+//     baths: 3,
+//     sqft: 2800,
+//     type: 'Apartment',
+//     status: 'For Sale',
+//     image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80',
+//     images: [
+//       'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80',
+//       'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80'
+//     ],
+//     description: 'Spectacular penthouse with panoramic city views. Features include a private elevator, designer finishes, and access to world-class amenities.',
+//     features: ['Private Elevator', 'Rooftop Terrace', 'Concierge Service', 'Fitness Center', 'Valet Parking'],
+//     agent: {
+//       name: 'Michael Chen',
+//       phone: '+1 (555) 234-5678',
+//       email: 'michael@estateai.com',
+//       image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80'
+//     },
+//     yearBuilt: 2019,
+//     garage: 2,
+//     lotSize: 'N/A',
+//     pricePerSqft: 661
+//   },
+//   {
+//     id: '3',
+//     title: 'Cozy Family Home',
+//     address: '789 Maple Street, Pasadena, CA 91105',
+//     price: 1250000,
+//     beds: 4,
+//     baths: 3,
+//     sqft: 2400,
+//     type: 'House',
+//     status: 'For Sale',
+//     image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80',
+//     images: [
+//       'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80',
+//       'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&q=80'
+//     ],
+//     description: 'Charming family home in a quiet neighborhood. Recently renovated with modern amenities while maintaining its classic character.',
+//     features: ['Updated Kitchen', 'Hardwood Floors', 'Fireplace', 'Large Backyard', 'Near Schools'],
+//     agent: {
+//       name: 'Emily Rodriguez',
+//       phone: '+1 (555) 345-6789',
+//       email: 'emily@estateai.com',
+//       image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80'
+//     },
+//     yearBuilt: 2005,
+//     garage: 2,
+//     lotSize: '0.25 acres',
+//     pricePerSqft: 521
+//   },
+//   {
+//     id: '4',
+//     title: 'Seaside Condo',
+//     address: '321 Ocean View Blvd, Santa Monica, CA 90401',
+//     price: 950000,
+//     beds: 2,
+//     baths: 2,
+//     sqft: 1400,
+//     type: 'Condo',
+//     status: 'For Rent',
+//     image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80',
+//     images: [
+//       'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80',
+//       'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80'
+//     ],
+//     description: 'Beautiful condo steps from the beach. Enjoy ocean breezes and stunning sunsets from your private balcony.',
+//     features: ['Ocean View', 'Beach Access', 'Pool', 'Gated Community', 'Covered Parking'],
+//     agent: {
+//       name: 'David Kim',
+//       phone: '+1 (555) 456-7890',
+//       email: 'david@estateai.com',
+//       image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80'
+//     },
+//     yearBuilt: 2015,
+//     garage: 1,
+//     lotSize: 'N/A',
+//     pricePerSqft: 679
+//   },
+//   {
+//     id: '5',
+//     title: 'Modern Townhouse',
+//     address: '654 Urban Lane, Downtown, CA 90013',
+//     price: 875000,
+//     beds: 3,
+//     baths: 2,
+//     sqft: 1800,
+//     type: 'Townhouse',
+//     status: 'For Sale',
+//     image: 'https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=800&q=80',
+//     images: [
+//       'https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=800&q=80',
+//       'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80'
+//     ],
+//     description: 'Sleek modern townhouse in the heart of downtown. Walk to restaurants, shops, and entertainment.',
+//     features: ['Rooftop Deck', 'Smart Home', 'EV Charging', 'Storage Unit', 'Pet Friendly'],
+//     agent: {
+//       name: 'Lisa Thompson',
+//       phone: '+1 (555) 567-8901',
+//       email: 'lisa@estateai.com',
+//       image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&q=80'
+//     },
+//     yearBuilt: 2020,
+//     garage: 1,
+//     lotSize: '0.1 acres',
+//     pricePerSqft: 486
+//   },
+//   {
+//     id: '6',
+//     title: 'Historic Estate',
+//     address: '987 Heritage Road, San Marino, CA 91108',
+//     price: 4500000,
+//     beds: 6,
+//     baths: 5,
+//     sqft: 5500,
+//     type: 'House',
+//     status: 'For Sale',
+//     image: 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80',
+//     images: [
+//       'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80',
+//       'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80'
+//     ],
+//     description: 'Magnificent historic estate on a sprawling lot. Meticulously maintained with original details and modern updates.',
+//     features: ['Guest Cottage', 'Tennis Court', 'Pool', 'Library', 'Wine Room', 'Mature Gardens'],
+//     agent: {
+//       name: 'James Wilson',
+//       phone: '+1 (555) 678-9012',
+//       email: 'james@estateai.com',
+//       image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80'
+//     },
+//     yearBuilt: 1925,
+//     garage: 4,
+//     lotSize: '2 acres',
+//     pricePerSqft: 818
+//   }
+// ];
 
 // Format price
 const formatPrice = (price: number, status: string) => {
@@ -324,10 +324,116 @@ export default function PropertiesPage() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [favorites, setFavorites] = useState<string[]>([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    
+    const [properties, setProperties] = useState<Property[]>([]);
 const resultsRef = useRef<HTMLDivElement>(null);
 
+const fetchProperties = async () => {
+  const res = await fetch('https://appapi.estateai.in/api/property',{credentials:"include"});
+  const data = await res.json();
+  return data;
+};
 
+
+const mapApiToProperty = (item: any): Property | null => {
+  try {
+    // Safe JSON parsing with fallbacks
+    const parseJSON = (str: string | null | undefined, fallback: any = []) => {
+      if (!str) return fallback;
+      try {
+        return JSON.parse(str);
+      } catch {
+        return fallback;
+      }
+    };
+
+    const agent = parseJSON(item.AgentInfo, {});
+    const features = parseJSON(item.Features, []);
+    const images = Array.isArray(item.PropertyImage) ? item.PropertyImage : [];
+
+    // Validate required fields
+    if (!item.id || !item.propertyName || images.length === 0) {
+      console.warn('Skipping property due to missing required fields:', item.id);
+      return null;
+    }
+
+    // Safe number extraction
+    const extractNumber = (features: string[], keyword: string): number => {
+      if (!Array.isArray(features)) return 0;
+      const item = features.find((f: string) => 
+        typeof f === 'string' && f.includes(keyword)
+      );
+      return item ? parseInt(item.match(/\d+/)?.[0] || '0') : 0;
+    };
+
+    const beds = extractNumber(features, 'Bedrooms');
+    const baths = extractNumber(features, 'Bathrooms');
+    const sqft = parseInt(item.Area) || 0;
+    const price = parseInt(item.Price) || 0;
+
+    // Map API type to valid Property type
+    const validTypes = ['House', 'Apartment', 'Condo', 'Villa', 'Townhouse'];
+    const apiType = item.PropertySubType?.trim();
+    const mappedType = validTypes.includes(apiType) ? apiType : 'House'; // fallback
+
+    // Determine status - fix this based on your actual API field
+    // Option 1: If API has explicit status field
+    const status = item.ListingType === 'Rent' || item.Status === 'For Rent' 
+      ? 'For Rent' 
+      : 'For Sale';
+
+    return {
+      id: String(item.id),
+      title: item.propertyName?.trim() || 'Untitled Property',
+      address: item.Adderess?.trim() || 'Address not available',
+      price: price,
+      beds: beds,
+      baths: baths,
+      sqft: sqft,
+      type: mappedType as Property['type'],
+      status: status as Property['status'],
+      image: images[0],
+      images: images,
+      description: item.Description?.trim() || 'No description available',
+      features: features,
+      agent: {
+        name: agent.name || 'EstateAI Agent',
+        phone: agent.phone || '+1 (555) 000-0000',
+        email: agent.email || 'contact@estateai.com',
+        image: agent.image || images[0] // fallback to property image
+      },
+      yearBuilt: parseInt(item.PropertyYear) || new Date().getFullYear(),
+      garage: 0,
+      lotSize: 'N/A',
+      pricePerSqft: sqft > 0 ? Math.floor(price / sqft) : 0
+    };
+  } catch (error) {
+    console.error('Error mapping property:', error, item);
+    return null;
+  }
+};
+useEffect(() => {
+  const loadData = async () => {
+    try {
+      const apiData = await fetchProperties();
+      console.log("API Response:", apiData);
+      
+      // Handle different response structures
+      const propertiesArray = Array.isArray(apiData) ? apiData : apiData?.data || [];
+      
+      const mapped = propertiesArray
+        .map(mapApiToProperty)
+        .filter((p:any): p is Property => p !== null); // Remove nulls
+      
+      console.log("Mapped Properties:", mapped);
+      setProperties(mapped);
+    } catch (error) {
+      console.error("Failed to load properties:", error);
+      setProperties([]);
+    }
+  };
+
+  loadData();
+}, []);
   // Filter options
   const typeOptions = [
     { value: 'All', label: 'All Types' },
@@ -495,7 +601,7 @@ const resultsRef = useRef<HTMLDivElement>(null);
       className="text-center max-w-3xl mx-auto"
     >
       <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-white drop-shadow-lg">
-        Find Your Perfect <span className="text-[var(--color-primary-300)]">Property</span>
+        Find Your Perfect <span className="text-[var(--color-primary-500)]">Property</span>
       </h1>
       <p className="text-lg md:text-xl text-gray-200 mb-10 drop-shadow-md">
         Discover exceptional homes, apartments, and investment opportunities tailored to your lifestyle

@@ -10,6 +10,8 @@ import { useRouter } from 'next/navigation';
 import { LogOut } from 'lucide-react';
 import BrokersPage from '@/components/explore-broker/exploreBroker';
 import RequirementsPage from '@/components/getRequirement/requirement';
+import AdminPropertiesPage from '@/components/property-admin/properties';
+import JoinBrokerApplicationsAdmin from '@/components/join-broker-network/joinNetwork';
 // ── Types (untouched) ────────────────────────────────────────────────────────
 interface SEOEntry {
   id: string;
@@ -513,7 +515,10 @@ useEffect(() => {
     { id: 'dashboard', icon: Layout, label: 'Dashboard' },
     { id: 'seo',       icon: Search, label: 'SEO Manager', badge: stats.total },
     { id: 'explore',       icon: Search, label: 'Broker Manager', badge: brokerCount },
+     { id: 'properties',     icon: Users,  label: 'Property Manager' },
     { id: 'requirement',     icon: Users,  label: 'Added Requirements' },
+    { id: 'joinNetwork',     icon: Users,  label: 'Broker Request Manager' },
+
     { id: 'settings',  icon: Settings, label: 'Settings' },
   ];
 
@@ -877,8 +882,10 @@ useEffect(() => {
           </div>
         </div>
         </div>}
-        {activeSidebarItem === "explore" && <BrokersPage/>}
+        {/* {activeSidebarItem === "explore" && <BrokersPage/>}
         {activeSidebarItem === "requirement" && <RequirementsPage/>}
+        {activeSidebarItem === "properties" && <AdminPropertiesPage/>}
+        {activeSidebarItem === "joinNetwork" && <JoinBrokerApplicationsAdmin/>} */}
       </main>
 
       {/* Modal */}

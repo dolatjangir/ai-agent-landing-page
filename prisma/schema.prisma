@@ -128,6 +128,39 @@ model Requirement {
   createdAt DateTime @default(now())
 }
 
+model BrokerApplication {
+  id              String  @id @default(uuid())
+  fullName        String
+  email           String
+  phone           String
+  companyName     String
+  role            String
+  experience      String
+  dealsClosed     String?
+  location        String
+  specializations String  @default("[]") // JSON array as string
+  description     String  @db.Text
+  profileImage    String? // URL to stored image
+
+  status ApplicationStatus @default(pending)
+
+  submittedAt     DateTime  @default(now())
+  reviewedAt      DateTime?
+  reviewedBy      String?
+  rejectionReason String?   @db.Text
+
+  @@index([status])
+  @@index([email])
+  @@index([submittedAt])
+  @@map("broker_applications")
+}
+
+enum ApplicationStatus {
+  pending
+  approved
+  rejected
+}
+
 enum Role {
   ADMIN
   USER

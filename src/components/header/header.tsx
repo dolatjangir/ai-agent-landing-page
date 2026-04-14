@@ -519,7 +519,7 @@ onMouseLeave={() => item.hasDropdown && handleMouseLeave()}
         </nav>
 
         <div className="hidden md:flex items-center gap-[var(--space-4)]">
-          <Link href="https://app.estateai.in/login">
+          <Link href="/login">
           <button className="text-[var(--text-secondary)] hover:text-[var(--color-primary-600)] font-medium transition-colors duration-[var(--duration-fast)]">
             Log in
           </button></Link>
@@ -651,7 +651,7 @@ onMouseLeave={() => item.hasDropdown && handleMouseLeave()}
 
   {/* Sticky Bottom Auth Buttons */}
   <div className='sticky bottom-0 bg-[var(--color-primary-50)] border-t border-neutral-50 pt-4'>
-    <Link href="https://app.estateai.in/login">
+    <Link href="/login">
       <button className="w-full py-[var(--space-3)] text-[var(--text-secondary)] font-medium">
         Log in
       </button>
